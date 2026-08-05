@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://perpignan-solaire.fr/sitemap.xml
