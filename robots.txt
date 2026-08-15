@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://perpignan-solaire.fr/sitemap.xml
+Sitemap: https://solaire-66.fr/sitemap.xml
