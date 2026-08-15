@@ -173,21 +173,19 @@
 
     /* ── SOLUTIONS ── */
     .solutions-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }
-    .sol-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: all .2s; }
+    .sol-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: all .2s; display: flex; flex-direction: column; }
     .sol-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .sol-top { height: 5px; }
+    .sol-top { height: 5px; flex-shrink: 0; }
     .sol-top-amber { background: var(--amber); }
     .sol-top-green { background: var(--green); }
     .sol-top-navy  { background: var(--navy); }
-    .sol-body { padding: 28px 24px; }
-    .sol-badge { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; margin-bottom: 14px; }
-    .sol-badge-pop { background: var(--green-lt); color: var(--green); }
-    .sol-badge-new { background: var(--amber-lt); color: var(--amber-dk); }
-    .sol-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
-    .sol-card p  { margin-bottom: 18px; }
-    .sol-list    { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .sol-list li { display: flex; align-items: flex-start; gap: 9px; font-size: .88rem; color: var(--text-mid); }
-    .sol-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .sol-top-blue  { background: #2C7BE5; }
+    .sol-img { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .sol-body { padding: 22px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+    .sol-card h3 { font-size: 1.08rem; margin-bottom: 9px; }
+    .sol-card p  { font-size: .88rem; color: var(--text-mid); line-height: 1.6; flex: 1; }
+    .sol-cta { display: inline-block; margin-top: 18px; font-size: .82rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: .03em; }
+    .sol-cta:hover { color: var(--amber-dk); }
 
     /* ── AIDES & SUBVENTIONS ── */
     .aides { background: var(--bg); }
@@ -290,7 +288,7 @@
       .step-line { height: 2px; width: auto; flex: 1; margin: 0; align-self: center; margin-top: 0; margin-bottom: 0; margin-left: 0; }
       .step-num { flex-shrink: 0; }
       .step-body { padding-top: 20px; grid-row: 2; }
-      .solutions-grid { grid-template-columns: repeat(3, 1fr); }
+      .solutions-grid { grid-template-columns: repeat(2, 1fr); }
       .devis-inner { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
       .sticky-cta { display: none; }
@@ -299,6 +297,7 @@
 
     @media (min-width: 1100px) {
       .why-grid { grid-template-columns: repeat(4, 1fr); }
+      .solutions-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -607,54 +606,47 @@
 <section class="sec" id="solutions">
   <div class="wrap">
     <div class="eyebrow">Nos solutions</div>
-    <h2>Quelle formule pour votre projet ?</h2>
-    <p class="body-lg" style="margin-top:12px; max-width:580px;">Du kit autoconsommation simple jusqu'à l'indépendance maximale — chaque installation est adaptée à votre situation réelle.</p>
+    <h2>Nos produits &amp; installations</h2>
+    <p class="body-lg" style="margin-top:12px; max-width:600px;">Panneaux, pergola, carport ou batterie virtuelle — chaque solution est dimensionnée sur mesure pour votre projet en région perpignanaise.</p>
     <div class="solutions-grid">
 
       <div class="sol-card">
         <div class="sol-top sol-top-amber"></div>
+        <img class="sol-img" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Panneaux solaires photovoltaïques sur toiture" loading="lazy">
         <div class="sol-body">
-          <h3>Photovoltaïque seul</h3>
-          <p class="body-sm">L'essentiel du solaire : produisez de l'électricité propre et vendez votre surplus à EDF OA. Idéal pour commencer.</p>
-          <ul class="sol-list">
-            <li>Panneaux monocristallins haute efficacité</li>
-            <li>Onduleur garanti 10 ans</li>
-            <li>Raccordement Enedis inclus</li>
-            <li>Prime autoconsommation jusqu'à 300 €/kWc</li>
-            <li>Démarches MaPrimeRénov' prises en charge</li>
-          </ul>
+          <h3>Panneaux solaires</h3>
+          <p>Profitez du soleil généreux de la région perpignanaise pour produire votre propre électricité et réduire vos dépenses énergétiques.</p>
+          <a class="sol-cta" href="#devis">Demander un devis →</a>
         </div>
       </div>
 
       <div class="sol-card">
         <div class="sol-top sol-top-green"></div>
+        <img class="sol-img" src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?w=600&q=80" alt="Pergola solaire photovoltaïque" loading="lazy">
         <div class="sol-body">
-          <span class="sol-badge sol-badge-pop">Le plus demandé</span>
-          <h3>+ Batterie physique</h3>
-          <p class="body-sm">Stockez votre surplus chez vous. Batterie lithium LFP pour une autoconsommation maximale, même la nuit — et fonctionne en coupure réseau.</p>
-          <ul class="sol-list">
-            <li>Batterie lithium LFP 5–15 kWh</li>
-            <li>Fonctionne en coupure réseau</li>
-            <li>Autoconsommation supérieure à 85 %</li>
-            <li>Aucune dépendance à un opérateur</li>
-            <li>Monitoring temps réel sur smartphone</li>
-          </ul>
+          <h3>Pergola solaire</h3>
+          <p>Alliez esthétique et performance avec une pergola solaire. Elle vous offre un espace ombragé tout en générant de l'énergie propre.</p>
+          <a class="sol-cta" href="#devis">Demander un devis →</a>
         </div>
       </div>
 
       <div class="sol-card">
         <div class="sol-top sol-top-navy"></div>
+        <img class="sol-img" src="https://images.unsplash.com/photo-1593941707882-a5bac14add98?w=600&q=80" alt="Carport solaire avec panneaux photovoltaïques" loading="lazy">
         <div class="sol-body">
-          <span class="sol-badge sol-badge-new">Budget maîtrisé</span>
-          <h3>+ Batterie virtuelle</h3>
-          <p class="body-sm">Pas de batterie physique : votre surplus est crédité chez votre fournisseur et déduit de votre facture. Investissement initial réduit.</p>
-          <ul class="sol-list">
-            <li>Investissement initial plus faible</li>
-            <li>Crédit surplus sur facture mensuelle</li>
-            <li>Compatible EDF, TotalEnergies, Engie…</li>
-            <li>Aucun équipement supplémentaire</li>
-            <li>Disponible dans les 4 départements</li>
-          </ul>
+          <h3>Carport solaire</h3>
+          <p>Protégez votre véhicule tout en produisant de l'électricité grâce à nos carports équipés de panneaux photovoltaïques.</p>
+          <a class="sol-cta" href="#devis">Demander un devis →</a>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-top sol-top-blue"></div>
+        <img class="sol-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Batterie virtuelle MyLight stockage énergie" loading="lazy">
+        <div class="sol-body">
+          <h3>Batterie virtuelle MyLight</h3>
+          <p>Optimisez chaque kilowatt produit par vos panneaux solaires : avec la batterie virtuelle, vous ne perdez plus rien.</p>
+          <a class="sol-cta" href="#devis">Demander un devis →</a>
         </div>
       </div>
 
@@ -899,9 +891,10 @@
       <div class="ftr-col">
         <h4>Solutions</h4>
         <ul>
-          <li><a href="#solutions">Photovoltaïque</a></li>
-          <li><a href="#solutions">Batterie physique</a></li>
-          <li><a href="#solutions">Batterie virtuelle</a></li>
+          <li><a href="#solutions">Panneaux solaires</a></li>
+          <li><a href="#solutions">Pergola solaire</a></li>
+          <li><a href="#solutions">Carport solaire</a></li>
+          <li><a href="#solutions">Batterie virtuelle MyLight</a></li>
           <li><a href="#particuliers">Particuliers</a></li>
           <li><a href="#professionnels">Professionnels</a></li>
         </ul>
