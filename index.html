@@ -763,29 +763,31 @@
       <div class="form-card" id="formcard">
         <div class="form-title">Demander un devis gratuit</div>
         <form id="devisform" novalidate>
-          <div class="form-row form-row-2" style="display:grid;gap:14px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
             <div class="fi">
-              <label for="dv-prenom">Prénom</label>
+              <label for="dv-prenom">Prénom *</label>
               <input type="text" id="dv-prenom" name="prenom" placeholder="Laurent" required>
             </div>
             <div class="fi">
-              <label for="dv-nom">Nom</label>
+              <label for="dv-nom">Nom *</label>
               <input type="text" id="dv-nom" name="nom" placeholder="Dupont" required>
             </div>
             <div class="fi">
-              <label for="dv-tel">Téléphone</label>
+              <label for="dv-tel">Téléphone *</label>
               <input type="tel" id="dv-tel" name="tel" placeholder="06 XX XX XX XX" required>
             </div>
             <div class="fi">
-              <label for="dv-email">Email</label>
+              <label for="dv-email">Email *</label>
               <input type="email" id="dv-email" name="email" placeholder="votre@email.fr" required>
             </div>
+            <div class="fi" style="grid-column:1/-1;">
+              <label for="dv-adresse">Adresse *</label>
+              <input type="text" id="dv-adresse" name="adresse" placeholder="12 rue des Oliviers" required>
+            </div>
             <div class="fi">
-              <label for="dv-cp">Code postal</label>
+              <label for="dv-cp">Code postal *</label>
               <input type="text" id="dv-cp" name="cp" placeholder="66000" required>
             </div>
-          </div>
-          <div class="form-row" style="display:grid;gap:14px;margin-top:14px;">
             <div class="fi">
               <label for="dv-type">Type de projet</label>
               <select id="dv-type" name="type">
@@ -798,14 +800,15 @@
                 <option>Autre</option>
               </select>
             </div>
-            <div class="fi">
+            <div class="fi" style="grid-column:1/-1;">
               <label for="dv-msg">Votre situation (facultatif)</label>
               <textarea id="dv-msg" name="msg" placeholder="Surface de toit disponible, consommation annuelle, questions particulières…"></textarea>
             </div>
           </div>
-          <div class="form-rgpd" style="margin-top:12px;">
-            J'accepte que mes données soient traitées par <strong>Énergie Solaire 66 / SARL Rezofabrik</strong> pour traiter ma demande de devis (<a href="/mentions-legales.html">mentions légales</a>). Données supprimées sur simple demande.
-          </div>
+          <label class="form-rgpd" style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;cursor:pointer;">
+            <input type="checkbox" id="dv-rgpd" name="rgpd" style="margin-top:3px;accent-color:var(--amber);width:16px;height:16px;flex-shrink:0;" required>
+            <span>J'accepte que mes données soient traitées par <strong>Énergie Solaire 66 / SARL Rezofabrik</strong> pour traiter ma demande de devis (<a href="/mentions-legales.html">mentions légales</a>). Données supprimées sur simple demande. *</span>
+          </label>
           <button type="submit" class="btn btn-amber" style="width:100%;justify-content:center;margin-top:18px;padding:15px;">Envoyer ma demande — Réponse sous 48h</button>
         </form>
         <div class="form-success" id="formsuccess">
@@ -977,11 +980,17 @@
     const nom = f.nom.value.trim();
     const tel = f.tel.value.trim();
     const em  = f.email.value.trim();
+    const adr = f.adresse.value.trim();
     const cp  = f.cp.value.trim();
     const typ = f.type.value;
     const msg = f.msg.value.trim();
-    if (!prn || !nom || !tel || !em || !cp) {
-      alert('Merci de remplir les champs obligatoires : Prénom, Nom, Téléphone, Email et Code postal.');
+    const rgpd = f.rgpd.checked;
+    if (!prn || !nom || !tel || !em || !adr || !cp) {
+      alert('Merci de remplir tous les champs obligatoires (marqués *).');
+      return;
+    }
+    if (!rgpd) {
+      alert('Merci d\'accepter la politique de confidentialité pour envoyer votre demande.');
       return;
     }
     const btn = f.querySelector('button[type=submit]');
@@ -999,6 +1008,7 @@
           email: em,
           replyto: em,
           phone: tel,
+          address: adr,
           postal_code: cp,
           project_type: typ || 'Non précisé',
           message: msg || '(aucun message)',
