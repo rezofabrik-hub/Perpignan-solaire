@@ -828,7 +828,7 @@ document.getElementById('lf').addEventListener('submit',async function(e){
         subject:'🌞 Devis '+city+' — '+pn+' '+nm,
         from_name:'Énergie Solaire 66',name:pn+' '+nm,email:em,
         phone:tl,message:'Ville: '+city+'\nProjet: '+pj,
-        botcheck:false})});
+        replyto:em,botcheck:''})});
     const data=await res.json();
     if(data.success){document.getElementById('fc-inner').style.display='none';
       document.getElementById('fc-suc').style.display='block';}
