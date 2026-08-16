@@ -204,7 +204,8 @@
 
     /* ── ZONES D'INTERVENTION ── */
     .zones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
-    .zone-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 24px 20px; display: flex; align-items: flex-start; gap: 16px; box-shadow: var(--shadow); }
+    .zone-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 24px 20px; display: flex; align-items: flex-start; gap: 16px; box-shadow: var(--shadow); color: inherit; }
+    a.zone-card:hover { border-color: var(--amber); box-shadow: var(--shadow-md); transform: translateY(-2px); }
     .zone-dept { width: 48px; height: 48px; background: var(--navy); color: var(--amber); font-weight: 800; font-size: 1rem; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .zone-body h3 { font-size: .95rem; margin-bottom: 4px; }
     .zone-body p  { font-size: .82rem; }
@@ -673,24 +674,25 @@
       <div class="aide-card">
         <div class="aide-pct">10 %</div>
         <h3>TVA réduite</h3>
-        <p class="body-sm">Au lieu de 20 % sur les équipements et la pose pour les logements de plus de 2 ans.</p>
+        <p class="body-sm">Sur les équipements et la pose, pour les logements de plus de 2 ans. Économie directe de ~1 100 € — sans condition de revenus.</p>
       </div>
       <div class="aide-card">
-        <div class="aide-pct">4 000 €</div>
-        <h3>MaPrimeRénov'</h3>
-        <p class="body-sm">Aide de l'État jusqu'à 4 000 € selon vos revenus. Démarches prises en charge par Énergie Solaire 66.</p>
-      </div>
-      <div class="aide-card">
-        <div class="aide-pct">300 €</div>
-        <h3>Prime autoconso.</h3>
-        <p class="body-sm">Prime d'EDF jusqu'à 300 €/kWc pour les installations en autoconsommation avec revente de surplus.</p>
+        <div class="aide-pct">300 €/kWc</div>
+        <h3>Prime autoconsommation</h3>
+        <p class="body-sm">Versée sur 5 ans par EDF OA. Jusqu'à 900 € pour 3 kWc. Taux mis à jour trimestriellement par la CRE. Nécessite un installateur RGE.</p>
       </div>
       <div class="aide-card">
         <div class="aide-pct">50 000 €</div>
-        <h3>Éco-PTZ</h3>
-        <p class="body-sm">Prêt à taux zéro jusqu'à 50 000 € pour financer votre installation sans avancer les frais.</p>
+        <h3>Éco-PTZ à 0 %</h3>
+        <p class="body-sm">Prêt sans intérêts jusqu'à 50 000 € sur 15 ans. Depuis 2024 : sans condition de revenus. Disponible en banque partenaire.</p>
+      </div>
+      <div class="aide-card">
+        <div class="aide-pct">0,13 €/kWh</div>
+        <h3>Rachat surplus EDF OA</h3>
+        <p class="body-sm">Contrat d'Obligation d'Achat garanti 20 ans par l'État. Revenu garanti sans risque marché pour votre surplus de production.</p>
       </div>
     </div>
+    <p style="margin-top:16px;font-size:.82rem;color:var(--text-mid);">ℹ MaPrimeRénov' Ampleur : depuis 2024, le photovoltaïque est intégré uniquement dans le cadre d'une rénovation globale du logement (jusqu'à 70 000 € selon revenus). Énergie Solaire 66 vous accompagne pour évaluer votre éligibilité.</p>
   </div>
 </section>
 
@@ -701,34 +703,38 @@
     <h2>Nos zones d'intervention</h2>
     <p class="body-lg" style="margin-top:12px; max-width:540px;">Nous intervenons dans 4 départements d'Occitanie, avec une priorité sur les Pyrénées-Orientales.</p>
     <div class="zones-grid">
-      <div class="zone-card">
+      <a href="./dept-66.html" class="zone-card" style="text-decoration:none;display:flex;flex-direction:column;gap:0;transition:box-shadow .2s,transform .2s;">
         <div class="zone-dept">66</div>
         <div class="zone-body">
           <h3>Pyrénées-Orientales</h3>
-          <p class="body-sm">Zone prioritaire. Perpignan, Canet, Argelès, Céret, Thuir, Rivesaltes, Prades…</p>
+          <p class="body-sm">☀ <strong>1 720 kWh/m²/an</strong> · 2 550 h de soleil · N°1 France<br>Perpignan, Rivesaltes, Canet, Argelès, Céret, Thuir…</p>
+          <p class="body-sm" style="margin-top:8px;color:var(--amber-dk);font-weight:600;">Voir les 25 communes →</p>
         </div>
-      </div>
-      <div class="zone-card">
+      </a>
+      <a href="./dept-11.html" class="zone-card" style="text-decoration:none;display:flex;flex-direction:column;gap:0;transition:box-shadow .2s,transform .2s;">
         <div class="zone-dept">11</div>
         <div class="zone-body">
           <h3>Aude</h3>
-          <p class="body-sm">Carcassonne, Narbonne, Limoux, Lézignan, Gruissan, Port-la-Nouvelle…</p>
+          <p class="body-sm">☀ <strong>1 600 kWh/m²/an</strong> · 2 300 h de soleil<br>Carcassonne, Narbonne, Lézignan, Gruissan, Port-la-Nouvelle…</p>
+          <p class="body-sm" style="margin-top:8px;color:var(--amber-dk);font-weight:600;">Voir les 10 communes →</p>
         </div>
-      </div>
-      <div class="zone-card">
+      </a>
+      <a href="./dept-34.html" class="zone-card" style="text-decoration:none;display:flex;flex-direction:column;gap:0;transition:box-shadow .2s,transform .2s;">
         <div class="zone-dept">34</div>
         <div class="zone-body">
           <h3>Hérault</h3>
-          <p class="body-sm">Montpellier, Béziers, Sète, Agde, Frontignan et communes limitrophes.</p>
+          <p class="body-sm">☀ <strong>1 580 kWh/m²/an</strong> · 2 180 h de soleil<br>Montpellier, Béziers, Sète, Agde, Frontignan, Lunel…</p>
+          <p class="body-sm" style="margin-top:8px;color:var(--amber-dk);font-weight:600;">Voir les 7 communes →</p>
         </div>
-      </div>
-      <div class="zone-card">
+      </a>
+      <a href="./dept-09.html" class="zone-card" style="text-decoration:none;display:flex;flex-direction:column;gap:0;transition:box-shadow .2s,transform .2s;">
         <div class="zone-dept">09</div>
         <div class="zone-body">
           <h3>Ariège</h3>
-          <p class="body-sm">Foix, Pamiers, Saint-Girons et les vallées pyrénéennes du département.</p>
+          <p class="body-sm">☀ <strong>1 370 kWh/m²/an</strong> · 1 980 h de soleil<br>Foix, Pamiers, Saint-Girons, Tarascon-sur-Ariège…</p>
+          <p class="body-sm" style="margin-top:8px;color:var(--amber-dk);font-weight:600;">Voir les 4 communes →</p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -893,7 +899,7 @@
           Combien coûte une installation solaire dans les Pyrénées-Orientales ?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">En 2026, une installation de 3 kWc coûte entre 7 500 € et 11 000 € TTC. Après TVA à 10 %, MaPrimeRénov' (jusqu'à 4 000 €) et prime autoconsommation (jusqu'à 900 €), le reste à charge descend généralement entre 5 000 € et 7 500 €. Délai de retour sur investissement : 7 à 10 ans selon votre consommation.</div>
+        <div class="faq-a">En 2026, une installation de 3 kWc coûte entre 7 500 € et 11 000 € TTC. Après TVA à 10 % (~1 100 €) et prime autoconsommation (~900 €), le reste à charge descend à <strong>6 000–9 000 €</strong>. L'éco-PTZ à 0 % permet de financer sans avancer de trésorerie. MaPrimeRénov' Ampleur est accessible uniquement dans le cadre d'une rénovation globale du logement. Retour sur investissement : <strong>13 à 15 ans</strong> selon votre consommation, pour un équipement garanti 25 ans.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
@@ -989,25 +995,24 @@
         </ul>
       </div>
       <div class="ftr-col">
-        <h4>Aides</h4>
+        <h4>Aides 2026</h4>
         <ul>
           <li><a href="#aides">TVA à 10 %</a></li>
-          <li><a href="#aides">MaPrimeRénov'</a></li>
           <li><a href="#aides">Prime autoconsommation</a></li>
-          <li><a href="#aides">Éco-PTZ</a></li>
+          <li><a href="#aides">Éco-PTZ à 0 %</a></li>
           <li><a href="#aides">Rachat EDF OA</a></li>
+          <li><a href="#aides">MaPrimeRénov' Ampleur</a></li>
         </ul>
       </div>
       <div class="ftr-col">
-        <h4>Zones</h4>
+        <h4>Nos départements</h4>
         <ul>
-          <li><a href="#zones">Pyrénées-Orientales (66)</a></li>
-          <li><a href="#zones">Aude (11)</a></li>
-          <li><a href="#zones">Hérault (34)</a></li>
-          <li><a href="#zones">Ariège (09)</a></li>
+          <li><a href="./dept-66.html">Pyrénées-Orientales (66)</a></li>
+          <li><a href="./dept-11.html">Aude (11)</a></li>
+          <li><a href="./dept-34.html">Hérault (34)</a></li>
+          <li><a href="./dept-09.html">Ariège (09)</a></li>
           <li><a href="#devis">Devis gratuit</a></li>
-          <li><a href="partenaires.html">Apporteur d'affaires</a></li>
-          <li><a href="partenaires.html">Recrutement poseurs</a></li>
+          <li><a href="./partenaires.html">Apporteur d'affaires</a></li>
         </ul>
       </div>
     </div>
