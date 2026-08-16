@@ -32,7 +32,7 @@
   "address":{"@type":"PostalAddress","addressLocality":"Foix","postalCode":"09000","addressRegion":"Ariège","addressCountry":"FR"},
   "geo":{"@type":"GeoCoordinates","latitude":42.966,"longitude":1.606},
   "areaServed":{"@type":"City","name":"Foix"},
-  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"19:00"}],
   "hasOfferCatalog":{"@type":"OfferCatalog","name":"Installations photovoltaïques à Foix","itemListElement":[
     {"@type":"Offer","name":"Panneaux solaires JinkoSolar Tiger Neo à Foix","priceCurrency":"EUR"},
     {"@type":"Offer","name":"Pergola solaire sur mesure à Foix","priceCurrency":"EUR"},
@@ -78,6 +78,16 @@ img{max-width:100%;}
 .nav-links a:hover{color:var(--sun);}
 .nav-right{display:flex;align-items:center;gap:10px;}
 .nav-tel{display:none;align-items:center;gap:6px;font-size:.84rem;font-weight:600;color:var(--sky);}
+.hbg{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0;}
+.hbg span{display:block;width:22px;height:2px;background:var(--slate);border-radius:2px;transition:all .2s;}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hbg.open span:nth-child(2){opacity:0;}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mob-nav{display:none;background:var(--white);border-top:1px solid var(--slate6);padding:12px 20px 20px;flex-direction:column;gap:4px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{padding:11px 14px;border-radius:var(--rs);font-size:.93rem;font-weight:600;color:var(--slate3);transition:background .15s;}
+.mob-nav a:hover{background:var(--bg);color:var(--slate);}
+.mob-cta{background:var(--sun);color:#fff !important;text-align:center;margin-top:6px;border-radius:var(--rs) !important;}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:var(--f);transition:all .22s;white-space:nowrap;text-decoration:none;}
 .btn-sun{background:var(--sun);color:#fff;}
 .btn-sun:hover{background:var(--sun-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,.35);}
@@ -256,6 +266,7 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 @media(min-width:1024px){
   .nav-links{display:flex;}
   .nav-tel{display:flex;}
+  .hbg{display:none !important;}
   .hero-grid{grid-template-columns:1.15fr 0.85fr;gap:64px;}
   .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start;}
   .ftr-grid{grid-template-columns:2fr 1fr 1fr 1fr;}
@@ -304,7 +315,19 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
     <div class="nav-right">
       <a href="tel:0775769232" class="nav-tel">📞 07 75 76 92 32</a>
       <a href="#devis-local" class="btn btn-sun">⚡ Devis gratuit</a>
+      <button class="hbg" id="hbg" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+  <div class="mob-nav" id="mob-nav">
+    <a href="./index.html">🏠 Accueil</a>
+    <a href="./dept-09.html">Département 09</a>
+    <a href="./index.html#zones">🗺 Nos départements</a>
+    <a href="#aides">💶 Aides 2026</a>
+    <a href="#faq">❓ FAQ</a>
+    <a href="tel:0775769232">📞 07 75 76 92 32</a>
+    <a href="#devis-local" class="mob-cta">⚡ Devis gratuit 24h</a>
   </div>
 </nav>
 
@@ -658,6 +681,24 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 
 <script>
 
+(function(){
+  var hbg=document.getElementById('hbg');
+  var mobn=document.getElementById('mob-nav');
+  if(hbg&&mobn){
+    hbg.addEventListener('click',function(){
+      var open=hbg.classList.toggle('open');
+      mobn.classList.toggle('open');
+      hbg.setAttribute('aria-expanded',String(open));
+    });
+    mobn.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        hbg.classList.remove('open');
+        mobn.classList.remove('open');
+        hbg.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
 function faq(btn){
   const ans=btn.nextElementSibling;
   const open=btn.classList.contains('open');
@@ -697,7 +738,7 @@ document.getElementById('lf').addEventListener('submit',async function(e){
         subject:'🌞 Devis '+city+' — '+pn+' '+nm,
         from_name:'Énergie Solaire 66',name:pn+' '+nm,email:em,
         phone:tl,message:'Ville: '+city+'\nProjet: '+pj,
-        replyto:em,botcheck:''})});
+        botcheck:false})});
     const data=await res.json();
     if(data.success){document.getElementById('fc-inner').style.display='none';
       document.getElementById('fc-suc').style.display='block';}
