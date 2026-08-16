@@ -602,6 +602,43 @@
 </footer>
 
 <script>
+  /* ─── CONFIG AIRTABLE ────────────────────────────────────────────────────────
+     Créez un Personal Access Token sur https://airtable.com/account
+     > Developer hub > Personal access tokens > Create token
+     Scopes requis : data.records:read  +  data.records:write
+     Accès : base "Perpignan Solaire" uniquement
+     Collez votre token ci-dessous à la place de VOTRE_TOKEN_AIRTABLE          */
+  const AT_TOKEN = 'VOTRE_TOKEN_AIRTABLE';
+  const AT_BASE  = 'appctTHuijKSMlrFa';
+  const AT_TABLE = 'tblixOyNEDUwrHR5h';
+  /* ────────────────────────────────────────────────────────────────────────── */
+
+  function generateToken() {
+    return 'tk' + Date.now().toString(36) + Math.random().toString(36).slice(2, 11);
+  }
+
+  async function saveToAirtable(fields) {
+    const res = await fetch(`https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields })
+    });
+    if (!res.ok) throw new Error(await res.text());
+    return res.json();
+  }
+
+  async function notifyLaurent(subject, details) {
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
+        subject, from_name: 'Énergie Solaire 66 — Site web',
+        ...details, botcheck: ''
+      })
+    });
+  }
+
   /* HAMBURGER */
   const hbg = document.getElementById('hbg');
   const nm  = document.getElementById('navmobile');
@@ -632,46 +669,42 @@
     const cp  = f.cp.value.trim();
     const sec = f.secteur.value;
     if (!prn || !nom || !tel || !em || !adr || !cp || !sec) {
-      alert('Merci de remplir tous les champs obligatoires (marqués *).');
-      return;
+      alert('Merci de remplir tous les champs obligatoires (marqués *).'); return;
     }
-    if (!f.rgpd.checked) {
-      alert('Merci d\'accepter la politique de confidentialité.');
-      return;
-    }
+    if (!f.rgpd.checked) { alert('Merci d\'accepter la politique de confidentialité.'); return; }
     const btn = f.querySelector('button[type=submit]');
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
-          subject: `🤝 Apporteur d'affaires — ${prn} ${nom} — ${sec}`,
-          from_name: 'Énergie Solaire 66 — Site web',
-          name: `${prn} ${nom}`,
-          email: em,
-          replyto: em,
-          phone: tel,
-          address: adr,
-          postal_code: cp,
-          secteur: sec,
-          zone: f.zone.value || 'Non précisée',
-          volume_contacts: f.volume.value || 'Non précisé',
-          message: f.msg.value.trim() || '(aucun message)',
-          type_candidature: 'Apporteur d\'affaires',
-          botcheck: ''
-        })
+      const token = generateToken();
+      const notes = [
+        f.zone.value    ? `Zone : ${f.zone.value}` : '',
+        f.volume.value  ? `Volume contacts/an : ${f.volume.value}` : '',
+        f.msg.value.trim()
+      ].filter(Boolean).join('\n');
+      await saveToAirtable({
+        'Nom complet': `${prn} ${nom}`,
+        'Prénom': prn, 'Nom': nom, 'Email': em, 'Téléphone': tel,
+        'Adresse': adr, 'Code postal': cp,
+        "Type": "Apporteur d'affaires",
+        'Secteur / Spécialité': sec,
+        'Statut': 'En attente', 'Token': token,
+        'Date inscription': new Date().toISOString(),
+        'Notes': notes
       });
-      const json = await res.json();
-      if (json.success) {
-        f.style.display = 'none';
-        document.getElementById('success-apporteur').style.display = 'block';
-      } else { throw new Error(json.message); }
+      await notifyLaurent(`🤝 Apporteur d'affaires — ${prn} ${nom} — ${sec}`, {
+        name: `${prn} ${nom}`, email: em, replyto: em, phone: tel,
+        address: `${adr}, ${cp}`, secteur: sec,
+        zone: f.zone.value || 'Non précisée',
+        volume_contacts: f.volume.value || 'Non précisé',
+        message: f.msg.value.trim() || '(aucun message)',
+        action: '👉 Ouvrez Airtable > Perpignan Solaire > Partenaires. Changez le Statut en "Approuvé" pour activer automatiquement le questionnaire légal du candidat.'
+      });
+      f.style.display = 'none';
+      document.getElementById('success-apporteur').style.display = 'block';
     } catch(err) {
-      btn.disabled = false;
-      btn.textContent = 'Envoyer ma candidature →';
+      btn.disabled = false; btn.textContent = 'Envoyer ma candidature →';
       alert('Une erreur est survenue. Appelez-nous au 07 75 76 92 32.');
+      console.error(err);
     }
   });
 
@@ -687,47 +720,44 @@
     const cp  = f.cp.value.trim();
     const exp = f.experience.value;
     if (!prn || !nom || !tel || !em || !adr || !cp || !exp) {
-      alert('Merci de remplir tous les champs obligatoires (marqués *).');
-      return;
+      alert('Merci de remplir tous les champs obligatoires (marqués *).'); return;
     }
-    if (!f.rgpd.checked) {
-      alert('Merci d\'accepter la politique de confidentialité.');
-      return;
-    }
+    if (!f.rgpd.checked) { alert('Merci d\'accepter la politique de confidentialité.'); return; }
     const btn = f.querySelector('button[type=submit]');
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
-          subject: `🔧 Candidature poseur — ${prn} ${nom} — ${exp}`,
-          from_name: 'Énergie Solaire 66 — Site web',
-          name: `${prn} ${nom}`,
-          email: em,
-          replyto: em,
-          phone: tel,
-          address: adr,
-          postal_code: cp,
-          experience: exp,
-          certifications: f.certifications.value || 'Non précisé',
-          type_contrat: f.contrat.value || 'À discuter',
-          disponibilite: f.disponibilite.value || 'À définir',
-          message: f.msg.value.trim() || '(aucun message)',
-          type_candidature: 'Poseur / Installateur',
-          botcheck: ''
-        })
+      const token = generateToken();
+      const notes = [
+        f.certifications.value ? `Certifications : ${f.certifications.value}` : '',
+        f.contrat.value        ? `Contrat souhaité : ${f.contrat.value}` : '',
+        f.disponibilite.value  ? `Disponibilité : ${f.disponibilite.value}` : '',
+        f.msg.value.trim()
+      ].filter(Boolean).join('\n');
+      await saveToAirtable({
+        'Nom complet': `${prn} ${nom}`,
+        'Prénom': prn, 'Nom': nom, 'Email': em, 'Téléphone': tel,
+        'Adresse': adr, 'Code postal': cp,
+        'Type': 'Poseur',
+        'Secteur / Spécialité': exp,
+        'Statut': 'En attente', 'Token': token,
+        'Date inscription': new Date().toISOString(),
+        'Notes': notes
       });
-      const json = await res.json();
-      if (json.success) {
-        f.style.display = 'none';
-        document.getElementById('success-poseur').style.display = 'block';
-      } else { throw new Error(json.message); }
+      await notifyLaurent(`🔧 Candidature poseur — ${prn} ${nom} — ${exp}`, {
+        name: `${prn} ${nom}`, email: em, replyto: em, phone: tel,
+        address: `${adr}, ${cp}`, experience: exp,
+        certifications: f.certifications.value || 'Non précisé',
+        type_contrat: f.contrat.value || 'À discuter',
+        disponibilite: f.disponibilite.value || 'À définir',
+        message: f.msg.value.trim() || '(aucun message)',
+        action: '👉 Ouvrez Airtable > Perpignan Solaire > Partenaires. Changez le Statut en "Approuvé" pour activer automatiquement le questionnaire légal du candidat.'
+      });
+      f.style.display = 'none';
+      document.getElementById('success-poseur').style.display = 'block';
     } catch(err) {
-      btn.disabled = false;
-      btn.textContent = 'Envoyer ma candidature →';
+      btn.disabled = false; btn.textContent = 'Envoyer ma candidature →';
       alert('Une erreur est survenue. Appelez-nous au 07 75 76 92 32.');
+      console.error(err);
     }
   });
 </script>
