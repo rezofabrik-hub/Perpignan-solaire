@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire partenaire | Énergie Solaire 66</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B2145; --navy2:#1A3560;
+      --amber:#F5A81C; --amber-dk:#D48B0A; --amber-lt:#FEF5DF;
+      --green:#1D9B5C; --green-lt:#E7F8EF;
+      --red:#D93025; --red-lt:#FEE8E6;
+      --white:#FFFFFF; --bg:#F2F5FA;
+      --text:#0B2145; --text-mid:#4A607A; --text-lt:#7B90A8;
+      --border:#DDE6F0;
+      --shadow:0 2px 12px rgba(11,33,69,.07);
+      --shadow-md:0 6px 28px rgba(11,33,69,.11);
+      --r:6px; --mw:860px;
+      --f:-apple-system,'Helvetica Neue',Arial,sans-serif;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--f); background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:100%; max-width:var(--mw); margin:0 auto; padding:0 20px; }
+
+    /* TOPBAR */
+    .topbar { background:var(--navy); color:rgba(255,255,255,.85); font-size:.82rem; padding:0 20px; }
+    .topbar-in { display:flex; align-items:center; justify-content:space-between; height:40px; max-width:var(--mw); margin:0 auto; }
+    .topbar-item { display:flex; align-items:center; gap:6px; }
+    .topbar-item svg { width:13px; height:13px; flex-shrink:0; opacity:.7; }
+    .topbar-phone { font-weight:700; color:var(--amber); font-size:.9rem; }
+
+    /* NAV */
+    .nav { background:var(--white); border-bottom:2px solid var(--border); }
+    .nav-in { display:flex; align-items:center; height:64px; max-width:var(--mw); margin:0 auto; padding:0 20px; }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark { width:38px; height:38px; background:var(--amber); border-radius:5px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .logo-mark svg { width:22px; height:22px; }
+    .logo-text { font-size:1rem; font-weight:800; color:var(--navy); letter-spacing:-.01em; }
+    .logo-text span { color:var(--amber); }
+
+    /* PAGE STATES */
+    .state-wrap { min-height:60vh; display:flex; align-items:center; justify-content:center; padding:60px 20px; }
+    .state-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:48px 40px; text-align:center; max-width:480px; box-shadow:var(--shadow-md); }
+    .state-card .ico { font-size:3rem; margin-bottom:16px; }
+    .state-card h2 { font-size:1.3rem; font-weight:800; color:var(--navy); margin-bottom:10px; }
+    .state-card p { font-size:.9rem; color:var(--text-mid); line-height:1.65; }
+    .state-card a.btn-link { display:inline-block; margin-top:20px; padding:11px 22px; background:var(--amber); color:var(--navy); font-weight:700; border-radius:var(--r); font-size:.88rem; }
+
+    /* QUESTIONNAIRE */
+    .q-wrap { padding:48px 0 80px; }
+    .q-header { background:var(--navy); padding:40px 0 44px; margin-bottom:-1px; }
+    .q-header .eyebrow { font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin-bottom:10px; }
+    .q-header h1 { font-size:clamp(1.5rem,3.5vw,2rem); font-weight:800; color:var(--white); line-height:1.15; }
+    .q-header p { color:rgba(255,255,255,.7); font-size:.95rem; margin-top:10px; }
+    .welcome-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:20px; padding:6px 14px; font-size:.82rem; color:rgba(255,255,255,.8); margin-bottom:18px; }
+
+    .q-body { max-width:var(--mw); margin:0 auto; padding:0 20px; }
+    .q-section { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:28px 28px 32px; margin-top:24px; box-shadow:var(--shadow); }
+    .q-section-title { font-size:1rem; font-weight:800; color:var(--navy); margin-bottom:4px; display:flex; align-items:center; gap:8px; }
+    .q-section-sub { font-size:.82rem; color:var(--text-mid); margin-bottom:22px; }
+    .q-section-title .pill { font-size:.7rem; background:var(--amber-lt); color:var(--amber-dk); border-radius:10px; padding:2px 8px; font-weight:700; letter-spacing:.04em; }
+    .q-section-title .pill.required { background:var(--red-lt); color:var(--red); }
+
+    .fg { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .fg-full { grid-column:1/-1; }
+    .fi { display:flex; flex-direction:column; gap:5px; }
+    .fi label { font-size:.75rem; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.08em; }
+    .fi label .req { color:var(--amber-dk); }
+    .fi input, .fi select, .fi textarea {
+      border:1.5px solid var(--border); border-radius:var(--r); padding:11px 14px;
+      font-size:.92rem; font-family:var(--f); color:var(--navy); background:var(--white);
+      transition:border-color .15s; width:100%;
+    }
+    .fi input:focus, .fi select:focus, .fi textarea:focus { outline:none; border-color:var(--amber); box-shadow:0 0 0 3px rgba(245,168,28,.15); }
+    .fi textarea { resize:vertical; min-height:90px; }
+    .fi select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A607A' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; }
+    .fi-hint { font-size:.75rem; color:var(--text-lt); margin-top:2px; }
+
+    /* CHECKBOXES CERTIFS */
+    .certif-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px; }
+    .certif-item { display:flex; align-items:center; gap:10px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--r); padding:10px 14px; cursor:pointer; transition:border-color .15s; }
+    .certif-item:has(input:checked) { border-color:var(--amber); background:var(--amber-lt); }
+    .certif-item input { accent-color:var(--amber); width:16px; height:16px; flex-shrink:0; }
+    .certif-item span { font-size:.88rem; font-weight:600; color:var(--navy); }
+
+    /* URSSAF TOGGLE */
+    .urssaf-toggle { display:flex; align-items:center; gap:12px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; cursor:pointer; }
+    .urssaf-toggle:has(input:checked) { border-color:var(--green); background:var(--green-lt); }
+    .urssaf-toggle input { accent-color:var(--green); width:18px; height:18px; flex-shrink:0; }
+    .urssaf-toggle span { font-size:.9rem; font-weight:600; color:var(--navy); }
+
+    /* RGPD */
+    .rgpd-row { display:flex; align-items:flex-start; gap:10px; margin-top:4px; cursor:pointer; }
+    .rgpd-row input[type=checkbox] { margin-top:3px; accent-color:var(--amber); width:16px; height:16px; flex-shrink:0; }
+    .rgpd-row span { font-size:.75rem; color:var(--text-lt); line-height:1.5; }
+    .rgpd-row a { color:var(--amber-dk); text-decoration:underline; }
+
+    /* ALERT LÉGAL */
+    .legal-alert { background:var(--amber-lt); border:1.5px solid var(--amber); border-radius:8px; padding:14px 18px; font-size:.85rem; color:var(--navy); line-height:1.6; margin-top:8px; }
+    .legal-alert strong { color:var(--amber-dk); }
+
+    /* SUBMIT */
+    .btn-submit { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:15px 24px; background:var(--amber); color:var(--navy); border:none; border-radius:var(--r); font-size:1rem; font-weight:800; cursor:pointer; font-family:var(--f); transition:all .18s; margin-top:8px; }
+    .btn-submit:hover { background:var(--amber-dk); transform:translateY(-1px); box-shadow:0 6px 20px rgba(245,168,28,.35); }
+    .btn-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+    .btn-submit:focus-visible { outline:3px solid var(--amber); outline-offset:2px; }
+
+    .submit-section { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:28px; margin-top:24px; box-shadow:var(--shadow); }
+
+    @media (max-width:560px) {
+      .fg { grid-template-columns:1fr; }
+      .fg-full { grid-column:1; }
+      .certif-grid { grid-template-columns:1fr; }
+      .q-section { padding:20px 16px 24px; }
+      .state-card { padding:32px 20px; }
+    }
+    @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.19 12 19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <a href="tel:0775769232" class="topbar-phone">07 75 76 92 32</a>
+    </div>
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,6 12,13 22,6"/></svg>
+      <a href="mailto:contact.energiesolaire66@gmail.com">contact.energiesolaire66@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </div>
+      <span class="logo-text">Énergie <span>Solaire 66</span></span>
+    </a>
+  </div>
+</nav>
+
+<!-- ÉTATS DYNAMIQUES (gérés par JS) -->
+
+<!-- Chargement -->
+<div id="state-loading" class="state-wrap">
+  <div class="state-card">
+    <div class="ico">⏳</div>
+    <h2>Vérification de votre accès…</h2>
+    <p>Merci de patienter quelques secondes.</p>
+  </div>
+</div>
+
+<!-- Lien invalide -->
+<div id="state-invalid" class="state-wrap" style="display:none">
+  <div class="state-card">
+    <div class="ico">🔒</div>
+    <h2>Lien invalide ou expiré</h2>
+    <p>Ce lien n'est plus valide. Si vous avez besoin d'aide, contactez-nous directement.</p>
+    <a href="tel:0775769232" class="btn-link">Appelez-nous au 07 75 76 92 32</a>
+  </div>
+</div>
+
+<!-- En attente de validation -->
+<div id="state-pending" class="state-wrap" style="display:none">
+  <div class="state-card">
+    <div class="ico">🕐</div>
+    <h2>Votre accès n'est pas encore activé</h2>
+    <p>Votre candidature est bien reçue et en cours d'examen. Vous recevrez un email dès que votre accès au questionnaire sera ouvert — généralement sous 48h.</p>
+    <p style="margin-top:12px;font-size:.82rem;color:var(--text-lt);">Des questions ? Appelez-nous au <a href="tel:0775769232" style="color:var(--amber-dk);">07 75 76 92 32</a>.</p>
+  </div>
+</div>
+
+<!-- Questionnaire déjà soumis -->
+<div id="state-done" class="state-wrap" style="display:none">
+  <div class="state-card">
+    <div class="ico">✅</div>
+    <h2>Questionnaire déjà reçu</h2>
+    <p>Vous avez déjà soumis votre questionnaire. Nous procédons à la vérification de vos documents et reviendrons vers vous très prochainement.</p>
+  </div>
+</div>
+
+<!-- Succès après soumission -->
+<div id="state-success" class="state-wrap" style="display:none">
+  <div class="state-card">
+    <div class="ico">🎉</div>
+    <h2>Questionnaire envoyé avec succès !</h2>
+    <p>Nous avons bien reçu vos informations légales. Laurent Mienville les vérifie et vous contacte pour finaliser votre intégration dans le réseau Énergie Solaire 66.</p>
+    <p style="margin-top:14px;font-size:.85rem;color:var(--text-mid);">Bienvenue dans l'aventure !</p>
+  </div>
+</div>
+
+<!-- QUESTIONNAIRE (affiché uniquement si token valide et statut Approuvé) -->
+<div id="state-questionnaire" style="display:none">
+  <div class="q-header">
+    <div class="wrap">
+      <div class="welcome-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span id="welcome-name">Bienvenue</span>
+      </div>
+      <div class="eyebrow">Questionnaire partenaire</div>
+      <h1>Dossier de conformité légale</h1>
+      <p>Ces informations nous permettent de vérifier que nous travaillons avec des professionnels en règle — assurances, certifications et attestations à jour.</p>
+    </div>
+  </div>
+
+  <div class="q-body">
+    <form id="form-questionnaire" novalidate>
+
+      <!-- SECTION 1 : IDENTITÉ ENTREPRISE -->
+      <div class="q-section">
+        <div class="q-section-title">
+          🏢 Identité de votre entreprise
+          <span class="pill required">Obligatoire</span>
+        </div>
+        <div class="q-section-sub">Ces informations doivent correspondre exactement à votre immatriculation.</div>
+        <div class="fg">
+          <div class="fi fg-full">
+            <label for="q-siret">Numéro SIRET <span class="req">*</span></label>
+            <input type="text" id="q-siret" name="siret" placeholder="12345678901234" maxlength="14" inputmode="numeric" required>
+            <span class="fi-hint">14 chiffres — trouvable sur societe.com ou pappers.fr</span>
+          </div>
+          <div class="fi fg-full">
+            <label for="q-type-entreprise">Forme juridique <span class="req">*</span></label>
+            <select id="q-type-entreprise" name="type_entreprise" required>
+              <option value="">Sélectionnez…</option>
+              <option>Auto-entrepreneur</option>
+              <option>SARL</option>
+              <option>SAS / SASU</option>
+              <option>EURL</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2 : ASSURANCE DÉCENNALE -->
+      <div class="q-section">
+        <div class="q-section-title">
+          🛡️ Assurance décennale
+          <span class="pill required">Obligatoire pour les poseurs</span>
+        </div>
+        <div class="q-section-sub">L'assurance décennale est obligatoire pour tous les travaux de construction. Sans elle, nous ne pouvons pas vous confier de chantiers.</div>
+        <div class="fg">
+          <div class="fi">
+            <label for="q-decennale-num">Numéro de police <span class="req">*</span></label>
+            <input type="text" id="q-decennale-num" name="decennale_num" placeholder="Ex : 12-345678-A" required>
+          </div>
+          <div class="fi">
+            <label for="q-decennale-exp">Date d'expiration <span class="req">*</span></label>
+            <input type="date" id="q-decennale-exp" name="decennale_exp" required>
+          </div>
+          <div class="fi fg-full">
+            <label for="q-decennale-assureur">Nom de l'assureur</label>
+            <input type="text" id="q-decennale-assureur" name="decennale_assureur" placeholder="Ex : Allianz, AXA, MMA…">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 : RC PRO -->
+      <div class="q-section">
+        <div class="q-section-title">
+          📋 Responsabilité Civile Professionnelle
+          <span class="pill">Recommandé</span>
+        </div>
+        <div class="q-section-sub">La RC Pro couvre les dommages causés à des tiers dans le cadre de votre activité professionnelle.</div>
+        <div class="fg">
+          <div class="fi">
+            <label for="q-rcpro-num">Numéro de police RC Pro</label>
+            <input type="text" id="q-rcpro-num" name="rcpro_num" placeholder="Facultatif mais recommandé">
+          </div>
+          <div class="fi">
+            <label for="q-rcpro-exp">Date d'expiration</label>
+            <input type="date" id="q-rcpro-exp" name="rcpro_exp">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4 : CERTIFICATIONS RGE -->
+      <div class="q-section">
+        <div class="q-section-title">
+          🏅 Certifications RGE
+          <span class="pill required">Obligatoire pour les poseurs</span>
+        </div>
+        <div class="q-section-sub">Les certifications RGE (Reconnu Garant de l'Environnement) conditionnent l'éligibilité de vos clients aux aides d'État (MaPrimeRénov, TVA 10 %).</div>
+        <div class="certif-grid" role="group" aria-label="Certifications RGE">
+          <label class="certif-item">
+            <input type="checkbox" name="certifs" value="QualiPV">
+            <span>QualiPV</span>
+          </label>
+          <label class="certif-item">
+            <input type="checkbox" name="certifs" value="RGE Qualibat">
+            <span>RGE Qualibat</span>
+          </label>
+          <label class="certif-item">
+            <input type="checkbox" name="certifs" value="Qualifelec">
+            <span>Qualifelec</span>
+          </label>
+          <label class="certif-item">
+            <input type="checkbox" name="certifs" value="Qualit'EnR">
+            <span>Qualit'EnR</span>
+          </label>
+          <label class="certif-item">
+            <input type="checkbox" name="certifs" value="Eco Artisan">
+            <span>Eco Artisan</span>
+          </label>
+          <label class="certif-item">
+            <input type="checkbox" name="certifs" value="En cours d'obtention">
+            <span>En cours d'obtention</span>
+          </label>
+        </div>
+        <p class="fi-hint" style="margin-top:10px;">Si vous n'êtes pas poseur, vous pouvez laisser vide.</p>
+      </div>
+
+      <!-- SECTION 5 : ATTESTATION URSSAF -->
+      <div class="q-section">
+        <div class="q-section-title">
+          ✅ Attestation de vigilance URSSAF
+          <span class="pill required">Obligatoire</span>
+        </div>
+        <div class="q-section-sub">L'attestation de vigilance prouve que votre entreprise est à jour de ses cotisations sociales. Elle est obligatoire pour tout contrat de sous-traitance supérieur à 5 000 €.</div>
+        <label class="urssaf-toggle">
+          <input type="checkbox" id="q-urssaf" name="urssaf">
+          <span>Je confirme que mon attestation de vigilance URSSAF est à jour et que je peux la fournir sur demande</span>
+        </label>
+        <div class="legal-alert" style="margin-top:12px;">
+          <strong>Rappel légal :</strong> Vérifiez votre attestation sur <strong>net-entreprises.fr</strong>. Elle est renouvelée tous les 6 mois. En tant que donneur d'ordre, nous sommes tenus de la vérifier à chaque contrat (art. L.8222-1 du Code du travail).
+        </div>
+      </div>
+
+      <!-- SECTION 6 : INFOS COMPLÉMENTAIRES -->
+      <div class="q-section">
+        <div class="q-section-title">
+          📝 Informations complémentaires
+        </div>
+        <div class="q-section-sub">Facultatif — toute information utile pour mieux vous connaître.</div>
+        <div class="fg">
+          <div class="fi fg-full">
+            <label for="q-zones">Zone(s) d'intervention</label>
+            <input type="text" id="q-zones" name="zones" placeholder="Ex : 66, 11, 34, 09 — précisez les communes si besoin">
+          </div>
+          <div class="fi fg-full">
+            <label for="q-msg">Remarques / Informations supplémentaires</label>
+            <textarea id="q-msg" name="msg" placeholder="Matériel maîtrisé, expériences passées, questions éventuelles…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION SOUMISSION -->
+      <div class="submit-section">
+        <label class="rgpd-row">
+          <input type="checkbox" id="q-rgpd" name="rgpd" required>
+          <span>Je certifie que les informations fournies sont exactes et que les documents mentionnés sont valides et à jour. J'accepte que ces données soient conservées par <strong>Énergie Solaire 66 / SARL Rezofabrik</strong> dans le cadre de notre relation professionnelle (<a href="mentions-legales.html">mentions légales</a>). *</span>
+        </label>
+        <button type="submit" class="btn-submit" style="margin-top:20px;">
+          Envoyer mon dossier de conformité →
+        </button>
+        <p style="text-align:center;font-size:.75rem;color:var(--text-lt);margin-top:14px;">Vos informations sont transmises de façon sécurisée à Laurent Mienville uniquement.</p>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  /* ─── CONFIG ─────────────────────────────────────────────────────────────── */
+  const AT_TOKEN = 'VOTRE_TOKEN_AIRTABLE';  /* même token que dans partenaires.html */
+  const AT_BASE  = 'appctTHuijKSMlrFa';
+  const AT_TABLE = 'tblixOyNEDUwrHR5h';
+  const BASE_URL = 'https://rezofabrik-hub.github.io/Perpignan-solaire';
+  /* ────────────────────────────────────────────────────────────────────────── */
+
+  let recordId = null;
+
+  function show(id) {
+    ['state-loading','state-invalid','state-pending','state-done','state-success','state-questionnaire']
+      .forEach(s => { document.getElementById(s).style.display = s === id ? '' : 'none'; });
+  }
+
+  async function init() {
+    const params = new URLSearchParams(window.location.search);
+    const token  = params.get('token');
+    if (!token) { show('state-invalid'); return; }
+
+    try {
+      const formula = encodeURIComponent(`{Token}="${token}"`);
+      const res = await fetch(
+        `https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}?filterByFormula=${formula}&maxRecords=1`,
+        { headers: { 'Authorization': `Bearer ${AT_TOKEN}` } }
+      );
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+
+      if (!data.records || data.records.length === 0) { show('state-invalid'); return; }
+
+      const record = data.records[0];
+      const fields = record.fields;
+      const statut = fields['Statut'];
+      recordId = record.id;
+
+      if (statut === 'En attente' || statut === 'Refusé') {
+        show('state-pending'); return;
+      }
+      if (statut === 'Questionnaire envoyé' || statut === 'Validé') {
+        show('state-done'); return;
+      }
+      if (statut === 'Approuvé') {
+        const prenom = fields['Prénom'] || '';
+        const nom    = fields['Nom']    || '';
+        if (prenom || nom) {
+          document.getElementById('welcome-name').textContent = `Bienvenue${prenom ? ', ' + prenom : ''}${nom ? ' ' + nom : ''} 👋`;
+        }
+        show('state-questionnaire');
+        return;
+      }
+      show('state-invalid');
+
+    } catch(err) {
+      console.error(err);
+      show('state-invalid');
+    }
+  }
+
+  document.getElementById('form-questionnaire').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const f = this;
+
+    const siret    = f.siret.value.trim();
+    const typeEntr = f.type_entreprise.value;
+    const decNum   = f.decennale_num.value.trim();
+    const decExp   = f.decennale_exp.value;
+
+    if (!siret || siret.length < 9) { alert('Merci de saisir un numéro SIRET valide.'); return; }
+    if (!typeEntr) { alert('Merci de sélectionner votre forme juridique.'); return; }
+    if (!f.rgpd.checked) { alert('Merci de certifier l\'exactitude des informations fournies.'); return; }
+
+    const certifs = [...document.querySelectorAll('input[name="certifs"]:checked')].map(c => c.value);
+
+    const btn = f.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Envoi en cours…';
+
+    try {
+      const fields = {
+        'SIRET': siret,
+        'Type entreprise': typeEntr,
+        'Statut': 'Questionnaire envoyé',
+        'Questionnaire soumis le': new Date().toISOString()
+      };
+      if (decNum)  fields['Assurance décennale — n°'] = decNum;
+      if (decExp)  fields['Assurance décennale — expiration'] = decExp;
+      if (f.rcpro_num.value.trim()) fields['RC Pro — n°'] = f.rcpro_num.value.trim();
+      if (certifs.length) fields['Certifications RGE'] = certifs;
+      fields['Attestation URSSAF à jour'] = f.urssaf.checked;
+      const notesParts = [];
+      if (f.zones.value.trim()) notesParts.push(`Zones : ${f.zones.value.trim()}`);
+      if (f.msg.value.trim())   notesParts.push(f.msg.value.trim());
+      if (notesParts.length) fields['Notes'] = notesParts.join('\n');
+
+      /* Mise à jour Airtable */
+      const patchRes = await fetch(`https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}/${recordId}`, {
+        method: 'PATCH',
+        headers: { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields })
+      });
+      if (!patchRes.ok) throw new Error(await patchRes.text());
+
+      /* Email récapitulatif à Laurent */
+      const decennaleAssureur = f.decennale_assureur ? f.decennale_assureur.value.trim() : '';
+      const rcproExp = f.rcpro_exp ? f.rcpro_exp.value : '';
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
+          subject: `📋 Questionnaire partenaire reçu — ${siret}`,
+          from_name: 'Énergie Solaire 66 — Portail partenaires',
+          siret,
+          forme_juridique: typeEntr,
+          decennale_num: decNum || 'Non renseigné',
+          decennale_exp: decExp || 'Non renseignée',
+          decennale_assureur: decennaleAssureur || 'Non renseigné',
+          rcpro_num: f.rcpro_num.value.trim() || 'Non renseigné',
+          rcpro_exp: rcproExp || 'Non renseignée',
+          certifications_rge: certifs.join(', ') || 'Aucune',
+          urssaf_a_jour: f.urssaf.checked ? '✅ Oui — certifié par le candidat' : '❌ Non coché',
+          zones: f.zones.value.trim() || 'Non précisé',
+          remarques: f.msg.value.trim() || '(aucune)',
+          action: `👉 Validez ou refusez le dossier dans Airtable : ${AT_BASE} > Partenaires > enregistrement ${recordId}`,
+          botcheck: ''
+        })
+      });
+
+      show('state-success');
+
+    } catch(err) {
+      btn.disabled = false; btn.textContent = 'Envoyer mon dossier de conformité →';
+      alert('Une erreur est survenue lors de l\'envoi. Contactez-nous au 07 75 76 92 32.');
+      console.error(err);
+    }
+  });
+
+  init();
+</script>
+</body>
+</html>
