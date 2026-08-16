@@ -487,8 +487,8 @@
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat">
-        <span class="stat-n">1 750</span>
-        <div class="stat-l">kWh/m²/an dans le 66</div>
+        <span class="stat-n">2 489</span>
+        <div class="stat-l">heures de soleil/an à Perpignan — 2e région la plus ensoleillée de France</div>
       </div>
       <div class="stat">
         <span class="stat-n">48h</span>
@@ -777,6 +777,10 @@
               <input type="tel" id="dv-tel" name="tel" placeholder="06 XX XX XX XX" required>
             </div>
             <div class="fi">
+              <label for="dv-email">Email</label>
+              <input type="email" id="dv-email" name="email" placeholder="votre@email.fr" required>
+            </div>
+            <div class="fi">
               <label for="dv-cp">Code postal</label>
               <input type="text" id="dv-cp" name="cp" placeholder="66000" required>
             </div>
@@ -972,11 +976,12 @@
     const prn = f.prenom.value.trim();
     const nom = f.nom.value.trim();
     const tel = f.tel.value.trim();
+    const em  = f.email.value.trim();
     const cp  = f.cp.value.trim();
     const typ = f.type.value;
     const msg = f.msg.value.trim();
-    if (!prn || !nom || !tel || !cp) {
-      alert('Merci de remplir les champs obligatoires : Prénom, Nom, Téléphone et Code postal.');
+    if (!prn || !nom || !tel || !em || !cp) {
+      alert('Merci de remplir les champs obligatoires : Prénom, Nom, Téléphone, Email et Code postal.');
       return;
     }
     const btn = f.querySelector('button[type=submit]');
@@ -989,8 +994,10 @@
         body: JSON.stringify({
           access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
           subject: `⚡ Nouveau devis solaire — ${prn} ${nom} (${cp})`,
-          from_name: 'Énergie Solaire 66 — Site web',
+          from_name: 'Énergie Solaire 66',
           name: `${prn} ${nom}`,
+          email: em,
+          replyto: em,
           phone: tel,
           postal_code: cp,
           project_type: typ || 'Non précisé',
