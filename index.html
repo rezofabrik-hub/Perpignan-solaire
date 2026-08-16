@@ -80,13 +80,14 @@
     .btn:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 
     /* ── BARRE SUPÉRIEURE ── */
-    .topbar { background: var(--navy); color: rgba(255,255,255,.85); font-size: .82rem; padding: 0 20px; }
-    .topbar-in { display: flex; align-items: center; justify-content: space-between; height: 40px; max-width: var(--mw); margin: 0 auto; flex-wrap: wrap; gap: 8px; }
+    .topbar { background: var(--navy); color: #fff; font-size: .82rem; padding: 0 20px; }
+    .topbar-in { display: flex; align-items: center; justify-content: space-between; height: 40px; max-width: var(--mw); margin: 0 auto; gap: 8px; overflow: hidden; }
     .topbar-left { display: flex; align-items: center; gap: 20px; }
-    .topbar-item { display: flex; align-items: center; gap: 6px; }
-    .topbar-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: .7; }
+    .topbar-item { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .topbar-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: .9; }
     .topbar-phone { font-weight: 700; color: var(--amber); font-size: .9rem; }
     .topbar-hours { display: none; }
+    .topbar-email { display: none; }
 
     /* ── NAV ── */
     .nav { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 2px solid var(--border); }
@@ -275,6 +276,7 @@
     /* ── RESPONSIVE DESKTOP ── */
     @media (min-width: 640px) {
       .topbar-hours { display: flex; }
+      .topbar-email { display: flex; }
       .hero-photo img { height: 400px; }
       .aides-grid { grid-template-columns: repeat(4, 1fr); }
       .zones-grid { grid-template-columns: repeat(4, 1fr); }
@@ -328,9 +330,9 @@
         Lun–Ven 8h–18h · Devis gratuit 48h
       </div>
     </div>
-    <div class="topbar-item">
+    <div class="topbar-item topbar-email">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,6 12,13 22,6"/></svg>
-      <a href="mailto:contact.energiesolaire66@gmail.com">contact.energiesolaire66@gmail.com</a>
+      <a href="mailto:contact.energiesolaire66@gmail.com" style="color:#fff;">contact.energiesolaire66@gmail.com</a>
     </div>
   </div>
 </div>
