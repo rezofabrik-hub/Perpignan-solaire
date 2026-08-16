@@ -822,7 +822,7 @@
     }
   }
 
-  document.getElementById('lf').addEventListener('submit', function(e) {
+  document.getElementById('lf').addEventListener('submit', async function(e) {
     e.preventDefault();
     const pn  = document.getElementById('lf-pn').value.trim();
     const nm  = document.getElementById('lf-nm').value.trim();
@@ -852,29 +852,40 @@
 
     if (!ok) return;
 
-    const body = [
-      'Devis solaire — Perpignan (66)',
-      '═══════════════════════════════════',
-      'Prénom  : ' + pn,
-      'Nom     : ' + nm,
-      'Email   : ' + em,
-      'Tél     : ' + tl,
-      'Ville   : Perpignan (66000)',
-      'Projet  : ' + pj,
-      '═══════════════════════════════════',
-      'Rappel tél autorisé : ' + (cTel ? 'OUI ✓' : 'NON — NE PAS APPELER'),
-      'Source  : solaire-66.fr/perpignan.html'
-    ].join('\n');
+    const btn = this.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
 
-    const a = document.createElement('a');
-    a.href = 'mailto:contact.energiesolaire66@gmail.com?subject=' + encodeURIComponent('🌞 Devis Perpignan — ' + pn + ' ' + nm) + '&body=' + encodeURIComponent(body);
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    document.getElementById('fc-inner').style.display = 'none';
-    document.getElementById('fc-suc').style.display = 'block';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'CLE_WEB3FORMS_ICI',
+          subject: '🌞 Devis Perpignan — ' + pn + ' ' + nm,
+          from_name: 'Énergie Solaire 66 — Site web',
+          name: pn + ' ' + nm,
+          email: em,
+          phone: tl,
+          city: 'Perpignan (66000)',
+          project: pj,
+          phone_ok: cTel ? 'OUI — Rappel autorisé' : 'NON — Ne pas appeler',
+          source: 'solaire-66.fr/perpignan.html',
+          botcheck: ''
+        })
+      });
+      const json = await res.json();
+      if (json.success) {
+        document.getElementById('fc-inner').style.display = 'none';
+        document.getElementById('fc-suc').style.display = 'block';
+      } else {
+        throw new Error(json.message);
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = '⚡ Envoyer ma demande de devis';
+      alert('Une erreur est survenue. Appelez-nous directement au 07 75 76 92 32.');
+    }
   });
 </script>
 </body>

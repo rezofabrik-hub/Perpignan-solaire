@@ -965,8 +965,8 @@
     });
   });
 
-  /* ── FORMULAIRE DEVIS ── */
-  document.getElementById('devisform').addEventListener('submit', function(e) {
+  /* ── FORMULAIRE DEVIS — Web3Forms ── */
+  document.getElementById('devisform').addEventListener('submit', async function(e) {
     e.preventDefault();
     const f   = this;
     const prn = f.prenom.value.trim();
@@ -979,12 +979,37 @@
       alert('Merci de remplir les champs obligatoires : Prénom, Nom, Téléphone et Code postal.');
       return;
     }
-    const body = `Nouvelle demande de devis — Énergie Solaire 66\n\nNom : ${prn} ${nom}\nTéléphone : ${tel}\nCode postal : ${cp}\nType de projet : ${typ || 'Non précisé'}\nMessage :\n${msg || '(aucun)'}\n\nReçu via solaire-66.fr`;
-    const a = document.createElement('a');
-    a.href = 'mailto:contact.energiesolaire66@gmail.com?subject=' + encodeURIComponent(`Devis solaire — ${prn} ${nom} (${cp})`) + '&body=' + encodeURIComponent(body);
-    a.click();
-    document.getElementById('devisform').style.display = 'none';
-    document.getElementById('formsuccess').style.display = 'block';
+    const btn = f.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'CLE_WEB3FORMS_ICI',
+          subject: `⚡ Nouveau devis solaire — ${prn} ${nom} (${cp})`,
+          from_name: 'Énergie Solaire 66 — Site web',
+          name: `${prn} ${nom}`,
+          phone: tel,
+          postal_code: cp,
+          project_type: typ || 'Non précisé',
+          message: msg || '(aucun message)',
+          botcheck: ''
+        })
+      });
+      const json = await res.json();
+      if (json.success) {
+        f.style.display = 'none';
+        document.getElementById('formsuccess').style.display = 'block';
+      } else {
+        throw new Error(json.message);
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma demande — Réponse sous 48h';
+      alert('Une erreur est survenue. Appelez-nous directement au 07 75 76 92 32.');
+    }
   });
 
   /* ── HIDE STICKY CTA WHEN FORM VISIBLE ── */
