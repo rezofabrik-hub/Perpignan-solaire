@@ -112,6 +112,13 @@
     @media(min-width:640px){.compare-grid{grid-template-columns:1fr 1fr;}.bat-models{grid-template-columns:1fr 1fr;}}
     @media(min-width:900px){.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:center;}.footer-grid{grid-template-columns:1.5fr 1fr 1fr;}}
   </style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B2145">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Solaire 66">
+  <link rel="apple-touch-icon" href="/icon-192.png">
 </head>
 <body>
 <nav class="nav">
@@ -289,5 +296,10 @@
     <div class="footer-copy">© 2026 Énergie Solaire 66 — SARL Rezofabrik · Perpignan</div>
   </div>
 </footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+{
+  "name": "Perpignan Solaire — Énergie Solaire 66",
+  "short_name": "Solaire 66",
+  "description": "Installateur photovoltaïque RGE dans les Pyrénées-Orientales. Devis gratuit sous 48h.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B2145",
+  "theme_color": "#0B2145",
+  "lang": "fr",
+  "orientation": "portrait-primary",
+  "categories": ["business", "utilities"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Devis gratuit",
+      "short_name": "Devis",
+      "description": "Demander un devis gratuit",
+      "url": "/#contact",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nos aides 2026",
+      "short_name": "Aides",
+      "description": "Voir les aides disponibles",
+      "url": "/aides-panneaux-solaires-2026.html",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
