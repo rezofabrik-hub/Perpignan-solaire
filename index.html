@@ -101,6 +101,11 @@
     .nav-links a { padding: 8px 12px; border-radius: var(--r); font-size: .88rem; font-weight: 600; color: var(--text-mid); transition: all .15s; }
     .nav-links a:hover { color: var(--navy); background: var(--bg); }
     .nav-cta { margin-left: 8px; }
+    .share-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); border: none; cursor: pointer; color: var(--navy); transition: all .15s; flex-shrink: 0; }
+    .share-btn:hover { background: var(--amber-lt); color: var(--amber-dk); }
+    .share-btn svg { width: 18px; height: 18px; }
+    .share-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity .2s; }
+    .share-toast.show { opacity: 1; }
     .hbg { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
     .hbg span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .2s; }
     .hbg.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -381,6 +386,9 @@
       <a href="partenaires.html">Partenaires</a>
       <a href="#devis" class="btn btn-amber nav-cta">Devis gratuit</a>
     </div>
+    <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
     <button class="hbg" id="hbg" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1049,6 +1057,26 @@
 </div>
 
 <script>
+  /* ── SHARE BUTTON ── */
+  (function() {
+    const btn = document.getElementById('shareBtn');
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+      const data = { title: document.title, text: 'Panneaux solaires dans les Pyrénées-Orientales — devis gratuit', url: location.href };
+      if (navigator.share) {
+        try { await navigator.share(data); } catch(e) {}
+      } else {
+        try { await navigator.clipboard.writeText(location.href); } catch(e) {}
+        const t = document.createElement('div');
+        t.className = 'share-toast';
+        t.textContent = '✓ Lien copié !';
+        document.body.appendChild(t);
+        requestAnimationFrame(() => t.classList.add('show'));
+        setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 2200);
+      }
+    });
+  })();
+
   /* ── NAV MOBILE ── */
   const hbg = document.getElementById('hbg');
   const nm  = document.getElementById('navmobile');

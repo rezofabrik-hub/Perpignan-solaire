@@ -19,7 +19,28 @@
   <meta name="twitter:title" content="Panneaux Solaires Professionnels 66 — Énergie Solaire 66">
   <meta name="twitter:description" content="Installation photovoltaïque pour commerces, PME et artisans dans le 66. Devis gratuit sous 48h.">
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Énergie Solaire 66","alternateName":"SARL Rezofabrik","description":"Installateur photovoltaïque RGE QualiPV pour professionnels dans les Pyrénées-Orientales (66), Aude (11), Hérault (34) et Ariège (09).","address":{"@type":"PostalAddress","addressLocality":"Perpignan","addressRegion":"Pyrénées-Orientales","postalCode":"66000","addressCountry":"FR"},"telephone":"+33775769232","email":"contact.energiesolaire66@gmail.com","url":"https://solaire-66.fr/","priceRange":"€€","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],"areaServed":[{"@type":"AdministrativeArea","name":"Pyrénées-Orientales","identifier":"66"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Installations photovoltaïques professionnelles","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Installation solaire professionnelle pour commerces et PME"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Système de stockage par batteries pour entreprises"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Installation solaire pour hangars agricoles"}}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Énergie Solaire 66","alternateName":"SARL Rezofabrik","description":"Installateur photovoltaïque RGE QualiPV pour professionnels dans les Pyrénées-Orientales (66), Aude (11), Hérault (34) et Ariège (09).","address":{"@type":"PostalAddress","addressLocality":"Perpignan","addressRegion":"Pyrénées-Orientales","postalCode":"66000","addressCountry":"FR"},"telephone":"+33775769232","email":"contact.energiesolaire66@gmail.com","url":"https://solaire-66.fr/","priceRange":"€€","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],"areaServed":[{"@type":"AdministrativeArea","name":"Pyrénées-Orientales","identifier":"66"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Installations photovoltaïques professionnelles","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Installation solaire professionnelle pour commerces et PME"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Système de stockage par batteries pour entreprises"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Installation solaire pour hangars agricoles"}}]}}
+  /* ── SHARE BUTTON ── */
+  (function() {
+    var btn = document.getElementById('shareBtn');
+    if (!btn) return;
+    btn.addEventListener('click', async function() {
+      var data = { title: document.title, text: 'Panneaux solaires dans les Pyrénées-Orientales — devis gratuit', url: location.href };
+      if (navigator.share) {
+        try { await navigator.share(data); } catch(e) {}
+      } else {
+        try { await navigator.clipboard.writeText(location.href); } catch(e) {}
+        var t = document.createElement('div');
+        t.className = 'share-toast';
+        t.textContent = '✓ Lien copié !';
+        document.body.appendChild(t);
+        requestAnimationFrame(function() { t.classList.add('show'); });
+        setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 300); }, 2200);
+      }
+    });
+  })();
+
+</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Les entreprises peuvent-elles bénéficier d'aides pour l'installation solaire ?","acceptedAnswer":{"@type":"Answer","text":"Les entreprises ne bénéficient pas de MaPrimeRénov', mais elles peuvent récupérer la TVA à 20 % sur l'installation, amortir l'équipement sur 3 ans (au lieu de 15 ans standard), et bénéficier des Certificats d'Économies d'Énergie (CEE). Ces avantages cumulés réduisent significativement le coût réel de l'installation."}},{"@type":"Question","name":"Quel retour sur investissement pour une installation solaire professionnelle ?","acceptedAnswer":{"@type":"Answer","text":"Pour un commerce à Perpignan consommant entre 30 000 et 100 000 kWh/an, le retour sur investissement se situe entre 5 et 9 ans selon la taille de l'installation et la part d'autoconsommation. L'ensoleillement exceptionnel du 66 (1 750 kWh/m²/an) est un facteur clé de rentabilité."}}]}</script>
 
   <link rel="manifest" href="/manifest.json">
@@ -104,6 +125,11 @@
     .nav-links a { padding: 8px 12px; border-radius: var(--r); font-size: .88rem; font-weight: 600; color: var(--text-mid); transition: all .15s; }
     .nav-links a:hover, .nav-links a.active { color: var(--navy); background: var(--bg); }
     .nav-cta { margin-left: 8px; }
+    .share-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--bg); border: none; cursor: pointer; color: var(--navy); transition: all .15s; flex-shrink: 0; }
+    .share-btn:hover { background: var(--amber-lt); color: var(--amber-dk); }
+    .share-btn svg { width: 18px; height: 18px; }
+    .share-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity .2s; }
+    .share-toast.show { opacity: 1; }
     .hbg { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
     .hbg span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .2s; }
     .hbg.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -453,6 +479,9 @@
       <a href="/partenaires.html">Partenaires</a>
       <a href="#devis" class="btn btn-amber nav-cta">Devis professionnel</a>
     </div>
+    <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
     <button class="hbg" id="hbg" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>

@@ -124,6 +124,12 @@
     .footer-copy{margin-top:36px;padding-top:20px;border-top:1px solid var(--slate2);text-align:center;font-size:.76rem;color:var(--slate4);}
     @media(min-width:640px){.hero-kpis{grid-template-columns:repeat(2,1fr);}.sim-profils{grid-template-columns:1fr 1fr;}div.form-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}}
     @media(min-width:900px){.hero-kpis{grid-template-columns:repeat(4,1fr);}.sim-profils{grid-template-columns:repeat(3,1fr);}.footer-grid{grid-template-columns:1.5fr 1fr 1fr;}}
+  
+    .share-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,.06); border:none; cursor:pointer; color:var(--navy,#0B2145); transition:all .15s; flex-shrink:0; }
+    .share-btn:hover { background:rgba(0,0,0,.12); }
+    .share-btn svg { width:18px; height:18px; }
+    .share-toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#0B2145; color:#fff; padding:10px 20px; border-radius:50px; font-size:.85rem; font-weight:600; z-index:9999; pointer-events:none; opacity:0; transition:opacity .2s; }
+    .share-toast.show { opacity:1; }
   </style>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B2145">
@@ -137,6 +143,9 @@
 <nav class="nav">
   <div class="nav-in">
     <a href="./index.html" class="logo"><div class="logo-sun">☀</div><span>Énergie Solaire 66</span></a>
+    <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
     <a href="#devis" class="btn btn-sun">Devis gratuit</a>
   </div>
 </nav>
@@ -346,6 +355,20 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
     }
-  </script>
+  
+  /* share */
+  (function(){
+    var b=document.getElementById("shareBtn");if(!b)return;
+    b.addEventListener("click",async function(){
+      var d={title:document.title,text:"Panneaux solaires Pyrénées-Orientales",url:location.href};
+      if(navigator.share){try{await navigator.share(d);}catch(e){}}else{
+        try{await navigator.clipboard.writeText(location.href);}catch(e){}
+        var t=document.createElement("div");t.className="share-toast";t.textContent="✓ Lien copié !";
+        document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add("show");});
+        setTimeout(function(){t.classList.remove("show");setTimeout(function(){t.remove();},300);},2200);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
