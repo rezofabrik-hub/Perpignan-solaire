@@ -1093,8 +1093,8 @@
  t.className = 'share-toast';
  t.textContent = '✓ Lien copié !';
  document.body.appendChild(t);
- requestAnimationFrame( => t.classList.add('show'));
- setTimeout( => { t.classList.remove('show'); setTimeout( => t.remove, 300); }, 2200);
+ requestAnimationFrame(() => t.classList.add('show'));
+ setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove, 300); }, 2200);
  }
  });
  });
@@ -1102,12 +1102,12 @@
  /* ── NAV MOBILE ── */
  const hbg = document.getElementById('hbg');
  const nm = document.getElementById('navmobile');
- hbg.addEventListener('click', => {
+ hbg.addEventListener('click', () => {
  const open = nm.classList.toggle('open');
  hbg.classList.toggle('open', open);
  hbg.setAttribute('aria-expanded', open);
  });
- nm.querySelectorAll('a').forEach(a => a.addEventListener('click', => {
+ nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
  nm.classList.remove('open');
  hbg.classList.remove('open');
  hbg.setAttribute('aria-expanded', 'false');
@@ -1115,7 +1115,7 @@
 
  /* ── FAQ ── */
  document.querySelectorAll('.faq-q').forEach(btn => {
- btn.addEventListener('click', => {
+ btn.addEventListener('click', () => {
  const item = btn.closest('.faq-item');
  const open = !item.classList.contains('open');
  document.querySelectorAll('.faq-item.open').forEach(el => {
@@ -1194,7 +1194,7 @@
 
  <script>
  if ('serviceWorker' in navigator) {
- window.addEventListener('load', => navigator.serviceWorker.register('/sw.js'));
+ window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
  }
  </script>
 </body>

@@ -545,7 +545,7 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 // Hamburger
 const hbg = document.getElementById('hbg');
 const mn = document.getElementById('mob-nav');
-hbg.addEventListener('click', => {
+hbg.addEventListener('click', () => {
  const open = mn.classList.toggle('open');
  hbg.classList.toggle('open', open);
  hbg.setAttribute('aria-expanded', open);
@@ -553,7 +553,7 @@ hbg.addEventListener('click', => {
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
- btn.addEventListener('click', => {
+ btn.addEventListener('click', () => {
  const ans = btn.nextElementSibling;
  const open = ans.classList.toggle('open');
  btn.classList.toggle('open', open);
