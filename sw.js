@@ -1,4 +1,4 @@
-const CACHE = 'solaire66-v1';
+const CACHE = 'solaire66-v2';
 const OFFLINE_URL = '/index.html';
 
 const PRECACHE = [
@@ -33,15 +33,12 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return;
 
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      const net = fetch(e.request).then(res => {
-        if (res.ok) {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, clone));
-        }
-        return res;
-      }).catch(() => cached || caches.match(OFFLINE_URL));
-      return cached || net;
-    })
+    fetch(e.request).then(res => {
+      if (res.ok) {
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+      }
+      return res;
+    }).catch(() => caches.match(e.request).then(cached => cached || caches.match(OFFLINE_URL)))
   );
 });
