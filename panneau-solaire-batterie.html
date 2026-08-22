@@ -27,24 +27,24 @@
  --slate:#0F172A;--slate2:#1E293B;--slate3:#475569;--slate4:#94A3B8;--slate5:#CBD5E1;--slate6:#E2E8F0;
  --bg:#F8FAFC;--white:#fff;--r:14px;--rs:8px;--mw:1140px;
  --f:-apple-system,'Helvetica Neue',Arial,sans-serif;
- --shadow:0 2px 16px rgba(15,23,42.08);--shadow2:0 8px 40px rgba(15,23,42.12);
+ --shadow:0 2px 16px rgba(15,23,42,0.08);--shadow2:0 8px 40px rgba(15,23,42,0.12);
  }
  html { scroll-behavior: smooth; overflow-x: hidden; }
  body{font-family:var(--f);background:var(--white);color:var(--slate);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
  a{color:inherit;text-decoration:none;}
  .wrap{width:100%;max-width:var(--mw);margin:0 auto;padding:0 20px;}
- .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--slate6);}
+ .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--slate6);}
  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 20px;max-width:var(--mw);margin:0 auto;}
  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:var(--slate);}
  .logo-sun{width:36px;height:36px;background:linear-gradient(135deg,var(--sun) 0%,#F97316 100%);border-radius:9px;display:grid;place-items:center;font-size:18px;}
  .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:var(--f);transition:all .22s;white-space:nowrap;text-decoration:none;}
  .btn-sun{background:var(--sun);color:#fff;}
- .btn-sun:hover{background:var(--sun-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11.35);}
+ .btn-sun:hover{background:var(--sun-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,0.35);}
  .btn-lg{padding:14px 30px;font-size:.96rem;}
  .breadcrumb{font-size:.76rem;color:var(--slate4);padding:8px 20px;background:var(--bg);border-bottom:1px solid var(--slate6);margin-top:64px;}
  .breadcrumb a{color:var(--sky);}
  .hero{background:linear-gradient(150deg,#0C1A2E 0%,#0F2647 40%,#1B3A6B 70%,#0C1A2E 100%);padding:64px 0 80px;color:#fff;position:relative;overflow:hidden;}
- .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 30%,rgba(245,158,11.18) 0%,transparent 60%);pointer-events:none;}
+ .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 30%,rgba(245,158,11,0.18) 0%,transparent 60%);pointer-events:none;}
  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--white));pointer-events:none;}
  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.73rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);margin-bottom:16px;}
  .hero-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--sun);border-radius:2px;}
@@ -112,8 +112,8 @@
  @media(min-width:640px){.compare-grid{grid-template-columns:1fr 1fr;}.bat-models{grid-template-columns:1fr 1fr;}}
  @media(min-width:900px){.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:center;}.footer-grid{grid-template-columns:1.5fr 1fr 1fr;}}
  
- .share-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0.06); border:none; cursor:pointer; color:var(--navy,#0B2145); transition:all .15s; flex-shrink:0; }
- .share-btn:hover { background:rgba(0,0,0.12); }
+ .share-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,0.06); border:none; cursor:pointer; color:var(--navy,#0B2145); transition:all .15s; flex-shrink:0; }
+ .share-btn:hover { background:rgba(0,0,0,0.12); }
  .share-btn svg { width:18px; height:18px; }
  .share-toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#0B2145; color:#fff; padding:10px 20px; border-radius:50px; font-size:.85rem; font-weight:600; z-index:9999; pointer-events:none; opacity:0; transition:opacity .2s; }
  .share-toast.show { opacity:1; }
@@ -146,7 +146,7 @@
  <p class="hero-sub">Consommez votre propre électricité le soir et la nuit. Batterie physique BYD ou virtuelle MyLight — jusqu'à 85 % d'autoconsommation à Perpignan.</p>
  <div class="hero-actions">
  <a href="#devis" class="btn btn-sun btn-lg">Devis gratuit 24h</a>
- <a href="tel:0775769232" class="btn" style="background:rgba(255,255,255.12);color:#fff;border:1.5px solid rgba(255,255,255.2);">📞 07 75 76 92 32</a>
+ <a href="tel:0775769232" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.2);">📞 07 75 76 92 32</a>
  </div>
  <div class="hero-trust">
  <span class="trust-chip"><svg viewBox="0 0 16 16"><path d="M8 .25l1.93 3.91 4.32.63-3.13 3.05.74 4.3L8 9.77 4.14 12.14l.74-4.3L1.75 4.79l4.32-.63z"/></svg>RGE QualiPV certifié</span>
@@ -155,12 +155,12 @@
  </div>
  </div>
  <div>
- <div style="background:rgba(255,255,255.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255.12);border-radius:20px;padding:28px 24px;">
+ <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;">
  <div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin-bottom:18px;">Taux d'autoconsommation</div>
  <div style="display:flex;flex-direction:column;gap:14px;">
- <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Sans batterie</span><span style="color:#94A3B8;">35–45 %</span></div><div style="height:10px;background:rgba(255,255,255.1);border-radius:5px;"><div style="width:40%;height:100%;border-radius:5px;background:#94A3B8;"></div></div></div>
- <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Batterie virtuelle MyLight</span><span style="color:#FBBF24;">65–75 %</span></div><div style="height:10px;background:rgba(255,255,255.1);border-radius:5px;"><div style="width:70%;height:100%;border-radius:5px;background:#FBBF24;"></div></div></div>
- <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Batterie physique BYD</span><span style="color:#34D399;">80–85 %</span></div><div style="height:10px;background:rgba(255,255,255.1);border-radius:5px;"><div style="width:82%;height:100%;border-radius:5px;background:#34D399;"></div></div></div>
+ <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Sans batterie</span><span style="color:#94A3B8;">35–45 %</span></div><div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;"><div style="width:40%;height:100%;border-radius:5px;background:#94A3B8;"></div></div></div>
+ <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Batterie virtuelle MyLight</span><span style="color:#FBBF24;">65–75 %</span></div><div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;"><div style="width:70%;height:100%;border-radius:5px;background:#FBBF24;"></div></div></div>
+ <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Batterie physique BYD</span><span style="color:#34D399;">80–85 %</span></div><div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;"><div style="width:82%;height:100%;border-radius:5px;background:#34D399;"></div></div></div>
  </div>
  <div style="margin-top:16px;font-size:.7rem;color:#64748B;">Installation 3 kWc · Foyer 4 personnes · Perpignan</div>
  </div>

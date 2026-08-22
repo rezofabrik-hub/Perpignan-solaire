@@ -68,8 +68,8 @@
  --text-mid: #4A607A;
  --text-lt: #7B90A8;
  --border: #DDE6F0;
- --shadow: 0 2px 12px rgba(11,33,69.07);
- --shadow-md: 0 6px 28px rgba(11,33,69.11);
+ --shadow: 0 2px 12px rgba(11,33,69,0.07);
+ --shadow-md: 0 6px 28px rgba(11,33,69,0.11);
  --r: 6px;
  --mw: 1180px;
  --f: -apple-system, 'Helvetica Neue', Arial, sans-serif;
@@ -95,7 +95,7 @@
 
  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--r); font-size: .92rem; font-weight: 700; cursor: pointer; transition: all .18s ease; border: 2px solid transparent; font-family: var(--f); white-space: nowrap; }
  .btn-amber { background: var(--amber); color: var(--navy); border-color: var(--amber); }
- .btn-amber:hover { background: var(--amber-dk); border-color: var(--amber-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,168,28.35); }
+ .btn-amber:hover { background: var(--amber-dk); border-color: var(--amber-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,168,28,0.35); }
  .btn-navy { background: var(--navy); color: var(--white); border-color: var(--navy); }
  .btn-navy:hover { background: var(--navy2); transform: translateY(-1px); }
  .btn-wh { background: var(--white); color: var(--navy); border-color: var(--white); }
@@ -166,8 +166,8 @@
  display: inline-flex;
  align-items: center;
  gap: 8px;
- background: rgba(245,168,28.15);
- border: 1px solid rgba(245,168,28.3);
+ background: rgba(245,168,28,0.15);
+ border: 1px solid rgba(245,168,28,0.3);
  color: var(--amber);
  font-size: .78rem;
  font-weight: 700;
@@ -178,14 +178,14 @@
  margin-bottom: 20px;
  }
  .hero-pro h1 { color: var(--white); margin-bottom: 20px; }
- .hero-pro .body-lg { color: rgba(255,255,255.75); max-width: 540px; margin-bottom: 32px; }
+ .hero-pro .body-lg { color: rgba(255,255,255,0.75); max-width: 540px; margin-bottom: 32px; }
  .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
  .hero-trust { display: flex; flex-wrap: wrap; gap: 16px; }
- .htrust { display: flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: rgba(255,255,255.65); }
+ .htrust { display: flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: rgba(255,255,255,0.65); }
  .htrust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
  .hero-pro-card {
- background: rgba(255,255,255.06);
- border: 1px solid rgba(255,255,255.12);
+ background: rgba(255,255,255,0.06);
+ border: 1px solid rgba(255,255,255,0.12);
  border-radius: 10px;
  padding: 28px;
  backdrop-filter: blur(8px);
@@ -204,21 +204,21 @@
  justify-content: space-between;
  gap: 8px;
  padding: 10px 0;
- border-bottom: 1px solid rgba(255,255,255.07);
+ border-bottom: 1px solid rgba(255,255,255,0.07);
  }
  .hpc-row:last-child { border-bottom: none; }
- .hpc-label { font-size: .85rem; color: rgba(255,255,255.55); }
+ .hpc-label { font-size: .85rem; color: rgba(255,255,255,0.55); }
  .hpc-val { font-size: 1.4rem; font-weight: 800; color: var(--white); font-variant-numeric: tabular-nums; }
  .hpc-val.hi { color: var(--amber); }
 
  /* BANDE STATS */
  .stats { background: var(--amber); padding: 0; }
  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
- .stat { text-align: center; padding: 28px 16px; border-right: 1px solid rgba(11,33,69.1); border-bottom: 1px solid rgba(11,33,69.1); }
+ .stat { text-align: center; padding: 28px 16px; border-right: 1px solid rgba(11,33,69,0.1); border-bottom: 1px solid rgba(11,33,69,0.1); }
  .stat:nth-child(2n) { border-right: none; }
  .stat:nth-last-child(-n+2) { border-bottom: none; }
  .stat-n { display: block; font-size: 2.4rem; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
- .stat-l { font-size: .78rem; color: rgba(11,33,69.65); margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+ .stat-l { font-size: .78rem; color: rgba(11,33,69,0.65); margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
 
  /* PROFILS CLIENTS */
  .profils-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 48px; }
@@ -274,7 +274,7 @@
  bottom: -30px; right: -30px;
  width: 100px; height: 100px;
  border-radius: 50%;
- background: rgba(245,168,28.08);
+ background: rgba(245,168,28,0.08);
  }
  .avantage-num {
  font-size: 3rem;
@@ -285,7 +285,7 @@
  margin-bottom: 8px;
  }
  .avantage-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 10px; }
- .avantage-card p { color: rgba(255,255,255.65); font-size: .88rem; line-height: 1.6; }
+ .avantage-card p { color: rgba(255,255,255,0.65); font-size: .88rem; line-height: 1.6; }
  .avantage-badge {
  display: inline-block;
  background: var(--amber);
@@ -356,12 +356,12 @@
  .devis-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start; }
  .devis-left .eyebrow { color: var(--amber); }
  .devis-left h2 { color: var(--white); }
- .devis-left .body-lg { color: rgba(255,255,255.7); }
+ .devis-left .body-lg { color: rgba(255,255,255,0.7); }
  .devis-promise { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
- .dp-item { display: flex; align-items: center; gap: 10px; font-size: .88rem; color: rgba(255,255,255.7); }
+ .dp-item { display: flex; align-items: center; gap: 10px; font-size: .88rem; color: rgba(255,255,255,0.7); }
  .dp-ico { width: 22px; height: 22px; background: var(--amber); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
  .dp-ico svg { width: 12px; height: 12px; color: var(--navy); }
- .form-card { background: var(--white); border-radius: 10px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0.3); }
+ .form-card { background: var(--white); border-radius: 10px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
  .form-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 22px; }
  .fi { display: flex; flex-direction: column; gap: 5px; }
  .fi label { font-size: .82rem; font-weight: 600; color: var(--text-mid); }
@@ -374,28 +374,28 @@
  .form-rgpd a { color: var(--amber-dk); text-decoration: underline; }
 
  /* FOOTER */
- footer { background: var(--navy); color: rgba(255,255,255.7); padding: 56px 0 0; }
+ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 56px 0 0; }
  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 48px; }
  .ftr-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
  .ftr-logo-mark { width: 36px; height: 36px; background: var(--amber); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
  .ftr-brand-name { font-size: 1rem; font-weight: 800; color: var(--white); }
- .ftr-desc { font-size: .85rem; line-height: 1.65; color: rgba(255,255,255.55); }
- .ftr-contact-item { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: rgba(255,255,255.65); margin-top: 10px; }
+ .ftr-desc { font-size: .85rem; line-height: 1.65; color: rgba(255,255,255,0.55); }
+ .ftr-contact-item { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: rgba(255,255,255,0.65); margin-top: 10px; }
  .ftr-contact-item svg { width: 15px; height: 15px; flex-shrink: 0; opacity: .7; }
- .ftr-contact-item a { color: rgba(255,255,255.65); }
+ .ftr-contact-item a { color: rgba(255,255,255,0.65); }
  .ftr-contact-item a:hover { color: var(--amber); }
- .ftr-col h4 { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255.4); margin-bottom: 14px; }
+ .ftr-col h4 { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
  .ftr-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
- .ftr-col ul li a { font-size: .85rem; color: rgba(255,255,255.6); transition: color .15s; }
+ .ftr-col ul li a { font-size: .85rem; color: rgba(255,255,255,0.6); transition: color .15s; }
  .ftr-col ul li a:hover { color: var(--amber); }
- .ftr-bottom { border-top: 1px solid rgba(255,255,255.08); padding: 20px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; font-size: .75rem; color: rgba(255,255,255.35); }
+ .ftr-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; font-size: .75rem; color: rgba(255,255,255,0.35); }
  .ftr-legal { display: flex; flex-wrap: wrap; gap: 14px; }
- .ftr-legal a { color: rgba(255,255,255.35); }
+ .ftr-legal a { color: rgba(255,255,255,0.35); }
  .ftr-legal a:hover { color: var(--amber); }
 
  /* FLOATING CTA */
  .sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 300; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
- .sticky-cta a { display: flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 50px; font-size: .9rem; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0.25); transition: all .2s; }
+ .sticky-cta a { display: flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 50px; font-size: .9rem; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: all .2s; }
  .sticky-cta a:hover { transform: translateY(-2px); }
 
  /* BREADCRUMB */
@@ -412,7 +412,7 @@
  .exemples-grid { grid-template-columns: repeat(2, 1fr); }
  .stats-grid { grid-template-columns: repeat(4, 1fr); }
  .stat { border-bottom: none; }
- .stat:nth-child(2n) { border-right: 1px solid rgba(11,33,69.1); }
+ .stat:nth-child(2n) { border-right: 1px solid rgba(11,33,69,0.1); }
  .stat:last-child { border-right: none; }
  .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
  .ftr-bottom { flex-direction: row; justify-content: space-between; }
@@ -533,7 +533,7 @@
  <div class="hero-pro-card-title">Exemple — Commerce 500 m²</div>
  <div class="hpc-row">
  <span class="hpc-label">Consommation actuelle</span>
- <span class="hpc-val">70 000 <small style="font-size:.7em;font-weight:400;color:rgba(255,255,255.4)">kWh/an</small></span>
+ <span class="hpc-val">70 000 <small style="font-size:.7em;font-weight:400;color:rgba(255,255,255,0.4)">kWh/an</small></span>
  </div>
  <div class="hpc-row">
  <span class="hpc-label">Facture EDF annuelle</span>
