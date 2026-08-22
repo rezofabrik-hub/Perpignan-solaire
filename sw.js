@@ -1,9 +1,10 @@
-const CACHE = 'solaire66-v2';
+const CACHE = 'solaire66-v3';
 const OFFLINE_URL = '/index.html';
 
 const PRECACHE = [
   '/',
   '/index.html',
+  '/simulateur.html',
   '/prix-panneaux-solaires-66.html',
   '/aides-panneaux-solaires-2026.html',
   '/rentabilite-panneau-solaire-66.html',
