@@ -122,7 +122,8 @@ img{max-width:100%;}
 .service-desc{font-size:.85rem;color:var(--slate3);line-height:1.7;}
 .service-price{display:inline-block;margin-top:12px;font-size:.82rem;font-weight:700;color:var(--sun-d);background:var(--sun4);padding:4px 10px;border-radius:6px;}
 /* solaire combo banner */
-.combo-banner{background:linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%);border-radius:20px;padding:36px 28px;color:#fff;margin-top:56px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;}
+.combo-banner{background:linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%);border-radius:20px;padding:28px 20px;color:#fff;margin-top:56px;display:flex;flex-direction:column;gap:20px;align-items:flex-start;}
+@media(min-width:640px){.combo-banner{flex-direction:row;padding:36px 28px;gap:24px;align-items:center;}}
 .combo-icon{font-size:3rem;flex-shrink:0;}
 .combo-body{flex:1;min-width:220px;}
 .combo-title{font-size:1.1rem;font-weight:800;margin-bottom:8px;color:#F1F5F9;}
@@ -182,10 +183,16 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 .sticky a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:50px;font-size:.86rem;font-weight:700;}
 .st-tel{background:var(--sky3);color:var(--sky);border:1.5px solid var(--sky2);}
 .st-dv{background:var(--sun);color:#fff;}
+/* --- mobile first --- */
+.hero-actions .btn{width:100%;}
+@media(min-width:480px){
+  .hero-actions .btn{width:auto;}
+}
 @media(min-width:640px){
   .services-grid{grid-template-columns:1fr 1fr;}
   .steps{grid-template-columns:1fr 1fr;}
   .form-row{grid-template-columns:1fr 1fr;}
+  .combo-banner{flex-direction:row;}
 }
 @media(min-width:1024px){
   .nav-links{display:flex;}
@@ -195,7 +202,7 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
   .ftr-grid{grid-template-columns:2fr 1fr 1fr 1fr;}
   .sticky{display:none;}
   footer{padding-bottom:52px;}
-  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .services-grid{grid-template-columns:repeat(4,1fr);}
   .steps{grid-template-columns:repeat(2,1fr);}
 }
 @media(prefers-color-scheme:dark){
@@ -341,7 +348,7 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
         <div class="combo-desc">Installer des panneaux solaires sur un toit encrassé réduit leur durée de vie et leur efficacité. Nous proposons les deux prestations lors d'une seule intervention pour une seule journée de chantier. Vos panneaux seront fixés sur un toit parfaitement sain.</div>
         <div class="combo-badge">💡 Devis groupé sur mesure — demandez votre tarif combiné</div>
       </div>
-      <a href="#devis" class="btn btn-sun">Devis combiné gratuit</a>
+      <a href="#devis" class="btn btn-sun" style="width:100%;justify-content:center;text-align:center;">Devis combiné gratuit</a>
     </div>
   </div>
 </section>
