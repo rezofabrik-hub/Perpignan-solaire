@@ -25,8 +25,8 @@
  --white:#FFFFFF; --bg:#F2F5FA;
  --text:#0B2145; --text-mid:#4A607A; --text-lt:#7B90A8;
  --border:#DDE6F0;
- --shadow:0 2px 12px rgba(11,33,69.07);
- --shadow-md:0 6px 28px rgba(11,33,69.11);
+ --shadow:0 2px 12px rgba(11,33,69,0.07);
+ --shadow-md:0 6px 28px rgba(11,33,69,0.11);
  --r:6px; --mw:1180px;
  --f:-apple-system,'Helvetica Neue',Arial,sans-serif;
  }
@@ -46,13 +46,13 @@
  /* BOUTONS */
  .btn { display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:var(--r); font-size:.92rem; font-weight:700; cursor:pointer; transition:all .18s ease; border:2px solid transparent; font-family:var(--f); white-space:nowrap; }
  .btn-amber { background:var(--amber); color:var(--navy); border-color:var(--amber); }
- .btn-amber:hover { background:var(--amber-dk); border-color:var(--amber-dk); transform:translateY(-1px); box-shadow:0 6px 20px rgba(245,168,28.35); }
+ .btn-amber:hover { background:var(--amber-dk); border-color:var(--amber-dk); transform:translateY(-1px); box-shadow:0 6px 20px rgba(245,168,28,0.35); }
  .btn-navy { background:var(--navy); color:var(--white); border-color:var(--navy); }
  .btn-navy:hover { background:var(--navy2); transform:translateY(-1px); }
  .btn:focus-visible { outline:3px solid var(--amber); outline-offset:2px; }
 
  /* TOPBAR */
- .topbar { background:var(--navy); color:rgba(255,255,255.85); font-size:.82rem; padding:0 20px; }
+ .topbar { background:var(--navy); color:rgba(255,255,255,0.85); font-size:.82rem; padding:0 20px; }
  .topbar-in { display:flex; align-items:center; justify-content:space-between; height:40px; max-width:var(--mw); margin:0 auto; flex-wrap:wrap; gap:8px; }
  .topbar-left { display:flex; align-items:center; gap:20px; }
  .topbar-item { display:flex; align-items:center; gap:6px; }
@@ -86,10 +86,10 @@
  /* HERO PAGE */
  .page-hero { background:var(--navy); padding:52px 0 56px; }
  .page-hero h1 { color:var(--white); margin-bottom:14px; }
- .page-hero .body-lg { color:rgba(255,255,255.75); max-width:600px; }
+ .page-hero .body-lg { color:rgba(255,255,255,0.75); max-width:600px; }
  .page-hero .eyebrow { color:var(--amber); }
- .breadcrumb { display:flex; align-items:center; gap:8px; font-size:.82rem; color:rgba(255,255,255.5); margin-bottom:20px; }
- .breadcrumb a { color:rgba(255,255,255.5); }
+ .breadcrumb { display:flex; align-items:center; gap:8px; font-size:.82rem; color:rgba(255,255,255,0.5); margin-bottom:20px; }
+ .breadcrumb a { color:rgba(255,255,255,0.5); }
  .breadcrumb a:hover { color:var(--amber); }
 
  /* TAB NAV */
@@ -124,7 +124,7 @@
  font-size:.92rem; font-family:var(--f); color:var(--navy); background:var(--white);
  transition:border-color .15s; width:100%;
  }
- .fi input:focus.fi select:focus.fi textarea:focus { outline:none; border-color:var(--amber); box-shadow:0 0 0 3px rgba(245,168,28.15); }
+ .fi input:focus.fi select:focus.fi textarea:focus { outline:none; border-color:var(--amber); box-shadow:0 0 0 3px rgba(245,168,28,0.15); }
  .fi textarea { resize:vertical; min-height:100px; }
  .fi select {
  appearance:none;
@@ -141,22 +141,22 @@
  .btn-submit { width:100%; justify-content:center; margin-top:20px; padding:14px; }
 
  /* FOOTER */
- footer { background:var(--navy); color:rgba(255,255,255.7); padding:56px 0 32px; }
+ footer { background:var(--navy); color:rgba(255,255,255,0.7); padding:56px 0 32px; }
  .footer-grid { display:grid; grid-template-columns:1fr; gap:36px; margin-bottom:40px; }
  .ftr-brand { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
  .ftr-logo-mark { width:34px; height:34px; background:var(--amber); border-radius:5px; display:flex; align-items:center; justify-content:center; }
  .ftr-logo-mark svg { width:20px; height:20px; }
  .ftr-brand-name { font-size:.95rem; font-weight:800; color:var(--white); }
  .ftr-desc { font-size:.85rem; line-height:1.65; max-width:260px; }
- .ftr-col h4 { font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255.4); margin-bottom:14px; }
+ .ftr-col h4 { font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:14px; }
  .ftr-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
  .ftr-col ul li { font-size:.87rem; }
  .ftr-col ul li a:hover { color:var(--amber); }
  .ftr-contact-item { display:flex; align-items:center; gap:9px; font-size:.87rem; margin-bottom:10px; }
  .ftr-contact-item svg { width:14px; height:14px; opacity:.5; flex-shrink:0; }
- .ftr-contact-item a { color:rgba(255,255,255.7); }
+ .ftr-contact-item a { color:rgba(255,255,255,0.7); }
  .ftr-contact-item a:hover { color:var(--amber); }
- .ftr-bottom { border-top:1px solid rgba(255,255,255.1); padding-top:24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; font-size:.78rem; }
+ .ftr-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; font-size:.78rem; }
  .ftr-legal { display:flex; gap:16px; flex-wrap:wrap; }
  .ftr-legal a:hover { color:var(--amber); }
 
@@ -180,8 +180,8 @@
  *, *::before, *::after { transition:none !important; }
  }
  
- .share-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0.06); border:none; cursor:pointer; color:var(--navy,#0B2145); transition:all .15s; flex-shrink:0; }
- .share-btn:hover { background:rgba(0,0,0.12); }
+ .share-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,0.06); border:none; cursor:pointer; color:var(--navy,#0B2145); transition:all .15s; flex-shrink:0; }
+ .share-btn:hover { background:rgba(0,0,0,0.12); }
  .share-btn svg { width:18px; height:18px; }
  .share-toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#0B2145; color:#fff; padding:10px 20px; border-radius:50px; font-size:.85rem; font-weight:600; z-index:9999; pointer-events:none; opacity:0; transition:opacity .2s; }
  .share-toast.show { opacity:1; }

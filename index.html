@@ -40,8 +40,8 @@
  --text-mid: #4A607A;
  --text-lt: #7B90A8;
  --border: #DDE6F0;
- --shadow: 0 2px 12px rgba(11,33,69.07);
- --shadow-md: 0 6px 28px rgba(11,33,69.11);
+ --shadow: 0 2px 12px rgba(11,33,69,0.07);
+ --shadow-md: 0 6px 28px rgba(11,33,69,0.11);
  --r: 6px;
  --mw: 1180px;
  --f: -apple-system, 'Helvetica Neue', Arial, sans-serif;
@@ -69,7 +69,7 @@
  /* ── BOUTONS ── */
  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--r); font-size: .92rem; font-weight: 700; cursor: pointer; transition: all .18s ease; border: 2px solid transparent; font-family: var(--f); white-space: nowrap; }
  .btn-amber { background: var(--amber); color: var(--navy); border-color: var(--amber); }
- .btn-amber:hover { background: var(--amber-dk); border-color: var(--amber-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,168,28.35); }
+ .btn-amber:hover { background: var(--amber-dk); border-color: var(--amber-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,168,28,0.35); }
  .btn-navy { background: var(--navy); color: var(--white); border-color: var(--navy); }
  .btn-navy:hover { background: var(--navy2); border-color: var(--navy2); transform: translateY(-1px); }
  .btn-out { background: transparent; color: var(--navy); border-color: var(--navy); }
@@ -163,7 +163,7 @@
  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
  .stat { text-align: center; }
  .stat-n { display: block; font-size: 2.8rem; font-weight: 800; color: var(--amber); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
- .stat-l { font-size: .82rem; color: rgba(255,255,255.6); margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+ .stat-l { font-size: .82rem; color: rgba(255,255,255,0.6); margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
 
  /* ── POURQUOI NOUS ── */
  .why-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }
@@ -227,13 +227,13 @@
  /* ── DEVIS ── */
  .devis { background: var(--navy); }
  .devis h2.devis .body-lg { color: var(--white); }
- .devis .body-lg { color: rgba(255,255,255.7); }
+ .devis .body-lg { color: rgba(255,255,255,0.7); }
  .devis-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start; }
  .devis-left h2 { margin-bottom: 16px; }
  .devis-left .body-lg { margin-bottom: 28px; }
  .devis-promise { display: flex; flex-direction: column; gap: 12px; }
- .dp-item { display: flex; align-items: center; gap: 12px; font-size: .9rem; color: rgba(255,255,255.8); }
- .dp-ico { width: 32px; height: 32px; border-radius: 6px; background: rgba(255,255,255.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+ .dp-item { display: flex; align-items: center; gap: 12px; font-size: .9rem; color: rgba(255,255,255,0.8); }
+ .dp-ico { width: 32px; height: 32px; border-radius: 6px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
  .dp-ico svg { width: 16px; height: 16px; color: var(--amber); }
  .form-card { background: var(--white); border-radius: 10px; padding: 32px 28px; box-shadow: var(--shadow-md); }
  .form-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
@@ -241,7 +241,7 @@
  .fi { display: flex; flex-direction: column; gap: 5px; }
  .fi label { font-size: .78rem; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .08em; }
  .fi input.fi select.fi textarea { border: 1.5px solid var(--border); border-radius: var(--r); padding: 11px 14px; font-size: .92rem; font-family: var(--f); color: var(--navy); background: var(--white); transition: border-color .15s; width: 100%; }
- .fi input:focus.fi select:focus.fi textarea:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px rgba(245,168,28.15); }
+ .fi input:focus.fi select:focus.fi textarea:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px rgba(245,168,28,0.15); }
  .fi textarea { resize: vertical; min-height: 90px; }
  .fi select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A607A' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
  .form-rgpd { font-size: .75rem; color: var(--text-lt); margin-top: 10px; line-height: 1.5; }
@@ -262,27 +262,27 @@
  .faq-item.open .faq-a { display: block; }
 
  /* ── FOOTER ── */
- footer { background: var(--navy); color: rgba(255,255,255.7); padding: 56px 0 32px; }
+ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 56px 0 32px; }
  .footer-grid { display: grid; grid-template-columns: 1fr; gap: 36px; margin-bottom: 40px; }
  .ftr-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
  .ftr-logo-mark { width: 34px; height: 34px; background: var(--amber); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
  .ftr-logo-mark svg { width: 20px; height: 20px; }
  .ftr-brand-name { font-size: .95rem; font-weight: 800; color: var(--white); }
  .ftr-desc { font-size: .85rem; line-height: 1.65; max-width: 260px; }
- .ftr-col h4 { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255.4); margin-bottom: 14px; }
+ .ftr-col h4 { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
  .ftr-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
  .ftr-col ul li { font-size: .87rem; }
  .ftr-col ul li a:hover { color: var(--amber); }
  .ftr-contact-item { display: flex; align-items: center; gap: 9px; font-size: .87rem; margin-bottom: 10px; }
  .ftr-contact-item svg { width: 14px; height: 14px; opacity: .5; flex-shrink: 0; }
- .ftr-contact-item a { color: rgba(255,255,255.7); }
+ .ftr-contact-item a { color: rgba(255,255,255,0.7); }
  .ftr-contact-item a:hover { color: var(--amber); }
- .ftr-bottom { border-top: 1px solid rgba(255,255,255.1); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; font-size: .78rem; }
+ .ftr-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; font-size: .78rem; }
  .ftr-legal { display: flex; gap: 16px; flex-wrap: wrap; }
  .ftr-legal a:hover { color: var(--amber); }
 
  /* ── STICKY MOBILE CTA ── */
- .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 10px; z-index: 150; box-shadow: 0 -4px 16px rgba(11,33,69.1); }
+ .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 10px; z-index: 150; box-shadow: 0 -4px 16px rgba(11,33,69,0.1); }
  .sticky-cta .btn { flex: 1; justify-content: center; padding: 13px; font-size: .9rem; }
  footer { padding-bottom: 96px; }
 
@@ -813,17 +813,17 @@
  </div>
  <div style="display:flex;flex-wrap:wrap;gap:12px;">
  <a href="./nettoyage-toiture.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--amber,#F5A81C);color:#0C1824;font-weight:800;font-size:.9rem;padding:13px 24px;border-radius:50px;text-decoration:none;transition:background .2s;">🧹 Découvrir le service nettoyage</a>
- <a href="tel:0775769232" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#F1F5F9;border:1.5px solid rgba(255,255,255.2);font-weight:700;font-size:.9rem;padding:13px 24px;border-radius:50px;text-decoration:none;">📞 07 75 76 92 32</a>
+ <a href="tel:0775769232" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#F1F5F9;border:1.5px solid rgba(255,255,255,0.2);font-weight:700;font-size:.9rem;padding:13px 24px;border-radius:50px;text-decoration:none;">📞 07 75 76 92 32</a>
  </div>
  </div>
- <div style="flex-shrink:0;background:rgba(255,255,255.05);border:1px solid rgba(255,255,255.1);border-radius:16px;padding:24px 20px;min-width:200px;max-width:240px;">
+ <div style="flex-shrink:0;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px 20px;min-width:200px;max-width:240px;">
  <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:#64748B;margin-bottom:16px;">Avant / Après</div>
  <div style="display:flex;flex-direction:column;gap:10px;">
- <div style="background:rgba(239,68,68.12);border:1px solid rgba(239,68,68.25);border-radius:10px;padding:12px 14px;">
+ <div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:12px 14px;">
  <div style="font-size:.7rem;color:#FCA5A5;font-weight:700;text-transform:uppercase;margin-bottom:4px;">❌ Sans nettoyage</div>
  <div style="font-size:.8rem;color:#94A3B8;line-height:1.5;">Mousse sous les fixations · risque de fuite · garantie annulée</div>
  </div>
- <div style="background:rgba(5,150,105.12);border:1px solid rgba(5,150,105.25);border-radius:10px;padding:12px 14px;">
+ <div style="background:rgba(5,150,105,0.12);border:1px solid rgba(5,150,105,0.25);border-radius:10px;padding:12px 14px;">
  <div style="font-size:.7rem;color:#6EE7B7;font-weight:700;text-transform:uppercase;margin-bottom:4px;">✅ Avec nettoyage</div>
  <div style="font-size:.8rem;color:#94A3B8;line-height:1.5;">Fixations solides · toit sain · garantie valide · meilleur rendement</div>
  </div>
