@@ -658,13 +658,13 @@
  /* HAMBURGER */
  const hbg = document.getElementById('hbg');
  const nm = document.getElementById('navmobile');
- hbg.addEventListener('click', => { hbg.classList.toggle('open'); nm.classList.toggle('open'); });
+ hbg.addEventListener('click', () => { hbg.classList.toggle('open'); nm.classList.toggle('open'); });
 
  /* TABS */
  const tabBtns = document.querySelectorAll('.tab-btn');
  const tabPanels = document.querySelectorAll('.tab-panel');
  tabBtns.forEach(btn => {
- btn.addEventListener('click', => {
+ btn.addEventListener('click', () => {
  tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
  tabPanels.forEach(p => p.classList.remove('active'));
  btn.classList.add('active');
@@ -793,7 +793,7 @@
 </script>
  <script>
  if ('serviceWorker' in navigator) {
- window.addEventListener('load', => navigator.serviceWorker.register('/sw.js'));
+ window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
  }
  </script>
 </body>

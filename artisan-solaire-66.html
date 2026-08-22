@@ -588,7 +588,7 @@
 
 <script>
  document.querySelectorAll('.faq-q').forEach(btn => {
- btn.addEventListener('click', => {
+ btn.addEventListener('click', () => {
  const item = btn.closest('.faq-item');
  const open = !item.classList.contains('open');
  document.querySelectorAll('.faq-item.open').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
@@ -615,7 +615,7 @@
  } catch(err) { btn.disabled=false; btn.textContent='Envoyer ma demande — Réponse sous 48h'; alert('Une erreur est survenue. Appelez-nous au 07 75 76 92 32.'); }
  });
 
- if ('serviceWorker' in navigator) window.addEventListener('load', => navigator.serviceWorker.register('/sw.js'));
+ if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
 </script>
 </body>
 </html>
