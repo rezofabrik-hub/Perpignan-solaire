@@ -118,19 +118,19 @@
  .nav-mobile .nm-cta { background: var(--amber); color: var(--navy); text-align: center; margin-top: 6px; border-radius: var(--r); }
 
  /* ── HERO ── */
- .hero { background: var(--white); padding: 60px 0 72px; }
- .hero-inner { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
- .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--amber-lt); color: var(--amber-dk); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px; }
- .hero h1 { margin-bottom: 20px; }
- .hero-sub { max-width: 520px; margin-bottom: 32px; }
+ .hero { background: var(--navy); padding: 100px 0 110px; position: relative; overflow: hidden; }
+ .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(11,30,64,0.80) 0%, rgba(11,30,64,0.60) 100%); z-index: 1; }
+ .hero .wrap { position: relative; z-index: 2; }
+ .hero-inner { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; max-width: 700px; }
+ .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,168,28,0.15); border: 1px solid rgba(245,168,28,0.35); color: var(--amber); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px; }
+ .hero h1 { margin-bottom: 20px; color: #fff; }
+ .hero-sub { max-width: 580px; margin-bottom: 32px; color: rgba(255,255,255,0.75); }
  .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
  .hero-trust { display: flex; flex-wrap: wrap; gap: 16px; }
- .htrust { display: flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: var(--text-mid); }
- .htrust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
- .hero-photo { position: relative; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-md); }
- .hero-photo img { width: 100%; height: 340px; object-fit: cover; }
- .hero-badge { position: absolute; bottom: 16px; left: 16px; background: var(--navy); color: var(--white); font-size: .8rem; font-weight: 700; padding: 8px 14px; border-radius: var(--r); display: flex; align-items: center; gap: 8px; }
- .hero-badge strong { color: var(--amber); }
+ .htrust { display: flex; align-items: center; gap: 7px; font-size: .82rem; font-weight: 600; color: rgba(255,255,255,0.70); }
+ .htrust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+ @media(max-width:600px){ .hero { padding: 72px 0 80px; } }
 
  /* ── BANDE CERTIFS ── */
  .certs { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; }
@@ -290,7 +290,6 @@
  @media (min-width: 640px) {
  .topbar-hours { display: flex; }
  .topbar-email { display: flex; }
- .hero-photo img { height: 400px; }
  .aides-grid { grid-template-columns: repeat(4, 1fr); }
  .zones-grid { grid-template-columns: repeat(4, 1fr); }
  .form-row-2 { grid-template-columns: 1fr 1fr; }
@@ -300,8 +299,7 @@
  .nav-links { display: flex; }
  .hbg { display: none; }
  .nav-mobile { display: none !important; }
- .hero-inner { grid-template-columns: 55fr 45fr; gap: 60px; }
- .hero-photo img { height: 460px; }
+ .hero-inner { grid-template-columns: 1fr; gap: 0; max-width: 720px; }
  .audience-grid { grid-template-columns: 1fr 1fr; }
  .stats-grid { grid-template-columns: repeat(4, 1fr); }
  .why-grid { grid-template-columns: repeat(2, 1fr); }
@@ -411,6 +409,10 @@
 
 <!-- HERO -->
 <section class="hero">
+ <video class="hero-video" autoplay muted loop playsinline poster="">
+  <source src="./hero-bg.mp4" type="video/mp4">
+ </video>
+ <div class="hero-overlay"></div>
  <div class="wrap">
  <div class="hero-inner">
  <div class="hero-text">
@@ -431,10 +433,6 @@
  <div class="htrust"><div class="htrust-dot"></div> Réponse sous 48h</div>
  <div class="htrust"><div class="htrust-dot"></div> Devis sans engagement</div>
  </div>
- </div>
- <div class="hero-photo">
- <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80" alt="Installation panneaux solaires Pyrénées-Orientales — Énergie Solaire 66" loading="eager" width="900" height="460">
- <div class="hero-badge">☀ <strong>1 750 kWh</strong>/m²/an dans le 66</div>
  </div>
  </div>
  </div>
