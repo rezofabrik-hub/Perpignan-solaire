@@ -119,12 +119,12 @@
  .fg-full { grid-column:1/-1; }
  .fi { display:flex; flex-direction:column; gap:5px; }
  .fi label { font-size:.75rem; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.08em; }
- .fi input.fi select.fi textarea {
+ .fi input, .fi select, .fi textarea {
  border:1.5px solid var(--border); border-radius:var(--r); padding:11px 14px;
- font-size:.92rem; font-family:var(--f); color:var(--navy); background:var(--white);
- transition:border-color .15s; width:100%;
+ font-size:16px; font-family:var(--f); color:var(--navy); background:var(--white);
+ transition:border-color .15s; width:100%; min-height:48px;
  }
- .fi input:focus.fi select:focus.fi textarea:focus { outline:none; border-color:var(--amber); box-shadow:0 0 0 3px rgba(245,168,28,0.15); }
+ .fi input:focus, .fi select:focus, .fi textarea:focus { outline:none; border-color:var(--amber); box-shadow:0 0 0 3px rgba(245,168,28,0.15); }
  .fi textarea { resize:vertical; min-height:100px; }
  .fi select {
  appearance:none;

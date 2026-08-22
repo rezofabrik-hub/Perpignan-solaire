@@ -365,8 +365,8 @@
  .form-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 22px; }
  .fi { display: flex; flex-direction: column; gap: 5px; }
  .fi label { font-size: .82rem; font-weight: 600; color: var(--text-mid); }
- .fi input.fi select.fi textarea { border: 1.5px solid var(--border); border-radius: var(--r); padding: 10px 13px; font-size: .9rem; font-family: var(--f); color: var(--text); background: var(--white); transition: border-color .15s; width: 100%; }
- .fi input:focus.fi select:focus.fi textarea:focus { outline: none; border-color: var(--amber); }
+ .fi input, .fi select, .fi textarea { border: 1.5px solid var(--border); border-radius: var(--r); padding: 10px 13px; font-size: 16px; font-family: var(--f); color: var(--text); background: var(--white); transition: border-color .15s; width: 100%; min-height: 48px; }
+ .fi input:focus, .fi select:focus, .fi textarea:focus { outline: none; border-color: var(--amber); }
  .fi textarea { resize: vertical; min-height: 90px; }
  .form-success { display: none; text-align: center; padding: 20px; }
  .fs-icon { font-size: 3rem; margin-bottom: 12px; }
