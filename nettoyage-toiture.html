@@ -546,34 +546,34 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 const hbg = document.getElementById('hbg');
 const mn = document.getElementById('mob-nav');
 hbg.addEventListener('click', () => {
- const open = mn.classList.toggle('open');
- hbg.classList.toggle('open', open);
- hbg.setAttribute('aria-expanded', open);
+  const open = mn.classList.toggle('open');
+  hbg.classList.toggle('open', open);
+  hbg.setAttribute('aria-expanded', open);
 });
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
- btn.addEventListener('click', () => {
- const ans = btn.nextElementSibling;
- const open = ans.classList.toggle('open');
- btn.classList.toggle('open', open);
- btn.setAttribute('aria-expanded', open);
- });
+  btn.addEventListener('click', () => {
+    const ans = btn.nextElementSibling;
+    const open = ans.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
 });
 
 // Form submit
 document.getElementById('devis-form').addEventListener('submit', async function(e) {
- e.preventDefault;
- const btn = document.getElementById('sbtn');
- btn.textContent = 'Envoi…'; btn.disabled = true;
- try {
- const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
- const d = await res.json;
- if (d.success) {
- this.style.display = 'none';
- document.getElementById('suc').style.display = 'block';
- } else { btn.textContent = 'Erreur — réessayer'; btn.disabled = false; }
- } catch { btn.textContent = 'Erreur réseau'; btn.disabled = false; }
+  e.preventDefault();
+  const btn = document.getElementById('sbtn');
+  btn.textContent = 'Envoi…'; btn.disabled = true;
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
+    const d = await res.json();
+    if (d.success) {
+      this.style.display = 'none';
+      document.getElementById('suc').style.display = 'block';
+    } else { btn.textContent = 'Erreur — réessayer'; btn.disabled = false; }
+  } catch { btn.textContent = 'Erreur réseau'; btn.disabled = false; }
 });
 </script>
 </body>
