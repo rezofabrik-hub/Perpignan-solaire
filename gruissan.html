@@ -757,104 +757,104 @@
 </div>
 
 <script>
- // FAQ accordion
- function faq(btn) {
- const ans = btn.nextElementSibling;
- const open = btn.classList.contains('open');
- document.querySelectorAll('.faq-q.open').forEach(q => {
- q.classList.remove('open');
- q.setAttribute('aria-expanded','false');
- q.nextElementSibling.classList.remove('open');
- q.nextElementSibling.hidden = true;
- });
- if (!open) {
- btn.classList.add('open');
- btn.setAttribute('aria-expanded','true');
- ans.classList.add('open');
- ans.hidden = false;
- }
- }
+  // FAQ accordion
+  function faq(btn) {
+    const ans = btn.nextElementSibling;
+    const open = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(q => {
+      q.classList.remove('open');
+      q.setAttribute('aria-expanded','false');
+      q.nextElementSibling.classList.remove('open');
+      q.nextElementSibling.hidden = true;
+    });
+    if (!open) {
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      ans.classList.add('open');
+      ans.hidden = false;
+    }
+  }
 
- // Form handler
- document.getElementById('lf').addEventListener('submit', function(e) {
- e.preventDefault;
- const pn = document.getElementById('lf-pn').value.trim;
- const nm = document.getElementById('lf-nm').value.trim;
- const em = document.getElementById('lf-em').value.trim;
- const tl = document.getElementById('lf-tl').value.trim;
- const rgpd = document.getElementById('lf-rgpd').checked;
- const cTel = document.getElementById('lf-tel-ok').checked;
- const pj = document.getElementById('lf-pj').value.trim || '—';
+  // Form handler
+  document.getElementById('lf').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const pn  = document.getElementById('lf-pn').value.trim();
+    const nm  = document.getElementById('lf-nm').value.trim();
+    const em  = document.getElementById('lf-em').value.trim();
+    const tl  = document.getElementById('lf-tl').value.trim();
+    const rgpd = document.getElementById('lf-rgpd').checked;
+    const cTel = document.getElementById('lf-tel-ok').checked;
+    const pj  = document.getElementById('lf-pj').value.trim() || '—';
 
- const se = (id, show) => {
- const el = document.getElementById(id);
- const err = document.getElementById(id+'-err');
- if (el) el.classList.toggle('err', show);
- if (err) err.style.display = show ? 'block' : 'none';
- };
+    const se = (id, show) => {
+      const el = document.getElementById(id);
+      const err = document.getElementById(id+'-err');
+      if (el) el.classList.toggle('err', show);
+      if (err) err.style.display = show ? 'block' : 'none';
+    };
 
- let ok = true;
- if (!pn) { se('lf-pn', true); ok = false; } else se('lf-pn', false);
- if (!nm) { se('lf-nm', true); ok = false; } else se('lf-nm', false);
- const emOk = em && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
- if (!emOk) { se('lf-em', true); ok = false; } else se('lf-em', false);
- if (!tl || tl.replace(/\D/g,'').length < 8) { se('lf-tl', true); ok = false; } else se('lf-tl', false);
- document.getElementById('lf-rgpd-err').style.display = rgpd ? 'none' : 'block';
- if (!rgpd) ok = false;
- document.getElementById('lf-tel-ok-err').style.display = cTel ? 'none' : 'block';
- if (!cTel) ok = false;
+    let ok = true;
+    if (!pn) { se('lf-pn', true); ok = false; } else se('lf-pn', false);
+    if (!nm) { se('lf-nm', true); ok = false; } else se('lf-nm', false);
+    const emOk = em && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
+    if (!emOk) { se('lf-em', true); ok = false; } else se('lf-em', false);
+    if (!tl || tl.replace(/\D/g,'').length < 8) { se('lf-tl', true); ok = false; } else se('lf-tl', false);
+    document.getElementById('lf-rgpd-err').style.display = rgpd ? 'none' : 'block';
+    if (!rgpd) ok = false;
+    document.getElementById('lf-tel-ok-err').style.display = cTel ? 'none' : 'block';
+    if (!cTel) ok = false;
 
- if (!ok) return;
+    if (!ok) return;
 
- const body = [
- 'Devis solaire — Gruissan (11)',
- '═══════════════════════════════════',
- 'Prénom : ' + pn,
- 'Nom : ' + nm,
- 'Email : ' + em,
- 'Tél : ' + tl,
- 'Ville : Gruissan (11430)',
- 'Projet : ' + pj,
- '═══════════════════════════════════',
- 'Rappel tél autorisé : ' + (cTel ? 'OUI ✓' : 'NON — NE PAS APPELER'),
- 'Source : solaire-66.fr/gruissan.html'
- ].join('\n');
+    const body = [
+      'Devis solaire — Gruissan (11)',
+      '═══════════════════════════════════',
+      'Prénom  : ' + pn,
+      'Nom     : ' + nm,
+      'Email   : ' + em,
+      'Tél     : ' + tl,
+      'Ville   : Gruissan (11430)',
+      'Projet  : ' + pj,
+      '═══════════════════════════════════',
+      'Rappel tél autorisé : ' + (cTel ? 'OUI ✓' : 'NON — NE PAS APPELER'),
+      'Source  : solaire-66.fr/gruissan.html'
+    ].join('\n');
 
- const a = document.createElement('a');
- a.href = 'mailto:contact.energiesolaire66@gmail.com?subject=' + encodeURIComponent('🌞 Devis Gruissan — ' + pn + ' ' + nm) + '&body=' + encodeURIComponent(body);
- a.style.display = 'none';
- document.body.appendChild(a);
- a.click;
- document.body.removeChild(a);
+    const a = document.createElement('a');
+    a.href = 'mailto:contact.energiesolaire66@gmail.com?subject=' + encodeURIComponent('🌞 Devis Gruissan — ' + pn + ' ' + nm) + '&body=' + encodeURIComponent(body);
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
- document.getElementById('fc-inner').style.display = 'none';
- document.getElementById('fc-suc').style.display = 'block';
- });
+    document.getElementById('fc-inner').style.display = 'none';
+    document.getElementById('fc-suc').style.display = 'block';
+  });
 
- /* share button */
- (function() {
- var btn = document.getElementById('shareBtn');
- if (!btn) return;
- btn.addEventListener('click', async function() {
- var data = { title: document.title, text: 'Panneaux solaires dans les Pyrénées-Orientales — devis gratuit', url: location.href };
- if (navigator.share) {
- try { await navigator.share(data); } catch(e) {}
- } else {
- try { await navigator.clipboard.writeText(location.href); } catch(e) {}
- var t = document.createElement('div');
- t.className = 'share-toast';
- t.textContent = '✓ Lien copié !';
- document.body.appendChild(t);
- requestAnimationFrame(function() { t.classList.add('show'); });
- setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 300); }, 2200);
- }
- });
- });
+  /* share button */
+  (function() {
+    var btn = document.getElementById('shareBtn');
+    if (!btn) return;
+    btn.addEventListener('click', async function() {
+      var data = { title: document.title, text: 'Panneaux solaires dans les Pyrénées-Orientales — devis gratuit', url: location.href };
+      if (navigator.share) {
+        try { await navigator.share(data); } catch(e) {}
+      } else {
+        try { await navigator.clipboard.writeText(location.href); } catch(e) {}
+        var t = document.createElement('div');
+        t.className = 'share-toast';
+        t.textContent = '✓ Lien copié !';
+        document.body.appendChild(t);
+        requestAnimationFrame(function() { t.classList.add('show'); });
+        setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 300); }, 2200);
+      }
+    });
+  })();
 </script>
  <script>
- if ('serviceWorker' in navigator) {
- window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
- }
- </script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
 </body>
 </html>

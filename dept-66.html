@@ -638,27 +638,27 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
  <p style="font-size:.7rem;color:#475569;margin-top:16px;text-align:center;">Estimation indicative · Électricité · Installation /kWc · Devis précis sous 24h</p>
 </div>
 <script>
-(function() {
- var irr=1720;
- var kwcEl=document.getElementById('kwc-slider');
- var autoEl=document.getElementById('auto-slider');
- function update{
- var kwc=parseFloat(kwcEl.value);
- var autoRate=parseInt(autoEl.value)/100;
- document.getElementById('kwc-val').textContent=kwc.toLocaleString('fr-FR')+(kwc%1?'':'')+' kWc';
- document.getElementById('auto-val').textContent=Math.round(autoRate*100)+' %';
- var prod=Math.round(irr*0.82*kwc);
- var sav=Math.round(prod*autoRate*0.22+(prod*(1-autoRate)*0.13));
- var cost=Math.round(3300*kwc);
- var roi=sav>0?Math.round(cost/sav*10)/10:0;
- document.getElementById('calc-prod').textContent=prod.toLocaleString('fr-FR');
- document.getElementById('calc-sav').textContent = 'Devis gratuit';
- document.getElementById('calc-roi').textContent=roi.toLocaleString('fr-FR')+' ans';
- }
- kwcEl.addEventListener('input',update);
- autoEl.addEventListener('input',update);
- update;
-});
+(function(){
+  var irr=1720;
+  var kwcEl=document.getElementById('kwc-slider');
+  var autoEl=document.getElementById('auto-slider');
+  function update(){
+    var kwc=parseFloat(kwcEl.value);
+    var autoRate=parseInt(autoEl.value)/100;
+    document.getElementById('kwc-val').textContent=kwc.toLocaleString('fr-FR')+(kwc%1?'':'')+' kWc';
+    document.getElementById('auto-val').textContent=Math.round(autoRate*100)+' %';
+    var prod=Math.round(irr*0.82*kwc);
+    var sav=Math.round(prod*autoRate*0.22+(prod*(1-autoRate)*0.13));
+    var cost=Math.round(3300*kwc);
+    var roi=sav>0?Math.round(cost/sav*10)/10:0;
+    document.getElementById('calc-prod').textContent=prod.toLocaleString('fr-FR');
+    document.getElementById('calc-sav').textContent=sav.toLocaleString('fr-FR')+' €';
+    document.getElementById('calc-roi').textContent=roi.toLocaleString('fr-FR')+' ans';
+  }
+  kwcEl.addEventListener('input',update);
+  autoEl.addEventListener('input',update);
+  update();
+})();
 </script>
  </div>
 </section>
@@ -1164,77 +1164,77 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 
 <script>
 
-(function() {
- var hbg=document.getElementById('hbg');
- var mobn=document.getElementById('mob-nav');
- if(hbg&&mobn){
- hbg.addEventListener('click',function() {
- var open=hbg.classList.toggle('open');
- mobn.classList.toggle('open');
- hbg.setAttribute('aria-expanded',String(open));
- });
- mobn.querySelectorAll('a').forEach(function(a){
- a.addEventListener('click',function() {
- hbg.classList.remove('open');
- mobn.classList.remove('open');
- hbg.setAttribute('aria-expanded','false');
- });
- });
- }
-});
+(function(){
+  var hbg=document.getElementById('hbg');
+  var mobn=document.getElementById('mob-nav');
+  if(hbg&&mobn){
+    hbg.addEventListener('click',function(){
+      var open=hbg.classList.toggle('open');
+      mobn.classList.toggle('open');
+      hbg.setAttribute('aria-expanded',String(open));
+    });
+    mobn.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        hbg.classList.remove('open');
+        mobn.classList.remove('open');
+        hbg.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
 function faq(btn){
- const ans=btn.nextElementSibling;
- const open=btn.classList.contains('open');
- document.querySelectorAll('.faq-q.open').forEach(q=>{
- q.classList.remove('open');q.setAttribute('aria-expanded','false');
- q.nextElementSibling.classList.remove('open');q.nextElementSibling.hidden=true;
- });
- if(!open){btn.classList.add('open');btn.setAttribute('aria-expanded','true');
- ans.classList.add('open');ans.hidden=false;}
+  const ans=btn.nextElementSibling;
+  const open=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q=>{
+    q.classList.remove('open');q.setAttribute('aria-expanded','false');
+    q.nextElementSibling.classList.remove('open');q.nextElementSibling.hidden=true;
+  });
+  if(!open){btn.classList.add('open');btn.setAttribute('aria-expanded','true');
+    ans.classList.add('open');ans.hidden=false;}
 }
 document.getElementById('lf').addEventListener('submit',async function(e){
- e.preventDefault;
- const pn=document.getElementById('lf-pn').value.trim;
- const nm=document.getElementById('lf-nm').value.trim;
- const em=document.getElementById('lf-em').value.trim;
- const tl=document.getElementById('lf-tl').value.trim;
- const rgpd=document.getElementById('lf-rgpd').checked;
- const cTel=document.getElementById('lf-tel-ok').checked;
- const pj=document.getElementById('lf-pj').value.trim||'—';
- const city=document.getElementById('lf-city')?document.getElementById('lf-city').value:'';
- const se=(id,show)=>{const el=document.getElementById(id);const err=document.getElementById(id+'-err');
- if(el)el.classList.toggle('err',show);if(err)err.style.display=show?'block':'none';};
- let ok=true;
- if(!pn){se('lf-pn',true);ok=false;}else se('lf-pn',false);
- if(!nm){se('lf-nm',true);ok=false;}else se('lf-nm',false);
- const emOk=em&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
- if(!emOk){se('lf-em',true);ok=false;}else se('lf-em',false);
- if(!tl||tl.replace(/\D/g,'').length<8){se('lf-tl',true);ok=false;}else se('lf-tl',false);
- document.getElementById('lf-rgpd-err').style.display=rgpd?'none':'block';if(!rgpd)ok=false;
- document.getElementById('lf-tel-ok-err').style.display=cTel?'none':'block';if(!cTel)ok=false;
- if(!ok)return;
- const btn=this.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Envoi en cours…';
- try{
- const res=await fetch('https://api.web3forms.com/submit',{method:'POST',
- headers:{'Content-Type':'application/json','Accept':'application/json'},
- body:JSON.stringify({access_key:'02224188-7400-4bcb-8e85-6e2a926dd955',
- subject:'🌞 Devis '+city+' — '+pn+' '+nm,
- from_name:'Énergie Solaire 66',name:pn+' '+nm,email:em,
- phone:tl,message:'Ville: '+city+'\nProjet: '+pj,
- botcheck:false})});
- const data=await res.json;
- if(data.success){document.getElementById('fc-inner').style.display='none';
- document.getElementById('fc-suc').style.display='block';}
- else throw new Error('fail');
- }catch(err){btn.disabled=false;btn.textContent='⚡ Envoyer ma demande de devis';
- alert('Erreur lors de l\'envoi. Appelez-nous au 07 75 76 92 32.');}
+  e.preventDefault();
+  const pn=document.getElementById('lf-pn').value.trim();
+  const nm=document.getElementById('lf-nm').value.trim();
+  const em=document.getElementById('lf-em').value.trim();
+  const tl=document.getElementById('lf-tl').value.trim();
+  const rgpd=document.getElementById('lf-rgpd').checked;
+  const cTel=document.getElementById('lf-tel-ok').checked;
+  const pj=document.getElementById('lf-pj').value.trim()||'—';
+  const city=document.getElementById('lf-city')?document.getElementById('lf-city').value:'';
+  const se=(id,show)=>{const el=document.getElementById(id);const err=document.getElementById(id+'-err');
+    if(el)el.classList.toggle('err',show);if(err)err.style.display=show?'block':'none';};
+  let ok=true;
+  if(!pn){se('lf-pn',true);ok=false;}else se('lf-pn',false);
+  if(!nm){se('lf-nm',true);ok=false;}else se('lf-nm',false);
+  const emOk=em&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
+  if(!emOk){se('lf-em',true);ok=false;}else se('lf-em',false);
+  if(!tl||tl.replace(/\D/g,'').length<8){se('lf-tl',true);ok=false;}else se('lf-tl',false);
+  document.getElementById('lf-rgpd-err').style.display=rgpd?'none':'block';if(!rgpd)ok=false;
+  document.getElementById('lf-tel-ok-err').style.display=cTel?'none':'block';if(!cTel)ok=false;
+  if(!ok)return;
+  const btn=this.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Envoi en cours…';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:'02224188-7400-4bcb-8e85-6e2a926dd955',
+        subject:'🌞 Devis '+city+' — '+pn+' '+nm,
+        from_name:'Énergie Solaire 66',name:pn+' '+nm,email:em,
+        phone:tl,message:'Ville: '+city+'\nProjet: '+pj,
+        botcheck:false})});
+    const data=await res.json();
+    if(data.success){document.getElementById('fc-inner').style.display='none';
+      document.getElementById('fc-suc').style.display='block';}
+    else throw new Error('fail');
+  }catch(err){btn.disabled=false;btn.textContent='⚡ Envoyer ma demande de devis';
+    alert('Erreur lors de l\'envoi. Appelez-nous au 07 75 76 92 32.');}
 });
 
 </script>
  <script>
- if ('serviceWorker' in navigator) {
- window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
- }
- </script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
 </body>
 </html>

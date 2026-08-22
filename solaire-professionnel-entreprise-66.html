@@ -1114,96 +1114,96 @@
 </div>
 
 <script>
- /* NAV MOBILE */
- const hbg = document.getElementById('hbg');
- const nm = document.getElementById('navmobile');
- hbg.addEventListener('click', () => {
- const open = nm.classList.toggle('open');
- hbg.classList.toggle('open', open);
- hbg.setAttribute('aria-expanded', open);
- });
- nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
- nm.classList.remove('open');
- hbg.classList.remove('open');
- hbg.setAttribute('aria-expanded', 'false');
- }));
+  /* NAV MOBILE */
+  const hbg = document.getElementById('hbg');
+  const nm  = document.getElementById('navmobile');
+  hbg.addEventListener('click', () => {
+    const open = nm.classList.toggle('open');
+    hbg.classList.toggle('open', open);
+    hbg.setAttribute('aria-expanded', open);
+  });
+  nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nm.classList.remove('open');
+    hbg.classList.remove('open');
+    hbg.setAttribute('aria-expanded', 'false');
+  }));
 
- /* FAQ */
- document.querySelectorAll('.faq-q').forEach(btn => {
- btn.addEventListener('click', () => {
- const item = btn.closest('.faq-item');
- const open = !item.classList.contains('open');
- document.querySelectorAll('.faq-item.open').forEach(el => {
- el.classList.remove('open');
- el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
- });
- if (open) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
- });
- });
+  /* FAQ */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const open = !item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (open) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
 
- /* FORMULAIRE — Web3Forms */
- document.getElementById('devisform').addEventListener('submit', async function(e) {
- e.preventDefault;
- const f = this;
- const prn = f.prenom.value.trim;
- const nom = f.nom.value.trim;
- const societe = f.societe.value.trim;
- const tel = f.tel.value.trim;
- const em = f.email.value.trim;
- const adr = f.adresse.value.trim;
- const cp = f.cp.value.trim;
- const typ = f.type.value;
- const msg = f.msg.value.trim;
- const rgpd = f.rgpd.checked;
- if (!prn || !nom || !societe || !tel || !em || !adr || !cp) {
- alert('Merci de remplir tous les champs obligatoires (marqués *).');
- return;
- }
- if (!rgpd) {
- alert('Merci d\'accepter la politique de confidentialité pour envoyer votre demande.');
- return;
- }
- const btn = f.querySelector('button[type=submit]');
- btn.disabled = true;
- btn.textContent = 'Envoi en cours…';
- try {
- const res = await fetch('https://api.web3forms.com/submit', {
- method: 'POST',
- headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
- body: JSON.stringify({
- access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
- subject: `⚡ Devis PRO — ${societe} — ${prn} ${nom} (${cp})`,
- from_name: 'Énergie Solaire 66 — PRO',
- name: `${prn} ${nom}`,
- email: em,
- replyto: em,
- phone: tel,
- company: societe,
- address: adr,
- postal_code: cp,
- activity_type: typ || 'Non précisé',
- message: msg || '(aucun message)',
- botcheck: ''
- })
- });
- const json = await res.json;
- if (json.success) {
- f.style.display = 'none';
- document.getElementById('formsuccess').style.display = 'block';
- } else {
- throw new Error(json.message);
- }
- } catch(err) {
- btn.disabled = false;
- btn.textContent = 'Envoyer ma demande — Réponse sous 48h';
- alert('Une erreur est survenue. Appelez-nous directement au 07 75 76 92 32.');
- }
- });
+  /* FORMULAIRE — Web3Forms */
+  document.getElementById('devisform').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const f = this;
+    const prn     = f.prenom.value.trim();
+    const nom     = f.nom.value.trim();
+    const societe = f.societe.value.trim();
+    const tel     = f.tel.value.trim();
+    const em      = f.email.value.trim();
+    const adr     = f.adresse.value.trim();
+    const cp      = f.cp.value.trim();
+    const typ     = f.type.value;
+    const msg     = f.msg.value.trim();
+    const rgpd    = f.rgpd.checked;
+    if (!prn || !nom || !societe || !tel || !em || !adr || !cp) {
+      alert('Merci de remplir tous les champs obligatoires (marqués *).');
+      return;
+    }
+    if (!rgpd) {
+      alert('Merci d\'accepter la politique de confidentialité pour envoyer votre demande.');
+      return;
+    }
+    const btn = f.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
+          subject: `⚡ Devis PRO — ${societe} — ${prn} ${nom} (${cp})`,
+          from_name: 'Énergie Solaire 66 — PRO',
+          name: `${prn} ${nom}`,
+          email: em,
+          replyto: em,
+          phone: tel,
+          company: societe,
+          address: adr,
+          postal_code: cp,
+          activity_type: typ || 'Non précisé',
+          message: msg || '(aucun message)',
+          botcheck: ''
+        })
+      });
+      const json = await res.json();
+      if (json.success) {
+        f.style.display = 'none';
+        document.getElementById('formsuccess').style.display = 'block';
+      } else {
+        throw new Error(json.message);
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma demande — Réponse sous 48h';
+      alert('Une erreur est survenue. Appelez-nous directement au 07 75 76 92 32.');
+    }
+  });
 
- /* SERVICE WORKER */
- if ('serviceWorker' in navigator) {
- window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
- }
+  /* SERVICE WORKER */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+  }
 </script>
 </body>
 </html>

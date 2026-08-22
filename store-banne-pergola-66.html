@@ -513,35 +513,35 @@
 </div>
 
 <script>
- document.querySelectorAll('.faq-q').forEach(btn => {
- btn.addEventListener('click', () => {
- const item = btn.closest('.faq-item');
- const open = !item.classList.contains('open');
- document.querySelectorAll('.faq-item.open').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
- if (open) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
- });
- });
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const open = !item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+      if (open) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
 
- document.getElementById('devisform').addEventListener('submit', async function(e) {
- e.preventDefault;
- const f = this;
- const prn = f.prenom.value.trim, nom = f.nom.value.trim, tel = f.tel.value.trim, em = f.email.value.trim, adr = f.adresse.value.trim, cp = f.cp.value.trim, rgpd = f.rgpd.checked;
- if (!prn || !nom || !tel || !em || !adr || !cp) { alert('Merci de remplir tous les champs obligatoires.'); return; }
- if (!rgpd) { alert("Merci d'accepter la politique de confidentialité."); return; }
- const btn = f.querySelector('button[type=submit]');
- btn.disabled = true; btn.textContent = 'Envoi en cours…';
- try {
- const res = await fetch('https://api.web3forms.com/submit', {
- method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
- body: JSON.stringify({ access_key:'02224188-7400-4bcb-8e85-6e2a926dd955', subject:`🏠 Devis store/pergola — ${prn} ${nom} (${cp})`, from_name:'Énergie Solaire 66', name:`${prn} ${nom}`, email:em, replyto:em, phone:tel, address:adr, postal_code:cp, project_type:f.type.value||'Non précisé', message:f.msg.value.trim||'(aucun message)', botcheck:'' })
- });
- const json = await res.json;
- if (json.success) { f.style.display='none'; document.getElementById('formsuccess').style.display='block'; }
- else throw new Error(json.message);
- } catch(err) { btn.disabled=false; btn.textContent='Envoyer ma demande — Réponse sous 48h'; alert('Une erreur est survenue. Appelez-nous au 07 75 76 92 32.'); }
- });
+  document.getElementById('devisform').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const f = this;
+    const prn = f.prenom.value.trim(), nom = f.nom.value.trim(), tel = f.tel.value.trim(), em = f.email.value.trim(), adr = f.adresse.value.trim(), cp = f.cp.value.trim(), rgpd = f.rgpd.checked;
+    if (!prn || !nom || !tel || !em || !adr || !cp) { alert('Merci de remplir tous les champs obligatoires.'); return; }
+    if (!rgpd) { alert("Merci d'accepter la politique de confidentialité."); return; }
+    const btn = f.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({ access_key:'02224188-7400-4bcb-8e85-6e2a926dd955', subject:`🏠 Devis store/pergola — ${prn} ${nom} (${cp})`, from_name:'Énergie Solaire 66', name:`${prn} ${nom}`, email:em, replyto:em, phone:tel, address:adr, postal_code:cp, project_type:f.type.value||'Non précisé', message:f.msg.value.trim()||'(aucun message)', botcheck:'' })
+      });
+      const json = await res.json();
+      if (json.success) { f.style.display='none'; document.getElementById('formsuccess').style.display='block'; }
+      else throw new Error(json.message);
+    } catch(err) { btn.disabled=false; btn.textContent='Envoyer ma demande — Réponse sous 48h'; alert('Une erreur est survenue. Appelez-nous au 07 75 76 92 32.'); }
+  });
 
- if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+  if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
 </script>
 </body>
 </html>
