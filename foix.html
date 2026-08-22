@@ -741,17 +741,17 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 100px;}
 
 <script>
 
-(function{
+(function() {
  var hbg=document.getElementById('hbg');
  var mobn=document.getElementById('mob-nav');
  if(hbg&&mobn){
- hbg.addEventListener('click',function{
+ hbg.addEventListener('click',function() {
  var open=hbg.classList.toggle('open');
  mobn.classList.toggle('open');
  hbg.setAttribute('aria-expanded',String(open));
  });
  mobn.querySelectorAll('a').forEach(function(a){
- a.addEventListener('click',function{
+ a.addEventListener('click',function() {
  hbg.classList.remove('open');
  mobn.classList.remove('open');
  hbg.setAttribute('aria-expanded','false');
