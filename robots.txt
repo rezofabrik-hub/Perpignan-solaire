@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /sw.js
+Disallow: /manifest.json
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
 
 Sitemap: https://solaire-66.fr/sitemap.xml
