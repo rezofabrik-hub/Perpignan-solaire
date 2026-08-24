@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Partenaires PS">
+<meta name="theme-color" content="#F5A81C">
+<title>Espace Partenaires — Perpignan Solaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amber:#F5A81C;--amber-d:#D4900F;--amber-l:#FEF3C7;
+  --navy:#0B1E40;--navy-l:#E8EEF7;
+  --green:#059669;--green-l:#D1FAE5;
+  --red:#DC2626;--red-l:#FEE2E2;
+  --blue:#2563EB;--blue-l:#DBEAFE;
+  --orange:#D97706;--orange-l:#FEF3C7;
+  --bg:#F2F4F8;--surface:#fff;--border:#E2E6EF;
+  --text:#111827;--muted:#6B7280;
+  --sh:0 1px 4px rgba(0,0,0,.08);
+  --f:'Inter',-apple-system,sans-serif;--r:12px;--rs:8px;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#0D1117;--surface:#161B22;--border:#30363D;
+  --text:#E6EDF3;--muted:#8B949E;
+  --amber-l:#3D2800;--green-l:#064E3B;--red-l:#7F1D1D;--blue-l:#1E3A5F;--orange-l:#78350F;--navy-l:#1C2B4A;
+  --sh:0 1px 4px rgba(0,0,0,.3);
+}}
+:root[data-theme=dark]{
+  --bg:#0D1117;--surface:#161B22;--border:#30363D;
+  --text:#E6EDF3;--muted:#8B949E;
+  --amber-l:#3D2800;--green-l:#064E3B;--red-l:#7F1D1D;--blue-l:#1E3A5F;--orange-l:#78350F;--navy-l:#1C2B4A;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--f);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* APP SHELL */
+#app{height:100dvh;display:flex;flex-direction:column;max-width:480px;margin:0 auto;position:relative}
+
+/* TOPBAR */
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px 10px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;z-index:5}
+.tl{display:flex;align-items:center;gap:9px}
+.t-icon{width:34px;height:34px;background:var(--amber);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.t-brand{font-weight:700;font-size:14px;line-height:1.2}
+.t-sub{font-size:10px;color:var(--muted)}
+.t-user{font-size:11px;font-weight:600;color:var(--muted);max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right}
+
+/* SCREEN */
+.screen{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 90px}
+
+/* TABBAR */
+.tabbar{background:var(--surface);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);flex-shrink:0;position:sticky;bottom:0;z-index:5;padding-bottom:env(safe-area-inset-bottom)}
+.tab-btn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px 12px;background:none;border:none;cursor:pointer;color:var(--muted);font-size:9px;font-family:var(--f);font-weight:600;letter-spacing:.02em;transition:color .15s;text-transform:uppercase}
+.tab-btn.active{color:var(--amber)}
+.tab-icon{font-size:22px;line-height:1}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:16px;margin-bottom:12px}
+.card-title{font-weight:700;font-size:15px;margin-bottom:3px}
+.card-sub{font-size:12px;color:var(--muted)}
+
+/* STATS */
+.stats2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);box-shadow:var(--sh);padding:14px 12px}
+.stat-n{font-size:30px;font-weight:800;line-height:1;margin-bottom:3px;font-variant-numeric:tabular-nums}
+.stat-l{font-size:11px;color:var(--muted);font-weight:500}
+.stat.highlight{background:linear-gradient(135deg,var(--amber),var(--amber-d));border:none}
+.stat.highlight .stat-n,.stat.highlight .stat-l{color:var(--navy)}
+
+/* FORM */
+.fg{margin-bottom:13px}
+.fl{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:5px}
+.fi,.fs,.ft{width:100%;padding:13px 14px;font-size:16px;font-family:var(--f);border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);-webkit-appearance:none;appearance:none;transition:border-color .15s;min-height:48px}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--amber)}
+.ft{min-height:80px;resize:vertical}
+.sw{position:relative}.sw::after{content:'▾';position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted)}
+
+/* BUTTONS */
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:14px;border:none;border-radius:var(--rs);font-size:15px;font-weight:600;font-family:var(--f);cursor:pointer;transition:opacity .15s,transform .1s;min-height:48px;text-decoration:none}
+.btn:active{opacity:.85;transform:scale(.98)}
+.btn-primary{background:var(--amber);color:var(--navy)}
+.btn-secondary{background:var(--surface);color:var(--text);border:1.5px solid var(--border)}
+.btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--border)}
+.btn-danger{background:var(--red-l);color:var(--red)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-sm{padding:9px 14px;font-size:13px;min-height:38px;width:auto}
+.btn-row{display:flex;gap:8px;margin-top:8px}
+.btn-row .btn{flex:1}
+
+/* STATUS CHIPS */
+.chip{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.chip-Nouveau{background:var(--blue-l);color:var(--blue)}
+.chip-Contacté{background:var(--orange-l);color:var(--orange)}
+.chip-Devis{background:var(--amber-l);color:var(--amber-d)}
+.chip-Signé{background:var(--green-l);color:var(--green)}
+.chip-Perdu{background:var(--red-l);color:var(--red)}
+
+/* LEAD CARDS */
+.lcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:14px;margin-bottom:10px}
+.lcard-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.lcard-name{font-weight:700;font-size:15px}
+.lcard-meta{font-size:12px;color:var(--muted);margin-top:2px}
+.lcard-f{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.commission{font-size:13px;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums}
+.ldate{font-size:11px;color:var(--muted)}
+
+/* ADMIN STATUS PICKER */
+.sspicker{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sbtn{padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);font-size:11px;font-weight:600;font-family:var(--f);cursor:pointer;color:var(--muted);transition:all .15s}
+.sbtn.s-Nouveau{background:var(--blue-l);color:var(--blue);border-color:var(--blue)}
+.sbtn.s-Contacté{background:var(--orange-l);color:var(--orange);border-color:var(--orange)}
+.sbtn.s-Devis{background:var(--amber-l);color:var(--amber-d);border-color:var(--amber-d)}
+.sbtn.s-Signé{background:var(--green-l);color:var(--green);border-color:var(--green)}
+.sbtn.s-Perdu{background:var(--red-l);color:var(--red);border-color:var(--red)}
+
+/* SETUP / LOGIN */
+.fullscreen{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100dvh;padding:32px 20px;text-align:center;background:var(--bg)}
+.setup-logo{width:80px;height:80px;background:var(--amber);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 22px}
+.setup-title{font-size:28px;font-weight:800;margin-bottom:6px;letter-spacing:-.02em}
+.setup-sub{color:var(--muted);font-size:14px;margin-bottom:32px;line-height:1.6}
+.setup-form{width:100%;max-width:340px}
+.token-hint{background:var(--navy-l);border-radius:var(--rs);padding:12px 14px;margin-bottom:14px;font-size:12px;line-height:1.6;color:var(--text);text-align:left}
+.token-hint strong{display:block;margin-bottom:4px;font-weight:700}
+
+/* TOAST */
+.toast{position:fixed;bottom:calc(70px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(12px);background:var(--navy);color:#fff;padding:11px 20px;border-radius:24px;font-size:13px;font-weight:600;opacity:0;transition:all .25s;z-index:50;white-space:nowrap;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--green)}
+.toast.err{background:var(--red)}
+
+/* MISC */
+.section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:16px 0 8px 2px}
+.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.empty-icon{font-size:48px;margin-bottom:10px}
+.empty-text{font-size:14px;line-height:1.6}
+.divider{height:1px;background:var(--border);margin:14px 0}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.info-row:last-child{border-bottom:none}
+.info-val{font-weight:700}
+.info-val.green{color:var(--green)}
+.admin-bar{background:var(--navy);color:#fff;padding:8px 16px;font-size:11px;font-weight:700;text-align:center;letter-spacing:.07em;text-transform:uppercase;flex-shrink:0}
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;text-align:center;color:var(--muted);margin-bottom:12px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--amber-l);color:var(--amber-d)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast"></div>
+
+<script>
+/* ── CONFIG ─────────────────────────────────────────── */
+const BASE  = 'appB8L8DrO9yfom8J';
+const TABLE = 'tblzzNYYqlQ9W0sFl';
+const AURL  = `https://api.airtable.com/v0/${BASE}/${TABLE}`;
+const F = {
+  client:'fldYamVS1TRPupkKF', partenaire:'fldVt7pfhYbkVfurJ',
+  telephone:'fldvhlg0sxj9PNH5F', ville:'fldvePrXHWHbYr4Rb',
+  projet:'fldZx5n2xpf87eZ1C', notes:'fldTh9woYHxJjL72j',
+  statut:'fldo02kQdWk7zDA59', commission:'flddq1lRAMY9c3DoD',
+  date:'fldb4ybCead6rZgbG'
+};
+const STATUTS = ['Nouveau','Contacté','Devis envoyé','Signé ✓','Perdu'];
+const STATUT_SHORT = {
+  'Nouveau':'Nouveau','Contacté':'Contacté','Devis envoyé':'Devis','Signé ✓':'Signé','Perdu':'Perdu'
+};
+const PROJETS = ['3 kWc','6 kWc','9 kWc','12 kWc','Entreprise / Grand projet','Autre'];
+
+/* ── LOCAL STORAGE ──────────────────────────────────── */
+const ls = {
+  get: k => { try { return localStorage.getItem(k) } catch { return null } },
+  set: (k,v) => { try { localStorage.setItem(k,String(v)) } catch {} },
+  rm:  k => { try { localStorage.removeItem(k) } catch {} },
+  json: k => { try { return JSON.parse(localStorage.getItem(k)||'null') } catch { return null } },
+  setj: (k,v) => { try { localStorage.setItem(k,JSON.stringify(v)) } catch {} }
+};
+
+function getToken()   { return ls.get('ps_token') || '' }
+function getName()    { return ls.get('ps_name') || '' }
+function isAdmin()    { return ls.get('ps_admin') === '1' }
+function setAdmin(v)  { v ? ls.set('ps_admin','1') : ls.rm('ps_admin') }
+function getLocalLeads() { return ls.json('ps_leads') || [] }
+function saveLocalLead(l) {
+  const arr = getLocalLeads();
+  const idx = arr.findIndex(x => x.id === l.id);
+  if (idx >= 0) arr[idx] = l; else arr.unshift(l);
+  ls.setj('ps_leads', arr);
+}
+
+/* ── AIRTABLE API ───────────────────────────────────── */
+async function atFetch(method, path, body) {
+  const tok = getToken();
+  if (!tok) throw new Error('no_token');
+  const res = await fetch(AURL + (path||''), {
+    method, headers: {'Authorization':'Bearer '+tok, 'Content-Type':'application/json'},
+    body: body ? JSON.stringify(body) : undefined
+  });
+  const data = await res.json();
+  if (!res.ok) throw Object.assign(new Error(data.error?.message||'API error'), {code:data.error?.type, status:res.status});
+  return data;
+}
+
+async function createLead(fields) {
+  return atFetch('POST', '', { records: [{ fields }] });
+}
+
+async function getMyLeads(partnerName) {
+  const filter = encodeURIComponent(`{${F.partenaire}}="${partnerName.replace(/"/g,'\\"')}"`);
+  const sort = `&sort[0][field]=${F.date}&sort[0][direction]=desc`;
+  return atFetch('GET', `?filterByFormula=${filter}${sort}`);
+}
+
+async function getAllLeads() {
+  const sort = `?sort[0][field]=${F.date}&sort[0][direction]=desc`;
+  return atFetch('GET', sort);
+}
+
+async function updateLead(recordId, fields) {
+  return atFetch('PATCH', '/'+recordId, { fields });
+}
+
+/* ── HELPERS ────────────────────────────────────────── */
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtDate(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'});
+}
+function chip(statut) {
+  const key = STATUT_SHORT[statut] || statut;
+  return `<span class="chip chip-${key}">${esc(statut)}</span>`;
+}
+function commissionFor(statut, settings) {
+  settings = settings || { devis: 50, signe: 300 };
+  if (statut === 'Devis envoyé') return settings.devis;
+  if (statut === 'Signé ✓') return settings.signe;
+  return 0;
+}
+function getSettings() {
+  return ls.json('ps_settings') || { devis: 50, signe: 300 };
+}
+
+let _tab = 'home';
+let _leadsCache = null;
+let _leadsLoading = false;
+
+/* ── TOAST ──────────────────────────────────────────── */
+let _tt;
+function toast(msg, type='') {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' '+type : '');
+  clearTimeout(_tt);
+  _tt = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ── RENDER ─────────────────────────────────────────── */
+function render() {
+  const app = document.getElementById('app');
+  if (!app) return;
+  const name = getName();
+  const token = getToken();
+
+  if (!name || !token) { app.innerHTML = setupScreen(); return; }
+
+  if (isAdmin()) {
+    app.innerHTML = adminShell();
+  } else {
+    app.innerHTML = partnerShell(name);
+  }
+  bindEvents();
+}
+
+/* ── SETUP SCREEN ───────────────────────────────────── */
+function setupScreen() {
+  return `
+  <div class="fullscreen">
+    <div class="setup-logo">☀️</div>
+    <h1 class="setup-title">Espace Partenaires</h1>
+    <p class="setup-sub">Perpignan Solaire · Programme apporteurs d'affaires<br>Commission jusqu'à <strong>300 €</strong> par installation</p>
+    <form class="setup-form" id="setup-form">
+      <div class="fg">
+        <label class="fl">Ton prénom et nom</label>
+        <input class="fi" type="text" id="s-name" placeholder="Jean Dupont" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label class="fl">Code d'accès partenaire</label>
+        <div class="token-hint"><strong>Comment l'obtenir ?</strong>Demande le code à Perpignan Solaire par WhatsApp au <strong>07 75 76 92 32</strong>. Tu ne le saisiras qu'une seule fois.</div>
+        <input class="fi" type="password" id="s-token" placeholder="patXXXXXX…" required autocomplete="off" style="font-family:monospace;letter-spacing:.05em">
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top:4px">Accéder à mon espace ☀️</button>
+    </form>
+    <p style="font-size:11px;color:var(--muted);margin-top:18px">Perpignan Solaire · SARL Rezofabrik · RGE QualiPV</p>
+  </div>`;
+}
+
+/* ── PARTNER SHELL ──────────────────────────────────── */
+function partnerShell(name) {
+  const screens = { home: homeScreen(name), new: newLeadScreen(), leads: myLeadsScreen(name), profile: profileScreen(name) };
+  return `
+    <header class="topbar">
+      <div class="tl">
+        <div class="t-icon">☀️</div>
+        <div><div class="t-brand">Perpignan Solaire</div><div class="t-sub">Espace Partenaires</div></div>
+      </div>
+      <div class="t-user">${esc(name)}</div>
+    </header>
+    ${screens[_tab] || screens.home}
+    <nav class="tabbar">
+      <button class="tab-btn ${_tab==='home'?'active':''}" onclick="switchTab('home')">
+        <span class="tab-icon">🏠</span>Accueil</button>
+      <button class="tab-btn ${_tab==='new'?'active':''}" onclick="switchTab('new')">
+        <span class="tab-icon">➕</span>Nouveau</button>
+      <button class="tab-btn ${_tab==='leads'?'active':''}" onclick="switchTab('leads')">
+        <span class="tab-icon">📋</span>Mes leads</button>
+      <button class="tab-btn ${_tab==='profile'?'active':''}" onclick="switchTab('profile')">
+        <span class="tab-icon">👤</span>Profil</button>
+    </nav>`;
+}
+
+/* ── HOME SCREEN ────────────────────────────────────── */
+function homeScreen(name) {
+  const settings = getSettings();
+  const local = getLocalLeads().filter(l => l.partenaire === name);
+  const signed = local.filter(l => l.statut === 'Signé ✓').length;
+  const commissions = local.reduce((s,l) => s + (l.commission||0), 0);
+  const recent = local.slice(0,3);
+
+  return `<div class="screen">
+    <div class="stats2">
+      <div class="stat highlight">
+        <div class="stat-n">${commissions} €</div>
+        <div class="stat-l">Commissions gagnées</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green)">${signed}</div>
+        <div class="stat-l">Installations signées</div>
+      </div>
+    </div>
+    <div class="stats2">
+      <div class="stat">
+        <div class="stat-n">${local.length}</div>
+        <div class="stat-l">Leads soumis</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--amber)">${settings.signe} €</div>
+        <div class="stat-l">Par installation</div>
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--amber-l);border-color:var(--amber);margin-bottom:14px">
+      <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:6px">💡 Comment gagner des commissions ?</div>
+      <div style="font-size:13px;line-height:1.7;color:var(--navy)">
+        1. Soumets les coordonnées d'un client intéressé par le solaire<br>
+        2. On le contacte dans les <strong>24h</strong><br>
+        3. Devis accepté → <strong>${settings.devis} €</strong> pour toi<br>
+        4. Installation signée → <strong>${settings.signe} €</strong> pour toi 🎉
+      </div>
+    </div>
+
+    <button class="btn btn-primary" style="margin-bottom:14px" onclick="switchTab('new')">➕ Soumettre un nouveau lead</button>
+
+    ${recent.length ? `
+      <div class="section-label">Mes derniers leads</div>
+      ${recent.map(l => leadCard(l, false, false)).join('')}
+    ` : `
+      <div class="empty" style="padding:30px 20px">
+        <div class="empty-icon">☀️</div>
+        <div class="empty-text">Aucun lead pour l'instant.<br>Commence à soumettre des contacts !</div>
+      </div>
+    `}
+  </div>`;
+}
+
+/* ── NEW LEAD SCREEN ────────────────────────────────── */
+function newLeadScreen() {
+  return `<div class="screen">
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-title">Nouveau lead</div>
+      <div class="card-sub">Remplis les infos du client potentiel · On le contacte sous 24h</div>
+    </div>
+    <form id="lead-form" onsubmit="submitLead(event)">
+      <div class="fg">
+        <label class="fl">Nom du client *</label>
+        <input class="fi" type="text" name="client" placeholder="Jean Martin" required autocomplete="off">
+      </div>
+      <div class="fg">
+        <label class="fl">Téléphone *</label>
+        <input class="fi" type="tel" name="telephone" placeholder="06 12 34 56 78" required autocomplete="off">
+      </div>
+      <div class="fg">
+        <label class="fl">Ville *</label>
+        <input class="fi" type="text" name="ville" placeholder="Perpignan" required autocomplete="off">
+      </div>
+      <div class="fg">
+        <label class="fl">Type de projet</label>
+        <div class="sw">
+          <select class="fs" name="projet">
+            ${PROJETS.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl">Notes (facultatif)</label>
+        <textarea class="ft" name="notes" placeholder="Type de toiture, propriétaire ou locataire, projet urgent, autre info utile…"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submit-btn">⚡ Soumettre le lead</button>
+    </form>
+  </div>`;
+}
+
+/* ── MY LEADS SCREEN ────────────────────────────────── */
+function myLeadsScreen(name) {
+  const local = getLocalLeads().filter(l => l.partenaire === name);
+  if (!local.length) return `<div class="screen">
+    <div class="empty">
+      <div class="empty-icon">📋</div>
+      <div class="empty-text">Aucun lead soumis.<br>Utilise l'onglet <strong>Nouveau</strong> pour ajouter un contact.</div>
+    </div>
+  </div>`;
+
+  return `<div class="screen">
+    <div class="section-label">${local.length} lead${local.length>1?'s':''} soumis</div>
+    <button class="btn btn-secondary btn-sm" style="margin-bottom:12px" onclick="refreshLeads()">🔄 Actualiser les statuts</button>
+    ${local.map(l => leadCard(l, false, false)).join('')}
+    <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:8px">Les statuts sont mis à jour par l'équipe Perpignan Solaire</p>
+  </div>`;
+}
+
+/* ── PROFILE SCREEN ─────────────────────────────────── */
+function profileScreen(name) {
+  const settings = getSettings();
+  const local = getLocalLeads().filter(l => l.partenaire === name);
+  const signed = local.filter(l => l.statut === 'Signé ✓').length;
+  const commissions = local.reduce((s,l) => s + (l.commission||0), 0);
+
+  return `<div class="screen">
+    <div class="card" style="text-align:center">
+      <div style="width:60px;height:60px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px">👤</div>
+      <div style="font-weight:700;font-size:18px">${esc(name)}</div>
+      <div style="color:var(--muted);font-size:12px;margin-top:3px">Partenaire Perpignan Solaire</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:10px">Mon bilan</div>
+      <div class="info-row"><span>Leads soumis</span><span class="info-val">${local.length}</span></div>
+      <div class="info-row"><span>Installations signées</span><span class="info-val green">${signed}</span></div>
+      <div class="info-row"><span>Commissions gagnées</span><span class="info-val green">${commissions} €</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:10px">Grille de commissions</div>
+      <div class="info-row"><span>Devis envoyé</span><span class="badge">${settings.devis} €</span></div>
+      <div class="info-row"><span>Installation signée</span><span class="badge">${settings.signe} €</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:10px">Contact Perpignan Solaire</div>
+      <div style="font-size:13px;line-height:1.9">
+        📞 <strong><a href="tel:0775769232" style="color:var(--amber);text-decoration:none">07 75 76 92 32</a></strong><br>
+        📧 contact@perpignan-solaire.fr<br>
+        🌐 solaire-66.fr
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div id="admin-zone">
+      <button class="btn btn-ghost" onclick="showAdminEntry()">🔐 Accès administrateur</button>
+    </div>
+    <button class="btn btn-danger" style="margin-top:10px" onclick="logout()">Déconnexion</button>
+  </div>`;
+}
+
+/* ── ADMIN SHELL ─────────────────────────────────────── */
+function adminShell() {
+  return `
+    <div class="admin-bar">🔐 Mode Administrateur</div>
+    <header class="topbar">
+      <div class="tl">
+        <div class="t-icon">☀️</div>
+        <div><div class="t-brand">Perpignan Solaire</div><div class="t-sub" style="color:var(--amber)">Tableau de bord admin</div></div>
+      </div>
+      <button class="btn btn-sm btn-danger" style="width:auto;padding:6px 12px;font-size:11px" onclick="adminLogout()">Quitter</button>
+    </header>
+    <div class="screen" id="admin-screen">
+      <div class="loading-card">Chargement des leads… <span class="spinner"></span></div>
+    </div>`;
+}
+
+/* ── LEAD CARD ───────────────────────────────────────── */
+function leadCard(l, showPartner, allowStatusChange) {
+  const statShort = STATUT_SHORT[l.statut] || l.statut;
+  const statusBtns = allowStatusChange ? `
+    <div class="sspicker">
+      ${['Nouveau','Contacté','Devis envoyé','Signé ✓','Perdu'].map(s => {
+        const k = STATUT_SHORT[s]||s;
+        const active = l.statut === s ? ` s-${k}` : '';
+        return `<button class="sbtn${active}" onclick="adminUpdateStatus('${esc(l.id)}','${esc(s)}')">${esc(s)}</button>`;
+      }).join('')}
+    </div>
+  ` : '';
+  const commInput = allowStatusChange ? `
+    <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+      <label style="font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap">Commission €</label>
+      <input type="number" class="fi" style="padding:8px 10px;font-size:14px;height:36px;min-height:36px;max-width:110px"
+        value="${l.commission||0}" min="0" onchange="adminUpdateCommission('${esc(l.id)}',this.value)">
+    </div>
+  ` : '';
+
+  return `
+  <div class="lcard">
+    <div class="lcard-h">
+      <div>
+        <div class="lcard-name">${esc(l.client)}</div>
+        <div class="lcard-meta">📍 ${esc(l.ville)} · ${esc(l.projet)}${showPartner ? ' · <strong>'+esc(l.partenaire)+'</strong>' : ''}</div>
+        ${l.telephone ? `<div class="lcard-meta">📞 <a href="tel:${esc(l.telephone)}" style="color:var(--amber);text-decoration:none">${esc(l.telephone)}</a></div>` : ''}
+        ${l.notes ? `<div class="lcard-meta" style="margin-top:3px">💬 ${esc(l.notes)}</div>` : ''}
+      </div>
+      ${chip(l.statut)}
+    </div>
+    ${statusBtns}
+    ${commInput}
+    <div class="lcard-f">
+      <span class="commission">${(l.commission||0) > 0 ? '+ '+(l.commission||0)+' €' : '—'}</span>
+      <span class="ldate">${fmtDate(l.date)}</span>
+    </div>
+  </div>`;
+}
+
+/* ── ACTIONS ─────────────────────────────────────────── */
+function switchTab(tab) { _tab = tab; render(); }
+
+function bindEvents() {
+  const sf = document.getElementById('setup-form');
+  if (sf) sf.addEventListener('submit', setupSubmit);
+  const lf = document.getElementById('lead-form');
+  if (lf) lf.addEventListener('submit', submitLead);
+  if (isAdmin()) loadAdminLeads();
+}
+
+function setupSubmit(e) {
+  e.preventDefault();
+  const name  = document.getElementById('s-name')?.value.trim();
+  const token = document.getElementById('s-token')?.value.trim();
+  if (!name || !token) return;
+  ls.set('ps_name', name);
+  ls.set('ps_token', token);
+  _tab = 'home';
+  render();
+  toast('Bienvenue ' + name + ' !', 'ok');
+}
+
+async function submitLead(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Envoi…'; }
+
+  const form = e.target;
+  const fd = new FormData(form);
+  const name = getName();
+  const settings = getSettings();
+  const now = new Date().toISOString();
+
+  const fields = {
+    [F.client]:     fd.get('client').trim(),
+    [F.partenaire]: name,
+    [F.telephone]:  fd.get('telephone').trim(),
+    [F.ville]:      fd.get('ville').trim(),
+    [F.projet]:     fd.get('projet'),
+    [F.notes]:      (fd.get('notes')||'').trim(),
+    [F.statut]:     'Nouveau',
+    [F.commission]: 0,
+    [F.date]:       now
+  };
+
+  try {
+    const res = await createLead(fields);
+    const rec = res.records?.[0];
+    const local = {
+      id: rec?.id || 'local_'+Date.now(),
+      client: fields[F.client], partenaire: name,
+      ville: fields[F.ville], projet: fields[F.projet],
+      telephone: fields[F.telephone], notes: fields[F.notes],
+      statut: 'Nouveau', commission: 0, date: now
+    };
+    saveLocalLead(local);
+    _leadsCache = null;
+    toast('Lead soumis ! On contacte le client sous 24h 🎉', 'ok');
+    form.reset();
+    setTimeout(() => { _tab = 'leads'; render(); }, 900);
+  } catch (err) {
+    console.error(err);
+    const msg = err.status === 401 ? 'Code d\'accès invalide — vérifie avec Perpignan Solaire' :
+                err.status === 403 ? 'Accès refusé — contacte l\'administrateur' :
+                'Erreur d\'envoi — réessaie';
+    toast(msg, 'err');
+    if (btn) { btn.disabled = false; btn.textContent = '⚡ Soumettre le lead'; }
+  }
+}
+
+async function refreshLeads() {
+  toast('Actualisation…');
+  const name = getName();
+  const settings = getSettings();
+  try {
+    const res = await getMyLeads(name);
+    const records = res.records || [];
+    records.forEach(r => {
+      const f = r.fields;
+      saveLocalLead({
+        id: r.id,
+        client: f[F.client]||'', partenaire: f[F.partenaire]||'',
+        ville: f[F.ville]||'', projet: f[F.projet]||'',
+        telephone: f[F.telephone]||'', notes: f[F.notes]||'',
+        statut: f[F.statut]||'Nouveau', commission: f[F.commission]||0,
+        date: f[F.date]||new Date().toISOString()
+      });
+    });
+    _tab = 'leads';
+    render();
+    toast('Mis à jour ✓', 'ok');
+  } catch(err) {
+    toast('Erreur de connexion', 'err');
+  }
+}
+
+/* ── ADMIN ───────────────────────────────────────────── */
+function showAdminEntry() {
+  const z = document.getElementById('admin-zone');
+  if (!z) return;
+  z.innerHTML = `
+    <div class="fg" style="margin-bottom:8px">
+      <label class="fl">Mot de passe admin</label>
+      <input class="fi" type="password" id="admin-pwd" placeholder="••••••••" autocomplete="off">
+    </div>
+    <button class="btn btn-navy" onclick="checkAdmin()">Accéder</button>`;
+}
+function checkAdmin() {
+  const v = document.getElementById('admin-pwd')?.value;
+  if (v === 'solaire2026') { setAdmin(true); render(); loadAdminLeads(); }
+  else { toast('Mot de passe incorrect', 'err'); }
+}
+function adminLogout() { setAdmin(false); _tab = 'home'; render(); }
+
+async function loadAdminLeads() {
+  const scr = document.getElementById('admin-screen');
+  if (!scr) return;
+
+  try {
+    const res = await getAllLeads();
+    const records = res.records || [];
+    const settings = getSettings();
+
+    // Stats
+    const total = records.length;
+    const signed = records.filter(r => r.fields[F.statut] === 'Signé ✓').length;
+    const totalComm = records.reduce((s,r) => s + (r.fields[F.commission]||0), 0);
+
+    // Partner summary
+    const partMap = {};
+    records.forEach(r => {
+      const p = r.fields[F.partenaire]||'Inconnu';
+      if (!partMap[p]) partMap[p] = { total:0, signed:0, commission:0 };
+      partMap[p].total++;
+      if (r.fields[F.statut]==='Signé ✓') partMap[p].signed++;
+      partMap[p].commission += r.fields[F.commission]||0;
+    });
+
+    scr.innerHTML = `
+      <div class="stats2">
+        <div class="stat highlight"><div class="stat-n">${totalComm} €</div><div class="stat-l">Commissions dues</div></div>
+        <div class="stat"><div class="stat-n" style="color:var(--green)">${signed}</div><div class="stat-l">Signés</div></div>
+      </div>
+      <div class="stats2">
+        <div class="stat"><div class="stat-n">${total}</div><div class="stat-l">Total leads</div></div>
+        <div class="stat"><div class="stat-n">${Object.keys(partMap).length}</div><div class="stat-l">Partenaires</div></div>
+      </div>
+
+      <div class="section-label">Partenaires</div>
+      <div class="card">
+        ${Object.entries(partMap).sort((a,b)=>b[1].commission-a[1].commission).map(([p,s]) => `
+          <div class="info-row">
+            <div><div style="font-weight:600">${esc(p)}</div><div style="font-size:11px;color:var(--muted)">${s.total} lead${s.total>1?'s':''} · ${s.signed} signé${s.signed>1?'s':''}</div></div>
+            <span class="info-val green">${s.commission} €</span>
+          </div>
+        `).join('') || '<div style="color:var(--muted);font-size:13px">Aucun partenaire</div>'}
+      </div>
+
+      <div class="section-label">Tous les leads (${total}) · clic pour changer le statut</div>
+      ${records.map(r => {
+        const f = r.fields;
+        const l = {
+          id:r.id, client:f[F.client]||'', partenaire:f[F.partenaire]||'',
+          ville:f[F.ville]||'', projet:f[F.projet]||'',
+          telephone:f[F.telephone]||'', notes:f[F.notes]||'',
+          statut:f[F.statut]||'Nouveau', commission:f[F.commission]||0,
+          date:f[F.date]||''
+        };
+        return leadCard(l, true, true);
+      }).join('') || `<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">Aucun lead pour l'instant</div></div>`}
+
+      <div class="divider"></div>
+      <div class="section-label">Paramètres commissions</div>
+      <div class="card">
+        <div class="fg">
+          <label class="fl">Commission si devis envoyé (€)</label>
+          <input class="fi" type="number" id="conf-devis" value="${settings.devis}" min="0">
+        </div>
+        <div class="fg" style="margin-bottom:0">
+          <label class="fl">Commission si installation signée (€)</label>
+          <input class="fi" type="number" id="conf-signe" value="${settings.signe}" min="0">
+        </div>
+      </div>
+      <button class="btn btn-primary" style="margin-bottom:60px" onclick="saveSettings()">Enregistrer les commissions</button>
+    `;
+  } catch(err) {
+    const scr2 = document.getElementById('admin-screen');
+    if (scr2) scr2.innerHTML = `<div class="card" style="color:var(--red)">
+      Erreur de chargement : ${esc(err.message)}<br><br>
+      <button class="btn btn-secondary btn-sm" onclick="loadAdminLeads()">Réessayer</button>
+    </div>`;
+  }
+}
+
+async function adminUpdateStatus(recordId, newStatut) {
+  const settings = getSettings();
+  const commission = commissionFor(newStatut, settings);
+  try {
+    await updateLead(recordId, { [F.statut]: newStatut, [F.commission]: commission });
+    // Update local cache if exists
+    const arr = getLocalLeads();
+    const idx = arr.findIndex(l => l.id === recordId);
+    if (idx >= 0) { arr[idx].statut = newStatut; arr[idx].commission = commission; ls.setj('ps_leads', arr); }
+    toast('Statut mis à jour ✓', 'ok');
+    loadAdminLeads();
+  } catch(err) { toast('Erreur mise à jour', 'err'); }
+}
+
+async function adminUpdateCommission(recordId, value) {
+  const v = parseInt(value) || 0;
+  try {
+    await updateLead(recordId, { [F.commission]: v });
+    toast('Commission mise à jour ✓', 'ok');
+  } catch(err) { toast('Erreur', 'err'); }
+}
+
+function saveSettings() {
+  const d = parseInt(document.getElementById('conf-devis')?.value) || 0;
+  const s = parseInt(document.getElementById('conf-signe')?.value) || 0;
+  ls.setj('ps_settings', { devis: d, signe: s });
+  toast('Paramètres enregistrés ✓', 'ok');
+}
+
+function logout() {
+  if (!confirm('Déconnexion ? Tu devras ré-entrer ton nom et code.')) return;
+  ls.rm('ps_name'); ls.rm('ps_token'); ls.rm('ps_admin');
+  render();
+}
+
+/* ── INIT ────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>
