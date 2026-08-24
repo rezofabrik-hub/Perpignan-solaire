@@ -351,6 +351,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 </div>
 
 <script>
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
 const state = {logement:null, facture:120, orientation:null, statut:null};
 const ORIENT = {sud:1.0,'sud-est':0.92,'est-ouest':0.80,incertain:0.88};
 const SURFACE = {'maison-individuelle':25,'maison-mitoyenne':16,agricole:200,professionnel:80,copropriete:60,autre:20};

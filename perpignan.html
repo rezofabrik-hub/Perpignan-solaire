@@ -785,6 +785,7 @@
 </div>
 
 <script>
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
   function faq(btn) {
     const ans = btn.nextElementSibling;
     const open = btn.classList.contains('open');

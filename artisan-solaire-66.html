@@ -587,6 +587,7 @@
 </div>
 
 <script>
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
