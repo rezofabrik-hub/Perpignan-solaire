@@ -1,65 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Solaire-66.fr">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 400" role="img" aria-label="Solaire-66.fr">
   <defs>
-    <linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="mG" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#1565C0"/>
-      <stop offset="100%" stop-color="#1E88E5"/>
+      <stop offset="50%" stop-color="#1976D2"/>
+      <stop offset="100%" stop-color="#42A5F5"/>
     </linearGradient>
-    <clipPath id="circle">
-      <circle cx="155" cy="148" r="54"/>
-    </clipPath>
+    <linearGradient id="sunG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#F5A623"/>
+    </linearGradient>
   </defs>
 
-  <!-- Sun rays -->
-  <g stroke="#F5A623" stroke-width="7" stroke-linecap="round">
-    <line x1="155" y1="148" x2="155" y2="82"/>
-    <line x1="155" y1="148" x2="114" y2="93"/>
-    <line x1="155" y1="148" x2="89" y2="128"/>
-    <line x1="155" y1="148" x2="84" y2="165"/>
-    <line x1="155" y1="148" x2="196" y2="93"/>
-    <line x1="155" y1="148" x2="221" y2="128"/>
-    <line x1="155" y1="148" x2="226" y2="165"/>
-    <line x1="155" y1="148" x2="99" y2="194"/>
-    <line x1="155" y1="148" x2="211" y2="194"/>
+  <!-- Background white rounded square with blue border -->
+  <rect x="4" y="4" width="432" height="392" rx="30" fill="white" stroke="#2196F3" stroke-width="2.5"/>
+
+  <!-- Sun rays - 14 rays radiating from sun center (163,162) -->
+  <g stroke="#F5A623" stroke-width="7" stroke-linecap="round" opacity="0.95">
+    <line x1="163" y1="100" x2="163" y2="74"/>
+    <line x1="183" y1="103" x2="192" y2="79"/>
+    <line x1="200" y1="114" x2="216" y2="95"/>
+    <line x1="212" y1="132" x2="233" y2="119"/>
+    <line x1="217" y1="153" x2="241" y2="147"/>
+    <line x1="143" y1="103" x2="134" y2="79"/>
+    <line x1="126" y1="114" x2="110" y2="95"/>
+    <line x1="114" y1="132" x2="93" y2="119"/>
+    <line x1="109" y1="153" x2="85" y2="147"/>
+    <line x1="110" y1="174" x2="86" y2="174"/>
+    <line x1="113" y1="195" x2="90" y2="200"/>
+    <line x1="213" y1="174" x2="237" y2="174"/>
+    <line x1="210" y1="195" x2="233" y2="200"/>
   </g>
 
-  <!-- Sun semicircle (top half) -->
-  <path d="M 101 148 A 54 54 0 0 1 209 148 Z" fill="#F5A623"/>
+  <!-- Sun circle (golden, sits above mountains) -->
+  <circle cx="163" cy="162" r="62" fill="url(#sunG)"/>
 
-  <!-- Left mountain peak (forms left "6") -->
-  <path d="M 52 270
-           C 52 270, 75 250, 80 230
-           C 85 210, 95 190, 108 158
-           L 130 208
-           C 135 220, 130 240, 122 255
-           C 114 268, 100 272, 95 270
-           C 85 275, 65 275, 52 270 Z"
-        fill="url(#mtnGrad)" opacity="0.92"/>
+  <!-- Mountain range - 3 peaks, blue gradient -->
+  <!-- Designed so peaks emerge above the "66" and mountains fill the lower area -->
+  <path d="
+    M 30 285
+    C 40 285, 60 283, 72 280
+    L 88 268
+    C 92 264, 96 258, 104 238
+    L 128 165
+    C 132 153, 138 146, 145 143
+    C 151 140, 156 143, 161 150
+    L 176 180
+    C 181 190, 186 196, 192 198
+    C 198 200, 207 198, 213 190
+    L 238 148
+    C 243 138, 250 132, 257 130
+    C 263 128, 269 132, 274 140
+    L 292 173
+    C 296 181, 300 188, 306 195
+    L 324 218
+    C 330 226, 336 236, 340 248
+    L 348 268
+    C 354 278, 362 283, 370 285
+    L 408 290
+    L 408 310
+    L 30 310
+    Z
+  " fill="url(#mG)"/>
 
-  <!-- Right mountain peak (forms right "6") -->
-  <path d="M 165 270
-           C 165 270, 172 250, 180 230
-           C 188 210, 210 165, 222 135
-           L 250 210
-           C 255 222, 252 242, 244 257
-           C 236 270, 222 275, 215 272
-           C 200 278, 175 275, 165 270 Z"
-        fill="url(#mtnGrad)" opacity="0.92"/>
-
-  <!-- "66" text - large, prominent, dark navy -->
-  <text x="210" y="268"
-        font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
-        font-size="155"
+  <!-- "66" text — large dark navy, centered -->
+  <text x="222" y="296"
+        font-family="'Arial Black', 'Impact', 'Helvetica Neue', Arial, sans-serif"
+        font-size="160"
         font-weight="900"
         text-anchor="middle"
         fill="#0D47A1"
-        letter-spacing="-8">66</text>
+        letter-spacing="-14">66</text>
 
-  <!-- "solaire-66.fr" text -->
-  <text x="210" y="340"
-        font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif"
-        font-size="36"
+  <!-- "solaire-66.fr" bottom text -->
+  <text x="222" y="362"
+        font-family="'Montserrat', 'Helvetica Neue', 'Arial Rounded MT Bold', Arial, sans-serif"
+        font-size="38"
         font-weight="700"
         text-anchor="middle"
         fill="#0D47A1"
-        letter-spacing="0.5">solaire-66.fr</text>
+        letter-spacing="0.3">solaire-66.fr</text>
 </svg>
