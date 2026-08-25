@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="Solaire-66.fr">
+  <defs>
+    <linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#1E88E5"/>
+    </linearGradient>
+    <clipPath id="circle">
+      <circle cx="155" cy="148" r="54"/>
+    </clipPath>
+  </defs>
+
+  <!-- Sun rays -->
+  <g stroke="#F5A623" stroke-width="7" stroke-linecap="round">
+    <line x1="155" y1="148" x2="155" y2="82"/>
+    <line x1="155" y1="148" x2="114" y2="93"/>
+    <line x1="155" y1="148" x2="89" y2="128"/>
+    <line x1="155" y1="148" x2="84" y2="165"/>
+    <line x1="155" y1="148" x2="196" y2="93"/>
+    <line x1="155" y1="148" x2="221" y2="128"/>
+    <line x1="155" y1="148" x2="226" y2="165"/>
+    <line x1="155" y1="148" x2="99" y2="194"/>
+    <line x1="155" y1="148" x2="211" y2="194"/>
+  </g>
+
+  <!-- Sun semicircle (top half) -->
+  <path d="M 101 148 A 54 54 0 0 1 209 148 Z" fill="#F5A623"/>
+
+  <!-- Left mountain peak (forms left "6") -->
+  <path d="M 52 270
+           C 52 270, 75 250, 80 230
+           C 85 210, 95 190, 108 158
+           L 130 208
+           C 135 220, 130 240, 122 255
+           C 114 268, 100 272, 95 270
+           C 85 275, 65 275, 52 270 Z"
+        fill="url(#mtnGrad)" opacity="0.92"/>
+
+  <!-- Right mountain peak (forms right "6") -->
+  <path d="M 165 270
+           C 165 270, 172 250, 180 230
+           C 188 210, 210 165, 222 135
+           L 250 210
+           C 255 222, 252 242, 244 257
+           C 236 270, 222 275, 215 272
+           C 200 278, 175 275, 165 270 Z"
+        fill="url(#mtnGrad)" opacity="0.92"/>
+
+  <!-- "66" text - large, prominent, dark navy -->
+  <text x="210" y="268"
+        font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+        font-size="155"
+        font-weight="900"
+        text-anchor="middle"
+        fill="#0D47A1"
+        letter-spacing="-8">66</text>
+
+  <!-- "solaire-66.fr" text -->
+  <text x="210" y="340"
+        font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif"
+        font-size="36"
+        font-weight="700"
+        text-anchor="middle"
+        fill="#0D47A1"
+        letter-spacing="0.5">solaire-66.fr</text>
+</svg>
