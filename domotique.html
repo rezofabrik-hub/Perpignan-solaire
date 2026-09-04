@@ -1,381 +1,160 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Domotique & Maison Connectée (66) | Box, EMS, Pilotage Solaire — Énergie Solaire 66</title>
- <meta name="description" content="Installez la domotique dans votre maison des Pyrénées-Orientales. Pilotez votre production solaire, clim, ECS et borne de recharge intelligemment. Box domotique, EMS SolarEdge, Delta Dore. RGE. Devis gratuit 24h.">
- <meta name="keywords" content="domotique 66, maison connectée Perpignan, pilotage solaire domotique, EMS photovoltaïque, box domotique Pyrénées-Orientales, Delta Dore 66, SolarEdge domotique, automatisation maison Perpignan">
- <link rel="canonical" href="https://solaire-66.fr/domotique.html">
- <meta property="og:title" content="Domotique & Maison Connectée (66) — Pilotez votre énergie | Énergie Solaire 66">
- <meta property="og:description" content="Box domotique, EMS solaire, pilotage clim et borne VE dans le 66. Autoconsommation optimisée. Nos installateurs RGE. Devis 24h.">
- <meta property="og:type" content="website">
- <meta property="og:locale" content="fr_FR">
- <script type="application/ld+json">{
- "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
- {"@type":"Question","name":"Qu'est-ce qu'un EMS (Energy Management System) pour panneaux solaires ?","acceptedAnswer":{"@type":"Answer","text":"Un EMS analyse en temps réel votre production solaire et votre consommation, puis dirige automatiquement l'énergie produite vers les équipements prioritaires : chargement de la batterie, chauffe-eau, climatisation, borne VE. Résultat : 30 à 50 % d'autoconsommation supplémentaire sans rien changer à vos habitudes."}},
- {"@type":"Question","name":"Peut-on ajouter la domotique à une installation solaire existante ?","acceptedAnswer":{"@type":"Answer","text":"Oui, dans la majorité des cas. Une box domotique (Delta Dore, Jeedom, Home Assistant) ou un module EMS se raccorde à votre installation sans modification majeure. Contactez-nous pour un audit de compatibilité gratuit."}},
- {"@type":"Question","name":"Quelles marques de domotique installez-vous dans le 66 ?","acceptedAnswer":{"@type":"Answer","text":"Énergie Solaire 66 installe Delta Dore, Somfy, SolarEdge Energy Hub (EMS intégré), Enphase Installer Toolkit, et accompagne les projets Home Assistant / Jeedom pour les utilisateurs avertis. Devis gratuit sous 24h."}},
- {"@type":"Question","name":"La domotique permet-elle de piloter la climatisation avec le solaire ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Un module de pilotage connecté détecte quand votre production solaire est excédentaire et active automatiquement la clim, le chauffe-eau ou la borne de recharge. Vous utilisez votre énergie au lieu de la renvoyer sur le réseau."}}
- ]
-}</script>
- <style>
- *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
- :root{
- --sun:#F59E0B;--sun-d:#D97706;--sun2:#FBBF24;--sun3:#FEF3C7;
- --sky:#0284C7;--sky3:#E0F2FE;
- --green:#059669;--green2:#D1FAE5;
- --violet:#7C3AED;--violet2:#EDE9FE;
- --slate:#0F172A;--slate2:#1E293B;--slate3:#475569;--slate4:#94A3B8;--slate5:#CBD5E1;--slate6:#E2E8F0;
- --bg:#F8FAFC;--white:#fff;--r:14px;--rs:8px;--mw:1140px;
- --f:-apple-system,'Helvetica Neue',Arial,sans-serif;
- --shadow:0 2px 16px rgba(15,23,42,0.08);--shadow2:0 8px 40px rgba(15,23,42,0.12);
- }
- html{scroll-behavior:smooth;overflow-x:hidden;}
- body{font-family:var(--f);background:var(--white);color:var(--slate);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
- a{color:inherit;text-decoration:none;}
- .wrap{width:100%;max-width:var(--mw);margin:0 auto;padding:0 20px;}
- .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--slate6);}
- .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 20px;max-width:var(--mw);margin:0 auto;}
- .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:var(--slate);}
- .logo-sun{width:36px;height:36px;background:linear-gradient(135deg,var(--sun) 0%,#F97316 100%);border-radius:9px;display:grid;place-items:center;font-size:18px;}
- .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:50px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:var(--f);transition:all .22s;white-space:nowrap;text-decoration:none;}
- .btn-sun{background:var(--sun);color:#fff;}
- .btn-sun:hover{background:var(--sun-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,0.35);}
- .btn-violet{background:var(--violet);color:#fff;}
- .btn-violet:hover{background:#6D28D9;transform:translateY(-2px);}
- .btn-lg{padding:14px 30px;font-size:.96rem;}
- .breadcrumb{font-size:.76rem;color:var(--slate4);padding:8px 20px;background:var(--bg);border-bottom:1px solid var(--slate6);margin-top:64px;}
- .breadcrumb a{color:var(--sky);}
- .hero{background:linear-gradient(150deg,#1A0B3B 0%,#2D1060 40%,#3B1A7A 70%,#1A0B3B 100%);padding:64px 0 80px;color:#fff;position:relative;overflow:hidden;}
- .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 30%,rgba(124,58,237,0.3) 0%,transparent 60%);pointer-events:none;}
- .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--white));pointer-events:none;}
- .hero-grid{display:grid;gap:48px;align-items:center;position:relative;z-index:1;}
- .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.73rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C4B5FD;margin-bottom:16px;}
- .hero-eyebrow::before{content:'';display:block;width:20px;height:2px;background:#C4B5FD;border-radius:2px;}
- .hero-h1{font-size:clamp(2rem,5.5vw,3.4rem);font-weight:900;line-height:1.08;letter-spacing:-.025em;}
- .hero-h1 em{font-style:normal;color:var(--sun);}
- .hero-sub{font-size:.97rem;color:#94A3B8;margin:18px 0 32px;line-height:1.75;max-width:520px;}
- .hero-actions{display:flex;flex-wrap:wrap;gap:12px;}
- .hero-trust{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px;}
- .trust-chip{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:#CBD5E1;}
- .trust-chip svg{width:14px;height:14px;fill:#C4B5FD;flex-shrink:0;}
- .section{padding:72px 0;}
- .bg-light{background:var(--bg);}
- .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
- .eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--violet);border-radius:2px;}
- .h2{font-size:clamp(1.55rem,4vw,2.4rem);font-weight:800;line-height:1.15;letter-spacing:-.018em;}
- .h2 em{font-style:normal;color:var(--violet);}
- .body-txt{font-size:.93rem;color:var(--slate3);margin-top:12px;line-height:1.75;max-width:640px;}
- .feature-grid{display:grid;gap:20px;margin-top:36px;}
- .feat-card{background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);transition:all .25s;}
- .feat-card:hover{border-color:var(--violet);transform:translateY(-2px);}
- .feat-icon{font-size:2rem;margin-bottom:14px;}
- .feat-card h3{font-size:1rem;font-weight:800;color:var(--slate);margin-bottom:8px;}
- .feat-card p{font-size:.87rem;color:var(--slate3);line-height:1.65;}
- .feat-tag{display:inline-block;font-size:.71rem;font-weight:700;padding:3px 10px;border-radius:50px;background:var(--violet2);color:var(--violet);margin-top:10px;}
- .steps-grid{display:grid;gap:24px;margin-top:36px;}
- .step{display:flex;gap:20px;align-items:flex-start;}
- .step-num{width:44px;height:44px;border-radius:50%;background:var(--violet);color:#fff;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
- .step-body h3{font-size:.97rem;font-weight:800;color:var(--slate);margin-bottom:6px;}
- .step-body p{font-size:.87rem;color:var(--slate3);line-height:1.65;}
- .brand-grid{display:grid;gap:16px;margin-top:32px;}
- .brand-card{background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--r);padding:20px 24px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow);transition:all .25s;}
- .brand-card:hover{border-color:var(--violet);}
- .brand-icon{font-size:2rem;flex-shrink:0;}
- .brand-card h3{font-size:.97rem;font-weight:800;color:var(--slate);margin-bottom:4px;}
- .brand-card p{font-size:.84rem;color:var(--slate3);}
- .brand-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
- .brand-tags span{font-size:.71rem;font-weight:700;padding:3px 9px;background:var(--violet2);color:var(--violet);border-radius:50px;}
- .faq{margin-top:36px;display:flex;flex-direction:column;gap:12px;}
- .faq-item{background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--r);}
- .faq-q{padding:18px 20px;font-size:.93rem;font-weight:700;color:var(--slate);display:flex;justify-content:space-between;align-items:center;gap:12px;}
- .faq-q::after{content:'▾';color:var(--violet);}
- .faq-a{padding:0 20px 18px;font-size:.88rem;color:var(--slate3);line-height:1.7;}
- .form-card{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow2);padding:40px 32px;border:1px solid var(--slate6);}
- .form-grid{display:grid;gap:16px;}
- .field{display:flex;flex-direction:column;gap:6px;}
- .field label{font-size:.82rem;font-weight:700;color:var(--slate2);}
- .field input,.field select,.field textarea{padding:12px 14px;border:1.5px solid var(--slate6);border-radius:var(--rs);font-size:.9rem;font-family:var(--f);color:var(--slate);outline:none;transition:border-color .2s;width:100%;}
- .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--violet);}
- .field textarea{resize:vertical;min-height:80px;}
- .footer{background:var(--slate);color:#fff;padding:48px 0 24px;}
- .footer-grid{display:grid;gap:32px;}
- .footer-brand p{font-size:.84rem;color:var(--slate4);line-height:1.65;margin-top:8px;}
- .footer-col h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--slate4);margin-bottom:14px;}
- .footer-col a{display:block;font-size:.84rem;color:var(--slate5);margin-bottom:8px;transition:color .2s;}
- .footer-col a:hover{color:var(--sun);}
- .footer-copy{margin-top:40px;padding-top:20px;border-top:1px solid var(--slate2);text-align:center;font-size:.76rem;color:var(--slate4);}
- .share-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.06);border:none;cursor:pointer;color:var(--slate);transition:all .15s;flex-shrink:0;}
- .share-btn:hover{background:rgba(0,0,0,0.12);}
- .share-btn svg{width:18px;height:18px;}
- .share-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#0B2145;color:#fff;padding:10px 20px;border-radius:50px;font-size:.85rem;font-weight:600;z-index:9999;pointer-events:none;opacity:0;transition:opacity .2s;}
- .share-toast.show{opacity:1;}
- @media(min-width:640px){.feature-grid{grid-template-columns:1fr 1fr;}.steps-grid{grid-template-columns:1fr 1fr;}.brand-grid{grid-template-columns:1fr 1fr;}}
- @media(min-width:900px){.hero-grid{grid-template-columns:1fr 380px;gap:56px;}.footer-grid{grid-template-columns:1.5fr 1fr 1fr;}}
- @media(prefers-color-scheme:dark){
-  :root:not([data-theme=light]){--white:#111827;--bg:#0F172A;--slate:#F1F5F9;--slate2:#E2E8F0;--slate3:#94A3B8;--slate4:#64748B;--slate5:#475569;--slate6:#1E293B;}
- }
- </style>
- <link rel="manifest" href="/manifest.json">
- <meta name="theme-color" content="#0B2145">
- <meta name="mobile-web-app-capable" content="yes">
- <meta name="apple-mobile-web-app-capable" content="yes">
- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
- <meta name="apple-mobile-web-app-title" content="Solaire 66">
- <link rel="apple-touch-icon" href="/icon-192.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site en construction — Énergie Solaire 66</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style id="construction-banner-style">
-#construction-banner {
+:root {
+  --sun: #f59e0b;
+  --sky: #0B2145;
+  --sky2: #1e3a6e;
+  --text: #fff;
+  --accent: #fcd34d;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--sky) 0%, var(--sky2) 60%, #0f3460 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--text);
+  padding: 24px;
+  text-align: center;
+}
+
+.sun {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #fff8b0 0%, var(--sun) 55%, #ef8c00 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px 12px rgba(245,158,11,0.45);
+  margin: 0 auto 28px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 40px 12px rgba(245,158,11,0.45); }
+  50%       { box-shadow: 0 0 70px 24px rgba(245,158,11,0.65); }
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(245,158,11,0.18);
+  border: 1.5px solid var(--sun);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+h1 span { color: var(--accent); }
+
+p.sub {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  max-width: 420px;
+  line-height: 1.6;
+  margin: 0 auto 32px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, var(--sun), #ef8c00);
+  color: #1a0a00;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 14px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-bottom: 16px;
+}
+.cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.55); }
+
+.email-link {
+  display: block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.mountains {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 99999;
-  background: linear-gradient(90deg, #f59e0b, #ef4444);
-  color: #fff;
-  text-align: center;
-  padding: 10px 16px;
-  font-family: sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  height: 120px;
+  pointer-events: none;
+  overflow: hidden;
 }
-#construction-banner a {
-  color: #fff;
-  text-decoration: underline;
+.mountains svg { width: 100%; height: 100%; }
+
+.logo-text {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  white-space: nowrap;
 }
-body { padding-top: 48px !important; }
 </style>
 </head>
-<body><div id="construction-banner">🚧 Site en cours d'amélioration — Contactez-nous au <a href="tel:+33775769232">07 75 76 92 32</a></div>
-<nav class="nav">
- <div class="nav-in">
- <a href="./index.html" class="logo"><img src="logo.svg" alt="Solaire-66.fr" style="height:68px;width:auto;display:block;"></a>
- <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
- </button>
- <a href="tel:0775769232" class="btn btn-violet">📞 07 75 76 92 32</a>
- </div>
-</nav>
-<div class="breadcrumb"><div class="wrap"><a href="./index.html">Accueil</a> › <a href="./dept-66.html">Pyrénées-Orientales</a> › Domotique & Maison connectée</div></div>
+<body>
 
-<section class="hero">
- <div class="wrap hero-grid">
- <div>
- <div class="hero-eyebrow">Domotique · EMS · Pilotage solaire · Box connectée</div>
- <h1 class="hero-h1">Domotique &amp; <em>Maison Intelligente</em> dans les Pyrénées-Orientales</h1>
- <p class="hero-sub">Pilotez automatiquement votre clim, votre chauffe-eau et votre borne de recharge selon votre production solaire. Plus d'énergie consommée chez vous, moins injectée sur le réseau.</p>
- <div class="hero-actions">
- <a href="#devis" class="btn btn-sun btn-lg">Devis gratuit 24h</a>
- <a href="tel:0775769232" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.2);">📞 07 75 76 92 32</a>
- </div>
- <div class="hero-trust">
- <span class="trust-chip"><svg viewBox="0 0 16 16"><path d="M8 .25l1.93 3.91 4.32.63-3.13 3.05.74 4.3L8 9.77 4.14 12.14l.74-4.3L1.75 4.79l4.32-.63z"/></svg>Installateurs RGE certifiés · Décennale</span>
- <span class="trust-chip"><svg viewBox="0 0 16 16"><path d="M8 .25l1.93 3.91 4.32.63-3.13 3.05.74 4.3L8 9.77 4.14 12.14l.74-4.3L1.75 4.79l4.32-.63z"/></svg>Delta Dore · SolarEdge · Somfy</span>
- <span class="trust-chip"><svg viewBox="0 0 16 16"><path d="M8 .25l1.93 3.91 4.32.63-3.13 3.05.74 4.3L8 9.77 4.14 12.14l.74-4.3L1.75 4.79l4.32-.63z"/></svg>Un seul interlocuteur solaire + domo</span>
- </div>
- </div>
- <div>
- <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;">
- <div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C4B5FD;margin-bottom:18px;">Gain d'autoconsommation avec EMS</div>
- <div style="display:flex;flex-direction:column;gap:14px;">
- <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Sans domotique</span><span style="color:#94A3B8;">35–45 %</span></div><div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;"><div style="width:40%;height:100%;border-radius:5px;background:#94A3B8;"></div></div></div>
- <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>Avec pilotage EMS</span><span style="color:#C4B5FD;">60–70 %</span></div><div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;"><div style="width:65%;height:100%;border-radius:5px;background:#C4B5FD;"></div></div></div>
- <div><div style="display:flex;justify-content:space-between;font-size:.84rem;font-weight:700;color:#fff;margin-bottom:6px;"><span>EMS + Batterie physique</span><span style="color:#34D399;">85–90 %</span></div><div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;"><div style="width:87%;height:100%;border-radius:5px;background:#34D399;"></div></div></div>
- </div>
- <div style="margin-top:16px;font-size:.7rem;color:#64748B;">Installation 3 kWc · Foyer 4 personnes · Perpignan</div>
- </div>
- </div>
- </div>
-</section>
+<div class="logo-text">☀ SOLAIRE-66.FR</div>
 
-<section class="section">
- <div class="wrap">
- <div class="eyebrow">Ce que la domotique change</div>
- <h2 class="h2">Pilotez chaque watt <em>intelligemment</em></h2>
- <p class="body-txt">Sans domotique, votre surplus solaire part sur le réseau payé 0,13 €/kWh. Avec un EMS, il chauffe votre eau, refroidit votre maison ou charge votre voiture — énergie que vous auriez payée sinon.</p>
- <div class="feature-grid">
- <div class="feat-card">
- <div class="feat-icon">🌡️</div>
- <h3>Pilotage climatisation</h3>
- <p>Votre clim s'active automatiquement quand la production solaire dépasse votre consommation de base. Votre maison se rafraîchit avec votre propre énergie.</p>
- <span class="feat-tag">Daikin · Mitsubishi · Atlantic</span>
- </div>
- <div class="feat-card">
- <div class="feat-icon">🚿</div>
- <h3>Chauffe-eau intelligent</h3>
- <p>Le délesteur injecte l'excédent solaire dans votre chauffe-eau électrique ou thermodynamique. Eau chaude gratuite les jours ensoleillés.</p>
- <span class="feat-tag">Délesteur · CET connecté</span>
- </div>
- <div class="feat-card">
- <div class="feat-icon">🚗</div>
- <h3>Borne de recharge optimisée</h3>
- <p>La charge de votre VE s'adapte en temps réel à la production solaire. Vous chargez votre voiture avec votre propre électricité.</p>
- <span class="feat-tag">Wallbox · Hager · Schneider</span>
- </div>
- <div class="feat-card">
- <div class="feat-icon">🔋</div>
- <h3>Gestion batterie intelligente</h3>
- <p>L'EMS arbitre entre charger la batterie, alimenter les équipements ou injecter sur le réseau selon les tarifs heures creuses et la météo prévisionnelle.</p>
- <span class="feat-tag">BYD · Enphase · SolarEdge</span>
- </div>
- <div class="feat-card">
- <div class="feat-icon">📱</div>
- <h3>Application mobile</h3>
- <p>Consultez votre production, consommation et autoconsommation en temps réel depuis votre smartphone. Alertes, programmations et scénarios.</p>
- <span class="feat-tag">iOS · Android · Web</span>
- </div>
- <div class="feat-card">
- <div class="feat-icon">🏠</div>
- <h3>Intégration maison entière</h3>
- <p>Volets, éclairage, alarme, portail — tout s'intègre dans un seul système. Scénarios "Absent", "Nuit", "Plein soleil" entièrement automatisés.</p>
- <span class="feat-tag">Delta Dore · Somfy · KNX</span>
- </div>
- </div>
- </div>
-</section>
+<div class="sun"></div>
 
-<section class="section bg-light">
- <div class="wrap">
- <div class="eyebrow">Nos marques partenaires</div>
- <h2 class="h2">Solutions domotique <em>compatibles solaire</em></h2>
- <div class="brand-grid">
- <div class="brand-card">
- <div class="brand-icon">🏠</div>
- <div>
- <h3>Delta Dore</h3>
- <p>Référence française de la domotique résidentielle. Compatible avec votre installation solaire, votre clim et votre borne VE.</p>
- <div class="brand-tags"><span>Tydom App</span><span>Zones chauffage</span><span>Pilotage ECS</span></div>
- </div>
- </div>
- <div class="brand-card">
- <div class="brand-icon">⚡</div>
- <div>
- <h3>SolarEdge Energy Hub</h3>
- <p>EMS intégré à l'onduleur. Pilote automatiquement batterie, VE et équipements depuis l'app MySolarEdge.</p>
- <div class="brand-tags"><span>EV Charger intégré</span><span>IA prédictive</span><span>Batterie SolarEdge</span></div>
- </div>
- </div>
- <div class="brand-card">
- <div class="brand-icon">🔌</div>
- <div>
- <h3>Enphase Installer Toolkit</h3>
- <p>Micro-onduleurs + app Enlighten. Monitoring panneau par panneau et pilotage batterie IQ en temps réel.</p>
- <div class="brand-tags"><span>Monitoring panneau</span><span>App Enlighten</span><span>Batterie IQ</span></div>
- </div>
- </div>
- <div class="brand-card">
- <div class="brand-icon">🎛️</div>
- <div>
- <h3>Somfy</h3>
- <p>Automatisation des volets, stores et éclairage. Intégration TaHoma avec vos panneaux et votre clim.</p>
- <div class="brand-tags"><span>TaHoma Switch</span><span>Volets · Stores</span><span>Compatible Alexa</span></div>
- </div>
- </div>
- </div>
- </div>
-</section>
+<div class="badge">🚧 En construction</div>
 
-<section class="section">
- <div class="wrap">
- <div class="eyebrow">Notre méthode</div>
- <h2 class="h2">Installation en <em>4 étapes</em></h2>
- <div class="steps-grid">
- <div class="step">
- <div class="step-num">1</div>
- <div class="step-body">
- <h3>Audit énergétique gratuit</h3>
- <p>Nous analysons vos équipements, vos horaires de consommation et votre installation solaire existante ou à venir pour identifier les leviers domotiques.</p>
- </div>
- </div>
- <div class="step">
- <div class="step-num">2</div>
- <div class="step-body">
- <h3>Choix de la box et des modules</h3>
- <p>Selon votre budget et vos usages (clim, VE, ECS, chauffage), nous sélectionnons la box domotique et les modules de pilotage les mieux adaptés.</p>
- </div>
- </div>
- <div class="step">
- <div class="step-num">3</div>
- <div class="step-body">
- <h3>Installation et programmation</h3>
- <p>Pose des équipements, raccordement à votre installation solaire, configuration des scénarios et des seuils d'activation automatique.</p>
- </div>
- </div>
- <div class="step">
- <div class="step-num">4</div>
- <div class="step-body">
- <h3>Formation et suivi</h3>
- <p>Prise en main de l'application mobile, création de vos scénarios personnalisés. Support disponible à distance et SAV réactif.</p>
- </div>
- </div>
- </div>
- </div>
-</section>
+<h1>Notre site revient<br><span>très bientôt</span></h1>
 
-<section class="section bg-light">
- <div class="wrap">
- <div class="eyebrow">FAQ Domotique</div>
- <h2 class="h2">Vos questions sur la <em>domotique solaire</em></h2>
- <div class="faq">
- <div class="faq-item"><div class="faq-q">Qu'est-ce qu'un EMS pour panneaux solaires ?</div><div class="faq-a">Un EMS (Energy Management System) analyse en temps réel votre production solaire et votre consommation, puis dirige automatiquement l'énergie produite vers les équipements prioritaires : chargement de la batterie, chauffe-eau, climatisation, borne VE. Résultat : 30 à 50 % d'autoconsommation supplémentaire sans rien changer à vos habitudes.</div></div>
- <div class="faq-item"><div class="faq-q">Peut-on ajouter la domotique à une installation solaire existante ?</div><div class="faq-a">Oui, dans la majorité des cas. Une box domotique ou un module EMS se raccorde à votre installation sans modification majeure. Contactez-nous pour un audit de compatibilité gratuit.</div></div>
- <div class="faq-item"><div class="faq-q">La domotique permet-elle de piloter la clim avec le solaire ?</div><div class="faq-a">Oui. Un module de pilotage connecté détecte quand votre production solaire est excédentaire et active automatiquement la clim, le chauffe-eau ou la borne de recharge. Vous utilisez votre propre énergie au lieu de l'injecter sur le réseau.</div></div>
- <div class="faq-item"><div class="faq-q">Y a-t-il des aides pour la domotique en 2026 ?</div><div class="faq-a">L'éco-PTZ peut financer l'ensemble travaux incluant la domotique si elle fait partie d'une rénovation énergétique globale. La TVA réduite s'applique sur les équipements de gestion de l'énergie posés par un professionnel RGE. Contactez-nous pour vérifier votre éligibilité.</div></div>
- </div>
- </div>
-</section>
+<p class="sub">
+  Nous améliorons notre site pour vous offrir la meilleure expérience.<br>
+  Pour un devis ou une question, contactez-nous directement.
+</p>
 
-<section class="section" id="devis">
- <div class="wrap" style="max-width:640px;">
- <div class="form-card">
- <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:8px;">Devis Domotique Gratuit</h2>
- <p style="font-size:.9rem;color:var(--slate3);margin-bottom:28px;">Décrivez votre projet — nous vous proposons la solution la mieux adaptée à votre installation solaire et vos équipements.</p>
- <form class="form-grid" action="https://api.web3forms.com/submit" method="POST">
- <input type="hidden" name="access_key" value="02224188-7400-4bcb-8e85-6e2a926dd955">
- <input type="hidden" name="subject" value="Devis Domotique — Énergie Solaire 66">
- <input type="hidden" name="redirect" value="https://solaire-66.fr/">
- <div class="field"><label>Prénom et nom *</label><input type="text" name="nom" required placeholder="Jean Dupont"></div>
- <div class="field"><label>Téléphone *</label><input type="tel" name="telephone" required placeholder="06 XX XX XX XX"></div>
- <div class="field"><label>Email</label><input type="email" name="email"></div>
- <div class="field"><label>Commune</label><input type="text" name="commune" placeholder="Perpignan, Canet, Narbonne…"></div>
- <div class="field"><label>Avez-vous déjà des panneaux solaires ?</label><select name="solaire"><option value="">-- Choisir --</option><option>Oui — installation existante</option><option>Non — projet solaire + domotique simultané</option><option>Non — domotique seule pour l'instant</option></select></div>
- <div class="field"><label>Équipements à piloter</label><select name="equipements"><option value="">-- Choisir --</option><option>Climatisation uniquement</option><option>Chauffe-eau / ECS</option><option>Borne de recharge VE</option><option>Clim + ECS + Borne VE</option><option>Maison entière (volets, éclairage, chauffage…)</option></select></div>
- <div class="field"><label>Message</label><textarea name="message" placeholder="Décrivez votre maison, vos équipements, vos objectifs d'économies…"></textarea></div>
- <button type="submit" class="btn btn-violet btn-lg" style="width:100%;justify-content:center;">Envoyer ma demande →</button>
- </form>
- </div>
- </div>
-</section>
+<a class="cta" href="tel:+33775769232">
+  📞 07 75 76 92 32
+</a>
 
-<footer class="footer">
- <div class="wrap">
- <div class="footer-grid">
- <div class="footer-brand"><h3 style="font-size:1.05rem;font-weight:800;">☀ Énergie Solaire 66</h3><p>SARL Rezofabrik · Perpignan<br>Nos installateurs RGE · Domotique · EMS<br><a href="tel:0775769232" style="color:var(--sun);">📞 07 75 76 92 32</a></p></div>
- <div class="footer-col"><h4>Nos services</h4><a href="./panneau-solaire-batterie.html">Batterie solaire</a><a href="./climatisation.html">Climatisation</a><a href="./chauffe-eau-thermodynamique.html">Chauffe-eau thermodynamique</a><a href="./solaire-voiture-electrique.html">Borne de recharge</a><a href="./domotique.html">Domotique</a></div>
- <div class="footer-col"><h4>Liens</h4><a href="./index.html">Accueil</a><a href="./dept-66.html">Pyrénées-Orientales</a><a href="./perpignan.html">Perpignan</a><a href="./mentions-legales.html">Mentions légales</a></div>
- </div>
- <div class="footer-copy">© 2026 Énergie Solaire 66 — SARL Rezofabrik · Perpignan</div>
- </div>
+<a class="email-link" href="mailto:contact.energiesolaire66@gmail.com">
+  contact.energiesolaire66@gmail.com
+</a>
 
-<p style="text-align:center;font-size:.78rem;padding:8px 0 16px;opacity:0.6;">🏠 Cache clim sur mesure : <a href="https://www.rezo-fabrik.fr" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;opacity:0.7;">rezo-fabrik.fr</a></p></footer>
-<script>
-  if (history.scrollRestoration) history.scrollRestoration = 'manual';
- if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js'));}
- (function(){
-  var b=document.getElementById('shareBtn');if(!b)return;
-  b.addEventListener('click',async function(){
-   var d={title:document.title,text:'Domotique & maison connectée — Énergie Solaire 66',url:location.href};
-   if(navigator.share){try{await navigator.share(d);}catch(e){}}else{
-    try{await navigator.clipboard.writeText(location.href);}catch(e){}
-    var t=document.createElement('div');t.className='share-toast';t.textContent='✓ Lien copié !';
-    document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show');});
-    setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove();},300);},2200);
-   }
-  });
- })();
-</script>
+<div class="mountains">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,120 200,40 380,90 560,20 720,70 900,10 1100,60 1280,30 1440,80 1440,120" fill="rgba(11,33,69,0.8)"/>
+    <polygon points="0,120 160,60 320,100 520,45 700,85 880,35 1060,75 1220,50 1440,90 1440,120" fill="rgba(11,33,69,0.5)"/>
+  </svg>
+</div>
+
 </body>
 </html>
