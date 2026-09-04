@@ -2,547 +2,159 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site en construction — Énergie Solaire 66</title>
 <meta name="robots" content="noindex, nofollow">
-<title>Devis Panneaux Solaires Gratuit — Perpignan Solaire</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap">
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --night: #0C1824;
-  --sun:   #F59E0B;
-  --sky:   #0284C7;
-  --cream: #FEFAF3;
-  --white: #FFFFFF;
-  --slate: #374151;
-  --muted: #6B7280;
-  --border:#E5E7EB;
-  --green: #059669;
-  --radius:12px;
-  --shadow:0 4px 24px rgba(0,0,0,.10);
+  --sun: #f59e0b;
+  --sky: #0B2145;
+  --sky2: #1e3a6e;
+  --text: #fff;
+  --accent: #fcd34d;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--slate);line-height:1.6}
-h1,h2,h3{font-family:'Syne',sans-serif;text-wrap:balance}
 
-/* ───────── HEADER ───────── */
-.lp-header{background:var(--night);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);text-decoration:none;letter-spacing:-.5px}
-.logo-text span{color:var(--sun)}
-.header-cta{display:flex;align-items:center;gap:10px}
-.header-phone{display:flex;align-items:center;gap:6px;color:var(--sun);font-weight:600;font-size:.95rem;text-decoration:none}
-.header-phone svg{width:16px;height:16px;flex-shrink:0}
-
-/* ───────── HERO ───────── */
-.hero{background:var(--night);padding:40px 20px 0;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(245,158,11,.18),transparent);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:var(--sun);font-size:.8rem;font-weight:600;padding:5px 14px;border-radius:99px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
-.hero-badge svg{width:14px;height:14px}
-.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);color:var(--white);line-height:1.15;margin-bottom:16px;font-weight:800}
-.hero h1 em{color:var(--sun);font-style:normal}
-.hero-sub{color:#94A3B8;font-size:1rem;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
-
-/* ───────── FORM CARD ───────── */
-.form-card{background:var(--white);border-radius:var(--radius) var(--radius) 0 0;padding:32px 28px;max-width:560px;margin:0 auto;box-shadow:0 -4px 32px rgba(0,0,0,.25);position:relative}
-.step-bar{display:flex;align-items:center;gap:0;margin-bottom:28px}
-.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;font-family:'Syne',sans-serif;flex-shrink:0;transition:all .3s}
-.step-dot.active{background:var(--sun);color:var(--night)}
-.step-dot.done{background:var(--green);color:var(--white)}
-.step-dot.idle{background:var(--border);color:var(--muted)}
-.step-line{flex:1;height:2px;background:var(--border);transition:background .3s}
-.step-line.done{background:var(--green)}
-.step-label{font-size:.7rem;color:var(--muted);text-align:center;margin-top:28px;margin-bottom:-10px}
-/* step panels */
-.step-panel{display:none;animation:fadeIn .25s ease}
-.step-panel.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.step-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:var(--night);margin-bottom:6px}
-.step-hint{font-size:.85rem;color:var(--muted);margin-bottom:20px}
-/* choice buttons */
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.choice{border:2px solid var(--border);border-radius:10px;padding:14px 12px;cursor:pointer;text-align:center;transition:all .2s;background:var(--white)}
-.choice:hover{border-color:var(--sky);background:#EFF6FF}
-.choice.selected{border-color:var(--sun);background:#FFFBEB}
-.choice-icon{font-size:1.6rem;display:block;margin-bottom:6px}
-.choice-label{font-size:.85rem;font-weight:600;color:var(--slate)}
-/* inputs */
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--slate);margin-bottom:6px}
-.form-group input{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:8px;font-size:.95rem;font-family:'DM Sans',sans-serif;color:var(--night);outline:none;transition:border .2s}
-.form-group input:focus{border-color:var(--sky)}
-.form-group input.error{border-color:#EF4444}
-.legal{font-size:.72rem;color:var(--muted);margin-top:14px;text-align:center}
-/* submit btn */
-.btn-submit{width:100%;padding:16px;background:var(--sun);color:var(--night);border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.01em;margin-top:8px}
-.btn-submit:hover{background:#D97706;transform:translateY(-1px)}
-.btn-next{width:100%;padding:14px;background:var(--night);color:var(--white);border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:14px;transition:all .2s}
-.btn-next:hover{background:#1E2D3D}
-.btn-next:disabled{opacity:.5;cursor:default}
-/* success */
-.success-panel{display:none;text-align:center;padding:20px 0}
-.success-icon{font-size:3rem;margin-bottom:16px}
-.success-panel h3{font-family:'Syne',sans-serif;font-size:1.3rem;color:var(--green);margin-bottom:10px}
-.success-panel p{color:var(--muted);font-size:.9rem;max-width:320px;margin:0 auto 20px}
-.success-phone{display:inline-flex;align-items:center;gap:8px;background:var(--night);color:var(--sun);font-weight:700;padding:14px 24px;border-radius:10px;text-decoration:none;font-family:'Syne',sans-serif}
-
-/* ───────── TRUST STRIP ───────── */
-.trust{background:var(--night);padding:18px 20px}
-.trust-inner{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:16px 28px}
-.trust-chip{display:flex;align-items:center;gap:8px;color:#CBD5E1;font-size:.82rem;font-weight:500}
-.trust-chip svg{width:16px;height:16px;color:var(--sun);flex-shrink:0}
-
-/* ───────── SECTIONS ───────── */
-.section{padding:64px 20px;max-width:900px;margin:0 auto}
-.section-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);font-weight:700;margin-bottom:10px}
-.section-title{font-size:clamp(1.4rem,4vw,2rem);color:var(--night);font-weight:800;margin-bottom:12px}
-.section-sub{color:var(--muted);max-width:520px;margin-bottom:40px;font-size:.95rem}
-
-/* process steps */
-.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px}
-.p-step{background:var(--white);border-radius:var(--radius);padding:24px 20px;border:1px solid var(--border);position:relative}
-.p-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--sun);opacity:.3;line-height:1;margin-bottom:10px}
-.p-step h3{font-size:.95rem;font-weight:700;color:var(--night);margin-bottom:6px}
-.p-step p{font-size:.82rem;color:var(--muted)}
-
-/* aides cards */
-.aides{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-.aide-card{background:var(--white);border-radius:var(--radius);padding:24px 20px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.aide-amount{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--green);margin-bottom:4px}
-.aide-name{font-size:.85rem;font-weight:700;color:var(--night);margin-bottom:8px}
-.aide-desc{font-size:.78rem;color:var(--muted)}
-
-/* testimonials */
-.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.testi{background:var(--white);border-radius:var(--radius);padding:24px 20px;border:1px solid var(--border)}
-.stars{color:var(--sun);font-size:.9rem;letter-spacing:2px;margin-bottom:10px}
-.testi-text{font-size:.85rem;color:var(--slate);font-style:italic;margin-bottom:14px}
-.testi-author{font-size:.78rem;font-weight:700;color:var(--night)}
-.testi-loc{font-size:.72rem;color:var(--muted)}
-
-/* urgency banner */
-.urgency{background:linear-gradient(135deg,var(--night) 0%,#1a3a5c 100%);padding:48px 20px;text-align:center}
-.urgency h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--white);margin-bottom:12px;font-weight:800}
-.urgency p{color:#94A3B8;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto}
-.urgency-cta{display:inline-flex;align-items:center;gap:10px;background:var(--sun);color:var(--night);font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;padding:16px 32px;border-radius:10px;text-decoration:none;transition:all .2s}
-.urgency-cta:hover{background:#D97706;transform:translateY(-2px)}
-
-/* footer */
-.lp-footer{background:var(--night);padding:28px 20px;text-align:center}
-.footer-logo{font-family:'Syne',sans-serif;font-weight:800;color:var(--white);margin-bottom:8px;font-size:1rem}
-.footer-logo span{color:var(--sun)}
-.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:10px}
-.footer-links a{color:#64748B;font-size:.75rem;text-decoration:none}
-.footer-links a:hover{color:var(--sun)}
-.footer-legal{color:#475569;font-size:.72rem;margin-top:14px}
-
-/* sticky mobile CTA */
-.sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--night);border-top:1px solid rgba(245,158,11,.3);padding:10px 16px;z-index:200;align-items:center;gap:10px}
-.sticky-bar a.call{flex:1;background:var(--sun);color:var(--night);text-align:center;padding:13px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none}
-.sticky-bar a.form{flex:1;background:transparent;color:var(--white);text-align:center;padding:13px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:600;font-size:.9rem;text-decoration:none;border:1px solid rgba(255,255,255,.2)}
-@media(max-width:640px){.sticky-bar{display:flex}body{padding-bottom:70px}.form-card{padding:24px 18px}}
-@media(max-width:400px){.choices{grid-template-columns:1fr 1fr}}
-
-/* dark mode */
-@media(prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --cream:#111827;
-    --white:#1F2937;
-    --border:#374151;
-    --slate:#D1D5DB;
-    --muted:#9CA3AF;
-  }
+body {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--sky) 0%, var(--sky2) 60%, #0f3460 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--text);
+  padding: 24px;
+  text-align: center;
 }
-:root[data-theme="dark"]{
-  --cream:#111827;
-  --white:#1F2937;
-  --border:#374151;
-  --slate:#D1D5DB;
-  --muted:#9CA3AF;
-}
-</style>
 
-<style id="construction-banner-style">
-#construction-banner {
+.sun {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #fff8b0 0%, var(--sun) 55%, #ef8c00 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px 12px rgba(245,158,11,0.45);
+  margin: 0 auto 28px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 40px 12px rgba(245,158,11,0.45); }
+  50%       { box-shadow: 0 0 70px 24px rgba(245,158,11,0.65); }
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(245,158,11,0.18);
+  border: 1.5px solid var(--sun);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+h1 span { color: var(--accent); }
+
+p.sub {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  max-width: 420px;
+  line-height: 1.6;
+  margin: 0 auto 32px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, var(--sun), #ef8c00);
+  color: #1a0a00;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 14px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-bottom: 16px;
+}
+.cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.55); }
+
+.email-link {
+  display: block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.mountains {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 99999;
-  background: linear-gradient(90deg, #f59e0b, #ef4444);
-  color: #fff;
-  text-align: center;
-  padding: 10px 16px;
-  font-family: sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  height: 120px;
+  pointer-events: none;
+  overflow: hidden;
 }
-#construction-banner a {
-  color: #fff;
-  text-decoration: underline;
+.mountains svg { width: 100%; height: 100%; }
+
+.logo-text {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  white-space: nowrap;
 }
-body { padding-top: 48px !important; }
 </style>
 </head>
-<body><div id="construction-banner">🚧 Site en cours d'amélioration — Contactez-nous au <a href="tel:+33775769232">07 75 76 92 32</a></div>
+<body>
 
-<!-- HEADER -->
-<header class="lp-header">
-  <a href="#form" class="logo-text">Perpignan<span>Solaire</span></a>
-  <div class="header-cta">
-    <a href="tel:0775769232" class="header-phone">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.37a16 16 0 006.29 6.29l1.35-1.35a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      07&nbsp;75&nbsp;76&nbsp;92&nbsp;32
-    </a>
-  </div>
-</header>
+<div class="logo-text">☀ SOLAIRE-66.FR</div>
 
-<!-- HERO + FORM -->
-<section class="hero">
-  <div class="hero-badge">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-    Artisan local · Non une agence
-  </div>
-  <h1>Votre devis solaire <em>gratuit et sans engagement</em><br>en 2 minutes</h1>
-  <p class="hero-sub">Installation par des artisans locaux RGE certifiés. Économisez jusqu'à 70 % sur votre facture électrique dès la 1<sup>re</sup> année.</p>
+<div class="sun"></div>
 
-  <!-- FORM CARD -->
-  <div class="form-card" id="form">
-    <!-- step bar -->
-    <div class="step-bar">
-      <div class="step-dot active" id="dot1">1</div>
-      <div class="step-line" id="line1"></div>
-      <div class="step-dot idle" id="dot2">2</div>
-      <div class="step-line" id="line2"></div>
-      <div class="step-dot idle" id="dot3">3</div>
-    </div>
+<div class="badge">🚧 En construction</div>
 
-    <!-- STEP 1 -->
-    <div class="step-panel active" id="step1">
-      <div class="step-title">Votre projet</div>
-      <div class="step-hint">Quel type de bien souhaitez-vous équiper ?</div>
-      <div class="choices" id="choices-type">
-        <div class="choice" data-val="Maison individuelle">
-          <span class="choice-icon">🏠</span>
-          <span class="choice-label">Maison individuelle</span>
-        </div>
-        <div class="choice" data-val="Maison avec piscine">
-          <span class="choice-icon">🏊</span>
-          <span class="choice-label">Maison + piscine</span>
-        </div>
-        <div class="choice" data-val="Immeuble / copropriété">
-          <span class="choice-icon">🏢</span>
-          <span class="choice-label">Immeuble / copro</span>
-        </div>
-        <div class="choice" data-val="Local professionnel">
-          <span class="choice-icon">🏭</span>
-          <span class="choice-label">Local pro / entreprise</span>
-        </div>
-      </div>
-      <button class="btn-next" id="next1" disabled>Étape suivante →</button>
-    </div>
+<h1>Notre site revient<br><span>très bientôt</span></h1>
 
-    <!-- STEP 2 -->
-    <div class="step-panel" id="step2">
-      <div class="step-title">Votre toiture</div>
-      <div class="step-hint">Quelle est l'orientation principale de votre toit ?</div>
-      <div class="choices" id="choices-roof">
-        <div class="choice" data-val="Sud (idéal)">
-          <span class="choice-icon">☀️</span>
-          <span class="choice-label">Sud (idéal)</span>
-        </div>
-        <div class="choice" data-val="Sud-Est / Sud-Ouest">
-          <span class="choice-icon">🌤️</span>
-          <span class="choice-label">Sud-Est / Sud-Ouest</span>
-        </div>
-        <div class="choice" data-val="Est ou Ouest">
-          <span class="choice-icon">🌥️</span>
-          <span class="choice-label">Est ou Ouest</span>
-        </div>
-        <div class="choice" data-val="Je ne sais pas">
-          <span class="choice-icon">❓</span>
-          <span class="choice-label">Je ne sais pas</span>
-        </div>
-      </div>
-      <button class="btn-next" id="next2" disabled>Étape suivante →</button>
-    </div>
+<p class="sub">
+  Nous améliorons notre site pour vous offrir la meilleure expérience.<br>
+  Pour un devis ou une question, contactez-nous directement.
+</p>
 
-    <!-- STEP 3 -->
-    <div class="step-panel" id="step3">
-      <div class="step-title">Recevoir votre devis gratuit</div>
-      <div class="step-hint">Renseignez vos coordonnées — aucun démarchage, jamais.</div>
-      <form id="devis-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="02224188-7400-4bcb-8e85-6e2a926dd955">
-        <input type="hidden" name="subject" id="f-subject" value="🌞 LP Devis — Nouvelle demande">
-        <input type="hidden" name="type_projet" id="f-type">
-        <input type="hidden" name="orientation_toit" id="f-roof">
-        <input type="hidden" name="utm_source" id="f-utm_source">
-        <input type="hidden" name="utm_medium" id="f-utm_medium">
-        <input type="hidden" name="utm_campaign" id="f-utm_campaign">
-        <input type="hidden" name="redirect" value="https://solaire-66.fr/merci.html">
-        <div class="form-group">
-          <label for="f-name">Votre prénom et nom *</label>
-          <input type="text" id="f-name" name="name" placeholder="Jean Dupont" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label for="f-phone">Votre téléphone *</label>
-          <input type="tel" id="f-phone" name="phone" placeholder="06 12 34 56 78" required autocomplete="tel">
-        </div>
-        <div class="form-group">
-          <label for="f-email">Votre e-mail</label>
-          <input type="email" id="f-email" name="email" placeholder="jean@email.com" autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label for="f-cp">Code postal *</label>
-          <input type="text" id="f-cp" name="code_postal" placeholder="66000" maxlength="5" required inputmode="numeric">
-        </div>
-        <button type="submit" class="btn-submit">
-          ☀️ Recevoir mon devis GRATUIT
-        </button>
-        <p class="legal">En soumettant ce formulaire, vous acceptez d'être contacté par Perpignan Solaire (SARL Rezofabrik). Aucun engagement, aucun démarchage abusif.</p>
-      </form>
-    </div>
+<a class="cta" href="tel:+33775769232">
+  📞 07 75 76 92 32
+</a>
 
-    <!-- SUCCESS -->
-    <div class="success-panel" id="success-panel">
-      <div class="success-icon">🎉</div>
-      <h3>Demande envoyée !</h3>
-      <p>Nous vous rappelons sous 24 h (souvent bien avant). Pour aller plus vite, appelez-nous directement :</p>
-      <a href="tel:0775769232" class="success-phone">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.4h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.37a16 16 0 006.29 6.29l1.35-1.35a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        07 75 76 92 32
-      </a>
-    </div>
-  </div>
-</section>
+<a class="email-link" href="mailto:contact.energiesolaire66@gmail.com">
+  contact.energiesolaire66@gmail.com
+</a>
 
-<!-- TRUST STRIP -->
-<div class="trust">
-  <div class="trust-inner">
-    <div class="trust-chip">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-      Avec nos installateurs RGE certifiés · Décennale
-    </div>
-    <div class="trust-chip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Assurance décennale incluse
-    </div>
-    <div class="trust-chip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Devis sous 24 h
-    </div>
-    <div class="trust-chip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      Artisan local — pas un call center
-    </div>
-  </div>
+<div class="mountains">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,120 200,40 380,90 560,20 720,70 900,10 1100,60 1280,30 1440,80 1440,120" fill="rgba(11,33,69,0.8)"/>
+    <polygon points="0,120 160,60 320,100 520,45 700,85 880,35 1060,75 1220,50 1440,90 1440,120" fill="rgba(11,33,69,0.5)"/>
+  </svg>
 </div>
 
-<!-- PROCESS -->
-<div style="background:var(--cream)">
-  <div class="section">
-    <div class="section-label">Comment ça marche</div>
-    <h2 class="section-title">De la demande à l'installation en 4 étapes</h2>
-    <p class="section-sub">Nous gérons tout, de la déclaration en mairie au raccordement Enedis.</p>
-    <div class="process">
-      <div class="p-step">
-        <div class="p-num">01</div>
-        <h3>Demande en ligne</h3>
-        <p>2 minutes suffisent. Nous analysons votre toiture et vos factures.</p>
-      </div>
-      <div class="p-step">
-        <div class="p-num">02</div>
-        <h3>Visite technique gratuite</h3>
-        <p>Un expert se déplace chez vous pour un audit complet, sans frais.</p>
-      </div>
-      <div class="p-step">
-        <div class="p-num">03</div>
-        <h3>Devis chiffré sous 48 h</h3>
-        <p>Simulation de production, retour sur investissement, aides déduites.</p>
-      </div>
-      <div class="p-step">
-        <div class="p-num">04</div>
-        <h3>Installation & raccordement</h3>
-        <p>Pose en 1 journée, déclarations administratives prises en charge.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- AIDES 2026 -->
-<div style="background:var(--night)">
-  <div class="section" style="max-width:900px">
-    <div class="section-label" style="color:var(--sun)">Aides financières 2026</div>
-    <h2 class="section-title" style="color:var(--white)">Jusqu'à 5 000 € d'aides cumulables</h2>
-    <p class="section-sub" style="color:#94A3B8">Ces dispositifs peuvent être cumulés — nous montons les dossiers avec vous.</p>
-    <div class="aides">
-      <div class="aide-card">
-        <div class="aide-amount">2 900 €</div>
-        <div class="aide-name">Prime à l'autoconsommation</div>
-        <div class="aide-desc">Versée par EDF OA dès la mise en service. Montant pour 3 kWc (installation typique).</div>
-      </div>
-      <div class="aide-card">
-        <div class="aide-amount">10 %</div>
-        <div class="aide-name">TVA réduite</div>
-        <div class="aide-desc">Au lieu de 20 % — sur la main-d'œuvre et les équipements pour résidence principale.</div>
-      </div>
-      <div class="aide-card">
-        <div class="aide-amount">Jusqu'à +1 200 €</div>
-        <div class="aide-name">MaPrimeRénov' solaire</div>
-        <div class="aide-desc">Aide complémentaire sous conditions de revenus, cumulable avec la prime autoconso.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TESTIMONIALS -->
-<div style="background:var(--cream)">
-  <div class="section">
-    <div class="section-label">Témoignages</div>
-    <h2 class="section-title">Ce que disent nos clients</h2>
-    <div class="testimonials">
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Devis reçu le lendemain, installation faite en une journée. Ma facture EDF a baissé de 65 % dès le premier mois."</p>
-        <div class="testi-author">Marc L.</div>
-        <div class="testi-loc">Bompas (66)</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Très professionnels et à l'écoute. Ils ont géré toutes les démarches administratives. Je recommande sans hésiter."</p>
-        <div class="testi-author">Sophie R.</div>
-        <div class="testi-loc">Carcassonne (11)</div>
-      </div>
-      <div class="testi">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"ROI estimé en 7 ans, panneaux posés en octobre, première revente d'électricité dès novembre. Parfait."</p>
-        <div class="testi-author">Pierre M.</div>
-        <div class="testi-loc">Montpellier (34)</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- URGENCY CTA -->
-<div class="urgency">
-  <h2>Les aides 2026 sont <em style="color:var(--sun);font-style:normal">limitées dans le temps</em></h2>
-  <p>Les budgets MaPrimeRénov' sont alloués chaque trimestre. Demandez votre devis maintenant pour sécuriser votre dossier avant la prochaine clôture.</p>
-  <a href="#form" class="urgency-cta">
-    ☀️ Je demande mon devis gratuit
-  </a>
-</div>
-
-<!-- FOOTER -->
-<footer class="lp-footer">
-  <div class="footer-logo">Perpignan<span>Solaire</span> · SARL Rezofabrik</div>
-  <div class="footer-links">
-    <a href="https://solaire-66.fr">Site principal</a>
-    <a href="https://solaire-66.fr/mentions-legales.html">Mentions légales</a>
-    <a href="tel:0775769232">07 75 76 92 32</a>
-  </div>
-  <div class="footer-legal">SARL Rezofabrik · Nos installateurs RGE · Siège à Perpignan (66000) · © 2026</div>
-
-<p style="text-align:center;font-size:.78rem;padding:8px 0 16px;opacity:0.6;">🏠 Cache clim sur mesure : <a href="https://www.rezo-fabrik.fr" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;opacity:0.7;">rezo-fabrik.fr</a></p></footer>
-
-<!-- STICKY MOBILE BAR -->
-<div class="sticky-bar">
-  <a href="tel:0775769232" class="call">📞 Appeler maintenant</a>
-  <a href="#form" class="form">Devis gratuit</a>
-</div>
-
-<script>
-  if (history.scrollRestoration) history.scrollRestoration = 'manual';
-// UTM capture
-(function(){
-  const p = new URLSearchParams(location.search);
-  document.getElementById('f-utm_source').value   = p.get('utm_source')   || '';
-  document.getElementById('f-utm_medium').value   = p.get('utm_medium')   || '';
-  document.getElementById('f-utm_campaign').value = p.get('utm_campaign') || '';
-})();
-
-// Multi-step form logic
-let typeVal = '', roofVal = '';
-
-function setupChoices(containerId, onSelect) {
-  document.getElementById(containerId).querySelectorAll('.choice').forEach(c => {
-    c.addEventListener('click', () => {
-      document.getElementById(containerId).querySelectorAll('.choice').forEach(x => x.classList.remove('selected'));
-      c.classList.add('selected');
-      onSelect(c.dataset.val);
-    });
-  });
-}
-
-setupChoices('choices-type', v => {
-  typeVal = v;
-  document.getElementById('next1').disabled = false;
-});
-
-setupChoices('choices-roof', v => {
-  roofVal = v;
-  document.getElementById('next2').disabled = false;
-});
-
-function goStep(from, to) {
-  document.getElementById('step' + from).classList.remove('active');
-  document.getElementById('step' + to).classList.add('active');
-  // update dots
-  document.getElementById('dot' + from).classList.remove('active');
-  document.getElementById('dot' + from).classList.add('done');
-  document.getElementById('dot' + from).textContent = '✓';
-  if (from < to) document.getElementById('line' + from).classList.add('done');
-  document.getElementById('dot' + to).classList.remove('idle');
-  document.getElementById('dot' + to).classList.add('active');
-  document.getElementById('form').scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-document.getElementById('next1').addEventListener('click', () => {
-  document.getElementById('f-type').value = typeVal;
-  goStep(1, 2);
-});
-
-document.getElementById('next2').addEventListener('click', () => {
-  document.getElementById('f-roof').value = roofVal;
-  goStep(2, 3);
-});
-
-// Form submission
-document.getElementById('devis-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const nm = document.getElementById('f-name').value.trim();
-  const pn = document.getElementById('f-phone').value.trim();
-  const cp = document.getElementById('f-cp').value.trim();
-  document.getElementById('f-subject').value = '🌞 LP Devis — ' + pn + ' ' + nm + ' (' + cp + ')';
-
-  const btn = this.querySelector('.btn-submit');
-  btn.textContent = 'Envoi en cours…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: new FormData(this)
-    });
-    const data = await res.json();
-    if (data.success) {
-      document.getElementById('step3').classList.remove('active');
-      document.getElementById('success-panel').style.display = 'block';
-      // mark step 3 done
-      document.getElementById('dot3').classList.remove('active');
-      document.getElementById('dot3').classList.add('done');
-      document.getElementById('dot3').textContent = '✓';
-      document.getElementById('line2').classList.add('done');
-    } else {
-      btn.textContent = 'Erreur — réessayer';
-      btn.disabled = false;
-    }
-  } catch {
-    btn.textContent = 'Erreur réseau — réessayer';
-    btn.disabled = false;
-  }
-});
-</script>
 </body>
 </html>
