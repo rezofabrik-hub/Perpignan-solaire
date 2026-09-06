@@ -121,6 +121,8 @@
  .hero { background: var(--navy); padding: 100px 0 110px; position: relative; overflow: hidden; }
  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(11,30,64,0.80) 0%, rgba(11,30,64,0.60) 100%); z-index: 1; }
+ .hero-overlay::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to top, rgba(11,30,64,0.98) 0%, transparent 100%); }
+ .hero-overlay::before { content: ''; position: absolute; bottom: 0; left: 0; width: 260px; height: 90px; background: rgba(11,30,64,0.99); }
  .hero .wrap { position: relative; z-index: 2; }
  .hero-inner { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; max-width: 700px; }
  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,168,28,0.15); border: 1px solid rgba(245,168,28,0.35); color: var(--amber); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px; }
