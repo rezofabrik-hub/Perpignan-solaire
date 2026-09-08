@@ -1,0 +1,7 @@
+name = "solaire-proxy"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# AT_TOKEN est un secret chiffré — ne jamais le mettre ici
+# Ajoutez-le via : GitHub Secrets → CLOUDFLARE_AT_TOKEN
