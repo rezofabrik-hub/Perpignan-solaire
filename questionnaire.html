@@ -379,12 +379,11 @@
 <script>
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   /* ─── CONFIG ─────────────────────────────────────────────────────────────── */
-  /* ─── WEBHOOKS Make.com ───────────────────────────────────────────────────
-     Scénario 1 "Vérifier token"   → WEBHOOK_CHECK
-     Scénario 2 "Soumettre dossier" → WEBHOOK_SUBMIT
-     Remplacez les deux URLs par celles de vos scénarios Make.com           */
-  const WEBHOOK_CHECK  = 'VOTRE_WEBHOOK_CHECK_MAKE_ICI';
-  const WEBHOOK_SUBMIT = 'VOTRE_WEBHOOK_SUBMIT_MAKE_ICI';
+  /* ─── PROXY Cloudflare Worker ────────────────────────────────────────────
+     Remplacez VOTRE_SOUS_DOMAINE par votre identifiant Cloudflare
+     (visible dans l'URL du worker après déploiement)                        */
+  const WEBHOOK_CHECK  = 'https://solaire-proxy.VOTRE_SOUS_DOMAINE.workers.dev/check-token';
+  const WEBHOOK_SUBMIT = 'https://solaire-proxy.VOTRE_SOUS_DOMAINE.workers.dev/submit';
   const BASE_URL = 'https://solaire-66.fr';
   /* ────────────────────────────────────────────────────────────────────────── */
 

@@ -616,10 +616,10 @@
 
 <script>
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
-  /* ─── WEBHOOK Make.com ────────────────────────────────────────────────────
-     Scénario Make : "Partenaire inscription"
-     Remplacez VOTRE_WEBHOOK_MAKE_ICI par l'URL du webhook Make.com          */
-  const WEBHOOK_PARTENAIRE = 'VOTRE_WEBHOOK_MAKE_ICI';
+  /* ─── PROXY Cloudflare Worker ────────────────────────────────────────────
+     Remplacez VOTRE_SOUS_DOMAINE par votre identifiant Cloudflare
+     (visible dans l'URL du worker après déploiement)                        */
+  const WEBHOOK_PARTENAIRE = 'https://solaire-proxy.VOTRE_SOUS_DOMAINE.workers.dev/partner';
   /* ────────────────────────────────────────────────────────────────────────── */
 
   function generateToken() {
