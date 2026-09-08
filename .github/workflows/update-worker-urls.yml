@@ -1,0 +1,53 @@
+name: Update Worker URLs in HTML
+
+on:
+  workflow_run:
+    workflows: ["Deploy Cloudflare Worker"]
+    types: [completed]
+
+jobs:
+  update-urls:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get worker subdomain from Cloudflare
+        id: worker-info
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          SUBDOMAIN=$(curl -s \
+            "https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/workers/subdomain" \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            | jq -r '.result.subdomain')
+          echo "subdomain=${SUBDOMAIN}" >> $GITHUB_OUTPUT
+          echo "Worker subdomain: ${SUBDOMAIN}"
+
+      - name: Replace placeholder URLs in HTML files
+        env:
+          SUBDOMAIN: ${{ steps.worker-info.outputs.subdomain }}
+        run: |
+          WORKER_BASE="https://solaire-proxy.${SUBDOMAIN}.workers.dev"
+          sed -i "s|https://solaire-proxy.VOTRE_SOUS_DOMAINE.workers.dev|${WORKER_BASE}|g" \
+            partenaires.html questionnaire.html
+          echo "URLs mises à jour avec ${WORKER_BASE}"
+
+      - name: Check if URLs were updated
+        run: |
+          grep -h "workers.dev" partenaires.html questionnaire.html | head -5
+
+      - name: Commit updated HTML if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet partenaires.html questionnaire.html; then
+            echo "Aucun changement — URLs déjà à jour"
+          else
+            git add partenaires.html questionnaire.html
+            git commit -m "Auto : mettre à jour les URLs du Worker Cloudflare"
+            git push
+          fi
