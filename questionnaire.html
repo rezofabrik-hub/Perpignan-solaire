@@ -379,9 +379,12 @@
 <script>
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   /* ─── CONFIG ─────────────────────────────────────────────────────────────── */
-  const AT_TOKEN = ['patZUgff0NyfEeqb3','.f7a3385c171b1155395735a2b6db0b5e7b1d3d23cf74c3367ec3d93af9b1173e'].join('');
-  const AT_BASE  = 'appctTHuijKSMlrFa';
-  const AT_TABLE = 'tblixOyNEDUwrHR5h';
+  /* ─── WEBHOOKS Make.com ───────────────────────────────────────────────────
+     Scénario 1 "Vérifier token"   → WEBHOOK_CHECK
+     Scénario 2 "Soumettre dossier" → WEBHOOK_SUBMIT
+     Remplacez les deux URLs par celles de vos scénarios Make.com           */
+  const WEBHOOK_CHECK  = 'VOTRE_WEBHOOK_CHECK_MAKE_ICI';
+  const WEBHOOK_SUBMIT = 'VOTRE_WEBHOOK_SUBMIT_MAKE_ICI';
   const BASE_URL = 'https://solaire-66.fr';
   /* ────────────────────────────────────────────────────────────────────────── */
 
@@ -398,20 +401,18 @@
     if (!token) { show('state-invalid'); return; }
 
     try {
-      const formula = encodeURIComponent(`{Token}="${token}"`);
-      const res = await fetch(
-        `https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}?filterByFormula=${formula}&maxRecords=1`,
-        { headers: { 'Authorization': `Bearer ${AT_TOKEN}` } }
-      );
+      const res = await fetch(WEBHOOK_CHECK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token })
+      });
       if (!res.ok) throw new Error('API error');
       const data = await res.json();
 
-      if (!data.records || data.records.length === 0) { show('state-invalid'); return; }
+      const statut = data.statut;
+      recordId = data.recordId;
 
-      const record = data.records[0];
-      const fields = record.fields;
-      const statut = fields['Statut'];
-      recordId = record.id;
+      if (!statut || !recordId) { show('state-invalid'); return; }
 
       if (statut === 'En attente' || statut === 'Refusé') {
         show('state-pending'); return;
@@ -420,8 +421,8 @@
         show('state-done'); return;
       }
       if (statut === 'Approuvé') {
-        const prenom = fields['Prénom'] || '';
-        const nom    = fields['Nom']    || '';
+        const prenom = data.prenom || '';
+        const nom    = data.nom    || '';
         if (prenom || nom) {
           document.getElementById('welcome-name').textContent = `Bienvenue${prenom ? ', ' + prenom : ''}${nom ? ' ' + nom : ''} 👋`;
         }
@@ -471,11 +472,11 @@
       if (f.msg.value.trim())   notesParts.push(f.msg.value.trim());
       if (notesParts.length) fields['Notes'] = notesParts.join('\n');
 
-      /* Mise à jour Airtable */
-      const patchRes = await fetch(`https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}/${recordId}`, {
-        method: 'PATCH',
-        headers: { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields })
+      /* Mise à jour via Make.com */
+      const patchRes = await fetch(WEBHOOK_SUBMIT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recordId, fields })
       });
       if (!patchRes.ok) throw new Error(await patchRes.text());
 
@@ -500,7 +501,7 @@
           urssaf_a_jour: f.urssaf.checked ? '✅ Oui — certifié par le candidat' : '❌ Non coché',
           zones: f.zones.value.trim() || 'Non précisé',
           remarques: f.msg.value.trim() || '(aucune)',
-          action: `👉 Validez ou refusez le dossier dans Airtable : ${AT_BASE} > Partenaires > enregistrement ${recordId}`,
+          action: `👉 Validez ou refusez le dossier dans Airtable (enregistrement : ${recordId}).`,
           botcheck: ''
         })
       });
