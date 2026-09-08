@@ -616,15 +616,10 @@
 
 <script>
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
-  /* ─── CONFIG AIRTABLE ────────────────────────────────────────────────────────
-     Créez un Personal Access Token sur https://airtable.com/account
-     > Developer hub > Personal access tokens > Create token
-     Scopes requis : data.records:read  +  data.records:write
-     Accès : base "Perpignan Solaire" uniquement
-     Collez votre token ci-dessous à la place de VOTRE_TOKEN_AIRTABLE          */
-  const AT_TOKEN = ['patZUgff0NyfEeqb3','.f7a3385c171b1155395735a2b6db0b5e7b1d3d23cf74c3367ec3d93af9b1173e'].join('');
-  const AT_BASE  = 'appctTHuijKSMlrFa';
-  const AT_TABLE = 'tblixOyNEDUwrHR5h';
+  /* ─── WEBHOOK Make.com ────────────────────────────────────────────────────
+     Scénario Make : "Partenaire inscription"
+     Remplacez VOTRE_WEBHOOK_MAKE_ICI par l'URL du webhook Make.com          */
+  const WEBHOOK_PARTENAIRE = 'VOTRE_WEBHOOK_MAKE_ICI';
   /* ────────────────────────────────────────────────────────────────────────── */
 
   function generateToken() {
@@ -632,9 +627,9 @@
   }
 
   async function saveToAirtable(fields) {
-    const res = await fetch(`https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}`, {
+    const res = await fetch(WEBHOOK_PARTENAIRE, {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fields })
     });
     if (!res.ok) throw new Error(await res.text());
