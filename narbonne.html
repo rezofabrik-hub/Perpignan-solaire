@@ -3,13 +3,18 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Panneaux Solaires Narbonne | Solaire 66</title>
+ <title>Panneaux Solaires Narbonne — Devis Gratuit | Solaire 66</title>
  <meta name="description" content="Solaire 66 installe des panneaux JinkoSolar, Longi, REC à Narbonne (11). Onduleurs SolarEdge & Enphase. 1650 kWh/m²/an. Devis gratuit 24h. Avec nos installateurs RGE certifiés · Décennale.">
  <meta name="keywords" content="panneau solaire Narbonne, installateur solaire Narbonne, JinkoSolar Narbonne, Longi Solar Narbonne, SolarEdge Narbonne, RGE Narbonne, devis solaire Narbonne, photovoltaïque 11100">
  <meta name="geo.region" content="FR-11">
  <meta name="geo.placename" content="Narbonne, Aude">
  <meta property="og:title" content="Panneaux Solaires Narbonne — JinkoSolar · Longi · REC | Solaire 66">
  <meta property="og:description" content="Installateur RGE à Narbonne. Panneaux haut rendement, onduleurs optimisés, batteries LFP. Devis gratuit sous 24h.">
+ <meta property="og:image" content="https://solaire-66.fr/img/panneaux-solaires-perpignan.webp">
+ <meta property="og:image:width" content="1200">
+ <meta property="og:image:height" content="630">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:image" content="https://solaire-66.fr/img/panneaux-solaires-perpignan.webp">
  <meta property="og:type" content="website">
  <meta property="og:locale" content="fr_FR">
  <link rel="canonical" href="https://solaire-66.fr/narbonne.html">
@@ -322,7 +327,16 @@
  .share-btn svg { width: 18px; height: 18px; }
  .share-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #0B2145; color: #fff; padding: 10px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity .2s; }
  .share-toast.show { opacity: 1; }
-</style>
+
+ /* ── PROCHES CARDS (maillage interne) ── */
+ .proches-section { border-top: 1px solid var(--border, #DDE6F0); margin-top: 40px; padding-top: 28px; }
+ .proches-title { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-lt, #7B90A8); margin-bottom: 14px; }
+ .proches-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+ .proches-card { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--bg, #F2F5FA); border: 1px solid var(--border, #DDE6F0); border-radius: 6px; font-size: .84rem; font-weight: 600; color: var(--navy, #0B2145); text-decoration: none; transition: all .15s; }
+ .proches-card:hover { background: var(--amber-lt, #FEF5DF); border-color: var(--amber, #F5A81C); color: var(--amber-dk, #D48B0A); }
+ .proches-card::before { content: '☀'; font-size: .75rem; opacity: .6; }
+
+ </style>
  <link rel="manifest" href="/manifest.json">
  <meta name="theme-color" content="#0B2145">
  <meta name="mobile-web-app-capable" content="yes">
@@ -330,6 +344,8 @@
  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
  <meta name="apple-mobile-web-app-title" content="Solaire 66">
  <link rel="apple-touch-icon" href="/icon-192.png">
+
+ <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Solaire 66", "item": "https://solaire-66.fr/"}, {"@type": "ListItem", "position": 2, "name": "Communes du 66", "item": "https://solaire-66.fr/index.html#zones"}, {"@type": "ListItem", "position": 3, "name": "Panneaux solaires Narbonne", "item": "https://solaire-66.fr/narbonne.html"}]}</script>
 </head>
 <body>
 
@@ -679,7 +695,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- À Narbonne, l'irradiation solaire est de <strong>1650 kWh/m²/an</strong> (données PVGIS 2024). Une installation de 3 kWc produit environ <strong>3712 kWh/an</strong>, soit des économies de <strong>économies annuelles</strong> et un retour sur investissement en <strong>14.3 ans</strong>. Gain net estimé à sur 25 ans.
+ À Narbonne, l'irradiation solaire est de <strong>1650 kWh/m²/an</strong> (données PVGIS 2024). Une installation de 3 kWc produit environ <strong>3712 kWh/an</strong>, soit des économies de <strong>environ 550 à 650 € d'économies annuelles</strong> et un retour sur investissement en <strong>14.3 ans</strong>. Gain net estimé à 6 000 € sur 25 ans.
  </div>
  </div>
  <div>
@@ -693,10 +709,16 @@
  </div>
  </div>
 
- <div class="proches">
- <strong>Zones voisines de Narbonne :</strong> <a href="./carcassonne.html">Carcassonne</a> · <a href="./lezignan-corbieres.html">Lézignan-Corbières</a> · <a href="./sigean.html">Sigean</a> · <a href="./port-la-nouvelle.html">Port-la-Nouvelle</a>
- — <a href="./index.html#zones">Voir toutes nos zones d'intervention</a>
- </div>
+ <div class="proches-section">
+     <div class="proches-title">Communes voisines desservies</div>
+     <div class="proches-grid">
+        <a class="proches-card" href="./carcassonne.html">Carcassonne</a>
+        <a class="proches-card" href="./lezignan-corbieres.html">Lézignan-Corbières</a>
+        <a class="proches-card" href="./sigean.html">Sigean</a>
+        <a class="proches-card" href="./port-la-nouvelle.html">Port-la-Nouvelle</a>
+        <a class="proches-card" href="./index.html#zones">Voir toutes nos zones d'intervention</a>
+     </div>
+    </div>
  </div>
 </section>
 
