@@ -2,6 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simulateur Économies Solaires — Solaire 66</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -152,6 +154,32 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
   .choices.cols-2{grid-template-columns:1fr;}
   .btn{font-size:14px;padding:12px 16px;}
 }
+
+/* ── RÉSULTATS ── */
+.res-hero{background:linear-gradient(135deg,#0d6e3f 0%,#0B1E40 100%);border-radius:var(--r) var(--r) 0 0;padding:28px 24px 24px;text-align:center;position:relative;overflow:hidden;}
+.res-hero::before{content:'';position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,168,28,.25) 0%,transparent 70%);pointer-events:none;}
+.res-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px;}
+.res-headline{font-family:var(--fh);font-size:clamp(22px,4vw,34px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:6px;}
+.res-headline span{color:var(--sun);}
+.res-hero-sub{font-size:13px;color:rgba(255,255,255,.55);}
+.res-body{padding:20px 24px 24px;}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.res-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+@media(max-width:500px){.res-grid{grid-template-columns:1fr;}.res-grid-3{grid-template-columns:1fr 1fr;}}
+.res-card{background:#f9fafb;border-radius:10px;padding:16px 12px;border:1.5px solid var(--border);text-align:center;}
+.res-card.featured{border-color:var(--sun);background:var(--sun-lt);}
+.res-card.green{border-color:#18A25A;background:#e6f7ee;}
+.res-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;}
+.res-val{font-family:var(--fh);font-size:26px;font-weight:800;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums;}
+.res-val.amber{color:var(--sun-dk);}
+.res-val.grn{color:#18A25A;}
+.res-val.sm{font-size:20px;}
+.res-unit{font-size:11px;color:var(--mid);margin-top:4px;}
+.res-note{font-size:11.5px;color:var(--mid);background:#f0f4f9;border-radius:8px;padding:11px 14px;margin-bottom:16px;line-height:1.5;text-align:center;}
+.res-cta{width:100%;background:var(--navy);color:#fff;border:none;border-radius:10px;padding:17px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--fh);transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;touch-action:manipulation;}
+.res-cta:hover{background:var(--navy2);}
+.res-tel{display:block;text-align:center;margin-top:12px;font-size:14px;color:var(--mid);text-decoration:none;}
+.res-tel strong{color:var(--navy);}
 </style>
 
 <div style="background:var(--navy);padding:10px 24px;text-align:center;">
@@ -268,13 +296,72 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
       <div class="step-nav">
         <button class="btn btn-back" onclick="goStep(3)">← Retour</button>
-        <button class="btn btn-next" id="next-4" disabled onclick="goStep(5)">Recevoir mon étude →</button>
+        <button class="btn btn-next" id="next-4" disabled onclick="goStep(5)">Voir ma simulation →</button>
       </div>
     </div>
   </div>
 
-  <!-- STEP 5 : CONTACT + PHOTO -->
+  <!-- STEP 5 : RÉSULTATS -->
   <div class="step" id="step-5">
+    <div class="step-card" style="overflow:hidden;">
+      <div class="res-hero">
+        <div class="res-eyebrow">☀️ Votre simulation Solaire 66 — Perpignan</div>
+        <div class="res-headline">Vous économisez <span id="res-eco-hl">—</span> €/an</div>
+        <div class="res-hero-sub">Calculé avec les données PVGIS du 66 · 1 758 kWh/m²/an</div>
+      </div>
+      <div class="res-body">
+        <div class="res-grid">
+          <div class="res-card featured">
+            <div class="res-label">Économies annuelles</div>
+            <div class="res-val amber" id="res-eco">—</div>
+            <div class="res-unit">€ / an</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Retour investissement</div>
+            <div class="res-val" id="res-roi">—</div>
+            <div class="res-unit">années</div>
+          </div>
+          <div class="res-card green">
+            <div class="res-label">Production estimée</div>
+            <div class="res-val grn" id="res-prod">—</div>
+            <div class="res-unit">kWh / an</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Prime autoconsommation</div>
+            <div class="res-val" id="res-prime">—</div>
+            <div class="res-unit">€ (État · 5 ans)</div>
+          </div>
+        </div>
+        <div class="res-grid-3">
+          <div class="res-card">
+            <div class="res-label">Puissance</div>
+            <div class="res-val sm" id="res-kwc">—</div>
+            <div class="res-unit">kWc</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Prix net estimé</div>
+            <div class="res-val sm" id="res-prix">—</div>
+            <div class="res-unit">€ (après primes)</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">CO₂ évité</div>
+            <div class="res-val sm grn" id="res-co2">—</div>
+            <div class="res-unit">kg / an</div>
+          </div>
+        </div>
+        <div class="res-note">⚠️ Simulation indicative basée sur vos réponses. Un expert Solaire 66 affine ces chiffres lors de la visite technique gratuite à domicile.</div>
+        <button class="res-cta" onclick="goStep(6)">📋 Recevoir mon étude détaillée gratuite →</button>
+        <a class="res-tel" href="tel:0775769232">Ou appelez directement : <strong>07 75 76 92 32</strong></a>
+      </div>
+      <div class="step-nav">
+        <button class="btn btn-back" onclick="goStep(4)">← Modifier mes réponses</button>
+        <span style="font-size:11.5px;color:var(--lt);">Sans engagement · Gratuit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 : CONTACT + PHOTO -->
+  <div class="step" id="step-6">
     <div class="contact-card">
       <div class="contact-head">
         <div class="contact-eyebrow">Dernière étape</div>
@@ -396,11 +483,27 @@ document.querySelectorAll('#step-4 .choice').forEach(c=>{
 function goStep(n){
   document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
   document.getElementById('step-'+n).classList.add('active');
-  const total=4;
+  const total=5;
   const pct=Math.min(((n-1)/total)*100,100);
   document.getElementById('progress-bar').style.width=pct+'%';
-  document.getElementById('progress-label').textContent=n<=4?'Étape '+n+' sur '+total:'Vos coordonnées';
+  if(n<=5) document.getElementById('progress-label').textContent='Étape '+n+' sur '+total;
+  else document.getElementById('progress-label').textContent='Vos coordonnées';
+  if(n===5) renderResults();
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── AFFICHER LES RÉSULTATS ──
+function renderResults(){
+  const r=calculate();
+  const fmt=v=>v.toLocaleString('fr-FR');
+  document.getElementById('res-eco-hl').textContent=fmt(r.totalEconoAn);
+  document.getElementById('res-eco').textContent=fmt(r.totalEconoAn);
+  document.getElementById('res-roi').textContent=r.retour;
+  document.getElementById('res-prod').textContent=fmt(r.prod);
+  document.getElementById('res-prime').textContent=fmt(r.primeAuto);
+  document.getElementById('res-kwc').textContent=r.kWc;
+  document.getElementById('res-prix').textContent=fmt(r.prixNet);
+  document.getElementById('res-co2').textContent=fmt(r.co2);
 }
 
 // ── FILE UPLOAD ──
