@@ -128,7 +128,18 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 80px;}
 .ftr-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);font-size:.76rem;color:#475569;text-align:center;}
 @media(min-width:640px){.stats-row{grid-template-columns:repeat(4,1fr);} .aides-grid{grid-template-columns:1fr 1fr;}}
 @media(min-width:900px){.hero-grid{grid-template-columns:1fr 1fr;} .steps{grid-template-columns:1fr 1fr;} .ftr-grid{grid-template-columns:2fr 1fr 1fr;}}
-</style>
+
+ /* ── PROCHES CARDS (maillage interne) ── */
+ .proches-section { border-top: 1px solid var(--border, #DDE6F0); margin-top: 40px; padding-top: 28px; }
+ .proches-title { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text-lt, #7B90A8); margin-bottom: 14px; }
+ .proches-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+ .proches-card { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--bg, #F2F5FA); border: 1px solid var(--border, #DDE6F0); border-radius: 6px; font-size: .84rem; font-weight: 600; color: var(--navy, #0B2145); text-decoration: none; transition: all .15s; }
+ .proches-card:hover { background: var(--amber-lt, #FEF5DF); border-color: var(--amber, #F5A81C); color: var(--amber-dk, #D48B0A); }
+ .proches-card::before { content: '☀'; font-size: .75rem; opacity: .6; }
+
+ </style>
+
+ <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Solaire 66", "item": "https://solaire-66.fr/"}, {"@type": "ListItem", "position": 2, "name": "Communes du 66", "item": "https://solaire-66.fr/index.html#zones"}, {"@type": "ListItem", "position": 3, "name": "Panneaux solaires Villar-en-Val", "item": "https://solaire-66.fr/villar-en-val.html"}]}</script>
 </head>
 <body>
 <script>if(history.scrollRestoration)history.scrollRestoration='manual';<\/script>
@@ -286,7 +297,18 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 80px;}
 </section>
 
 <div class="wrap">
-  <div class="proches"><strong>Villages proches&nbsp;:</strong> <a href="pomas.html">Pomas</a> &middot; <a href="pieusse.html">Pieusse</a> &middot; <a href="digne-d-amont.html">Digne-d'Amont</a> &middot; <a href="digne-d-aval.html">Digne-d'Aval</a> &middot; <a href="magrie.html">Magrie</a> &middot; <a href="limoux.html">Limoux</a></div>
+  <div class="proches-section">
+     <div class="proches-title">Communes voisines desservies</div>
+     <div class="proches-grid">
+        <a class="proches-card" href="pomas.html">Pomas</a>
+        <a class="proches-card" href="pieusse.html">Pieusse</a>
+        <a class="proches-card" href="digne-d-amont.html">Digne-d'Amont</a>
+        <a class="proches-card" href="digne-d-aval.html">Digne-d'Aval</a>
+        <a class="proches-card" href="magrie.html">Magrie</a>
+        <a class="proches-card" href="limoux.html">Limoux</a>
+        <a class="proches-card" href="./index.html#zones">→ Toutes les communes</a>
+     </div>
+    </div>
 </div>
 
 <footer>
