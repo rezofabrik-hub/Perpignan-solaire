@@ -5,7 +5,15 @@
   var ACCESS_KEY = '02224188-7400-4bcb-8e85-6e2a926dd955';
   var PHONE = '07 75 76 92 32';
 
-  /* ── conversation tree ──────────────────────────────────────────── */
+  /* ── scoring weights ─────────────────────────────────────────────── */
+  var SCORES = {
+    statut:        { 'Propriétaire': 3, 'Professionnel': 3, 'Bailleur': 2 },
+    type_logement: { 'Maison': 3, 'Copropriété': 2, 'Local pro': 3, 'Agriculture': 3 },
+    facture:       { 'Moins de 80€': 0, '80 à 150€': 1, '150 à 250€': 2, 'Plus de 250€': 3 },
+    objectif:      { 'Réduire facture': 1, 'Revente surplus': 2, 'Autonomie batterie': 2, 'Démarche éco': 1 }
+  };
+
+  /* ── conversation steps ──────────────────────────────────────────── */
   var STEPS = [
     {
       id: 'statut',
@@ -13,7 +21,8 @@
       choices: [
         { label: '🏠 Propriétaire', value: 'Propriétaire' },
         { label: '🏢 Professionnel / Entreprise', value: 'Professionnel' },
-        { label: '🏡 Bailleur / Investisseur', value: 'Bailleur' }
+        { label: '🏡 Bailleur / Investisseur', value: 'Bailleur' },
+        { label: '🔑 Locataire', value: 'Locataire', disqualify: true }
       ]
     },
     {
@@ -69,7 +78,48 @@
   /* ── state ──────────────────────────────────────────────────────── */
   var state = { step: 0, answers: {}, open: false };
 
-  /* ── DOM helpers ────────────────────────────────────────────────── */
+  /* ── phone validation ────────────────────────────────────────────── */
+  function validatePhone(raw) {
+    var cleaned = raw.replace(/[\s\.\-\/]/g, '');
+    /* must be French mobile 06/07 + 8 digits */
+    if (!/^(06|07)\d{8}$/.test(cleaned)) return false;
+    /* reject all-same-digit (0611111111, 0600000000…) */
+    if (/^(\d)\1{9}$/.test(cleaned)) return false;
+    /* reject obvious fake patterns */
+    var fakes = ['0600000000','0700000000','0612345678','0623456789','0601020304','0601234567'];
+    if (fakes.indexOf(cleaned) !== -1) return false;
+    /* reject 5+ consecutive sequential digits */
+    var digits = cleaned.replace(/\D/g, '');
+    var inc = 0, dec = 0;
+    for (var i = 1; i < digits.length; i++) {
+      var d = parseInt(digits[i]) - parseInt(digits[i - 1]);
+      if (d === 1) { inc++; if (inc >= 4) return false; } else inc = 0;
+      if (d === -1) { dec++; if (dec >= 4) return false; } else dec = 0;
+    }
+    return true;
+  }
+
+  /* ── compute lead score ──────────────────────────────────────────── */
+  function computeScore() {
+    var total = 0;
+    Object.keys(SCORES).forEach(function (field) {
+      var answer = state.answers[field];
+      if (answer && SCORES[field][answer] !== undefined) {
+        total += SCORES[field][answer];
+      }
+    });
+    return total;
+  }
+
+  /* ── lead tag from score ─────────────────────────────────────────── */
+  function getTag(score) {
+    if (score >= 9) return '🔥 TRÈS CHAUD';
+    if (score >= 6) return '⭐ CHAUD';
+    if (score >= 3) return '🌡️ TIÈDE';
+    return '❄️ FROID';
+  }
+
+  /* ── DOM helpers ─────────────────────────────────────────────────── */
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -77,7 +127,7 @@
     return e;
   }
 
-  /* ── build UI ───────────────────────────────────────────────────── */
+  /* ── build UI ────────────────────────────────────────────────────── */
   function buildWidget() {
     /* ── styles ── */
     var style = document.createElement('style');
@@ -224,6 +274,12 @@
       input.removeAttribute('placeholder');
     }
 
+    /* ── disqualify politely ── */
+    function disqualify() {
+      clearControls();
+      addBotBubble('Merci pour votre intérêt ! 😊\n\nMalheureusement, les panneaux solaires nécessitent d\'être propriétaire du bien.\n\nSi votre situation change, nous serons ravis de vous accompagner. Bonne journée ! ☀️');
+    }
+
     /* ── show step ── */
     function showStep(idx) {
       if (idx >= STEPS.length) { submitLead(); return; }
@@ -238,6 +294,7 @@
               addUserBubble(c.label);
               state.answers[step.id] = c.value;
               clearControls();
+              if (c.disqualify) { disqualify(); return; }
               state.step = idx + 1;
               setTimeout(function () { showStep(state.step); }, 400);
             });
@@ -256,11 +313,9 @@
     function handleTextAnswer(val) {
       var step = STEPS[state.step];
       if (!step) return;
-      /* basic tel validation */
       if (step.type === 'tel') {
-        var digits = val.replace(/\D/g, '');
-        if (digits.length < 9) {
-          addBotBubble('Merci de saisir un numéro valide (ex : 06 XX XX XX XX) 📱');
+        if (!validatePhone(val)) {
+          addBotBubble('Ce numéro ne semble pas valide. Merci de saisir votre numéro mobile (06 ou 07) pour que nous puissions vous rappeler 📱');
           return;
         }
       }
@@ -273,20 +328,28 @@
     /* ── submit ── */
     function submitLead() {
       clearControls();
+      var score = computeScore();
+      var tag = getTag(score);
       addBotBubble('Parfait ' + (state.answers.prenom || '') + ' ! 🎉 Je prépare votre étude…').then(function () {
         var commune = state.answers.commune || 'Non précisée';
-        var subject = '💬 Chat Solaire 66 — ' + (state.answers.prenom || 'Prospect') + ' (' + commune + ')';
+        var subject = tag + ' — ' + (state.answers.prenom || 'Prospect') + ' (' + commune + ') · Score ' + score + '/11';
         var body = [
-          'Statut : ' + (state.answers.statut || '-'),
-          'Type de bien : ' + (state.answers.type_logement || '-'),
-          'Commune : ' + commune,
-          'Facture mensuelle : ' + (state.answers.facture || '-'),
-          'Objectif : ' + (state.answers.objectif || '-'),
-          'Prénom : ' + (state.answers.prenom || '-'),
-          'Téléphone : ' + (state.answers.tel || '-'),
+          '━━━ QUALIFICATION DU LEAD ━━━',
+          'Score    : ' + score + '/11 — ' + tag,
           '',
-          'Source : Chatbot site Perpignan Solaire',
-          'Page : ' + window.location.href
+          '━━━ INFORMATIONS ━━━',
+          'Statut        : ' + (state.answers.statut || '-'),
+          'Type de bien  : ' + (state.answers.type_logement || '-'),
+          'Commune       : ' + commune,
+          'Facture/mois  : ' + (state.answers.facture || '-'),
+          'Objectif      : ' + (state.answers.objectif || '-'),
+          'Prénom        : ' + (state.answers.prenom || '-'),
+          'Téléphone     : ' + (state.answers.tel || '-'),
+          '',
+          '━━━ SOURCE ━━━',
+          'Canal  : Chatbot site Perpignan Solaire',
+          'Page   : ' + window.location.href,
+          'Date   : ' + new Date().toLocaleString('fr-FR')
         ].join('\n');
 
         var formData = new FormData();
@@ -295,6 +358,7 @@
         formData.append('from_name', 'Chatbot Perpignan Solaire');
         formData.append('prenom', state.answers.prenom || '');
         formData.append('tel', state.answers.tel || '');
+        formData.append('score', score + '/11 — ' + tag);
         formData.append('type', state.answers.type_logement || '');
         formData.append('msg', body);
         formData.append('botcheck', '');
