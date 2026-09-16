@@ -80,6 +80,38 @@
  "@type": "Answer",
  "text": "Aides cumulables à Corneilla-la-Rivière : TVA réduite à 10 %, MaPrimeRénov' (jusqu'à 1 000 €), prime autoconsommation (3 kWc × 230 €/kWc = 690 €), éco-PTZ à taux zéro, et rachat surplus EDF OA à 0,1269 €/kWh sur 20 ans. Toutes les démarches sont prises en charge par Solaire 66."
  }
+ },
+ {
+ "@type": "Question",
+ "name": "Comment poser des panneaux sur une toiture en tuile romane à Corneilla-la-Rivière ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Les toitures en tuile romane à Corneilla-la-Rivière se traitent par pose sur bac acier (structure métallique sur charpente, sans modifier les tuiles d'origine) ou par intégration au bâti lors d'une réfection de couverture. Solaire 66 effectue un bilan de charpente lors de la visite technique gratuite pour choisir la solution adaptée."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Combien de panneaux solaires pour une maison à Corneilla-la-Rivière ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "À Corneilla-la-Rivière, 6 à 8 panneaux (3 kWc) couvrent 40 à 50 % d'une consommation annuelle de 4 500 kWh. 12 à 16 panneaux (6 kWc) avec batterie permettent 80 à 100 % de couverture. Le dimensionnement exact est calculé lors de la visite technique gratuite sur la base de votre consommation réelle."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Puis-je revendre toute ma production solaire à Corneilla-la-Rivière ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Oui. Deux régimes existent : la vente totale (injection 100 % sur réseau EDF OA, tarif garanti 20 ans entre 0,06 et 0,13 €/kWh) et l'autoconsommation avec vente du surplus. À Corneilla-la-Rivière, l'autoconsommation avec surplus est généralement plus rentable : l'électricité autoconsommée vaut ≈ 0,25 €/kWh contre 0,06–0,08 €/kWh revendu. Solaire 66 compare les deux options lors de l'audit gratuit."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Quelles garanties pour une installation solaire à Corneilla-la-Rivière ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Garantie décennale 10 ans (RGE), garantie performance panneaux 25 ans (80 % puissance résiduelle), garantie produit panneaux 12 ans, garantie onduleurs 12 ans extensible 20 ans, garantie batteries 10 ans à 70 % capacité. Contrat de maintenance annuel optionnel avec bilan de production et nettoyage des modules."
+ }
  }
  ]
 }</script>
@@ -294,6 +326,19 @@
  .proches-card:hover { background: var(--amber-lt, #FEF5DF); border-color: var(--amber, #F5A81C); color: var(--amber-dk, #D48B0A); }
  .proches-card::before { content: '☀'; font-size: .75rem; opacity: .6; }
 
+ /* ── SHARE BUTTON ── */
+ .share-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(15,23,42,0.06); border: none; cursor: pointer; color: var(--slate3); transition: all .15s; flex-shrink: 0; }
+ .share-btn:hover { background: rgba(15,23,42,0.12); }
+ .share-btn svg { width: 18px; height: 18px; }
+ .share-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--slate2); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity .2s; }
+ .share-toast.show { opacity: 1; }
+
+ /* ── LOCAL INFO BOX ── */
+ .local-info { background: var(--white); border: 1.5px solid var(--slate6); border-radius: var(--r); padding: 20px 22px; margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+ .local-info-item { text-align: center; }
+ .local-info-val { font-size: 1.2rem; font-weight: 900; color: var(--sun-d); line-height: 1; }
+ .local-info-lbl { font-size: .72rem; color: var(--slate4); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; font-weight: 600; }
+
  </style>
  <link rel="manifest" href="/manifest.json">
  <meta name="theme-color" content="#0B2145">
@@ -319,6 +364,9 @@
  <a href="./#partenaires">Apporteurs</a>
  </div>
  <div class="nav-right">
+ <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+ </button>
  <a href="tel:0775769232" class="nav-tel">📞 07 75 76 92 32</a>
  <a href="#devis-local" class="btn btn-sun">⚡ Devis gratuit</a>
  </div>
@@ -384,10 +432,19 @@
  <div>
  <div class="eyebrow">Votre installateur à Corneilla-la-Rivière</div>
  <h2 class="h2" id="about-title">Solaire 66 intervient<br>à <em>Corneilla-la-Rivière</em></h2>
- <p class="body-txt">Corneilla-la-Rivière (66460) — commune viticole et résidentielle en bordure du Tech.</p>
+ <p class="body-txt">Corneilla-la-Rivière (66460) — commune viticole du Roussillon, ~3 500 habitants, à 10 km de Thuir, entre plaine et premiers contreforts des Pyrénées.</p>
+ <div class="local-info">
+ <div class="local-info-item"><div class="local-info-val">~3 500</div><div class="local-info-lbl">Habitants</div></div>
+ <div class="local-info-item"><div class="local-info-val">66460</div><div class="local-info-lbl">Code postal</div></div>
+ <div class="local-info-item"><div class="local-info-val">1 730+</div><div class="local-info-lbl">kWh/m²/an</div></div>
+ <div class="local-info-item"><div class="local-info-val">10 km</div><div class="local-info-lbl">de Thuir</div></div>
+ <div class="local-info-item"><div class="local-info-val">Tuile romane</div><div class="local-info-lbl">Toiture typique</div></div>
+ <div class="local-info-item"><div class="local-info-val">Roussillon</div><div class="local-info-lbl">Vignoble AOC</div></div>
+ </div>
  <div class="about-card" style="margin-top:28px;">
  <p><strong>Solaire 66</strong> (SARL Rezofabrik) est votre installateur photovoltaïque local à Corneilla-la-Rivière et dans tout le département 66. Avec 1750 kWh/m²/an (PVGIS), les toitures de Corneilla-la-Rivière offrent d'excellentes conditions pour la production solaire — retour sur investissement estimé à 13,4 ans.</p>
  <p>Nos équipes appuyées par <strong>nos installateurs RGE certifiés · Décennale</strong> prennent en charge chaque installation de A à Z : visite technique gratuite, démarches administratives (Enedis, Consuel, MaPrimeRénov'), raccordement et suivi post-installation.</p>
+ <p>Corneilla-la-Rivière, commune viticole à l'identité roussillonnaise marquée, se distingue par ses maisons en pierres coiffées de tuiles romanes traditionnelles. Ces toitures requièrent une expertise locale spécifique : nos techniciens maîtrisent les deux solutions adaptées — la <strong>pose sur bac acier</strong> pour les versants en forte pente et l'<strong>intégration au bâti</strong> sur charpente ancienne — tout en respectant le caractère architectural du bâti local. À 10 km de Thuir et au cœur du vignoble des Côtes du Roussillon, la commune profite d'un microclimat sec et lumineux : <strong>1 730 kWh/m²/an et plus</strong> d'irradiation (PVGIS), avec peu de couverture nuageuse et une tramontane qui refroidit les panneaux et améliore leur rendement réel en été.</p>
  <ul class="chk-list">
  <li>Avec nos installateurs RGE certifiés · Décennale — éligibilité à toutes les aides de l'État</li>
  <li>Visite technique gratuite à domicile, sans engagement</li>
@@ -396,6 +453,9 @@
  <li>SAV réactif — techniciens basés dans les P.-O. et l'Aude</li>
  <li>Batterie physique LFP ou batterie virtuelle selon profil</li>
  <li>Raccordement EDF OA pour revente du surplus sur 20 ans</li>
+ <li>Expertise des toitures en tuile romane — pose sur bac acier ou intégration au bâti</li>
+ <li>Déclaration préalable de travaux prise en charge auprès de la mairie de Corneilla-la-Rivière</li>
+ <li>Simulations personnalisées basées sur votre consommation réelle et l'orientation de votre toiture</li>
  </ul>
  </div>
  </div>
@@ -403,10 +463,10 @@
  <div class="eyebrow" style="margin-top:0;">Nos 4 étapes</div>
  <h2 class="h2" style="margin-bottom:0;">De la visite à la<br>mise en service</h2>
  <div class="steps" style="margin-top:24px;grid-template-columns:1fr;">
- <div class="step"><div class="step-num">1</div><div><div class="step-title">Visite technique gratuite</div><div class="step-body">Étude de votre toiture à Corneilla-la-Rivière, orientation, ombrage, consommation. Devis sous 24h.</div></div></div>
- <div class="step"><div class="step-num">2</div><div><div class="step-title">Démarches administratives</div><div class="step-body">Déclaration préalable, demande Enedis, dossier MaPrimeRénov' — tout est géré.</div></div></div>
- <div class="step"><div class="step-num">3</div><div><div class="step-title">Installation certifiée</div><div class="step-body">Pose en 1 à 2 jours par nos techniciens RGE. Panneaux JinkoSolar, Longi ou REC.</div></div></div>
- <div class="step"><div class="step-num">4</div><div><div class="step-title">Mise en service & suivi</div><div class="step-body">Consuel, raccordement Enedis, formation à l'application de suivi en temps réel.</div></div></div>
+ <div class="step"><div class="step-num">1</div><div><div class="step-title">Visite technique gratuite</div><div class="step-body">Étude de votre toiture à Corneilla-la-Rivière — orientation, ombrage (arbres, cheminées), état de la charpente, type de couverture (tuile romane). Simulation de production et devis détaillé sous 24h, sans engagement.</div></div></div>
+ <div class="step"><div class="step-num">2</div><div><div class="step-title">Démarches administratives</div><div class="step-body">Déclaration préalable de travaux auprès de la mairie de Corneilla-la-Rivière, demande de raccordement Enedis, dossier MaPrimeRénov' et prime autoconsommation — tout est géré par nos soins, sans frais supplémentaires.</div></div></div>
+ <div class="step"><div class="step-num">3</div><div><div class="step-title">Installation certifiée</div><div class="step-body">Pose en 1 à 2 jours par nos techniciens RGE spécialisés toitures roussillonnaises. Fixations adaptées aux tuiles romanes, câblage soigné, étanchéité garantie. Panneaux JinkoSolar, Longi ou REC selon votre profil.</div></div></div>
+ <div class="step"><div class="step-num">4</div><div><div class="step-title">Mise en service & suivi</div><div class="step-body">Consuel, raccordement Enedis, contrat de revente EDF OA, formation à l'application de suivi en temps réel. Bilan de production à 6 mois inclus. SAV local sous 48h en cas d'anomalie.</div></div></div>
  </div>
  </div>
  </div>
@@ -419,9 +479,12 @@
  <h2 class="h2" id="brands-title">Marques premium — <em>haut rendement</em></h2>
  <p class="body-txt">Nous sélectionnons les meilleures technologies mondiales pour chaque installation à Corneilla-la-Rivière. Tous nos panneaux sont certifiés IEC 61215 et bénéficient de la garantie linéarité de rendement.</p>
  <div class="brands-grid">
- <div class="brand-card"><div class="brand-icon">⚡</div><div class="brand-name">JinkoSolar</div><div class="brand-model">Tiger Neo N-Type</div><div class="brand-specs"><span>415 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span></div></div>
- <div class="brand-card"><div class="brand-icon">🔆</div><div class="brand-name">Longi Solar</div><div class="brand-model">Hi-MO 6 Explorer</div><div class="brand-specs"><span>420 Wc</span><span>η 22,0 %</span><span>Gar. 25 ans</span></div></div>
- <div class="brand-card"><div class="brand-icon">✦</div><div class="brand-name">REC Group</div><div class="brand-model">Alpha Pure-R</div><div class="brand-specs"><span>430 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card"><div class="brand-icon">⚡</div><div class="brand-name">JinkoSolar</div><div class="brand-model">Tiger Neo N-Type — Best-seller</div><div class="brand-specs"><span>415 Wc</span><span>η 22,3 %</span><span>Coeff. temp. −0,29 %/°C</span><span>Bif. N-Type</span><span>IEC 61215/61730</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card"><div class="brand-icon">🔆</div><div class="brand-name">Longi Solar</div><div class="brand-model">Hi-MO 6 Explorer — Résistance chaleur</div><div class="brand-specs"><span>420 Wc</span><span>η 22,0 %</span><span>Coeff. temp. −0,30 %/°C</span><span>HPBC Cell</span><span>IEC 61215/61730</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card"><div class="brand-icon">✦</div><div class="brand-name">REC Group</div><div class="brand-model">Alpha Pure-R — Premium européen</div><div class="brand-specs"><span>430 Wc</span><span>η 22,3 %</span><span>Coeff. temp. −0,26 %/°C</span><span>HJT Heterojunction</span><span>IEC 61215/61730</span><span>Gar. 25 ans</span></div></div>
+ </div>
+ <div style="margin-top:18px;background:var(--sky3);border:1.5px solid var(--sky2);border-radius:var(--rs);padding:16px 18px;font-size:.84rem;color:var(--slate2);line-height:1.7;">
+ <strong>Adaptation aux toitures de Corneilla-la-Rivière :</strong> Les maisons en pierres avec toitures en tuile romane sont fréquentes dans la commune. Nos techniciens proposent systématiquement deux solutions adaptées : <strong>pose sur bac acier</strong> (structure métallique rapportée, idéale pour les pentes raides sans modifier la couverture d'origine) ou <strong>intégration au bâti</strong> sur charpente traditionnelle renforcée. Une visite technique gratuite permet de déterminer la solution optimale selon votre toiture et son état.
  </div>
  <div class="equip-cols" style="margin-top:28px;">
  <div class="equip-box">
@@ -435,9 +498,13 @@
  <div class="bat-item"><span>🔋</span><div><strong>BYD</strong><br><small>Battery-Box Premium HVM</small></div><span class="bat-kwh">8,3 kWh</span></div>
  <div class="bat-item"><span>🔋</span><div><strong>Enphase</strong><br><small>IQ Battery 5P</small></div><span class="bat-kwh">5 kWh</span></div>
  <div class="bat-item"><span>🔋</span><div><strong>Pylontech</strong><br><small>US5000</small></div><span class="bat-kwh">4,8 kWh</span></div>
+ <div class="bat-item"><span>🔋</span><div><strong>Huawei</strong><br><small>LUNA2000-10-S0</small></div><span class="bat-kwh">10 kWh</span></div>
  </div>
  </div>
- <div style="margin-top:20px;font-size:.8rem;color:var(--slate4);text-align:center;">Choix du matériel selon votre profil de consommation et la configuration de votre toiture à Corneilla-la-Rivière.</div>
+ <div style="margin-top:20px;font-size:.8rem;color:var(--slate4);text-align:center;">Choix du matériel selon votre profil de consommation, la configuration de votre toiture à Corneilla-la-Rivière et les contraintes de la charpente.</div>
+ <div style="margin-top:16px;background:var(--sun4);border:1px solid var(--sun3);border-radius:var(--rs);padding:14px 16px;font-size:.83rem;color:var(--slate2);line-height:1.7;">
+ <strong>Production estimée à Corneilla-la-Rivière :</strong> Avec 1 730 kWh/m²/an, une installation de <strong>3 kWc</strong> produit ~3 900 kWh/an · <strong>6 kWc</strong> → ~7 800 kWh/an · <strong>9 kWc</strong> → ~11 700 kWh/an. Production maximale en juin–juillet (ensoleillement direct 6 à 7 h/jour), maintien correct en hiver grâce au faible taux de couverture nuageuse propre au Roussillon. Source : PVGIS 2024.
+ </div>
  </div>
 </section>
 
@@ -445,6 +512,7 @@
  <div class="wrap" style="max-width:860px;">
  <div class="eyebrow">Pourquoi nous choisir</div>
  <h2 class="h2" id="compare-title">Solaire 66 vs<br><em>grandes enseignes nationales</em></h2>
+ <p style="font-size:.89rem;color:var(--slate3);margin-top:10px;line-height:1.75;">À Corneilla-la-Rivière, les grandes enseignes nationales envoient des équipes sans connaissance du bâti local — tuiles romanes, charpentes traditionnelles, contraintes viticoles. Solaire 66 intervient avec des techniciens formés sur le terrain pyrénéo-oriental, qui connaissent chaque type de toiture et chaque démarche administrative locale.</p>
  <div class="cmp-wrap">
  <table class="cmp-table" role="table">
  <thead><tr><th>Critère</th><th class="cmp-us">Solaire 66</th><th>Enseignes nationales</th></tr></thead>
@@ -456,9 +524,43 @@
  <tr><td>Suivi post-installation</td><td class="yes">✓ Local et réactif</td><td class="no">Centre d'appel national</td></tr>
  <tr><td>Démarches administratives complètes</td><td class="yes">✓ Tout inclus</td><td class="no">Souvent en supplément</td></tr>
  <tr><td>Batterie virtuelle EDF OA</td><td class="yes">✓ Proposée et gérée</td><td class="no">Non proposée</td></tr>
+ <tr><td>Expertise toitures en tuile romane (bac acier, intégration)</td><td class="yes">✓ Techniciens P.-O. formés</td><td class="no">Méconnaissance du bâti local</td></tr>
+ <tr><td>Garantie décennale systématique</td><td class="yes">✓ Incluse sur chaque chantier</td><td class="no">Variable selon le sous-traitant</td></tr>
+ <tr><td>Devis transparent ligne à ligne</td><td class="yes">✓ Détail complet fourni</td><td class="no">Prix «package» opaque</td></tr>
  </tbody>
  </table>
  </div>
+ <div style="margin-top:20px;background:var(--green2);border:1px solid #86EFAC;border-radius:var(--rs);padding:16px 18px;font-size:.84rem;color:#065F46;line-height:1.7;">
+ <strong>Notre engagement local à Corneilla-la-Rivière :</strong> Solaire 66 est une équipe basée dans les Pyrénées-Orientales. Nous connaissons le Roussillon viticole, ses maisons en pierres, ses tuiles romanes et les démarches administratives spécifiques de chaque commune. Après l'installation, notre SAV local répond sous 48h — pas de centre d'appel national, pas de technicien venu de l'autre bout de la France.
+ </div>
+ </div>
+</section>
+
+<section class="section" aria-labelledby="eligibilite-title">
+ <div class="wrap" style="max-width:860px;">
+ <div class="eyebrow">Avant de vous lancer</div>
+ <h2 class="h2" id="eligibilite-title">Votre maison est-elle<br><em>éligible au solaire ?</em></h2>
+ <p style="font-size:.89rem;color:var(--slate3);margin-top:10px;line-height:1.75;margin-bottom:24px;">À Corneilla-la-Rivière, la grande majorité des habitations répondent aux critères d'éligibilité. Voici les points vérifiés lors de la visite technique gratuite :</p>
+ <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+ <div style="background:var(--white);border:1px solid var(--slate6);border-radius:var(--rs);padding:16px 18px;">
+ <div style="font-weight:800;color:var(--navy);font-size:.9rem;margin-bottom:6px;">☀ Orientation de la toiture</div>
+ <div style="font-size:.83rem;color:var(--slate3);line-height:1.6;">Sud, sud-est ou sud-ouest : idéal. Est ou ouest : acceptable avec légère perte (10–15 %). Toits terrasse : orientation libre avec structure inclinée.</div>
+ </div>
+ <div style="background:var(--white);border:1px solid var(--slate6);border-radius:var(--rs);padding:16px 18px;">
+ <div style="font-weight:800;color:var(--navy);font-size:.9rem;margin-bottom:6px;">🏠 Type de couverture</div>
+ <div style="font-size:.83rem;color:var(--slate3);line-height:1.6;">Tuile romane (très fréquente à Corneilla) : pose sur bac acier ou intégration au bâti. Tuile plate, ardoise, zinc : compatible avec crochets adaptés. Bac acier existant : intégration directe.</div>
+ </div>
+ <div style="background:var(--white);border:1px solid var(--slate6);border-radius:var(--rs);padding:16px 18px;">
+ <div style="font-weight:800;color:var(--navy);font-size:.9rem;margin-bottom:6px;">📐 Surface disponible</div>
+ <div style="font-size:.83rem;color:var(--slate3);line-height:1.6;">Minimum 15 m² dégagés pour une installation de 3 kWc (6–8 panneaux). Les arbres, cheminées ou lucarnes réduisant la surface utilisable sont pris en compte lors du bilan ombrage.</div>
+ </div>
+ </div>
+ <div style="background:var(--white);border:1px solid var(--slate6);border-radius:var(--rs);padding:16px 18px;">
+ <div style="font-weight:800;color:var(--navy);font-size:.9rem;margin-bottom:6px;">📋 Déclaration préalable</div>
+ <div style="font-size:.83rem;color:var(--slate3);line-height:1.6;">À Corneilla-la-Rivière, une déclaration préalable de travaux est nécessaire pour toute installation. Solaire 66 constitue le dossier complet et le dépose en mairie — délai moyen d'instruction : 1 mois. Commune hors PPRN : procédure standard.</div>
+ </div>
+ </div>
+ <p style="font-size:.82rem;color:var(--slate4);margin-top:16px;text-align:center;">En cas de doute, notre visite technique gratuite lève toutes les incertitudes — bilan charpente, simulation de production, devis personnalisé inclus.</p>
  </div>
 </section>
 
@@ -518,7 +620,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Solaire 66 installe trois marques premium à Corneilla-la-Rivière : <strong>JinkoSolar Tiger Neo N-Type</strong> (415 Wc, η 22,3 % — notre best-seller), <strong>Longi Solar Hi-MO 6 Explorer</strong> (420 Wc, excellente résistance à la chaleur) et <strong>REC Group Alpha Pure-R</strong> (430 Wc, garantie 25 ans sur la performance). Tous certifiés IEC 61215/61730.
+ Solaire 66 installe trois marques premium à Corneilla-la-Rivière : <strong>JinkoSolar Tiger Neo N-Type</strong> (415 Wc, η 22,3 %, coefficient de température −0,29 %/°C — notre best-seller sur les toitures du Roussillon), <strong>Longi Solar Hi-MO 6 Explorer</strong> (420 Wc, technologie HPBC, excellente résistance à la chaleur estivale) et <strong>REC Group Alpha Pure-R</strong> (430 Wc, cellules HJT Heterojunction, coefficient de température −0,26 %/°C — idéal pour les journées très chaudes). Tous certifiés IEC 61215/61730, avec garantie produit 25 ans et garantie linéarité de rendement 90 % à 25 ans. Le choix dépend de votre toiture, de son orientation et de votre budget — nos techniciens vous conseillent lors de la visite gratuite.
  </div>
  </div>
  <div>
@@ -527,7 +629,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- À Corneilla-la-Rivière, l'irradiation solaire est de <strong>1750 kWh/m²/an</strong> (données PVGIS 2024). Une installation de 3 kWc produit environ <strong>3938 kWh/an</strong>, soit environ 790 à 890 € d'économies annuelles et un retour sur investissement en <strong>13,4 ans</strong>.
+ À Corneilla-la-Rivière, l'irradiation solaire est de <strong>1 730 à 1 750 kWh/m²/an</strong> (données PVGIS 2024), dans la moyenne haute du département. Une installation de 3 kWc produit environ <strong>3 900 à 3 940 kWh/an</strong>, soit environ <strong>790 à 890 € d'économies annuelles</strong> (tarif EDF 2026 + autoconsommation à 70 %). Le retour sur investissement est estimé à <strong>13 à 14 ans</strong> selon les aides obtenues. Sur 25 ans, le gain net (économies - investissement amorti) dépasse 10 000 € pour une installation de 3 kWc bien orientée. Le microclimat sec de la commune — peu de couverture nuageuse, tramontane régulière qui refroidit les panneaux — permet de s'approcher des valeurs maximales du PVGIS.
  </div>
  </div>
  <div>
@@ -545,16 +647,85 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Le coût d'une installation photovoltaïque à Corneilla-la-Rivière varie selon la puissance : environ 8 000 à 11 000 € pour 3 kWc, 13 000 à 17 000 € pour 6 kWc, avant aides. Après TVA réduite à 10 %, MaPrimeRénov' et prime autoconsommation, votre investissement net peut descendre significativement. Demandez votre devis gratuit pour un chiffrage précis adapté à votre toiture et vos consommations.
+ Le coût d'une installation photovoltaïque à Corneilla-la-Rivière varie selon la puissance : environ <strong>8 000 à 11 000 €</strong> pour 3 kWc, <strong>13 000 à 17 000 €</strong> pour 6 kWc, avant aides. Pour les maisons en pierres anciennes avec toiture en tuile romane, un surcoût peut s'appliquer si la charpente nécessite un renforcement ou si l'on opte pour une pose sur bac acier. Après <strong>TVA réduite à 10 %</strong>, <strong>MaPrimeRénov'</strong> et <strong>prime autoconsommation</strong> (690 € pour 3 kWc), votre investissement net peut descendre en dessous de 7 000 € pour une installation 3 kWc bien dimensionnée. L'éco-PTZ à taux zéro permet de lisser le reste à charge. Demandez votre devis gratuit pour un chiffrage précis adapté à votre toiture et vos consommations à Corneilla-la-Rivière.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Comment poser des panneaux sur une toiture en tuile romane à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Les toitures en tuile romane, très répandues à Corneilla-la-Rivière et dans le Roussillon, demandent une technique de pose adaptée. Deux approches sont possibles : la <strong>pose sur bac acier</strong>, qui consiste à installer une structure métallique sur la charpente existante avant de poser les panneaux — solution robuste sans modifier les tuiles d'origine — et l'<strong>intégration au bâti</strong> (IAB), où les panneaux remplacent une partie de la couverture et font corps avec le toit. La première solution est souvent préférée pour les toitures anciennes en bon état ; la seconde est retenue lors d'une réfection de toiture simultanée. Dans les deux cas, nos techniciens effectuent un bilan de charpente lors de la visite technique gratuite pour vérifier la résistance aux charges et les points d'ancrage.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Quels avantages l'autoconsommation offre-t-elle à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ À Corneilla-la-Rivière, l'autoconsommation est particulièrement rentable grâce au fort ensoleillement (<strong>1 730 kWh/m²/an et plus</strong>) et aux tarifs EDF en hausse régulière. En consommant directement l'électricité produite, vous économisez environ 0,25 €/kWh que vous n'achetez plus au réseau. Le surplus non consommé est revendu à EDF OA à <strong>0,1269 €/kWh sur 20 ans</strong>. Pour les foyers présents la journée (télétravailleurs, retraités) ou avec une pompe à chaleur, le taux d'autoconsommation atteint facilement 70 à 80 %. L'ajout d'une <strong>batterie de stockage LFP</strong> (BYD, Pylontech) permet de stocker le surplus du midi pour le soir et de monter à 85–90 % d'autonomie. Nos simulations intègrent votre profil de consommation réel pour optimiser le dimensionnement.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Faut-il une déclaration préalable de travaux pour des panneaux solaires à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Oui, une <strong>déclaration préalable de travaux</strong> (DP) est nécessaire pour toute installation de panneaux solaires en toiture visible depuis l'espace public à Corneilla-la-Rivière. Ce dossier est déposé en mairie et instruit sous 1 à 2 mois. Solaire 66 prend en charge l'intégralité de cette démarche : constitution du dossier, dépôt et suivi auprès de la mairie de Corneilla-la-Rivière. Pour les installations en zone protégée ou proche d'un site classé, l'avis de l'Architecte des Bâtiments de France peut être requis — nos techniciens vérifient systématiquement ces contraintes lors de la visite préalable. Aucun frais administratif supplémentaire n'est facturé : tout est inclus dans votre devis.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Quel onduleur choisir pour mon installation solaire à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Le choix de l'onduleur à Corneilla-la-Rivière dépend de la configuration de votre toiture. Le <strong>SolarEdge SE3000H</strong> avec optimiseurs de puissance est recommandé pour les toitures partiellement ombragées — par exemple si un arbre ou une cheminée génère des ombres portées sur certains panneaux : chaque panneau est géré individuellement, la perte de l'un n'affecte pas les autres. L'<strong>Enphase IQ8A</strong> (micro-onduleur) est la solution la plus flexible pour les toitures complexes avec plusieurs pans d'orientation différente. Le <strong>Fronius Symo GEN24 Plus</strong> est préféré pour les installations hybrides avec batterie physique, car il intègre nativement la gestion du stockage. Nos techniciens recommandent la technologie la plus adaptée à votre situation lors de la visite technique gratuite.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Combien de panneaux solaires pour alimenter une maison à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Le nombre de panneaux dépend de votre consommation annuelle et de la surface disponible en toiture. À Corneilla-la-Rivière, avec 1 730 kWh/m²/an d'ensoleillement, voici les ordres de grandeur : <strong>6 à 8 panneaux (3 kWc)</strong> pour couvrir 40 à 50 % d'une consommation domestique standard (4 500 kWh/an) ; <strong>12 à 16 panneaux (6 kWc)</strong> pour 80 à 100 % de couverture avec batterie de stockage. Un foyer équipé d'une pompe à chaleur ou d'une voiture électrique gagnera à dimensionner entre 6 et 9 kWc. Nos simulations personnalisées, basées sur votre historique de consommation réel et l'orientation de votre toiture, affinent ces estimations avec précision.
+ </div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Puis-je revendre toute ma production solaire à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Deux régimes coexistent en France. La <strong>vente totale</strong> consiste à injecter 100 % de votre production sur le réseau EDF OA, à un tarif réglementé d'achat garanti 20 ans (entre 0,06 € et 0,13 €/kWh selon puissance). C'est intéressant si vous êtes peu présent chez vous en journée. L'<strong>autoconsommation avec vente du surplus</strong> est généralement plus rentable : vous consommez en priorité votre propre production (valeur ≈ 0,25 €/kWh) et revendez l'excédent à 0,06–0,08 €/kWh. À Corneilla-la-Rivière, où les toitures orientées sud-est/sud-ouest sont fréquentes, l'autoconsommation avec surplus permet typiquement de couvrir 60 à 80 % des besoins annuels. Le choix dépend aussi des contraintes ERDF locales (puissance de raccordement disponible). Nous vous guidons vers l'option la plus adaptée à votre situation.
+ </div>
+ </div>
+ <div class="faq-item">
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Quelles garanties pour une installation solaire à Corneilla-la-Rivière ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Une installation posée par Solaire 66 à Corneilla-la-Rivière bénéficie de plusieurs niveaux de garantie. La <strong>garantie décennale</strong> (10 ans, obligatoire pour tout installateur RGE) couvre les dommages affectant l'intégrité de la toiture et de la structure. Les <strong>panneaux photovoltaïques</strong> sont garantis 25 ans sur la performance (maintien de 80 % de la puissance nominale) et 12 ans sur le produit. Les <strong>onduleurs</strong> (SolarEdge, Huawei, Fronius) bénéficient de 12 ans de garantie fabricant extensible à 20 ans. Les <strong>batteries de stockage</strong> (BYD, Huawei) sont garanties 10 ans pour une capacité résiduelle de 70 %. Enfin, notre <strong>contrat de maintenance annuel</strong> inclut une visite de contrôle, le nettoyage des panneaux et le bilan de production — particulièrement utile dans le contexte de la tramontane qui peut déposer poussières et débris sur les modules.
  </div>
  </div>
  </div>
  <div class="proches-section">
+ <p style="font-size:.87rem;color:var(--slate3);line-height:1.75;margin-bottom:16px;">Solaire 66 intervient à Corneilla-la-Rivière et dans toutes les communes voisines du Roussillon et du Bas-Vallespir. Nos équipes couvrent un rayon de 60 km autour de Perpignan, avec des temps d'intervention réduits grâce à notre ancrage local dans les Pyrénées-Orientales.</p>
      <div class="proches-title">Communes voisines desservies</div>
      <div class="proches-grid">
         <a class="proches-card" href="./le-soler.html">Le Soler</a>
         <a class="proches-card" href="./millas.html">Millas</a>
         <a class="proches-card" href="./ille-sur-tet.html">Ille-sur-Têt</a>
+        <a class="proches-card" href="./thuir.html">Thuir</a>
+        <a class="proches-card" href="./perpignan.html">Perpignan</a>
+        <a class="proches-card" href="./bompas.html">Bompas</a>
+        <a class="proches-card" href="./villeneuve-de-la-raho.html">Villeneuve-de-la-Raho</a>
+        <a class="proches-card" href="./baixas.html">Baixas</a>
         <a class="proches-card" href="./index.html#zones">Voir toutes nos zones d'intervention</a>
      </div>
     </div>
@@ -591,7 +762,7 @@
  </div>
  <div class="ftr-col">
  <h4>Zones proches</h4>
- <div class="ftr-links"><a href="./le-soler.html">Le Soler</a><a href="./millas.html">Millas</a><a href="./ille-sur-tet.html">Ille-sur-Têt</a></div>
+ <div class="ftr-links"><a href="./le-soler.html">Le Soler</a><a href="./millas.html">Millas</a><a href="./ille-sur-tet.html">Ille-sur-Têt</a><a href="./thuir.html">Thuir</a><a href="./perpignan.html">Perpignan</a><a href="./bompas.html">Bompas</a></div>
  </div>
  </div>
  <div class="ftr-btm">
@@ -678,9 +849,35 @@
  } catch(err) {
  btn2.disabled = false;
  btn2.textContent = '⚡ Envoyer ma demande de devis';
- alert('Erreur lors de l'envoi. Veuillez appeler le 07 75 76 92 32.');
+ alert('Erreur lors de l’envoi. Veuillez appeler le 07 75 76 92 32.');
  }
  });
+
+ /* share button */
+ (function() {
+ var btn = document.getElementById('shareBtn');
+ if (!btn) return;
+ btn.addEventListener('click', async function() {
+ var data = { title: document.title, text: 'Panneaux solaires à Corneilla-la-Rivière — devis gratuit Solaire 66', url: location.href };
+ if (navigator.share) {
+ try { await navigator.share(data); } catch(e) {}
+ } else {
+ try { await navigator.clipboard.writeText(location.href); } catch(e) {}
+ var t = document.createElement('div');
+ t.className = 'share-toast';
+ t.textContent = '✓ Lien copié !';
+ document.body.appendChild(t);
+ requestAnimationFrame(function() { t.classList.add('show'); });
+ setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 300); }, 2200);
+ }
+ });
+ })();
 </script>
+<script>
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+ }
+</script>
+<script src="./chatbot.js"></script>
 </body>
 </html>

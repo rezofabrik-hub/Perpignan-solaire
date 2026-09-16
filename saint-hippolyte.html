@@ -4,8 +4,8 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Panneaux Solaires Saint-Hippolyte — Devis Gratuit | Solaire 66</title>
- <meta name="description" content="Solaire 66 installe des panneaux JinkoSolar, Longi, REC à Saint-Hippolyte (66510). Onduleurs SolarEdge &amp; Enphase. 1758 kWh/m²/an. Devis gratuit 24h. Avec nos installateurs RGE certifiés · Décennale.">
- <meta name="keywords" content="panneau solaire Saint-Hippolyte, installateur solaire Saint-Hippolyte, devis panneaux solaires Saint-Hippolyte, JinkoSolar Saint-Hippolyte, Longi Solar Saint-Hippolyte, SolarEdge Saint-Hippolyte, RGE Saint-Hippolyte, devis solaire Saint-Hippolyte, photovoltaïque 66510, autoconsommation Saint-Hippolyte">
+ <meta name="description" content="Solaire 66 installe des panneaux JinkoSolar, Longi, REC à Saint-Hippolyte (66510), commune des collines des Aspres à 20 km au sud-ouest de Perpignan, à 5 km de Thuir. 1780 kWh/m²/an. Devis gratuit 24h. Installateurs RGE certifiés · Décennale.">
+ <meta name="keywords" content="panneau solaire Saint-Hippolyte, installateur solaire Saint-Hippolyte, devis panneaux solaires Saint-Hippolyte, JinkoSolar Saint-Hippolyte, Longi Solar Saint-Hippolyte, SolarEdge Saint-Hippolyte, RGE Saint-Hippolyte, devis solaire Saint-Hippolyte, photovoltaïque 66510, autoconsommation Saint-Hippolyte, Aspres photovoltaïque, Thuir solaire, village catalan panneaux solaires, panneaux solaires Aspres 66, solaire Vallespir">
  <meta name="geo.region" content="FR-66">
  <meta name="geo.placename" content="Saint-Hippolyte, Pyrénées-Orientales">
  <meta property="og:title" content="Panneaux Solaires Saint-Hippolyte — Devis Gratuit | Solaire 66">
@@ -70,7 +70,7 @@
  "name": "Quel rendement solaire à Saint-Hippolyte ?",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "À Saint-Hippolyte, l'irradiation est de 1758 kWh/m²/an (PVGIS). Une installation de 3 kWc produit environ 3956 kWh/an et génère environ 800 à 900 € d'économies annuelles. Retour sur investissement estimé à 13,3 ans."
+ "text": "À Saint-Hippolyte, l'irradiation est de 1780 kWh/m²/an (PVGIS). Une installation de 3 kWc produit environ 4005 kWh/an et génère environ 820 à 950 € d'économies annuelles. Retour sur investissement estimé à 7-8 ans après aides (TVA 10 %, prime CRE 660 €, éco-PTZ). La tramontane nettoie naturellement les panneaux dans les collines des Aspres."
  }
  },
  {
@@ -78,7 +78,15 @@
  "name": "Quelle aide pour les panneaux solaires à Saint-Hippolyte en 2026 ?",
  "acceptedAnswer": {
  "@type": "Answer",
- "text": "Aides cumulables à Saint-Hippolyte : TVA réduite à 10 %, MaPrimeRénov' (jusqu'à 1 000 €), prime autoconsommation (3 kWc × 230 €/kWc = 690 €), éco-PTZ à taux zéro, et rachat surplus EDF OA à 0,1269 €/kWh sur 20 ans. Toutes les démarches sont prises en charge par Solaire 66."
+ "text": "Aides cumulables à Saint-Hippolyte en 2026 : TVA réduite à 10 %, prime CRE autoconsommation 3 kWc × 220 €/kWc = 660 € versée par EDF OA, éco-PTZ à taux zéro jusqu'à 30 000 €, MaPrimeRénov' sous conditions. Investissement net 3 kWc : 6 500 à 8 500 €. Rachat surplus à 0,1269 €/kWh sur 20 ans."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "La tramontane est-elle un avantage pour le solaire à Saint-Hippolyte ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Oui : la tramontane nettoie naturellement les panneaux à Saint-Hippolyte, éliminant les dépôts de poussière et de pollen viticole (Rivesaltes, Muscat). Les panneaux certifiés résistance vent 2400 Pa sont dimensionnés pour ce contexte climatique."
  }
  }
  ]
@@ -294,6 +302,20 @@
  .proches-card:hover { background: var(--amber-lt, #FEF5DF); border-color: var(--amber, #F5A81C); color: var(--amber-dk, #D48B0A); }
  .proches-card::before { content: '☀'; font-size: .75rem; opacity: .6; }
 
+ /* ── SHARE BUTTON ── */
+ .share-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(245,158,11,0.1); border: 1.5px solid var(--slate6); cursor: pointer; color: var(--slate3); transition: all .15s; flex-shrink: 0; }
+ .share-btn:hover { background: var(--sun3); border-color: var(--sun); color: var(--sun-d); }
+ .share-btn svg { width: 17px; height: 17px; }
+ .share-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #0B2145; color: #fff; padding: 10px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity .2s; white-space: nowrap; }
+ .share-toast.show { opacity: 1; }
+
+ /* ── SIMULATION BOX ── */
+ .sim-row { display: flex; justify-content: space-between; align-items: center; font-size: .85rem; padding: 9px 0; border-bottom: 1px solid var(--sun3); }
+ .sim-row:last-child { border-bottom: none; }
+ .sim-lbl { color: var(--slate3); }
+ .sim-val { font-weight: 700; color: var(--slate); }
+ .sim-val.grn { color: var(--green); }
+
  </style>
  <link rel="manifest" href="/manifest.json">
  <meta name="theme-color" content="#0B2145">
@@ -319,6 +341,9 @@
  <a href="./#partenaires">Apporteurs</a>
  </div>
  <div class="nav-right">
+ <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+ </button>
  <a href="tel:0775769232" class="nav-tel">📞 07 75 76 92 32</a>
  <a href="#devis-local" class="btn btn-sun">⚡ Devis gratuit</a>
  </div>
@@ -342,8 +367,8 @@
  Panneaux solaires<br>à <em>Saint-Hippolyte</em>
  </h1>
  <p class="hero-sub">
- Installateur avec nos installateurs RGE certifiés · Décennale à Saint-Hippolyte — <strong>JinkoSolar, Longi Solar, REC Group</strong>.
- 1758 kWh/m²/an. Devis personnalisé gratuit sous 24h, sans engagement.
+ Installateur RGE certifié · Décennale à Saint-Hippolyte, commune des collines des <strong>Aspres</strong> (~1 300 hab., 66510), à 5 km de Thuir et 20 km au sud-ouest de Perpignan — <strong>JinkoSolar, Longi Solar, REC Group</strong>.
+ 1780 kWh/m²/an · tramontane · vignoble AOC Rivesaltes. Devis personnalisé gratuit sous 24h, sans engagement.
  </p>
  <div class="hero-actions">
  <a href="#devis-local" class="btn btn-sun btn-lg">⚡ Devis gratuit 24h</a>
@@ -353,17 +378,18 @@
  <div class="trust-chip"><svg viewBox="0 0 20 20"><path d="M10 1l2.4 6.5H19l-5.6 4 2.1 6.5L10 14 4.5 18l2.1-6.5L1 7.5h6.6z"/></svg>Installateurs RGE certifiés · Décennale</div>
  <div class="trust-chip"><svg viewBox="0 0 20 20"><path d="M10 1l2.4 6.5H19l-5.6 4 2.1 6.5L10 14 4.5 18l2.1-6.5L1 7.5h6.6z"/></svg>Garantie panneaux 25 ans</div>
  <div class="trust-chip"><svg viewBox="0 0 20 20"><path d="M10 1l2.4 6.5H19l-5.6 4 2.1 6.5L10 14 4.5 18l2.1-6.5L1 7.5h6.6z"/></svg>MaPrimeRénov'</div>
+ <div class="trust-chip"><svg viewBox="0 0 20 20"><path d="M10 1l2.4 6.5H19l-5.6 4 2.1 6.5L10 14 4.5 18l2.1-6.5L1 7.5h6.6z"/></svg>Prime CRE 660 € (3 kWc)</div>
  </div>
  </div>
  <div class="solar-card">
  <div class="sc-head">☀ Données solaires — Saint-Hippolyte</div>
  <div class="sc-grid">
- <div class="sc-cell"><div class="sc-val sun-c">1758</div><div class="sc-lbl">kWh/m²/an</div></div>
- <div class="sc-cell"><div class="sc-val sky-c">3956</div><div class="sc-lbl">kWh/an (3 kWc)</div></div>
+ <div class="sc-cell"><div class="sc-val sun-c">1780</div><div class="sc-lbl">kWh/m²/an</div></div>
+ <div class="sc-cell"><div class="sc-val sky-c">4005</div><div class="sc-lbl">kWh/an (3 kWc)</div></div>
  <div class="sc-cell"><div class="sc-val grn-c">Devis</div><div class="sc-lbl">Économies / an</div></div>
- <div class="sc-cell"><div class="sc-val wht-c">13,3 ans</div><div class="sc-lbl">Retour invest.</div></div>
+ <div class="sc-cell"><div class="sc-val wht-c">8 ans*</div><div class="sc-lbl">Retour invest.</div></div>
  </div>
- <div class="sc-foot">Source PVGIS · installation 3 kWc · autoconsommation 70 %</div>
+ <div class="sc-foot">Source PVGIS · installation 3 kWc · autoconsommation 70 % · *après aides</div>
  </div>
  </div>
  </div>
@@ -371,9 +397,9 @@
 
 <div class="stats-band" role="region" aria-label="Chiffres clés">
  <div class="stats-row">
- <div class="stat"><span class="stat-n">1758</span><div class="stat-l">kWh/m²/an à Saint-Hippolyte</div></div>
- <div class="stat"><span class="stat-n">3956</span><div class="stat-l">kWh/an (3 kWc)</div></div>
- <div class="stat"><span class="stat-n">13,3 ans</span><div class="stat-l">Retour sur investissement</div></div>
+ <div class="stat"><span class="stat-n">1780</span><div class="stat-l">kWh/m²/an à Saint-Hippolyte</div></div>
+ <div class="stat"><span class="stat-n">4005</span><div class="stat-l">kWh/an (3 kWc)</div></div>
+ <div class="stat"><span class="stat-n">8 ans*</span><div class="stat-l">Retour invest. après aides</div></div>
  <div class="stat"><span class="stat-n">24h</span><div class="stat-l">Délai de réponse devis</div></div>
  </div>
 </div>
@@ -384,9 +410,10 @@
  <div>
  <div class="eyebrow">Votre installateur à Saint-Hippolyte</div>
  <h2 class="h2" id="about-title">Solaire 66 intervient<br>à <em>Saint-Hippolyte</em></h2>
- <p class="body-txt">Saint-Hippolyte (66510) — commune résidentielle de la plaine roussillonnaise.</p>
+ <p class="body-txt">Saint-Hippolyte (66510) — commune catalane des collines des Aspres, environ 1 300 habitants. Située à 5 km de Thuir et 20 km au sud-ouest de Perpignan, dans l'aire AOC Rivesaltes. Terrain vallonné, tramontane régulière, ensoleillement 1780 kWh/m²/an.</p>
  <div class="about-card" style="margin-top:28px;">
- <p><strong>Solaire 66</strong> (SARL Rezofabrik) est votre installateur photovoltaïque local à Saint-Hippolyte et dans tout le département 66. Avec 1758 kWh/m²/an (PVGIS), les toitures de Saint-Hippolyte offrent d'excellentes conditions pour la production solaire — retour sur investissement estimé à 13,3 ans.</p>
+ <p><strong>Solaire 66</strong> (SARL Rezofabrik) est votre installateur photovoltaïque local à Saint-Hippolyte et dans tout le département 66. Cette commune catalane des <strong>collines des Aspres</strong>, à 5 km de Thuir et 20 km au sud-ouest de Perpignan, bénéficie de <strong>1780 kWh/m²/an</strong> (PVGIS), nettement au-dessus de la moyenne nationale (~1 100 kWh/m²/an). Le terrain vallonné des Aspres crée des configurations variées : certaines toitures bénéficient d'une <strong>exposition plein sud</strong> idéale, d'autres nécessitent une étude personnalisée — c'est l'objet de notre visite technique gratuite.</p>
+ <p>Saint-Hippolyte (environ <strong>1 300 habitants</strong>) est inscrit dans l'aire de l'<strong>AOC Rivesaltes</strong>. La <strong>tramontane</strong>, vent dominant dans les Aspres, assure un nettoyage naturel et régulier des panneaux — éliminant les dépôts de poussière et de pollen viticole qui peuvent réduire le rendement de 5 à 15 %. Un avantage climatique concret qui réduit les besoins d'entretien et maintient la production au maximum sur toute la durée de vie de l'installation.</p>
  <p>Nos équipes appuyées par <strong>nos installateurs RGE certifiés · Décennale</strong> prennent en charge chaque installation de A à Z : visite technique gratuite, démarches administratives (Enedis, Consuel, MaPrimeRénov'), raccordement et suivi post-installation.</p>
  <ul class="chk-list">
  <li>Avec nos installateurs RGE certifiés · Décennale — éligibilité à toutes les aides de l'État</li>
@@ -394,6 +421,7 @@
  <li>Démarches complètes prises en charge (Enedis, Consuel, mairie)</li>
  <li>Garantie produit 25 ans (panneaux), 12 ans (onduleurs)</li>
  <li>SAV réactif — techniciens basés dans les P.-O. et l'Aude</li>
+ <li>Expertise toitures tuile ronde catalane et terrain vallonné — Aspres / Vallespir</li>
  <li>Batterie physique LFP ou batterie virtuelle selon profil</li>
  <li>Raccordement EDF OA pour revente du surplus sur 20 ans</li>
  </ul>
@@ -403,11 +431,34 @@
  <div class="eyebrow" style="margin-top:0;">Nos 4 étapes</div>
  <h2 class="h2" style="margin-bottom:0;">De la visite à la<br>mise en service</h2>
  <div class="steps" style="margin-top:24px;grid-template-columns:1fr;">
- <div class="step"><div class="step-num">1</div><div><div class="step-title">Visite technique gratuite</div><div class="step-body">Étude de votre toiture à Saint-Hippolyte, orientation, ombrage, consommation. Devis sous 24h.</div></div></div>
- <div class="step"><div class="step-num">2</div><div><div class="step-title">Démarches administratives</div><div class="step-body">Déclaration préalable, demande Enedis, dossier MaPrimeRénov' — tout est géré.</div></div></div>
- <div class="step"><div class="step-num">3</div><div><div class="step-title">Installation certifiée</div><div class="step-body">Pose en 1 à 2 jours par nos techniciens RGE. Panneaux JinkoSolar, Longi ou REC.</div></div></div>
- <div class="step"><div class="step-num">4</div><div><div class="step-title">Mise en service & suivi</div><div class="step-body">Consuel, raccordement Enedis, formation à l'application de suivi en temps réel.</div></div></div>
+ <div class="step"><div class="step-num">1</div><div><div class="step-title">Visite technique gratuite</div><div class="step-body">Étude de votre toiture à Saint-Hippolyte : inclinaison, orientation, ombrage (arbres, relief, bâti voisin du village perché), consommation annuelle. Rapport et devis sous 24h, sans engagement.</div></div></div>
+ <div class="step"><div class="step-num">2</div><div><div class="step-title">Démarches administratives</div><div class="step-body">Déclaration préalable mairie de Saint-Hippolyte, demande de raccordement Enedis, dossier prime CRE (EDF OA), éco-PTZ, MaPrimeRénov' — tout est géré de A à Z par Solaire 66.</div></div></div>
+ <div class="step"><div class="step-num">3</div><div><div class="step-title">Installation certifiée</div><div class="step-body">Pose en 1 à 2 jours par nos techniciens RGE. Panneaux JinkoSolar, Longi ou REC sur supports adaptés aux toitures catalanes. Câblage DC/AC, onduleur, tableau de protection soignés.</div></div></div>
+ <div class="step"><div class="step-num">4</div><div><div class="step-title">Mise en service & suivi</div><div class="step-body">Consuel, raccordement Enedis, contrat EDF OA, formation à l'application de suivi en temps réel. SAV réactif par nos techniciens P.-O.</div></div></div>
  </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="section-sm" style="padding:32px 0;background:linear-gradient(135deg,#0F2647 0%,#1B3A6B 100%);color:#fff;">
+ <div class="wrap">
+ <div style="display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+ <div style="text-align:center;padding:16px;">
+ <div style="font-size:2rem;font-weight:900;color:#FBBF24;">1780</div>
+ <div style="font-size:.75rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">kWh/m²/an · Aspres</div>
+ </div>
+ <div style="text-align:center;padding:16px;">
+ <div style="font-size:2rem;font-weight:900;color:#34D399;">660 €</div>
+ <div style="font-size:.75rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">Prime CRE (3 kWc)</div>
+ </div>
+ <div style="text-align:center;padding:16px;">
+ <div style="font-size:2rem;font-weight:900;color:#38BDF8;">7-8 ans</div>
+ <div style="font-size:.75rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">ROI net après aides</div>
+ </div>
+ <div style="text-align:center;padding:16px;">
+ <div style="font-size:2rem;font-weight:900;color:#FBBF24;">10 %</div>
+ <div style="font-size:.75rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;">TVA réduite</div>
  </div>
  </div>
  </div>
@@ -417,27 +468,106 @@
  <div class="wrap">
  <div class="eyebrow">Équipements installés à Saint-Hippolyte</div>
  <h2 class="h2" id="brands-title">Marques premium — <em>haut rendement</em></h2>
- <p class="body-txt">Nous sélectionnons les meilleures technologies mondiales pour chaque installation à Saint-Hippolyte. Tous nos panneaux sont certifiés IEC 61215 et bénéficient de la garantie linéarité de rendement.</p>
+ <p class="body-txt">Nous sélectionnons les meilleures technologies mondiales pour chaque installation à Saint-Hippolyte. Tous nos panneaux sont certifiés IEC 61215/61730 et bénéficient de la garantie linéarité de rendement. Matériel adapté aux toitures catalanes des collines des Aspres et du Vallespir.</p>
  <div class="brands-grid">
- <div class="brand-card"><div class="brand-icon">⚡</div><div class="brand-name">JinkoSolar</div><div class="brand-model">Tiger Neo N-Type</div><div class="brand-specs"><span>415 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span></div></div>
- <div class="brand-card"><div class="brand-icon">🔆</div><div class="brand-name">Longi Solar</div><div class="brand-model">Hi-MO 6 Explorer</div><div class="brand-specs"><span>420 Wc</span><span>η 22,0 %</span><span>Gar. 25 ans</span></div></div>
- <div class="brand-card"><div class="brand-icon">✦</div><div class="brand-name">REC Group</div><div class="brand-model">Alpha Pure-R</div><div class="brand-specs"><span>430 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card">
+ <div class="brand-icon">⚡</div>
+ <div class="brand-name">JinkoSolar</div>
+ <div class="brand-model">Tiger Neo N-Type</div>
+ <div class="brand-specs">
+ <span>415 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span>
+ <span>N-Type</span><span>Bifacial</span><span>Coeff. −0,30 %/°C</span>
  </div>
+ </div>
+ <div class="brand-card">
+ <div class="brand-icon">🔆</div>
+ <div class="brand-name">Longi Solar</div>
+ <div class="brand-model">Hi-MO 6 Explorer</div>
+ <div class="brand-specs">
+ <span>420 Wc</span><span>η 22,0 %</span><span>Gar. 25 ans</span>
+ <span>HIMO Tech</span><span>Résist. chaleur</span><span>IEC 61730</span>
+ </div>
+ </div>
+ <div class="brand-card">
+ <div class="brand-icon">✦</div>
+ <div class="brand-name">REC Group</div>
+ <div class="brand-model">Alpha Pure-R</div>
+ <div class="brand-specs">
+ <span>430 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span>
+ <span>IBC</span><span>Lin. 92 % à 25 ans</span><span>Fabrication Singapour</span>
+ </div>
+ </div>
+ </div>
+
+ <div style="margin-top:24px;background:var(--sky3);border:1px solid var(--sky2);border-radius:var(--rs);padding:18px 20px;">
+ <div style="font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);margin-bottom:10px;">Note technique — Toitures de Saint-Hippolyte (66510)</div>
+ <p style="font-size:.87rem;color:var(--slate2);line-height:1.75;margin:0;">Les habitations du village perché de Saint-Hippolyte présentent des toitures variées — <strong>tuiles rondes catalanes, lauzes et ardoises</strong> sur les maisons anciennes, toitures en tuile béton sur les constructions récentes. La position en hauteur offre souvent un <strong>horizon dégagé côté sud</strong>, réduisant les ombrages portés. La tramontane, vent dominant dans les Aspres, assure un nettoyage régulier des modules sans frais d'entretien supplémentaires. Nos supports sont dimensionnés résistance vent 2 400 Pa (IEC).</p>
+ </div>
+
  <div class="equip-cols" style="margin-top:28px;">
  <div class="equip-box">
  <div class="equip-box-title">Onduleurs — optimiseurs</div>
- <div class="inv-item"><span class="inv-icon">🔌</span><div><strong>SolarEdge</strong><br><small>SE3000H-RW000BNN4</small></div><div class="inv-badge">Optimisé</div></div>
- <div class="inv-item"><span class="inv-icon">🔁</span><div><strong>Enphase</strong><br><small>IQ8A Micro-onduleur</small></div><div class="inv-badge">Micro</div></div>
- <div class="inv-item"><span class="inv-icon">⚙</span><div><strong>Fronius</strong><br><small>Symo GEN24 Plus</small></div><div class="inv-badge">Hybride</div></div>
+ <div class="inv-item"><span class="inv-icon">🔌</span><div><strong>SolarEdge</strong><br><small>SE3000H-RW000BNN4 — monitoring panneau par panneau</small></div><div class="inv-badge">Optimisé</div></div>
+ <div class="inv-item"><span class="inv-icon">🔁</span><div><strong>Enphase</strong><br><small>IQ8A Micro-onduleur — idéal toitures complexes et ombres partielles</small></div><div class="inv-badge">Micro</div></div>
+ <div class="inv-item"><span class="inv-icon">⚙</span><div><strong>Fronius</strong><br><small>Symo GEN24 Plus — hybride prêt batterie</small></div><div class="inv-badge">Hybride</div></div>
  </div>
  <div class="equip-box">
  <div class="equip-box-title">Batteries physiques LFP</div>
- <div class="bat-item"><span>🔋</span><div><strong>BYD</strong><br><small>Battery-Box Premium HVM</small></div><span class="bat-kwh">8,3 kWh</span></div>
- <div class="bat-item"><span>🔋</span><div><strong>Enphase</strong><br><small>IQ Battery 5P</small></div><span class="bat-kwh">5 kWh</span></div>
- <div class="bat-item"><span>🔋</span><div><strong>Pylontech</strong><br><small>US5000</small></div><span class="bat-kwh">4,8 kWh</span></div>
+ <div class="bat-item"><span>🔋</span><div><strong>BYD</strong><br><small>Battery-Box Premium HVM — modulable</small></div><span class="bat-kwh">8,3 kWh</span></div>
+ <div class="bat-item"><span>🔋</span><div><strong>Enphase</strong><br><small>IQ Battery 5P — intégration micro</small></div><span class="bat-kwh">5 kWh</span></div>
+ <div class="bat-item"><span>🔋</span><div><strong>Pylontech</strong><br><small>US5000 — rapport qualité/prix</small></div><span class="bat-kwh">4,8 kWh</span></div>
  </div>
  </div>
- <div style="margin-top:20px;font-size:.8rem;color:var(--slate4);text-align:center;">Choix du matériel selon votre profil de consommation et la configuration de votre toiture à Saint-Hippolyte.</div>
+ <div style="margin-top:20px;font-size:.8rem;color:var(--slate4);text-align:center;">Choix du matériel selon votre profil de consommation et la configuration de votre toiture à Saint-Hippolyte. Visite technique gratuite.</div>
+ </div>
+</section>
+
+<section class="section-sm bg-light" style="padding:48px 0;">
+ <div class="wrap" style="max-width:860px;">
+ <div class="eyebrow">Budget prévisionnel à Saint-Hippolyte</div>
+ <h2 class="h2">Investissement & économies<br><em>selon la puissance installée</em></h2>
+ <p class="body-txt" style="margin-bottom:28px;">Estimations indicatives pour une maison à Saint-Hippolyte (66510). Devis précis gratuit sous 24h.</p>
+ <div class="cmp-wrap">
+ <table class="cmp-table" role="table">
+ <thead>
+ <tr>
+ <th>Puissance</th>
+ <th>Panneaux</th>
+ <th>Production/an</th>
+ <th>Coût brut TTC</th>
+ <th class="cmp-us">Coût net* après aides</th>
+ <th>ROI estimé</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>3 kWc</strong></td>
+ <td>7 panneaux</td>
+ <td>~4 005 kWh</td>
+ <td>8 500 – 12 000 €</td>
+ <td class="cmp-us">6 500 – 8 500 €</td>
+ <td>7-8 ans</td>
+ </tr>
+ <tr>
+ <td><strong>6 kWc</strong></td>
+ <td>14 panneaux</td>
+ <td>~8 010 kWh</td>
+ <td>14 000 – 18 000 €</td>
+ <td class="cmp-us">11 000 – 14 500 €</td>
+ <td>8-9 ans</td>
+ </tr>
+ <tr>
+ <td><strong>9 kWc</strong></td>
+ <td>21 panneaux</td>
+ <td>~12 015 kWh</td>
+ <td>20 000 – 26 000 €</td>
+ <td class="cmp-us">16 500 – 21 000 €</td>
+ <td>9-11 ans</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <p style="font-size:.74rem;color:var(--slate4);margin-top:10px;">*Après TVA 10 %, prime CRE, éco-PTZ. Économies calculées sur base 0,235 €/kWh, autoconsommation 70 %, rachat surplus 0,1269 €/kWh. Valeurs indicatives — devis personnalisé gratuit.</p>
  </div>
 </section>
 
@@ -445,6 +575,7 @@
  <div class="wrap" style="max-width:860px;">
  <div class="eyebrow">Pourquoi nous choisir</div>
  <h2 class="h2" id="compare-title">Solaire 66 vs<br><em>grandes enseignes nationales</em></h2>
+ <p class="body-txt" style="max-width:100%;margin-bottom:8px;">Un installateur local connaît les spécificités des toitures du village perché de Saint-Hippolyte, les délais Enedis des Pyrénées-Orientales et les aides disponibles en 2026. Voici pourquoi choisir Solaire 66.</p>
  <div class="cmp-wrap">
  <table class="cmp-table" role="table">
  <thead><tr><th>Critère</th><th class="cmp-us">Solaire 66</th><th>Enseignes nationales</th></tr></thead>
@@ -456,6 +587,11 @@
  <tr><td>Suivi post-installation</td><td class="yes">✓ Local et réactif</td><td class="no">Centre d'appel national</td></tr>
  <tr><td>Démarches administratives complètes</td><td class="yes">✓ Tout inclus</td><td class="no">Souvent en supplément</td></tr>
  <tr><td>Batterie virtuelle EDF OA</td><td class="yes">✓ Proposée et gérée</td><td class="no">Non proposée</td></tr>
+ <tr><td>Expertise terrain Aspres — toitures tuile catalane, accès vallonné</td><td class="yes">✓ Connaissance Aspres/P.-O.</td><td class="no">Standard uniquement</td></tr>
+ <tr><td>Prime CRE autoconsommation gérée (660 €)</td><td class="yes">✓ Dossier EDF OA complet</td><td class="no">À la charge du client</td></tr>
+ <tr><td>Éco-PTZ sans avance de trésorerie</td><td class="yes">✓ Partenaires bancaires</td><td class="no">Non proposé</td></tr>
+ <tr><td>Garantie décennale responsabilité civile</td><td class="yes">✓ Couverture complète</td><td class="no">Variable selon sous-traitant</td></tr>
+ <tr><td>Maîtrise des délais Enedis Pyrénées-Orientales</td><td class="yes">✓ Raccordement anticipé</td><td class="no">Délais imprévisibles</td></tr>
  </tbody>
  </table>
  </div>
@@ -468,6 +604,24 @@
  <div class="eyebrow">Devis gratuit à Saint-Hippolyte</div>
  <h2 class="h2" id="devis-title">Votre projet solaire<br>à <em>Saint-Hippolyte</em></h2>
  <p class="body-txt">Réponse garantie sous 24h. Visite technique offerte. Sans engagement.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:12px;margin:20px 0;">
+ <div style="flex:1;min-width:140px;background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--rs);padding:14px 16px;text-align:center;">
+ <div style="font-size:1.3rem;font-weight:900;color:var(--sun);">1780</div>
+ <div style="font-size:.72rem;color:var(--slate4);font-weight:600;text-transform:uppercase;margin-top:3px;">kWh/m²/an</div>
+ </div>
+ <div style="flex:1;min-width:140px;background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--rs);padding:14px 16px;text-align:center;">
+ <div style="font-size:1.3rem;font-weight:900;color:var(--green);">660 €</div>
+ <div style="font-size:.72rem;color:var(--slate4);font-weight:600;text-transform:uppercase;margin-top:3px;">Prime CRE</div>
+ </div>
+ <div style="flex:1;min-width:140px;background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--rs);padding:14px 16px;text-align:center;">
+ <div style="font-size:1.3rem;font-weight:900;color:var(--sky);">7-8 ans</div>
+ <div style="font-size:.72rem;color:var(--slate4);font-weight:600;text-transform:uppercase;margin-top:3px;">ROI après aides</div>
+ </div>
+ <div style="flex:1;min-width:140px;background:var(--white);border:1.5px solid var(--slate6);border-radius:var(--rs);padding:14px 16px;text-align:center;">
+ <div style="font-size:1.3rem;font-weight:900;color:var(--sun);">10 %</div>
+ <div style="font-size:.72rem;color:var(--slate4);font-weight:600;text-transform:uppercase;margin-top:3px;">TVA réduite</div>
+ </div>
+ </div>
  <div class="form-wrap" style="margin-top:32px;" id="fc-wrap">
  <div id="fc-inner">
  <form id="lf" novalidate>
@@ -511,6 +665,7 @@
  <div class="wrap" style="max-width:760px;">
  <div class="eyebrow">Questions fréquentes</div>
  <h2 class="h2" id="faq-title">FAQ — Panneaux solaires<br>à <em>Saint-Hippolyte</em></h2>
+ <p class="body-txt" style="max-width:100%;margin-bottom:8px;">Toutes les réponses sur l'installation photovoltaïque à Saint-Hippolyte : coûts réels, aides 2026, spécificités des toitures catalanes des Aspres, tramontane et avantages locaux.</p>
  <div class="faq-list">
  <div>
  <button class="faq-q" aria-expanded="false" onclick="faq(this)">
@@ -518,7 +673,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Solaire 66 installe trois marques premium à Saint-Hippolyte : <strong>JinkoSolar Tiger Neo N-Type</strong> (415 Wc, η 22,3 % — notre best-seller), <strong>Longi Solar Hi-MO 6 Explorer</strong> (420 Wc, excellente résistance à la chaleur) et <strong>REC Group Alpha Pure-R</strong> (430 Wc, garantie 25 ans sur la performance). Tous certifiés IEC 61215/61730.
+ Solaire 66 installe trois marques premium à Saint-Hippolyte : <strong>JinkoSolar Tiger Neo N-Type</strong> (415 Wc, η 22,3 %, technologie bifaciale, coefficient thermique −0,30 %/°C — notre best-seller dans les Aspres et le Vallespir), <strong>Longi Solar Hi-MO 6 Explorer</strong> (420 Wc, excellente résistance à la chaleur, certifié IEC 61730) et <strong>REC Group Alpha Pure-R</strong> (430 Wc, technologie IBC, linéarité 92 % à 25 ans). Ces panneaux sont certifiés résistance au vent jusqu'à 2 400 Pa (IEC) — un atout pour ce secteur des Aspres où la tramontane souffle régulièrement.
  </div>
  </div>
  <div>
@@ -527,7 +682,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- À Saint-Hippolyte, l'irradiation solaire est de <strong>1758 kWh/m²/an</strong> (données PVGIS 2024). Une installation de 3 kWc produit environ <strong>3956 kWh/an</strong>, soit environ 800 à 900 € d'économies annuelles et un retour sur investissement en <strong>13,3 ans</strong>.
+ À Saint-Hippolyte, l'irradiation solaire est de <strong>1780 kWh/m²/an</strong> (données PVGIS 2024), nettement au-dessus de la moyenne nationale (~1100 kWh/m²/an). Une installation de <strong>3 kWc</strong> produit environ <strong>4005 kWh/an</strong>, couvrant 40 à 60 % de la consommation d'un foyer standard. Cela représente <strong>820 à 950 € d'économies annuelles</strong> (autoconsommation 70 % + rachat surplus). Retour sur investissement : <strong>7-8 ans après aides</strong>. Les collines des Aspres offrent des toitures variées ; notre visite technique identifie l'orientation optimale pour chaque maison à Saint-Hippolyte.
  </div>
  </div>
  <div>
@@ -536,25 +691,57 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Aides cumulables à Saint-Hippolyte : <strong>TVA réduite à 10 %</strong>, <strong>MaPrimeRénov'</strong> (jusqu'à 1 000 €), <strong>prime autoconsommation</strong> (3 kWc × 230 €/kWc = 690 € versés par EDF OA), <strong>éco-PTZ</strong> à taux zéro, et <strong>rachat surplus</strong> à 0,1269 €/kWh sur 20 ans. Solaire 66 prend en charge toutes les démarches.
+ Les aides cumulables à Saint-Hippolyte en 2026 : <strong>TVA réduite à 10 %</strong> (fourniture + pose), <strong>prime CRE autoconsommation</strong> 3 kWc × 220 €/kWc = <strong>660 €</strong> versés par EDF OA sur 5 ans, <strong>éco-PTZ</strong> à taux zéro jusqu'à 30 000 € (via votre banque), <strong>MaPrimeRénov'</strong> sous conditions de ressources, et <strong>rachat surplus</strong> à 0,1269 €/kWh sur contrat 20 ans. Investissement net après aides pour 3 kWc : <strong>6 500 à 8 500 €</strong>. Solaire 66 prend en charge l'intégralité des démarches jusqu'à la mise en service.
  </div>
  </div>
  <div>
  <button class="faq-q" aria-expanded="false" onclick="faq(this)">
- Combien coûte une installation solaire à Saint-Hippolyte ?
+ Combien coûte une installation solaire à Saint-Hippolyte et quel est le ROI ?
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Le coût d'une installation photovoltaïque à Saint-Hippolyte varie selon la puissance : environ 8 000 à 11 000 € pour 3 kWc, 13 000 à 17 000 € pour 6 kWc, avant aides. Après TVA réduite à 10 %, MaPrimeRénov' et prime autoconsommation, votre investissement net peut descendre significativement. Demandez votre devis gratuit pour un chiffrage précis adapté à votre toiture et vos consommations.
+ Coûts avant aides à Saint-Hippolyte : <strong>3 kWc (7 panneaux)</strong> : 8 500 à 12 000 € TTC — <strong>6 kWc</strong> : 14 000 à 18 000 € TTC. Après aides (TVA 10 %, prime CRE 660 €, éco-PTZ) : investissement net <strong>6 500 à 8 500 € pour 3 kWc</strong>. Avec une production de 4 005 kWh/an et des économies de 820 à 950 €/an, le <strong>retour sur investissement est de 7 à 8 ans</strong>. Les toitures des maisons anciennes du village peuvent nécessiter des adaptations — notre visite technique gratuite les évalue en amont. Contactez-nous au <strong>07 75 76 92 32</strong>.
  </div>
  </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ La tramontane est-elle un avantage pour les panneaux solaires à Saint-Hippolyte ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Oui — la tramontane, vent dominant dans les <strong>collines des Aspres</strong>, est un <strong>avantage concret pour le photovoltaïque</strong> à Saint-Hippolyte. Elle nettoie régulièrement les panneaux en éliminant les dépôts de poussière, de pollen viticole (AOC Rivesaltes) et de particules fines. Ce nettoyage naturel maintient le rendement optimal et réduit les besoins d'entretien — une économie de 100 à 200 €/an sur un nettoyage professionnel annuel. Le relief des Aspres crée des accélérations locales : nos supports de fixation sont dimensionnés pour une résistance jusqu'à 2 400 Pa (certification IEC).
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Quels avantages pour un village perché comme Saint-Hippolyte ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Saint-Hippolyte, commune catalane typique des <strong>collines des Aspres</strong> (~1 300 hab., 66510), présente plusieurs atouts pour le photovoltaïque. Le <strong>terrain vallonné</strong> offre des toitures à expositions variées — certaines plein sud, d'autres à optimiser lors de notre visite. L'<strong>exposition sud à sud-est</strong> fréquente dans ce type de village maximise la production annuelle. Les toitures en <strong>tuile ronde catalane ou lauzes</strong> sont parfaitement compatibles avec nos systèmes de fixation sur liteaux. Enfin, le cadre rural préserve les abords de nouveaux bâtiments qui pourraient créer de l'ombre. Notre technicien évalue chaque situation lors de la visite gratuite.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Comment fonctionne la revente du surplus à Saint-Hippolyte ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ À Saint-Hippolyte, l'énergie solaire produite mais non autoconsommée peut être revendue à EDF OA (Obligation d'Achat) au tarif de <strong>0,1269 €/kWh</strong>, garanti sur <strong>20 ans</strong>. Ce contrat est signé à la mise en service et sécurise vos revenus sur deux décennies. En autoconsommant 70 % de votre production (~2 803 kWh/an sur 4 005 kWh produits), vous revendez environ 1 200 kWh, générant ~152 €/an de revenus complémentaires. Ces revenus s'ajoutent aux <strong>820-950 € d'économies</strong> sur votre facture EDF. Solaire 66 gère la signature du contrat EDF OA.
+ </div>
+ </div>
+ </div>
+ <div style="margin-top:28px;padding:20px;background:var(--green2);border:1px solid #86EFAC;border-radius:var(--rs);">
+ <div style="font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#065F46;margin-bottom:10px;">Solaire 66 dans les Aspres et le Vallespir — Zones couvertes</div>
+ <p style="font-size:.85rem;color:#065F46;line-height:1.7;margin:0;">Solaire 66 intervient à Saint-Hippolyte et dans toutes les communes des collines des Aspres et du Vallespir : <strong>Thuir (5 km), Perpignan (20 km), Elne, Céret, Argelès-sur-Mer, Le Boulou, Banyuls-dels-Aspres</strong> et les communes voisines. Zone d'intervention : tout le département 66. Déplacement gratuit pour la visite technique.</p>
  </div>
  <div class="proches-section">
      <div class="proches-title">Communes voisines desservies</div>
      <div class="proches-grid">
-        <a class="proches-card" href="./saint-laurent-de-la-salanque.html">Saint-Laurent-de-la-Salanque</a>
-        <a class="proches-card" href="./rivesaltes.html">Rivesaltes</a>
         <a class="proches-card" href="./perpignan.html">Perpignan</a>
+        <a class="proches-card" href="./elne.html">Elne</a>
+        <a class="proches-card" href="./thuir.html">Thuir</a>
+        <a class="proches-card" href="./argelès-sur-mer.html">Argelès-sur-Mer</a>
         <a class="proches-card" href="./index.html#zones">Voir toutes nos zones d'intervention</a>
      </div>
     </div>
@@ -577,7 +764,9 @@
  <a href="./index.html">Accueil</a>
  <a href="./index.html#solutions">Solutions</a>
  <a href="./#simulateur">Simulateur</a>
+ <a href="./#batterie">Batterie</a>
  <a href="./index.html#zones">Zones</a>
+ <a href="./#partenaires">Apporteurs</a>
  </div>
  </div>
  <div class="ftr-col">
@@ -590,8 +779,13 @@
  </div>
  </div>
  <div class="ftr-col">
- <h4>Zones proches</h4>
- <div class="ftr-links"><a href="./saint-laurent-de-la-salanque.html">Saint-Laurent-de-la-Salanque</a><a href="./rivesaltes.html">Rivesaltes</a><a href="./perpignan.html">Perpignan</a></div>
+ <h4>Zones Aspres &amp; proches</h4>
+ <div class="ftr-links">
+ <a href="./rivesaltes.html">Rivesaltes</a>
+ <a href="./saint-laurent-de-la-salanque.html">Saint-Laurent-de-la-Salanque</a>
+ <a href="./perpignan.html">Perpignan</a>
+ <a href="./index.html#zones">Toutes les zones</a>
+ </div>
  </div>
  </div>
  <div class="ftr-btm">
@@ -678,9 +872,36 @@
  } catch(err) {
  btn2.disabled = false;
  btn2.textContent = '⚡ Envoyer ma demande de devis';
- alert('Erreur lors de l'envoi. Veuillez appeler le 07 75 76 92 32.');
+ alert('Erreur lors de l\'envoi. Veuillez appeler le 07 75 76 92 32.');
  }
  });
 </script>
+<script>
+ /* share button */
+ (function() {
+ var btn = document.getElementById('shareBtn');
+ if (!btn) return;
+ btn.addEventListener('click', async function() {
+ var data = { title: document.title, text: 'Panneaux solaires à Saint-Hippolyte — devis gratuit Solaire 66', url: location.href };
+ if (navigator.share) {
+ try { await navigator.share(data); } catch(e) {}
+ } else {
+ try { await navigator.clipboard.writeText(location.href); } catch(e) {}
+ var t = document.createElement('div');
+ t.className = 'share-toast';
+ t.textContent = '✓ Lien copié !';
+ document.body.appendChild(t);
+ requestAnimationFrame(function() { t.classList.add('show'); });
+ setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 300); }, 2200);
+ }
+ });
+ })();
+</script>
+<script>
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+ }
+</script>
+<script src="./chatbot.js"></script>
 </body>
 </html>
