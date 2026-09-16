@@ -214,6 +214,11 @@
  .aides { background: var(--bg); }
  .aides-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
  .aide-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 22px 20px; }
+ .video-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
+ .video-card { display: flex; flex-direction: column; gap: 12px; }
+ .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
+ .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+ .video-label { font-size: .88rem; color: var(--text-mid); line-height: 1.4; }
  .aide-pct { font-size: 2rem; font-weight: 800; color: var(--amber); line-height: 1; letter-spacing: -.03em; margin-bottom: 6px; }
  .aide-card h3 { font-size: .93rem; margin-bottom: 4px; }
  .aide-card p { font-size: .82rem; }
@@ -294,6 +299,7 @@
  .topbar-email { display: flex; }
  .aides-grid { grid-template-columns: repeat(4, 1fr); }
  .zones-grid { grid-template-columns: repeat(4, 1fr); }
+ .video-grid { grid-template-columns: repeat(3, 1fr); }
  .form-row-2 { grid-template-columns: 1fr 1fr; }
  }
 
@@ -851,6 +857,39 @@
  </div>
  </div>
  <p style="margin-top:16px;font-size:.82rem;color:var(--text-mid);">ℹ MaPrimeRénov' Ampleur : depuis 2024, le photovoltaïque est intégré uniquement dans le cadre d'une rénovation globale du logement (à taux zéroselon revenus). Solaire 66 vous accompagne pour évaluer votre éligibilité.</p>
+ </div>
+</section>
+
+<!-- ACTUALITÉS VIDÉO -->
+<section class="sec" id="actualites">
+ <div class="wrap">
+  <div class="eyebrow">Actualités</div>
+  <h2>Le solaire en 2026 — ce qu'il faut savoir</h2>
+  <p class="body-lg" style="margin-top:12px; max-width:580px;">Trois vidéos courtes pour comprendre l'autoconsommation, le collectif et les aides disponibles.</p>
+  <div class="video-grid">
+
+   <div class="video-card">
+    <div class="video-wrap">
+     <iframe src="https://www.youtube.com/embed/0i5n78iX9js" title="L'autoconsommation collective, c'est quoi ?" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-label">L'autoconsommation collective, c'est quoi ?</p>
+   </div>
+
+   <div class="video-card">
+    <div class="video-wrap">
+     <iframe src="https://www.youtube.com/embed/DO5D2pYgVTo" title="Comment fonctionne l'autoconsommation solaire en 2026" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-label">Comment fonctionne l'autoconsommation solaire en 2026</p>
+   </div>
+
+   <div class="video-card">
+    <div class="video-wrap">
+     <iframe src="https://www.youtube.com/embed/wLdkQJ7AxNs" title="Aides de l'État panneaux solaires avril-juin 2026" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-label">Aides de l'État — panneaux solaires avril‑juin 2026</p>
+   </div>
+
+  </div>
  </div>
 </section>
 
