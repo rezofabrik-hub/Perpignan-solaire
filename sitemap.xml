@@ -954,4 +954,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://solaire-66.fr/villelongue-de-la-salanque.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solaire-66.fr/perpignan-est.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://solaire-66.fr/perpignan-centre.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://solaire-66.fr/choisir-installateur-solaire-66.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://solaire-66.fr/copropriete-panneaux-solaires-66.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
