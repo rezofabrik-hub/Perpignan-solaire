@@ -80,6 +80,22 @@
  "@type": "Answer",
  "text": "Aides cumulables à Palau-del-Vidre : TVA réduite à 10 %, MaPrimeRénov' (jusqu'à 1 000 €), prime autoconsommation (3 kWc × 230 €/kWc = 690 €), éco-PTZ à taux zéro, et rachat surplus EDF OA à 0,1269 €/kWh sur 20 ans. Toutes les démarches sont prises en charge par Solaire 66."
  }
+ },
+ {
+ "@type": "Question",
+ "name": "Pourquoi Palau-del-Vidre bénéficie-t-elle d'un ensoleillement exceptionnel ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Palau-del-Vidre, entre mer et montagne dans le Vallespir, jouit de 1 800 kWh/m²/an et plus d'irradiation solaire (PVGIS), supérieure à la moyenne du département. La brise marine méditerranéenne qui remonte d'Argelès-sur-Mer (8 km) refroidit les panneaux et améliore leur rendement réel. Moins de 80 jours couverts par an en moyenne garantissent une production régulière tout au long de l'année."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Combien de panneaux solaires pour une maison à Palau-del-Vidre ?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "À Palau-del-Vidre, avec 1 800 kWh/m²/an, 6 à 8 panneaux (3 kWc) produisent environ 4 050 kWh/an. 12 à 14 panneaux (6 kWc) avec batterie couvrent 80 à 90 % d'une consommation standard. Pour une pompe à chaleur ou une voiture électrique, 6 à 9 kWc est recommandé. La visite technique gratuite inclut un calcul précis basé sur votre consommation réelle."
+ }
  }
  ]
 }</script>
@@ -294,6 +310,19 @@
  .proches-card:hover { background: var(--amber-lt, #FEF5DF); border-color: var(--amber, #F5A81C); color: var(--amber-dk, #D48B0A); }
  .proches-card::before { content: '☀'; font-size: .75rem; opacity: .6; }
 
+ /* ── SHARE BUTTON ── */
+ .share-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(15,23,42,0.06); border: none; cursor: pointer; color: var(--slate3); transition: all .15s; flex-shrink: 0; }
+ .share-btn:hover { background: rgba(15,23,42,0.12); }
+ .share-btn svg { width: 18px; height: 18px; }
+ .share-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--slate2); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity .2s; }
+ .share-toast.show { opacity: 1; }
+
+ /* ── LOCAL INFO BOX ── */
+ .local-info { background: var(--white); border: 1.5px solid var(--slate6); border-radius: var(--r); padding: 20px 22px; margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+ .local-info-item { text-align: center; }
+ .local-info-val { font-size: 1.2rem; font-weight: 900; color: var(--sun-d); line-height: 1; }
+ .local-info-lbl { font-size: .72rem; color: var(--slate4); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; font-weight: 600; }
+
  </style>
  <link rel="manifest" href="/manifest.json">
  <meta name="theme-color" content="#0B2145">
@@ -319,6 +348,9 @@
  <a href="./#partenaires">Apporteurs</a>
  </div>
  <div class="nav-right">
+ <button class="share-btn" id="shareBtn" aria-label="Partager cette page" title="Partager">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+ </button>
  <a href="tel:0775769232" class="nav-tel">📞 07 75 76 92 32</a>
  <a href="#devis-local" class="btn btn-sun">⚡ Devis gratuit</a>
  </div>
@@ -343,7 +375,7 @@
  </h1>
  <p class="hero-sub">
  Installateur avec nos installateurs RGE certifiés · Décennale à Palau-del-Vidre — <strong>JinkoSolar, Longi Solar, REC Group</strong>.
- 1742 kWh/m²/an. Devis personnalisé gratuit sous 24h, sans engagement.
+ 1 800+ kWh/m²/an — entre mer et montagne. Devis personnalisé gratuit sous 24h, sans engagement.
  </p>
  <div class="hero-actions">
  <a href="#devis-local" class="btn btn-sun btn-lg">⚡ Devis gratuit 24h</a>
@@ -384,10 +416,19 @@
  <div>
  <div class="eyebrow">Votre installateur à Palau-del-Vidre</div>
  <h2 class="h2" id="about-title">Solaire 66 intervient<br>à <em>Palau-del-Vidre</em></h2>
- <p class="body-txt">Palau-del-Vidre (66690) — commune résidentielle proche de la frontière espagnole et de la mer.</p>
+ <p class="body-txt">Palau-del-Vidre (66690) — commune catalane de ~3 500 habitants, entre mer et montagne, à 8 km d'Argelès-sur-Mer, au cœur du vignoble de la Côte Vermeille.</p>
+ <div class="local-info">
+ <div class="local-info-item"><div class="local-info-val">~3 500</div><div class="local-info-lbl">Habitants</div></div>
+ <div class="local-info-item"><div class="local-info-val">66690</div><div class="local-info-lbl">Code postal</div></div>
+ <div class="local-info-item"><div class="local-info-val">1 800+</div><div class="local-info-lbl">kWh/m²/an</div></div>
+ <div class="local-info-item"><div class="local-info-val">8 km</div><div class="local-info-lbl">d'Argelès-sur-Mer</div></div>
+ <div class="local-info-item"><div class="local-info-val">Tuile ronde</div><div class="local-info-lbl">Toiture catalane</div></div>
+ <div class="local-info-item"><div class="local-info-val">Côte Vermeille</div><div class="local-info-lbl">Vignoble AOC</div></div>
+ </div>
  <div class="about-card" style="margin-top:28px;">
  <p><strong>Solaire 66</strong> (SARL Rezofabrik) est votre installateur photovoltaïque local à Palau-del-Vidre et dans tout le département 66. Avec 1742 kWh/m²/an (PVGIS), les toitures de Palau-del-Vidre offrent d'excellentes conditions pour la production solaire — retour sur investissement estimé à 13,5 ans.</p>
  <p>Nos équipes appuyées par <strong>nos installateurs RGE certifiés · Décennale</strong> prennent en charge chaque installation de A à Z : visite technique gratuite, démarches administratives (Enedis, Consuel, MaPrimeRénov'), raccordement et suivi post-installation.</p>
+ <p>Palau-del-Vidre bénéficie d'une position géographique exceptionnelle pour le solaire : lovée entre la Méditerranée et les premiers contreforts pyrénéens, la commune jouit d'un <strong>ensoleillement de 1 800 kWh/m²/an et plus</strong> (PVGIS), supérieur à la moyenne départementale grâce à l'altitude et à l'exposition favorable. Ses maisons catalanes traditionnelles, coiffées de tuiles rondes caractéristiques du Vallespir, se prêtent idéalement à l'installation photovoltaïque. Nos techniciens connaissent parfaitement ces architectures et adaptent chaque pose pour préserver le charme du bâti tout en maximisant la surface captante. La brise marine régulière qui remonte de la côte vermeille rafraîchit naturellement les modules et maintient un rendement optimal même lors des pics de chaleur estivaux.</p>
  <ul class="chk-list">
  <li>Avec nos installateurs RGE certifiés · Décennale — éligibilité à toutes les aides de l'État</li>
  <li>Visite technique gratuite à domicile, sans engagement</li>
@@ -396,6 +437,9 @@
  <li>SAV réactif — techniciens basés dans les P.-O. et l'Aude</li>
  <li>Batterie physique LFP ou batterie virtuelle selon profil</li>
  <li>Raccordement EDF OA pour revente du surplus sur 20 ans</li>
+ <li>Expertise des toitures catalanes — fixations certifiées pour tuiles rondes sans risque d'infiltration</li>
+ <li>Déclaration préalable de travaux prise en charge auprès de la mairie de Palau-del-Vidre</li>
+ <li>Matériaux certifiés résistants à l'environnement côtier (embruns, humidité, vent marin)</li>
  </ul>
  </div>
  </div>
@@ -403,10 +447,10 @@
  <div class="eyebrow" style="margin-top:0;">Nos 4 étapes</div>
  <h2 class="h2" style="margin-bottom:0;">De la visite à la<br>mise en service</h2>
  <div class="steps" style="margin-top:24px;grid-template-columns:1fr;">
- <div class="step"><div class="step-num">1</div><div><div class="step-title">Visite technique gratuite</div><div class="step-body">Étude de votre toiture à Palau-del-Vidre, orientation, ombrage, consommation. Devis sous 24h.</div></div></div>
- <div class="step"><div class="step-num">2</div><div><div class="step-title">Démarches administratives</div><div class="step-body">Déclaration préalable, demande Enedis, dossier MaPrimeRénov' — tout est géré.</div></div></div>
- <div class="step"><div class="step-num">3</div><div><div class="step-title">Installation certifiée</div><div class="step-body">Pose en 1 à 2 jours par nos techniciens RGE. Panneaux JinkoSolar, Longi ou REC.</div></div></div>
- <div class="step"><div class="step-num">4</div><div><div class="step-title">Mise en service & suivi</div><div class="step-body">Consuel, raccordement Enedis, formation à l'application de suivi en temps réel.</div></div></div>
+ <div class="step"><div class="step-num">1</div><div><div class="step-title">Visite technique gratuite</div><div class="step-body">Étude de votre toiture à Palau-del-Vidre — orientation, ombrage, état des tuiles rondes, charpente, exposition aux vents. Simulation de production solaire avec les données d'irradiation locales (1 800+ kWh/m²/an) et devis sous 24h.</div></div></div>
+ <div class="step"><div class="step-num">2</div><div><div class="step-title">Démarches administratives</div><div class="step-body">Déclaration préalable auprès de la mairie de Palau-del-Vidre, demande de raccordement Enedis, dossier MaPrimeRénov' et prime autoconsommation — tout est pris en charge par Solaire 66, sans frais supplémentaires.</div></div></div>
+ <div class="step"><div class="step-num">3</div><div><div class="step-title">Installation certifiée</div><div class="step-body">Pose en 1 à 2 jours par nos techniciens RGE experts en toitures catalanes. Fixations certifiées pour tuiles rondes, matériaux résistants aux environnements côtiers, câblage protégé contre l'humidité marine. Panneaux JinkoSolar, Longi ou REC.</div></div></div>
+ <div class="step"><div class="step-num">4</div><div><div class="step-title">Mise en service & suivi</div><div class="step-body">Consuel, raccordement Enedis, contrat EDF OA, formation à l'application de suivi en temps réel. Bilan de production à 6 mois inclus. SAV local sous 48h en cas d'anomalie.</div></div></div>
  </div>
  </div>
  </div>
@@ -419,9 +463,12 @@
  <h2 class="h2" id="brands-title">Marques premium — <em>haut rendement</em></h2>
  <p class="body-txt">Nous sélectionnons les meilleures technologies mondiales pour chaque installation à Palau-del-Vidre. Tous nos panneaux sont certifiés IEC 61215 et bénéficient de la garantie linéarité de rendement.</p>
  <div class="brands-grid">
- <div class="brand-card"><div class="brand-icon">⚡</div><div class="brand-name">JinkoSolar</div><div class="brand-model">Tiger Neo N-Type</div><div class="brand-specs"><span>415 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span></div></div>
- <div class="brand-card"><div class="brand-icon">🔆</div><div class="brand-name">Longi Solar</div><div class="brand-model">Hi-MO 6 Explorer</div><div class="brand-specs"><span>420 Wc</span><span>η 22,0 %</span><span>Gar. 25 ans</span></div></div>
- <div class="brand-card"><div class="brand-icon">✦</div><div class="brand-name">REC Group</div><div class="brand-model">Alpha Pure-R</div><div class="brand-specs"><span>430 Wc</span><span>η 22,3 %</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card"><div class="brand-icon">⚡</div><div class="brand-name">JinkoSolar</div><div class="brand-model">Tiger Neo N-Type — Best-seller</div><div class="brand-specs"><span>415 Wc</span><span>η 22,3 %</span><span>Coeff. temp. −0,29 %/°C</span><span>Bif. N-Type</span><span>IEC 61215/61730</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card"><div class="brand-icon">🔆</div><div class="brand-name">Longi Solar</div><div class="brand-model">Hi-MO 6 Explorer — Résistance chaleur</div><div class="brand-specs"><span>420 Wc</span><span>η 22,0 %</span><span>Coeff. temp. −0,30 %/°C</span><span>HPBC Cell</span><span>IEC 61215/61730</span><span>Gar. 25 ans</span></div></div>
+ <div class="brand-card"><div class="brand-icon">✦</div><div class="brand-name">REC Group</div><div class="brand-model">Alpha Pure-R — Premium européen</div><div class="brand-specs"><span>430 Wc</span><span>η 22,3 %</span><span>Coeff. temp. −0,26 %/°C</span><span>HJT Heterojunction</span><span>IEC 61215/61730</span><span>Gar. 25 ans</span></div></div>
+ </div>
+ <div style="margin-top:18px;background:var(--sky3);border:1.5px solid var(--sky2);border-radius:var(--rs);padding:16px 18px;font-size:.84rem;color:var(--slate2);line-height:1.7;">
+ <strong>Adaptation aux toitures de Palau-del-Vidre :</strong> Les maisons catalanes avec tuiles rondes caractérisent le bâti de la commune. À 1 800 kWh/m²/an, l'exposition est excellente mais le fort ensoleillement estival rend le choix du matériau déterminant. Nous privilégions les panneaux à faible coefficient de température (HJT ou N-Type) qui perdent moins de rendement lors des pics de chaleur. Nos techniciens maîtrisent les fixations adaptées aux tuiles rondes sans risque d'infiltration, et évaluent systématiquement la charpente lors de la visite technique gratuite.
  </div>
  <div class="equip-cols" style="margin-top:28px;">
  <div class="equip-box">
@@ -435,9 +482,13 @@
  <div class="bat-item"><span>🔋</span><div><strong>BYD</strong><br><small>Battery-Box Premium HVM</small></div><span class="bat-kwh">8,3 kWh</span></div>
  <div class="bat-item"><span>🔋</span><div><strong>Enphase</strong><br><small>IQ Battery 5P</small></div><span class="bat-kwh">5 kWh</span></div>
  <div class="bat-item"><span>🔋</span><div><strong>Pylontech</strong><br><small>US5000</small></div><span class="bat-kwh">4,8 kWh</span></div>
+ <div class="bat-item"><span>🔋</span><div><strong>Huawei</strong><br><small>LUNA2000-10-S0</small></div><span class="bat-kwh">10 kWh</span></div>
  </div>
  </div>
- <div style="margin-top:20px;font-size:.8rem;color:var(--slate4);text-align:center;">Choix du matériel selon votre profil de consommation et la configuration de votre toiture à Palau-del-Vidre.</div>
+ <div style="margin-top:20px;font-size:.8rem;color:var(--slate4);text-align:center;">Choix du matériel selon votre profil de consommation, la configuration de votre toiture à Palau-del-Vidre et les spécificités du microclimat côtier.</div>
+ <div style="margin-top:16px;background:var(--sun4);border:1px solid var(--sun3);border-radius:var(--rs);padding:14px 16px;font-size:.83rem;color:var(--slate2);line-height:1.7;">
+ <strong>Production estimée à Palau-del-Vidre :</strong> Avec 1 800+ kWh/m²/an, une installation de <strong>3 kWc</strong> produit ~4 050 kWh/an · <strong>6 kWc</strong> → ~8 100 kWh/an · <strong>9 kWc</strong> → ~12 150 kWh/an. Production maximale en juin–juillet (ensoleillement direct 7 à 8 h/jour côté mer), production hivernale robuste grâce à l'exposition méridionale et au faible taux de couverture nuageuse du Vallespir. Source : PVGIS 2024.
+ </div>
  </div>
 </section>
 
@@ -445,6 +496,7 @@
  <div class="wrap" style="max-width:860px;">
  <div class="eyebrow">Pourquoi nous choisir</div>
  <h2 class="h2" id="compare-title">Solaire 66 vs<br><em>grandes enseignes nationales</em></h2>
+ <p style="font-size:.89rem;color:var(--slate3);margin-top:10px;line-height:1.75;">À Palau-del-Vidre, le microclimat côtier (brise marine, embruns, amplitude thermique mer-montagne) impose une sélection rigoureuse des matériaux et des techniques de fixation. Solaire 66 intervient avec des techniciens formés sur les toitures catalanes et les contraintes du Vallespir, avec des équipements certifiés pour les environnements côtiers.</p>
  <div class="cmp-wrap">
  <table class="cmp-table" role="table">
  <thead><tr><th>Critère</th><th class="cmp-us">Solaire 66</th><th>Enseignes nationales</th></tr></thead>
@@ -456,8 +508,14 @@
  <tr><td>Suivi post-installation</td><td class="yes">✓ Local et réactif</td><td class="no">Centre d'appel national</td></tr>
  <tr><td>Démarches administratives complètes</td><td class="yes">✓ Tout inclus</td><td class="no">Souvent en supplément</td></tr>
  <tr><td>Batterie virtuelle EDF OA</td><td class="yes">✓ Proposée et gérée</td><td class="no">Non proposée</td></tr>
+ <tr><td>Expertise toitures catalanes (tuiles rondes, charpente)</td><td class="yes">✓ Techniciens P.-O. formés</td><td class="no">Méconnaissance du bâti local</td></tr>
+ <tr><td>Garantie décennale systématique</td><td class="yes">✓ Incluse sur chaque chantier</td><td class="no">Variable selon le sous-traitant</td></tr>
+ <tr><td>Connaissance du microclimat côtier (vent, sel, humidité)</td><td class="yes">✓ Matériaux certifiés milieu marin</td><td class="no">Équipements standards inadaptés</td></tr>
  </tbody>
  </table>
+ </div>
+ <div style="margin-top:20px;background:var(--green2);border:1px solid #86EFAC;border-radius:var(--rs);padding:16px 18px;font-size:.84rem;color:#065F46;line-height:1.7;">
+ <strong>Notre engagement local à Palau-del-Vidre :</strong> Solaire 66 est une équipe ancrée dans les Pyrénées-Orientales. Nous connaissons le Vallespir, ses maisons catalanes, ses toitures en tuiles rondes et les contraintes spécifiques du milieu côtier (embruns, vents marins, amplitude thermique). Notre SAV local à Palau-del-Vidre répond sous 48h — aucun centre d'appel national, des techniciens du territoire pour chaque intervention.
  </div>
  </div>
 </section>
@@ -518,7 +576,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Solaire 66 installe trois marques premium à Palau-del-Vidre : <strong>JinkoSolar Tiger Neo N-Type</strong> (415 Wc, η 22,3 % — notre best-seller), <strong>Longi Solar Hi-MO 6 Explorer</strong> (420 Wc, excellente résistance à la chaleur) et <strong>REC Group Alpha Pure-R</strong> (430 Wc, garantie 25 ans sur la performance). Tous certifiés IEC 61215/61730.
+ Solaire 66 installe trois marques premium à Palau-del-Vidre : <strong>JinkoSolar Tiger Neo N-Type</strong> (415 Wc, η 22,3 %, coefficient de température −0,29 %/°C — notre best-seller), <strong>Longi Solar Hi-MO 6 Explorer</strong> (420 Wc, technologie HPBC, excellente résistance à la chaleur propre à la Côte Vermeille) et <strong>REC Group Alpha Pure-R</strong> (430 Wc, cellules HJT Heterojunction, coefficient de température −0,26 %/°C — solution premium pour les journées très ensoleillées du Vallespir). Tous certifiés IEC 61215/61730, avec garantie produit 25 ans et 90 % de rendement garanti à 25 ans. À Palau-del-Vidre, où l'irradiation dépasse 1 800 kWh/m²/an, ces technologies à faible coefficient de température tirent le meilleur parti des journées estivales longues et chaudes.
  </div>
  </div>
  <div>
@@ -527,7 +585,7 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- À Palau-del-Vidre, l'irradiation solaire est de <strong>1742 kWh/m²/an</strong> (données PVGIS 2024). Une installation de 3 kWc produit environ <strong>3920 kWh/an</strong>, soit environ 790 à 890 € d'économies annuelles et un retour sur investissement en <strong>13,5 ans</strong>.
+ Palau-del-Vidre bénéficie d'un ensoleillement exceptionnel : <strong>1 800 kWh/m²/an et plus</strong> (données PVGIS 2024), supérieur à la moyenne du département grâce à la position entre mer et montagne et à l'altitude favorable. Une installation de 3 kWc produit environ <strong>4 050 à 4 200 kWh/an</strong>, soit environ <strong>900 à 1 000 € d'économies annuelles</strong> en autoconsommation à 70 %. Le retour sur investissement est estimé à <strong>12 à 13 ans</strong> selon les aides obtenues. Sur 25 ans, le gain net dépasse <strong>12 000 €</strong> pour une installation correctement dimensionnée. La brise marine et les nuits fraîches pyrénéennes maintiennent les modules à une température basse et améliorent le rendement réel par rapport aux estimations PVGIS.
  </div>
  </div>
  <div>
@@ -545,16 +603,67 @@
  <span class="faq-arr" aria-hidden="true">▼</span>
  </button>
  <div class="faq-a" hidden>
- Le coût d'une installation photovoltaïque à Palau-del-Vidre varie selon la puissance : environ 8 000 à 11 000 € pour 3 kWc, 13 000 à 17 000 € pour 6 kWc, avant aides. Après TVA réduite à 10 %, MaPrimeRénov' et prime autoconsommation, votre investissement net peut descendre significativement. Demandez votre devis gratuit pour un chiffrage précis adapté à votre toiture et vos consommations.
+ Le coût d'une installation photovoltaïque à Palau-del-Vidre varie selon la puissance : environ <strong>8 000 à 11 000 €</strong> pour 3 kWc, <strong>13 000 à 17 000 €</strong> pour 6 kWc, avant aides. Pour les maisons catalanes avec tuiles rondes, la fixation spécifique est incluse dans notre devis sans supplément caché. Après <strong>TVA réduite à 10 %</strong>, <strong>MaPrimeRénov'</strong> et <strong>prime autoconsommation</strong> (690 € pour 3 kWc), votre investissement net peut descendre en dessous de 7 000 € pour 3 kWc. Avec un ensoleillement à 1 800 kWh/m²/an, la rentabilité est parmi les meilleures du département : retour sur investissement estimé à <strong>12 à 13 ans</strong>, gain net dépassant 12 000 € sur 25 ans. Demandez votre devis gratuit pour un chiffrage adapté à votre situation à Palau-del-Vidre.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Pourquoi Palau-del-Vidre est-elle particulièrement avantageuse pour le solaire photovoltaïque ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Palau-del-Vidre cumule plusieurs atouts rares pour le photovoltaïque. D'abord, son <strong>ensoleillement de 1 800 kWh/m²/an et plus</strong> — supérieur à la moyenne du département 66 — résulte de la combinaison altitude et exposition méridionale propre au Vallespir côtier. Ensuite, la <strong>brise marine méditerranéenne</strong> qui remonte quotidiennement d'Argelès-sur-Mer (8 km) refroidit naturellement les panneaux et maintient leur rendement, contrebalançant la chaleur estivale. Enfin, le <strong>faible taux de couverture nuageuse</strong> (moins de 80 jours couverts par an en moyenne) garantit une production régulière tout au long de l'année, y compris en hiver, période où les angles du soleil bas favorisent les toitures bien inclinées.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Comment adapter les panneaux solaires aux maisons catalanes avec tuiles rondes à Palau-del-Vidre ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Les maisons catalanes de Palau-del-Vidre, avec leurs toitures en tuiles rondes à double galbe, nécessitent des crochets de fixation spécifiques conçus pour s'insérer sous les tuiles sans les casser ni créer de ponts thermiques. Nos techniciens utilisent des systèmes de fixation certifiés pour ces toitures, garantissant l'étanchéité sur toute la durée de vie de l'installation. Lors de la visite technique gratuite, nous évaluons l'état de la couverture, l'inclinaison réelle du toit, l'orientation et les éventuels ombrages (cheminées, arbres, bâtiments voisins) pour proposer l'implantation optimale des panneaux. Si la toiture présente des tuiles fragilisées, nous recommandons de les remplacer avant la pose pour éviter toute intervention ultérieure sous les panneaux installés.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Faut-il une déclaration préalable de travaux pour des panneaux solaires à Palau-del-Vidre ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Oui, une <strong>déclaration préalable de travaux</strong> (DP) est obligatoire pour toute installation de panneaux solaires sur une toiture visible depuis l'espace public à Palau-del-Vidre. Le dossier est déposé en mairie et instruit en 1 à 2 mois. Solaire 66 s'occupe intégralement de cette démarche : constitution du dossier technique avec plans, dépôt et suivi auprès de la mairie de Palau-del-Vidre. La commune étant proche de la frontière et de sites naturels remarquables (Massif des Albères, Côte Vermeille), nos techniciens vérifient systématiquement les éventuelles contraintes architecturales ou paysagères lors de la visite préalable. Aucun frais administratif supplémentaire n'est facturé.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Quel onduleur choisir pour une installation solaire à Palau-del-Vidre ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ À Palau-del-Vidre, le fort ensoleillement et le microclimat côtier orientent le choix de l'onduleur. Pour une toiture bien orientée plein sud sans ombrage, le <strong>SolarEdge SE3000H</strong> avec optimiseurs est le meilleur rapport performance/prix : il maximise la production même lors des légères variations d'irradiation liées aux brumes matinales côtières. L'<strong>Enphase IQ8A</strong> (micro-onduleur) convient parfaitement aux toitures catalanes avec plusieurs pans orientés différemment — chaque panneau est indépendant. Le <strong>Fronius Symo GEN24 Plus</strong> est idéal pour les installations hybrides combinées à une batterie BYD ou Pylontech : il anticipe les besoins du soir grâce à son algorithme de gestion intelligente. Nos techniciens recommandent la solution la mieux adaptée lors de la visite technique gratuite.
+ </div>
+ </div>
+ <div>
+ <button class="faq-q" aria-expanded="false" onclick="faq(this)">
+ Combien de panneaux solaires pour une maison à Palau-del-Vidre ?
+ <span class="faq-arr" aria-hidden="true">▼</span>
+ </button>
+ <div class="faq-a" hidden>
+ Avec <strong>1 800 kWh/m²/an et plus</strong> à Palau-del-Vidre, la production par panneau est parmi les plus élevées du département. Voici les ordres de grandeur : <strong>6 à 8 panneaux (3 kWc)</strong> produisent environ 4 050 kWh/an, couvrant 40 à 50 % d'une consommation standard (4 500 kWh/an) ; <strong>12 à 14 panneaux (6 kWc)</strong> couvrent 80 à 90 % avec une batterie de stockage. Pour les foyers avec pompe à chaleur réversible (chauffage et climatisation — très courant à Palau-del-Vidre vu le climat estival) ou voiture électrique, un dimensionnement entre 6 et 9 kWc est conseillé. Nos simulations utilisent votre consommation réelle pour calculer précisément la taille optimale de l'installation et le retour sur investissement personnalisé.
  </div>
  </div>
  </div>
  <div class="proches-section">
+ <p style="font-size:.87rem;color:var(--slate3);line-height:1.75;margin-bottom:16px;">Solaire 66 intervient à Palau-del-Vidre et dans toutes les communes du Vallespir et de la Côte Vermeille. De Perpignan à la frontière espagnole, nos équipes couvrent l'ensemble du sud du département 66, avec une connaissance fine des typologies d'habitat et des contraintes réglementaires locales.</p>
      <div class="proches-title">Communes voisines desservies</div>
      <div class="proches-grid">
         <a class="proches-card" href="./saint-cyprien.html">Saint-Cyprien</a>
         <a class="proches-card" href="./argeles-sur-mer.html">Argelès-sur-Mer</a>
         <a class="proches-card" href="./elne.html">Elne</a>
+        <a class="proches-card" href="./le-boulou.html">Le Boulou</a>
+        <a class="proches-card" href="./banyuls-sur-mer.html">Banyuls-sur-Mer</a>
+        <a class="proches-card" href="./collioure.html">Collioure</a>
+        <a class="proches-card" href="./perpignan.html">Perpignan</a>
+        <a class="proches-card" href="./sorede.html">Sorède</a>
         <a class="proches-card" href="./index.html#zones">Voir toutes nos zones d'intervention</a>
      </div>
     </div>
@@ -591,7 +700,7 @@
  </div>
  <div class="ftr-col">
  <h4>Zones proches</h4>
- <div class="ftr-links"><a href="./saint-cyprien.html">Saint-Cyprien</a><a href="./argeles-sur-mer.html">Argelès-sur-Mer</a><a href="./elne.html">Elne</a></div>
+ <div class="ftr-links"><a href="./saint-cyprien.html">Saint-Cyprien</a><a href="./argeles-sur-mer.html">Argelès-sur-Mer</a><a href="./elne.html">Elne</a><a href="./le-boulou.html">Le Boulou</a><a href="./collioure.html">Collioure</a><a href="./perpignan.html">Perpignan</a></div>
  </div>
  </div>
  <div class="ftr-btm">
@@ -678,9 +787,35 @@
  } catch(err) {
  btn2.disabled = false;
  btn2.textContent = '⚡ Envoyer ma demande de devis';
- alert('Erreur lors de l'envoi. Veuillez appeler le 07 75 76 92 32.');
+ alert('Erreur lors de l’envoi. Veuillez appeler le 07 75 76 92 32.');
  }
  });
+
+ /* share button */
+ (function() {
+ var btn = document.getElementById('shareBtn');
+ if (!btn) return;
+ btn.addEventListener('click', async function() {
+ var data = { title: document.title, text: 'Panneaux solaires à Palau-del-Vidre — devis gratuit Solaire 66', url: location.href };
+ if (navigator.share) {
+ try { await navigator.share(data); } catch(e) {}
+ } else {
+ try { await navigator.clipboard.writeText(location.href); } catch(e) {}
+ var t = document.createElement('div');
+ t.className = 'share-toast';
+ t.textContent = '✓ Lien copié !';
+ document.body.appendChild(t);
+ requestAnimationFrame(function() { t.classList.add('show'); });
+ setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 300); }, 2200);
+ }
+ });
+ })();
 </script>
+<script>
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+ }
+</script>
+<script src="./chatbot.js"></script>
 </body>
 </html>
