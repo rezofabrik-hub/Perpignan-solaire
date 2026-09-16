@@ -603,7 +603,7 @@
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({ access_key:'02224188-7400-4bcb-8e85-6e2a926dd955', subject:`⚡ Devis artisan — ${prn} ${nom} (${cp})`, from_name:'Solaire 66', name:`${prn} ${nom}`, email:em, replyto:em, phone:tel, address:adr, postal_code:cp, project_type:f.type.value||'Non précisé', message:f.msg.value.trim()||'(aucun message)', botcheck:'' })
+        body: JSON.stringify({ access_key:'02224188-7400-4bcb-8e85-6e2a926dd955', subject:`${(f.querySelector('[name=qualification]')||{}).value||'⚡'} — Devis artisan — ${prn} ${nom} (${cp})`, from_name:'Solaire 66', name:`${prn} ${nom}`, email:em, replyto:em, phone:tel, address:adr, postal_code:cp, project_type:f.type.value||'Non précisé', message:f.msg.value.trim()||'(aucun message)', botcheck:'' })
       });
       const json = await res.json();
       if (json.success) { f.style.display='none'; document.getElementById('formsuccess').style.display='block'; }
@@ -613,6 +613,7 @@
 
   if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
 </script>
+<script src="./form-qualify.js"></script>
 <script src="./chatbot.js"></script>
 </body>
 </html>

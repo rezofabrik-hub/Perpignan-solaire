@@ -1177,7 +1177,7 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: '02224188-7400-4bcb-8e85-6e2a926dd955',
-          subject: `⚡ Devis PRO — ${societe} — ${prn} ${nom} (${cp})`,
+          subject: `${(f.querySelector('[name=qualification]')||{}).value||'⚡'} — Devis PRO — ${societe} — ${prn} ${nom} (${cp})`,
           from_name: 'Solaire 66 — PRO',
           name: `${prn} ${nom}`,
           email: em,
@@ -1210,6 +1210,7 @@
     window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
   }
 </script>
+<script src="./form-qualify.js"></script>
 <script src="./chatbot.js"></script>
 </body>
 </html>
