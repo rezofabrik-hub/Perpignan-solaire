@@ -240,6 +240,13 @@
   .highlight-box{background:var(--sun3);border-left:4px solid var(--sun);border-radius:0 var(--rs) var(--rs) 0;padding:16px 20px;margin-top:20px;}
   .highlight-box p{font-size:.9rem;color:var(--slate2);line-height:1.7;margin:0;}
   .highlight-box strong{color:var(--sun-d);}
+  /* VIDEOS */
+  .video-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:28px;}
+  .video-card{background:var(--white);border:1px solid var(--slate6);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);}
+  .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;}
+  .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+  .video-label{padding:12px 16px;font-size:.84rem;font-weight:700;color:var(--slate);line-height:1.4;}
+  .video-label span{font-size:.75rem;font-weight:500;color:var(--slate4);display:block;margin-top:3px;}
   /* RESPONSIVE */
   @media(min-width:640px){
    .hero-kpis{grid-template-columns:repeat(2,1fr);}
@@ -247,6 +254,7 @@
    .aide-grid{grid-template-columns:1fr 1fr;}
    .communes-grid{grid-template-columns:1fr 1fr;}
    .form-2{grid-template-columns:1fr 1fr;}
+   .video-grid{grid-template-columns:1fr 1fr;}
   }
   @media(min-width:900px){
    .hero-kpis{grid-template-columns:repeat(4,1fr);}
@@ -254,6 +262,7 @@
    .aide-grid{grid-template-columns:repeat(2,1fr);}
    .communes-grid{grid-template-columns:repeat(2,1fr);}
    .footer-grid{grid-template-columns:1.5fr 1fr 1fr;}
+   .video-grid{grid-template-columns:repeat(3,1fr);}
   }
  </style>
  <link rel="manifest" href="/manifest.json">
@@ -603,6 +612,35 @@
    <div class="faq-item">
     <div class="faq-q">Combien de temps prend le montage d'un projet d'autoconsommation collective dans le 66 ?</div>
     <div class="faq-a">Le montage d'un projet d'ACC prend en général entre 6 et 18 mois depuis l'identification des participants jusqu'à la mise en service, selon la complexité et la réactivité d'Enedis. Solaire 66 accompagne ses clients dans toutes les étapes — constitution du dossier, démarches Enedis, installation et mise en route du suivi de production — pour minimiser les délais.</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section" id="videos">
+ <div class="wrap">
+  <div class="eyebrow">Actualités 2025-2026</div>
+  <h2 class="section-title">Vidéos : L'autoconsommation collective en France</h2>
+  <p style="color:var(--slate3);font-size:.95rem;max-width:600px;">Les dernières vidéos pour comprendre le modèle, suivre les évolutions réglementaires et voir des projets concrets déjà en place.</p>
+  <div class="video-grid">
+   <div class="video-card">
+    <div class="video-wrap">
+     <iframe src="https://www.youtube.com/embed/_5empwu6dTc" title="L'autoconsommation collective : accessible et source de gains pour tous" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">L'autoconsommation collective : accessible et source de gains pour tous<span>Avril 2026 — Économies, partage local, baisse du rachat EDF</span></div>
+   </div>
+   <div class="video-card">
+    <div class="video-wrap">
+     <iframe src="https://www.youtube.com/embed/8fh5B6HSE1A" title="Autoconsommation collective : comment ça marche ? | E.Leclerc énergies" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Autoconsommation collective : comment ça marche ? — E.Leclerc énergies<span>Septembre 2025 — Mécanisme, participants, répartition</span></div>
+   </div>
+   <div class="video-card">
+    <div class="video-wrap">
+     <iframe src="https://www.youtube.com/embed/uhg7I4fBaNU" title="Tout savoir sur l'Autoconsommation collective" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-label">Tout savoir sur l'autoconsommation collective<span>Mars 2025 — Guide complet : définition, montage, financement</span></div>
    </div>
   </div>
  </div>
