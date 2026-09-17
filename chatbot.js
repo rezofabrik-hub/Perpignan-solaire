@@ -84,9 +84,9 @@
     style.textContent = [
       /* Portal: zero-size fixed anchor — bypasses overflow:hidden on body/html (iOS Safari fix) */
       '#sb-portal{position:fixed;bottom:0;right:0;width:0;height:0;overflow:visible;z-index:9999;pointer-events:none}',
-      '#sb-btn{position:absolute;bottom:24px;right:24px;pointer-events:all;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#D97706);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(245,158,11,.45);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s}',
+      '#sb-btn{position:absolute;bottom:24px;right:24px;pointer-events:all;width:68px;height:68px;border-radius:50%;background:transparent;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(245,158,11,.45);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;padding:0;overflow:hidden}',
       '#sb-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(245,158,11,.55)}',
-      '#sb-btn svg{width:28px;height:28px;fill:#fff}',
+      '#sb-btn img{width:68px;height:68px;object-fit:cover;border-radius:50%;display:block}',
       '#sb-badge{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif}',
       '#sb-win{position:absolute;bottom:90px;right:0;pointer-events:all;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden;font-family:system-ui,-apple-system,sans-serif;max-height:calc(100vh - 120px)}',
       '#sb-win.open{display:flex}',
@@ -127,7 +127,7 @@
     var btn = el('button', '');
     btn.id = 'sb-btn';
     btn.setAttribute('aria-label', 'Ouvrir le chatbot solaire');
-    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg><span id="sb-badge">1</span>';
+    btn.innerHTML = '<img src="./img/escargot-chatbot.webp" alt="Assistant solaire" loading="lazy"><span id="sb-badge">1</span>';
     portal.appendChild(btn);
 
     /* ── chat window ── */
