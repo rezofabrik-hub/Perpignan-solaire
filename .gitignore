@@ -1,2 +1,15 @@
 # Sortie de build.sh, reconstruite a chaque deploiement.
 dist/
+
+# Notes de travail et contexte projet.
+# Ce depot est PUBLIC — et il doit l'etre : GitHub Pages sert solaire-66.fr
+# depuis lui, un depot prive couperait le site. Tout fichier commite ici est
+# donc lisible par n'importe qui, historique compris.
+# CLAUDE.md contenait le numero de telephone prive, le nom et la licence du
+# pilote de drone, et la situation au greffe. Il a du etre purge de tout
+# l'historique le 20/09/2026.
+# Gardez ces notes hors du depot, ou dans un depot prive.
+CLAUDE.md
+NOTES.md
+notes/
+*.local.md
