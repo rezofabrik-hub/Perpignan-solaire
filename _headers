@@ -1,0 +1,15 @@
+# En-tetes servis par Cloudflare Pages.
+# Syntaxe : un chemin, puis les en-tetes indentes de deux espaces.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000
+
+# Les images changent de nom quand elles changent : cache long.
+# Le CSS et le JS gardent le meme nom : cache court, sinon une correction
+# mettrait des jours a atteindre les visiteurs.
+/img/*
+  Cache-Control: public, max-age=2592000
