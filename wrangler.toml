@@ -1,0 +1,15 @@
+# Deploiement du site sur Cloudflare Workers (fichiers statiques).
+#
+# Le site n'est pas servi depuis la racine du depot : build.sh construit
+# dist/ avec le seul contenu public et laisse de cote ce qui est interne.
+# C'est dist/ qui part en ligne.
+#
+# Reglages attendus dans l'interface Cloudflare :
+#   Commande de build    : bash build.sh
+#   Deployer la commande : npx wrangler deploy   (valeur par defaut)
+
+name = "perpignan-solaire"
+compatibility_date = "2026-01-01"
+
+[assets]
+directory = "./dist"

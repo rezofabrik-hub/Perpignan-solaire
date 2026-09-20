@@ -26,14 +26,14 @@ tar --exclude=./.git --exclude=./dist -cf - . | tar -xf - -C dist
 rm -rf dist/.github dist/cloudflare-worker
 
 # Artefacts propres a GitHub Pages, inutiles chez Cloudflare.
-rm -f dist/CNAME dist/.nojekyll dist/.gitignore
+rm -f dist/CNAME dist/.nojekyll dist/.gitignore dist/wrangler.toml
 
 # Documentation, scripts, pages enregistrees : jamais en ligne.
-find dist \( -name '*.md' -o -name '*.sh' -o -name '*.py' -o -name '*.mhtml' \) -delete
+find dist \( -name '*.md' -o -name '*.sh' -o -name '*.py' -o -name '*.mhtml' -o -name '*.toml' \) -delete
 find dist -type d \( -name '_*' -o -name '__pycache__' \) -prune -exec rm -rf {} +
 
 # Garde-fou : mieux vaut ne rien publier que publier une fuite.
-fuites=$(find dist \( -name '*.md' -o -name '*.sh' -o -name '*.py' -o -name '*.mhtml' \
+fuites=$(find dist \( -name '*.md' -o -name '*.sh' -o -name '*.py' -o -name '*.mhtml' -o -name '*.toml' \
   -o -name '.env*' -o -name '*.key' -o -name '*.pem' \) -print)
 if [ -n "$fuites" ]; then
   echo "ERREUR : fichier interne dans dist/, publication annulee :" >&2
