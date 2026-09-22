@@ -11,5 +11,9 @@
 name = "perpignan-solaire"
 compatibility_date = "2026-01-01"
 
+routes = [
+  { pattern = "solaire-66.fr/*", zone_name = "solaire-66.fr" }
+]
+
 [assets]
 directory = "./dist"
