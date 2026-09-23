@@ -13,3 +13,11 @@ compatibility_date = "2026-01-01"
 
 [assets]
 directory = "./dist"
+
+[[routes]]
+pattern = "solaire-66.fr"
+custom_domain = true
+
+[[routes]]
+pattern = "www.solaire-66.fr"
+custom_domain = true
