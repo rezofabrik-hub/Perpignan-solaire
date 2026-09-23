@@ -11,8 +11,13 @@
 name = "perpignan-solaire"
 compatibility_date = "2026-01-01"
 
-# Domaine custom : a configurer dans le dashboard Cloudflare
-# Workers & Pages → perpignan-solaire → Custom Domains → Add → solaire-66.fr
+[[routes]]
+pattern = "solaire-66.fr"
+custom_domain = true
+
+[[routes]]
+pattern = "www.solaire-66.fr"
+custom_domain = true
 
 [assets]
 directory = "./dist"
