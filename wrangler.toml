@@ -17,7 +17,3 @@ directory = "./dist"
 [[routes]]
 pattern = "solaire-66.fr"
 custom_domain = true
-
-[[routes]]
-pattern = "www.solaire-66.fr"
-custom_domain = true
