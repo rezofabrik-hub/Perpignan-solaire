@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+ <title>Laissez votre avis — Solaire 66</title>
+ <meta name="description" content="Vous avez fait installer des panneaux solaires avec Solaire 66 ? Partagez votre expérience pour aider d'autres familles des Pyrénées-Orientales.">
+ <meta name="robots" content="noindex, nofollow">
+ <link rel="canonical" href="https://solaire-66.fr/avis-clients.html">
+
+ <!-- Pas d'OG/Twitter nécessaire pour une page noindex interne -->
+
+ <!--
+  Schema.org AggregateRating — À compléter avec vos vraies données avant publication
+  <script type="application/ld+json">{
+   "@context": "https://schema.org",
+   "@type": "LocalBusiness",
+   "name": "Solaire 66 — REZO FABRIK",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "",
+    "addressLocality": "Canet-en-Roussillon",
+    "postalCode": "66140",
+    "addressCountry": "FR"
+   },
+   "telephone": "+33775769232",
+   "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "12",
+    "bestRating": "5",
+    "worstRating": "1"
+   }
+  }</script>
+ -->
+
+ <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+   --sun:#F59E0B;--sun-d:#D97706;--sun2:#FBBF24;--sun3:#FEF3C7;
+   --slate:#0F172A;--slate2:#1E293B;--slate3:#475569;--slate4:#94A3B8;--slate5:#CBD5E1;--slate6:#E2E8F0;
+   --white:#FFFFFF;
+   --r:16px;--rs:10px;
+   --f:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  }
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{
+   font-family:var(--f);
+   background:var(--slate);
+   color:var(--white);
+   line-height:1.6;
+   overflow-x:hidden;
+   -webkit-font-smoothing:antialiased;
+   min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;}
+
+  /* WRAPPER */
+  .page{
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   min-height:100vh;
+   padding:0 16px;
+  }
+
+  /* TOP BAR */
+  .topbar{
+   width:100%;
+   max-width:520px;
+   display:flex;
+   align-items:center;
+   justify-content:space-between;
+   padding:18px 0 0;
+   margin-bottom:4px;
+  }
+  .logo{
+   display:flex;
+   align-items:center;
+   gap:10px;
+   font-weight:800;
+   font-size:1rem;
+   color:var(--white);
+   text-decoration:none;
+  }
+  .logo-sun{
+   width:34px;height:34px;
+   background:linear-gradient(135deg,var(--sun) 0%,#F97316 100%);
+   border-radius:9px;
+   display:grid;place-items:center;
+   font-size:17px;flex-shrink:0;
+  }
+  .topbar-tel{
+   font-size:.82rem;
+   font-weight:700;
+   color:var(--sun2);
+   display:flex;
+   align-items:center;
+   gap:5px;
+  }
+
+  /* HERO CARD */
+  .hero-card{
+   width:100%;
+   max-width:520px;
+   background:var(--slate2);
+   border-radius:var(--r);
+   padding:32px 24px 28px;
+   text-align:center;
+   margin:20px 0 0;
+  }
+  .sun-big{
+   font-size:3rem;
+   line-height:1;
+   margin-bottom:12px;
+   display:block;
+  }
+  .hero-card h1{
+   font-size:clamp(1.6rem,5.5vw,2.1rem);
+   font-weight:900;
+   letter-spacing:-.025em;
+   line-height:1.15;
+   color:var(--white);
+   margin-bottom:12px;
+   text-wrap:balance;
+  }
+  .hero-card h1 .sun-accent{color:var(--sun);}
+  .hero-card p.subtitle{
+   font-size:.97rem;
+   color:var(--slate4);
+   line-height:1.65;
+   max-width:400px;
+   margin:0 auto 24px;
+  }
+
+  /* GOOGLE CTA BUTTON */
+  .btn-google{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   gap:10px;
+   width:100%;
+   padding:18px 24px;
+   background:linear-gradient(135deg,var(--sun) 0%,#F97316 100%);
+   color:var(--white);
+   border-radius:50px;
+   font-size:1.05rem;
+   font-weight:800;
+   border:none;
+   cursor:pointer;
+   font-family:var(--f);
+   text-decoration:none;
+   transition:all .22s;
+   box-shadow:0 8px 32px rgba(245,158,11,0.4);
+   letter-spacing:.01em;
+  }
+  .btn-google:hover{
+   background:linear-gradient(135deg,var(--sun-d) 0%,#EA580C 100%);
+   transform:translateY(-3px);
+   box-shadow:0 14px 40px rgba(245,158,11,0.5);
+  }
+  .btn-google:active{transform:translateY(0);}
+
+  /* NOTE STARS */
+  .stars-row{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   gap:4px;
+   margin-top:12px;
+  }
+  .star{font-size:1.3rem;}
+  .stars-lbl{
+   font-size:.78rem;
+   color:var(--slate4);
+   margin-top:8px;
+  }
+
+  /* WHY SECTION */
+  .why-section{
+   width:100%;
+   max-width:520px;
+   margin:16px 0 0;
+  }
+  .why-section h2{
+   font-size:.72rem;
+   font-weight:700;
+   text-transform:uppercase;
+   letter-spacing:.16em;
+   color:var(--slate4);
+   margin-bottom:10px;
+   padding:0 2px;
+  }
+  .why-card{
+   background:var(--slate2);
+   border-radius:var(--r);
+   overflow:hidden;
+  }
+  .why-item{
+   display:flex;
+   gap:14px;
+   align-items:flex-start;
+   padding:16px 18px;
+   border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .why-item:last-child{border-bottom:none;}
+  .why-icon{
+   flex-shrink:0;
+   font-size:1.4rem;
+   margin-top:1px;
+  }
+  .why-text h3{
+   font-size:.9rem;
+   font-weight:800;
+   color:var(--white);
+   margin-bottom:2px;
+  }
+  .why-text p{
+   font-size:.82rem;
+   color:var(--slate4);
+   line-height:1.55;
+  }
+
+  /* DIVIDER */
+  .divider{
+   width:100%;
+   max-width:520px;
+   display:flex;
+   align-items:center;
+   gap:14px;
+   margin:20px 0;
+   color:var(--slate4);
+   font-size:.8rem;
+  }
+  .divider::before,.divider::after{
+   content:'';
+   flex:1;
+   height:1px;
+   background:rgba(255,255,255,0.1);
+  }
+
+  /* FORM SECTION */
+  .form-section{
+   width:100%;
+   max-width:520px;
+   margin-bottom:0;
+  }
+  .form-section h2{
+   font-size:.72rem;
+   font-weight:700;
+   text-transform:uppercase;
+   letter-spacing:.16em;
+   color:var(--slate4);
+   margin-bottom:10px;
+   padding:0 2px;
+  }
+  .form-card{
+   background:var(--slate2);
+   border-radius:var(--r);
+   padding:20px 18px;
+  }
+  .form-card p.form-intro{
+   font-size:.86rem;
+   color:var(--slate4);
+   margin-bottom:18px;
+   line-height:1.6;
+  }
+  .field{margin-bottom:14px;}
+  .field label{
+   display:block;
+   font-size:.8rem;
+   font-weight:700;
+   color:var(--slate5);
+   margin-bottom:5px;
+   letter-spacing:.01em;
+  }
+  .field input,
+  .field textarea{
+   width:100%;
+   background:rgba(255,255,255,0.06);
+   border:1.5px solid rgba(255,255,255,0.12);
+   border-radius:var(--rs);
+   padding:12px 14px;
+   font-size:.9rem;
+   font-family:var(--f);
+   color:var(--white);
+   transition:border-color .2s;
+   -webkit-appearance:none;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder{color:var(--slate4);}
+  .field input:focus,
+  .field textarea:focus{
+   outline:none;
+   border-color:var(--sun);
+   background:rgba(245,158,11,0.07);
+  }
+  .field textarea{resize:vertical;min-height:110px;}
+  .btn-submit{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   gap:8px;
+   width:100%;
+   padding:14px 20px;
+   background:var(--slate3);
+   color:var(--white);
+   border-radius:50px;
+   font-size:.9rem;
+   font-weight:700;
+   border:none;
+   cursor:pointer;
+   font-family:var(--f);
+   transition:all .22s;
+   margin-top:4px;
+  }
+  .btn-submit:hover{background:var(--slate4);transform:translateY(-2px);}
+  .form-success{
+   display:none;
+   text-align:center;
+   padding:20px;
+   font-size:.95rem;
+   color:var(--sun2);
+   font-weight:700;
+  }
+
+  /* FOOTER */
+  .page-footer{
+   width:100%;
+   max-width:520px;
+   text-align:center;
+   padding:28px 0 32px;
+   margin-top:8px;
+  }
+  .page-footer p{
+   font-size:.76rem;
+   color:var(--slate4);
+   line-height:1.6;
+  }
+  .page-footer a{
+   color:var(--sun2);
+   text-decoration:underline;
+   text-underline-offset:2px;
+  }
+  .footer-tel{
+   display:inline-flex;
+   align-items:center;
+   gap:6px;
+   font-size:.9rem;
+   font-weight:700;
+   color:var(--sun2);
+   margin-bottom:8px;
+  }
+  .address-line{
+   font-size:.78rem;
+   color:var(--slate4);
+   margin-top:4px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes pulse-glow{
+   0%,100%{box-shadow:0 8px 32px rgba(245,158,11,0.4);}
+   50%{box-shadow:0 8px 44px rgba(245,158,11,0.65);}
+  }
+  .btn-google{animation:pulse-glow 2.8s ease-in-out infinite;}
+  .btn-google:hover{animation:none;}
+
+  @media(max-width:400px){
+   .hero-card{padding:24px 16px 22px;}
+   .form-card{padding:16px 14px;}
+  }
+ </style>
+</head>
+<body>
+
+<div class="page">
+
+ <!-- TOP BAR -->
+ <div class="topbar">
+  <a href="./index.html" class="logo">
+   <div class="logo-sun">☀</div>
+   <span>Solaire 66</span>
+  </a>
+  <a href="tel:0775769232" class="topbar-tel">☎ 07 75 76 92 32</a>
+ </div>
+
+ <!-- HERO CARD -->
+ <div class="hero-card">
+  <span class="sun-big">☀️</span>
+  <h1>Votre avis compte<br><span class="sun-accent">pour nous</span></h1>
+  <p class="subtitle">Aidez d'autres familles du 66 à passer au solaire en partageant votre expérience avec Solaire 66</p>
+
+  <!-- BOUTON GOOGLE — REMPLACER href par le vrai lien Google Maps/Business Profile -->
+  <!-- Exemple de lien : https://g.page/r/VOTRE_ID_GOOGLE/review -->
+  <a href="#google-avis" class="btn-google" id="btnGoogle">
+   ⭐ Laisser un avis Google
+  </a>
+
+  <div class="stars-row" aria-hidden="true">
+   <span class="star">⭐</span>
+   <span class="star">⭐</span>
+   <span class="star">⭐</span>
+   <span class="star">⭐</span>
+   <span class="star">⭐</span>
+  </div>
+  <div class="stars-lbl">Cela prend moins de 2 minutes</div>
+ </div>
+
+ <!-- POURQUOI VOTRE AVIS EST PRÉCIEUX -->
+ <div class="why-section">
+  <h2>Pourquoi votre avis est précieux</h2>
+  <div class="why-card">
+   <div class="why-item">
+    <div class="why-icon">🏡</div>
+    <div class="why-text">
+     <h3>Vous guidez vos voisins du 66</h3>
+     <p>Beaucoup de familles des Pyrénées-Orientales hésitent encore à franchir le pas. Votre retour concret — installation, délais, économies réalisées — est la meilleure preuve que le solaire fonctionne vraiment ici.</p>
+    </div>
+   </div>
+   <div class="why-item">
+    <div class="why-icon">🔍</div>
+    <div class="why-text">
+     <h3>Vous nous aidez à nous améliorer</h3>
+     <p>Chaque avis — positif ou constructif — nous permet d'identifier ce que nous faisons bien et ce que nous pouvons perfectionner. Votre honnêteté nous aide à progresser.</p>
+    </div>
+   </div>
+   <div class="why-item">
+    <div class="why-icon">🤝</div>
+    <div class="why-text">
+     <h3>Vous soutienez un artisan local</h3>
+     <p>Solaire 66 est une entreprise ancrée à Canet-en-Roussillon (66140). Les avis Google sont essentiels pour qu'un artisan local reste visible face aux grandes enseignes nationales. Votre soutien compte énormément.</p>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- DIVIDER -->
+ <div class="divider">Pas de compte Google ? Laissez-nous un message</div>
+
+ <!-- FORMULAIRE ALTERNATIF -->
+ <div class="form-section">
+  <h2>Partagez votre témoignage</h2>
+  <div class="form-card">
+   <p class="form-intro">Pas de compte Google ou préférez écrire directement ? Votre témoignage nous touche tout autant. Nous pourrons l'afficher sur notre site (avec votre accord).</p>
+
+   <!-- Web3Forms — access_key : 02224188-7400-4bcb-8e85-6e2a926dd955 -->
+   <form id="avisForm" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="02224188-7400-4bcb-8e85-6e2a926dd955">
+    <input type="hidden" name="subject" value="Témoignage client Solaire 66">
+    <input type="hidden" name="from_name" value="Solaire 66 — Avis client">
+    <!-- Honeypot anti-spam -->
+    <input type="checkbox" name="botcheck" style="display:none;">
+
+    <div class="field">
+     <label for="nom">Votre prénom (ou initiales)</label>
+     <input type="text" id="nom" name="name" placeholder="Ex. Marie C." required autocomplete="given-name">
+    </div>
+
+    <div class="field">
+     <label for="msg">Votre témoignage</label>
+     <textarea id="msg" name="message" placeholder="Décrivez votre expérience : installation, délais, résultats sur votre facture, qualité du suivi…" required></textarea>
+    </div>
+
+    <div class="field">
+     <label for="email">Votre email (optionnel — pour vous répondre)</label>
+     <input type="email" id="email" name="email" placeholder="votre@email.fr" autocomplete="email">
+    </div>
+
+    <button type="submit" class="btn-submit">
+     Envoyer mon témoignage ✉
+    </button>
+   </form>
+
+   <div class="form-success" id="formSuccess">
+    Merci pour votre témoignage ! ☀ Nous l'avons bien reçu.
+   </div>
+  </div>
+ </div>
+
+ <!-- FOOTER SIMPLE -->
+ <footer class="page-footer">
+  <a href="tel:0775769232" class="footer-tel">☎ 07 75 76 92 32</a>
+  <div class="address-line">Solaire 66 — REZO FABRIK · Canet-en-Roussillon (66140)</div>
+  <p style="margin-top:10px;">
+   <a href="mailto:contact.energiesolaire66@gmail.com">contact.energiesolaire66@gmail.com</a>
+  </p>
+  <p style="margin-top:12px;">
+   © 2026 SARL Rezofabrik ·
+   <a href="./index.html">Retour au site</a>
+  </p>
+ </footer>
+
+</div><!-- /.page -->
+
+<script>
+ // Gestion du formulaire Web3Forms
+ const form = document.getElementById('avisForm');
+ const success = document.getElementById('formSuccess');
+
+ if (form) {
+  form.addEventListener('submit', async function(e) {
+   e.preventDefault();
+   const btn = form.querySelector('button[type="submit"]');
+   btn.textContent = 'Envoi en cours…';
+   btn.disabled = true;
+
+   try {
+    const data = new FormData(form);
+    const res = await fetch('https://api.web3forms.com/submit', {
+     method: 'POST',
+     body: data
+    });
+    const json = await res.json();
+    if (json.success) {
+     form.style.display = 'none';
+     success.style.display = 'block';
+    } else {
+     btn.textContent = 'Erreur — réessayez';
+     btn.disabled = false;
+    }
+   } catch (err) {
+    btn.textContent = 'Erreur réseau — réessayez';
+    btn.disabled = false;
+   }
+  });
+ }
+</script>
+
+</body>
+</html>
