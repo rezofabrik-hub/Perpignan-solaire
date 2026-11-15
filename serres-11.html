@@ -138,7 +138,12 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 80px;}
  .proches-card:hover { background: var(--amber-lt, #FEF5DF); border-color: var(--amber, #F5A81C); color: var(--amber-dk, #D48B0A); }
  .proches-card::before { content: '☀'; font-size: .75rem; opacity: .6; }
 
- </style>
+  .sticky{position:fixed;bottom:0;left:0;right:0;z-index:199;background:rgba(255,255,255,0.97);border-top:1px solid var(--slate6);backdrop-filter:blur(12px);display:flex;padding:10px 14px;gap:10px;padding-bottom:max(10px,env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(15,23,42,0.1);}
+ .sticky a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:50px;font-size:.86rem;font-weight:700;}
+ .st-tel{background:var(--sky3);color:var(--sky);border:1.5px solid var(--sky2);}
+ .st-dv{background:var(--sun);color:#fff;}
+ @media(min-width:1024px){.sticky{display:none;}}
+</style>
 
  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Solaire 66", "item": "https://solaire-66.fr/"}, {"@type": "ListItem", "position": 2, "name": "Communes du 66", "item": "https://solaire-66.fr/index.html#zones"}, {"@type": "ListItem", "position": 3, "name": "Panneaux solaires Serres", "item": "https://solaire-66.fr/serres-11.html"}]}</script>
 </head>
@@ -317,7 +322,7 @@ footer{background:var(--slate);color:#E2E8F0;padding:52px 0 80px;}
 <section class="sc-ville-photo">
   <div class="container">
     <figure class="ville-photo-fig">
-      <img src="https://images.unsplash.com/photo-1675026294659-0ee76bb66975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080" alt="Vue de Serres — installation panneaux solaires" loading="lazy" width="1080" height="420" style="width:100%;height:280px;object-fit:cover;border-radius:12px;">
+      <img src="https://images.unsplash.com/photo-1692302963538-3d93f2dd88bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080" alt="Vue de Serres — installation panneaux solaires" loading="lazy" width="1080" height="420" style="width:100%;height:280px;object-fit:cover;border-radius:12px;">
       <figcaption style="font-size:0.75rem;color:#888;margin-top:4px;">Photo : Unsplash · CC0</figcaption>
     </figure>
   </div>
@@ -393,5 +398,10 @@ document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('
 </script>
 <script src="./form-qualify.js"></script>
 <script src="./chatbot.js"></script>
+<div class="sticky" role="navigation" aria-label="Actions rapides">
+  <a href="tel:0775769232" class="st-tel">📞 07 75 76 92 32</a>
+  <a href="#devis-local" class="st-dv">⚡ Devis gratuit</a>
+</div>
+
 </body>
 </html>
